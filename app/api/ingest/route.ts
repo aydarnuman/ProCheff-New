@@ -33,7 +33,6 @@ export async function POST(req: Request) {
 
     log.info("PDF başarıyla parse edildi", { source: file.name });
     return NextResponse.json(result, { status: 200 });
-
   } catch (err: any) {
     log.error("Ingest hatası", { err: err.message });
     return NextResponse.json(
