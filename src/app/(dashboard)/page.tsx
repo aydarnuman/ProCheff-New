@@ -4,6 +4,7 @@ import { Card, CardContent, CardHeader, CardTitle } from "@/components/ui/card";
 import { Slider } from "@/components/ui/slider";
 import { Progress } from "@/components/ui/progress";
 import { BarChart, Bar, XAxis, YAxis, Tooltip, ResponsiveContainer } from "recharts";
+import { InsightCards } from "@/components/dashboard/InsightCards";
 
 export default function Dashboard() {
   const [protein, setProtein] = useState(18);
@@ -11,6 +12,7 @@ export default function Dashboard() {
   const [risk, setRisk] = useState(70);
   const [offer, setOffer] = useState(48.65);
   const [loading, setLoading] = useState(false);
+  const [insights, setInsights] = useState<any[]>([]);
 
   const fat = Math.max(0, 100 - (protein + carb));
   
@@ -40,6 +42,30 @@ export default function Dashboard() {
         if (json.success && json.panelData) {
           setRisk(json.panelData.simulation.reasoning.score);
           setOffer(json.panelData.simulation.newOffer.offerPrice);
+          
+          // Generate insights from reasoning data
+          const reasoning = json.panelData.simulation.reasoning;
+          const newInsights = [
+            ...reasoning.risks.map((r: string) => ({ 
+              title: "⚠️ Risk", 
+              description: r, 
+              type: "finance", 
+              score: 80 
+            })),
+            ...reasoning.suggestions.map((s: string) => ({ 
+              title: "💡 Öneri", 
+              description: s, 
+              type: "nutrition", 
+              score: 85 
+            })),
+            ...reasoning.compliance.map((c: string) => ({ 
+              title: "✅ Uyum", 
+              description: c, 
+              type: "compliance", 
+              score: 90 
+            }))
+          ];
+          setInsights(newInsights);
         }
       }
     } catch (error) {
@@ -225,6 +251,23 @@ export default function Dashboard() {
                   {risk >= 70 && offer < 50 ? "🎯 Optimal" : "⚡ Ayarlama Gerekli"}
                 </div>
               </div>
+            </CardContent>
+          </Card>
+        </div>
+
+        {/* AI Insight Kartları */}
+        <div className="mt-8">
+          <Card className="col-span-full">
+            <CardHeader>
+              <CardTitle className="flex items-center gap-2">
+                🧠 AI Insight Kartları
+                <span className="text-sm font-normal text-gray-500">
+                  ({insights.length} insight)
+                </span>
+              </CardTitle>
+            </CardHeader>
+            <CardContent>
+              <InsightCards insights={insights} />
             </CardContent>
           </Card>
         </div>
