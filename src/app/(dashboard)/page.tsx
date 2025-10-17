@@ -84,9 +84,11 @@ export default function Dashboard() {
   return (
     <div className="min-h-screen bg-gray-50 p-6">
       <div className="mx-auto max-w-7xl">
-        <h1 className="mb-8 text-3xl font-bold text-gray-900">
-          🧠 ProCheff Simulation Dashboard
-        </h1>
+        <div className="flex items-center justify-between mb-6">
+          <h1 className="text-3xl font-bold text-gray-900">
+            🧠 ProCheff Simulation Dashboard
+          </h1>
+        </div>
         
         <div className="grid gap-6 lg:grid-cols-3">
           {/* Menü Dengesi */}
@@ -135,7 +137,9 @@ export default function Dashboard() {
             <CardContent>
               <div className="space-y-4">
                 <div className="text-center">
-                  <div className="text-3xl font-bold">{risk}/100</div>
+                  <div className="text-3xl font-bold">
+                    {risk}/100
+                  </div>
                   <div className="text-sm text-gray-600">Risk Puanı</div>
                 </div>
                 <Progress 
