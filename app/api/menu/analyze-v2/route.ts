@@ -1,18 +1,21 @@
-import { NextResponse } from "next/server";
 import { analyzeMenu } from "@/lib/menu/analyze";
 import { log } from "@/lib/utils/logger";
-import { withSecurity } from "@/lib/middleware/errorHandler";
-import {
-  withValidation,
-  MenuAnalysisSchema,
-} from "@/lib/middleware/validation";
+import { secureEndpoint, type AuthContext } from "@/lib/middleware";
+import { MenuAnalysisSchema } from "@/lib/middleware/validation";
 
 export const dynamic = "force-dynamic";
 
 // Güvenli handler
-async function handleMenuAnalysis(data: any, request: Request) {
+async function handleMenuAnalysis(
+  data: any,
+  request: Request,
+  context?: AuthContext
+) {
   try {
-    log.info("Menu analysis request", { textLength: data.text.length });
+    log.info("Menu analysis request", {
+      textLength: data.text.length,
+      keyId: context?.apiKey?.id,
+    });
 
     const menuAnalysis = analyzeMenu(data.text);
 
@@ -33,8 +36,8 @@ async function handleMenuAnalysis(data: any, request: Request) {
         },
         risks: {
           nutritional: menuAnalysis.warnings,
-          financial: [],
           compliance: [],
+          financial: [],
         },
         meta: {
           processedAt: new Date().toISOString(),
@@ -45,6 +48,7 @@ async function handleMenuAnalysis(data: any, request: Request) {
 
     log.info("Menü analizi tamamlandı", {
       totalItems: menuAnalysis.totalItems,
+      keyId: context?.apiKey?.id,
     });
 
     return new Response(JSON.stringify(result), {
@@ -58,10 +62,32 @@ async function handleMenuAnalysis(data: any, request: Request) {
 }
 
 // Güvenlik middleware'leri ile wrapped handler
-export const POST = withSecurity(
-  withValidation(MenuAnalysisSchema, handleMenuAnalysis),
-  {
-    allowedMethods: ["POST"],
-    rateLimit: true,
+export const POST = secureEndpoint.menuAnalysis(
+  // Validation wrapper'ını manuel olarak ekliyoruz
+  async (request: Request, context?: AuthContext) => {
+    try {
+      const data = await request.json();
+      const validatedData = MenuAnalysisSchema.parse(data);
+      return handleMenuAnalysis(validatedData, request, context);
+    } catch (error: any) {
+      if (error?.name === "ZodError") {
+        return new Response(
+          JSON.stringify({
+            success: false,
+            error: {
+              message: "Validation failed",
+              code: 400,
+              type: "VALIDATION_ERROR",
+              details: error.message,
+            },
+          }),
+          {
+            status: 400,
+            headers: { "Content-Type": "application/json" },
+          }
+        );
+      }
+      throw error;
+    }
   }
 );

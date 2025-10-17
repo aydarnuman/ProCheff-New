@@ -1,26 +1,52 @@
 import { NextResponse } from "next/server";
 import { calculateOffer } from "@/lib/offer/calc";
 import { log } from "@/lib/utils/logger";
+import { withSecurity } from "@/lib/middleware/errorHandler";
+import {
+  withValidation,
+  OfferCalculationSchema,
+} from "@/lib/middleware/validation";
 
 export const dynamic = "force-dynamic";
 
-export async function POST(req: Request) {
+// Güvenli handler
+async function handleOfferCalculation(data: any, request: Request) {
   try {
-    const body = await req.json();
-    const { materialCost, laborCost, overheadRate, profitRate } = body;
+    log.info("Offer calculation request", {
+      materialCost: data.materialCost,
+      laborCost: data.laborCost,
+    });
 
-    if ([materialCost, laborCost, overheadRate, profitRate].some(v => v === undefined)) {
-      return NextResponse.json({ error: "Eksik parametre" }, { status: 400 });
-    }
+    const result = calculateOffer({
+      materialCost: data.materialCost,
+      laborCost: data.laborCost,
+      overheadRate: data.overheadRate,
+      profitRate: data.profitMargin, // Schema'da profitMargin olarak tanımlandı
+    });
 
-    const result = calculateOffer({ materialCost, laborCost, overheadRate, profitRate });
     log.info("Teklif hesaplandı", { offerPrice: result.offerPrice });
-    return NextResponse.json(result, { status: 200 });
-  } catch (err: any) {
-    log.error("Teklif hesap hatası", { err: err.message });
-    return NextResponse.json(
-      { error: "Teklif hesaplama başarısız", detail: err.message },
-      { status: 500 }
+
+    return new Response(
+      JSON.stringify({
+        success: true,
+        data: result,
+      }),
+      {
+        status: 200,
+        headers: { "Content-Type": "application/json" },
+      }
     );
+  } catch (error) {
+    log.error("Offer calculation error", { error });
+    throw error; // Error boundary yakalayacak
   }
 }
+
+// Güvenlik middleware'leri ile wrapped handler
+export const POST = withSecurity(
+  withValidation(OfferCalculationSchema, handleOfferCalculation),
+  {
+    allowedMethods: ["POST"],
+    rateLimit: true,
+  }
+);
