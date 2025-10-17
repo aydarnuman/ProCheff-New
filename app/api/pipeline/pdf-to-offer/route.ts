@@ -10,6 +10,7 @@ import {
 } from "@/lib/market";
 import { calculateOffer } from "@/lib/offer/calc";
 import { log } from "@/lib/utils/logger";
+import { generatePanelData } from "@/lib/utils/panelData";
 import fs from "fs";
 import path from "path";
 
@@ -111,8 +112,18 @@ export async function POST(req: Request) {
 
     const totalDuration = Date.now() - startTime;
 
-    // Final Result
+    // Generate Panel Data for Frontend
+    const panelData = generatePanelData(
+      menuAnalysis,
+      offerResult,
+      averagePrices,
+      startTime
+    );
+
+    // Complete Result with Panel Data
     const result = {
+      success: true,
+      panelData,
       pipeline: {
         status: "success",
         duration: `${totalDuration}ms`,
@@ -149,6 +160,7 @@ export async function POST(req: Request) {
       duration: totalDuration,
       offerPrice: offerResult.offerPrice,
       menuItems: menuAnalysis.totalItems,
+      confidence: panelData.meta.confidence,
     });
 
     return NextResponse.json(result, { status: 200 });

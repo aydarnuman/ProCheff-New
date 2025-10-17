@@ -34,14 +34,29 @@ export async function GET() {
     const averagePrices = calculateAveragePrices(allPrices);
 
     const result = {
+      success: true,
+      data: {
+        averagePrices,
+        rawPrices: allPrices,
+      },
+      panelData: {
+        costs: {
+          material: averagePrices.reduce((sum, p) => sum + p.average * 0.1, 0), // Sample calculation
+          total: averagePrices.reduce((sum, p) => sum + p.average * 0.1, 0),
+        },
+        meta: {
+          processedAt: new Date().toISOString(),
+          sources: ["A101", "BİM", "Migros", "ŞOK"],
+          totalProducts: averagePrices.length,
+          confidence: averagePrices.length > 5 ? 90 : 60,
+        },
+      },
       meta: {
         sources: ["A101", "BİM", "Migros", "ŞOK"],
         totalProducts: averagePrices.length,
         lastUpdated: new Date().toISOString(),
         rawPricesCount: allPrices.length,
       },
-      averagePrices,
-      rawPrices: allPrices,
     };
 
     log.info("Market prices fetched successfully", {
