@@ -33,7 +33,7 @@ export async function POST(req: Request) {
 
   try {
     const { menu, offer, adjustments } = body;
-    if (!menu || !offer) {
+    if (menu == null || offer == null) {
       return NextResponse.json(
         fail("Eksik veri: menu veya offer bulunamadı", 400)
       );
