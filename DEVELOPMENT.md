@@ -95,9 +95,45 @@ npm run build
 ## 🔒 Security
 
 ### Environment Variables
-- `.env.local` kullan
-- Sensitive data GitHub'a commit etme
-- API keys secure storage
+
+#### Kurulum
+1. `.env.example` dosyasını `.env.local` olarak kopyalayın:
+   ```bash
+   cp .env.example .env.local
+   ```
+
+2. `.env.local` dosyasını düzenleyin ve gerçek API anahtarlarınızı girin:
+   ```bash
+   # Zorunlu
+   ANTHROPIC_API_KEY=sk-ant-api03-your-actual-key
+   
+   # İsteğe bağlı
+   OPENAI_API_KEY=sk-your-actual-key
+   NEXTAUTH_SECRET=$(openssl rand -base64 32)
+   ```
+
+3. Environment dosyasını test edin:
+   ```bash
+   npm run dev
+   ```
+
+#### Güvenlik Kuralları
+- ✅ `.env.local` kullan (development için)
+- ✅ `.env.production` kullan (production için)
+- ❌ `.env` dosyalarını Git'e commit etme
+- ❌ API keys'leri kod içine hard-code etme
+- ✅ Production'da hosting sağlayıcısının environment variable yönetimini kullan
+
+#### Desteklenen Environment Variables
+
+| Değişken | Zorunlu | Varsayılan | Açıklama |
+|----------|---------|-----------|----------|
+| `ANTHROPIC_API_KEY` | ✅ Evet | - | Claude AI API anahtarı |
+| `OPENAI_API_KEY` | ❌ Hayır | - | OpenAI API anahtarı |
+| `NEXTAUTH_SECRET` | ❌ Hayır | - | Authentication secret |
+| `DB_URL_SECRET` | ❌ Hayır | - | Database connection URL |
+| `NODE_ENV` | ❌ Hayır | `production` | development/test/production |
+| `PORT` | ❌ Hayır | `8080` | Server port numarası |
 
 ### API Security
 - Rate limiting aktif

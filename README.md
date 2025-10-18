@@ -44,11 +44,31 @@ cd ProCheff-New
 # Bağımlılıkları yükle
 npm install
 
+# Environment dosyasını oluştur
+cp .env.example .env.local
+# .env.local dosyasını düzenleyerek API anahtarlarınızı ekleyin
+
 # Geliştirme sunucusunu başlat
 npm run dev
 ```
 
 Uygulama [http://localhost:3000](http://localhost:3000) adresinde çalışmaya başlayacak.
+
+### ⚙️ Environment Variables
+
+Uygulama çalışması için gerekli ortam değişkenleri:
+
+**Zorunlu:**
+- `ANTHROPIC_API_KEY` - Claude AI API anahtarı ([Buradan alın](https://console.anthropic.com/))
+
+**İsteğe Bağlı:**
+- `OPENAI_API_KEY` - OpenAI API anahtarı
+- `NEXTAUTH_SECRET` - Authentication için secret key
+- `DB_URL_SECRET` - Veritabanı bağlantı URL'i
+- `NODE_ENV` - Ortam tipi (development/production)
+- `PORT` - Server portu (varsayılan: 8080)
+
+Detaylı bilgi için `.env.example` dosyasına bakın.
 
 ## 📱 Demo Screenshots
 
