@@ -6,15 +6,16 @@ const nextConfig = {
     config.resolve.alias["@"] = path.resolve(__dirname, "./src");
     return config;
   },
-  // GitHub Pages için static export
+  // Static export configuration
   output: "export",
   trailingSlash: true,
   images: {
     unoptimized: true,
   },
-  // GitHub Pages base path (repository adı)
-  basePath: process.env.NODE_ENV === 'production' ? '/ProCheff-New' : '',
-  assetPrefix: process.env.NODE_ENV === 'production' ? '/ProCheff-New/' : '',
+  // Relative assets for local development  
+  assetPrefix: process.env.GITHUB_PAGES === 'true' ? '/ProCheff-New/' : '',
+  // GitHub Pages base path only for production deployment
+  basePath: process.env.GITHUB_PAGES === 'true' ? '/ProCheff-New' : '',
   // API routes'ları static export'ta çalışmaz, bu yüzden onları exclude edelim
   experimental: {
     missingSuspenseWithCSRBailout: false,
