@@ -12,8 +12,10 @@ docker push "$IMAGE"
 gcloud run deploy "$SERVICE" \
   --project "$PROJECT_ID" --region "$REGION" \
   --image "$IMAGE" --allow-unauthenticated \
-  --concurrency 80 --cpu 1 --memory 512Mi --port 8080 \
+  --concurrency 10 --cpu 2 --memory 1Gi --port 8080 \
+  --min-instances 1 --max-instances 10 \
   --set-env-vars "GIT_SHA=$(git rev-parse --short HEAD)" \
+  --set-env-vars "DEPLOY_URL=https://${SERVICE}-${PROJECT_ID}.run.app" \
   --set-secrets "ANTHROPIC_API_KEY=ANTHROPIC_API_KEY:3" \
   --set-secrets "OPENAI_API_KEY=OPENAI_API_KEY:1" \
   --set-secrets "NEXTAUTH_SECRET=NEXTAUTH_SECRET:1" \

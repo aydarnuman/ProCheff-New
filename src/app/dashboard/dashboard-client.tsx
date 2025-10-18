@@ -15,11 +15,11 @@ export default function Dashboard() {
   const [insights, setInsights] = useState<any[]>([]);
 
   const fat = Math.max(0, 100 - (protein + carb));
-  
+
   const data = [
     { name: "Protein", value: protein, fill: "#22c55e" },
     { name: "Yağ", value: fat, fill: "#f59e0b" },
-    { name: "Karb.", value: carb, fill: "#3b82f6" }
+    { name: "Karb.", value: carb, fill: "#3b82f6" },
   ];
 
   const handleSimulate = async () => {
@@ -29,44 +29,72 @@ export default function Dashboard() {
         method: "POST",
         headers: { "Content-Type": "application/json" },
         body: JSON.stringify({
-          menuType: "15 Günlük",
+          menu: {
+            menuType: "15 Günlük Menü",
+            totalItems: 15,
+            macroBalance: {
+              protein: protein,
+              carb: carb,
+              fat: fat,
+            },
+            warnings: [],
+          },
+          offer: {
+            offerPrice: offer,
+            totalCost: offer * 0.7,
+            detail: {
+              material: offer * 0.4,
+              labor: offer * 0.2,
+              overhead: offer * 0.1,
+              profit: offer * 0.3,
+            },
+            currency: "TRY",
+          },
           adjustments: {
-            protein: protein,
-            carb: carb
-          }
-        })
+            proteinDelta: 0,
+            carbDelta: 0,
+            profitRateDelta: 0,
+          },
+        }),
       });
-      
+
       if (res.ok) {
         const json = await res.json();
-        if (json.success && json.panelData) {
-          setRisk(json.panelData.simulation.reasoning.score);
-          setOffer(json.panelData.simulation.newOffer.offerPrice);
-          
+
+        if (json.success && json.data && json.data.simulation) {
+          const simulation = json.data.simulation;
+
+          setRisk(simulation.reasoning.score);
+          setOffer(simulation.newOffer.offerPrice);
+
           // Generate insights from reasoning data
-          const reasoning = json.panelData.simulation.reasoning;
+          const reasoning = simulation.reasoning;
           const newInsights = [
-            ...reasoning.risks.map((r: string) => ({ 
-              title: "⚠️ Risk", 
-              description: r, 
-              type: "finance", 
-              score: 80 
+            ...(reasoning.risks || []).map((r: string) => ({
+              title: "⚠️ Risk",
+              description: r,
+              type: "finance",
+              score: 80,
             })),
-            ...reasoning.suggestions.map((s: string) => ({ 
-              title: "💡 Öneri", 
-              description: s, 
-              type: "nutrition", 
-              score: 85 
+            ...(reasoning.suggestions || []).map((s: string) => ({
+              title: "💡 Öneri",
+              description: s,
+              type: "nutrition",
+              score: 85,
             })),
-            ...reasoning.compliance.map((c: string) => ({ 
-              title: "✅ Uyum", 
-              description: c, 
-              type: "compliance", 
-              score: 90 
-            }))
+            ...(reasoning.compliance || []).map((c: string) => ({
+              title: "✅ Uyum",
+              description: c,
+              type: "compliance",
+              score: 90,
+            })),
           ];
           setInsights(newInsights);
+        } else {
+          console.error("Invalid response structure:", json);
         }
+      } else {
+        console.error("HTTP Error:", res.status, await res.text());
       }
     } catch (error) {
       console.error("Simulation error:", error);
@@ -85,25 +113,21 @@ export default function Dashboard() {
     <div className="min-h-screen bg-gray-50 p-6">
       <div className="mx-auto max-w-7xl">
         <div className="flex items-center justify-between mb-6">
-          <h1 className="text-3xl font-bold text-gray-900">
-            🧠 ProCheff Simulation Dashboard
-          </h1>
+          <h1 className="text-3xl font-bold text-gray-900">🧠 ProCheff Simulation Dashboard</h1>
         </div>
-        
+
         <div className="grid gap-6 lg:grid-cols-3">
           {/* Menü Dengesi */}
           <Card className="lg:col-span-1">
             <CardHeader>
-              <CardTitle className="flex items-center gap-2">
-                📊 Menü Dengesi
-              </CardTitle>
+              <CardTitle className="flex items-center gap-2">📊 Menü Dengesi</CardTitle>
             </CardHeader>
             <CardContent>
               <ResponsiveContainer width="100%" height={200}>
                 <BarChart data={data}>
                   <XAxis dataKey="name" />
                   <YAxis />
-                  <Tooltip 
+                  <Tooltip
                     formatter={(value) => [`${value}%`, ""]}
                     labelFormatter={(label) => `${label}`}
                   />
@@ -130,25 +154,17 @@ export default function Dashboard() {
           {/* Risk Skoru */}
           <Card className="lg:col-span-1">
             <CardHeader>
-              <CardTitle className="flex items-center gap-2">
-                ⚠️ Risk Skoru
-              </CardTitle>
+              <CardTitle className="flex items-center gap-2">⚠️ Risk Skoru</CardTitle>
             </CardHeader>
             <CardContent>
               <div className="space-y-4">
                 <div className="text-center">
-                  <div className="text-3xl font-bold">
-                    {risk}/100
-                  </div>
+                  <div className="text-3xl font-bold">{risk}/100</div>
                   <div className="text-sm text-gray-600">Risk Puanı</div>
                 </div>
-                <Progress 
-                  value={risk} 
-                  className={`h-6 ${getRiskColor(risk)}`} 
-                />
+                <Progress value={risk} className={`h-6 ${getRiskColor(risk)}`} />
                 <div className="text-sm text-center">
-                  {risk >= 80 ? "🟢 Düşük Risk" : 
-                   risk >= 60 ? "🟡 Orta Risk" : "🔴 Yüksek Risk"}
+                  {risk >= 80 ? "🟢 Düşük Risk" : risk >= 60 ? "🟡 Orta Risk" : "🔴 Yüksek Risk"}
                 </div>
               </div>
             </CardContent>
@@ -157,50 +173,42 @@ export default function Dashboard() {
           {/* Teklif Kontrolü */}
           <Card className="lg:col-span-1">
             <CardHeader>
-              <CardTitle className="flex items-center gap-2">
-                💰 Teklif Fiyatı
-              </CardTitle>
+              <CardTitle className="flex items-center gap-2">💰 Teklif Fiyatı</CardTitle>
             </CardHeader>
             <CardContent>
               <div className="space-y-4">
                 <div className="text-center">
-                  <div className="text-3xl font-bold text-emerald-600">
-                    {offer.toFixed(2)} ₺
-                  </div>
+                  <div className="text-3xl font-bold text-emerald-600">{offer.toFixed(2)} ₺</div>
                   <div className="text-sm text-gray-600">Hesaplanan Fiyat</div>
                 </div>
-                
+
                 <div className="space-y-4">
                   <div>
-                    <label className="block text-sm font-medium">
-                      Protein: {protein}%
-                    </label>
-                    <Slider 
-                      value={[protein]} 
-                      min={10} 
-                      max={30} 
-                      step={1} 
+                    <label className="block text-sm font-medium">Protein: {protein}%</label>
+                    <Slider
+                      value={[protein]}
+                      min={10}
+                      max={30}
+                      step={1}
                       onValueChange={(value) => setProtein(value[0])}
                       className="mt-2"
                     />
                   </div>
-                  
+
                   <div>
-                    <label className="block text-sm font-medium">
-                      Karbonhidrat: {carb}%
-                    </label>
-                    <Slider 
-                      value={[carb]} 
-                      min={40} 
-                      max={80} 
-                      step={1} 
+                    <label className="block text-sm font-medium">Karbonhidrat: {carb}%</label>
+                    <Slider
+                      value={[carb]}
+                      min={40}
+                      max={80}
+                      step={1}
                       onValueChange={(value) => setCarb(value[0])}
                       className="mt-2"
                     />
                   </div>
                 </div>
-                
-                <button 
+
+                <button
                   onClick={handleSimulate}
                   disabled={loading}
                   className="w-full rounded-lg bg-emerald-600 px-4 py-2 text-white font-medium hover:bg-emerald-700 disabled:opacity-50 disabled:cursor-not-allowed transition-colors"
@@ -224,18 +232,16 @@ export default function Dashboard() {
               </div>
             </CardContent>
           </Card>
-          
+
           <Card>
             <CardContent className="p-4">
               <div className="text-center">
                 <div className="text-lg font-semibold">Fiyat Durumu</div>
-                <div className="text-sm text-gray-600">
-                  {offer < 50 ? "💚 Uygun" : "💛 Yüksek"}
-                </div>
+                <div className="text-sm text-gray-600">{offer < 50 ? "💚 Uygun" : "💛 Yüksek"}</div>
               </div>
             </CardContent>
           </Card>
-          
+
           <Card>
             <CardContent className="p-4">
               <div className="text-center">
@@ -246,7 +252,7 @@ export default function Dashboard() {
               </div>
             </CardContent>
           </Card>
-          
+
           <Card>
             <CardContent className="p-4">
               <div className="text-center">

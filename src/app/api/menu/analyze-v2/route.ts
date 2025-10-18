@@ -6,11 +6,7 @@ import { MenuAnalysisSchema } from "@/lib/middleware/validation";
 export const dynamic = "force-dynamic";
 
 // Güvenli handler
-async function handleMenuAnalysis(
-  data: any,
-  request: Request,
-  context?: AuthContext
-) {
+async function handleMenuAnalysis(data: any, request: Request, context?: AuthContext) {
   try {
     log.info("Menu analysis request", {
       textLength: data.text.length,

@@ -80,18 +80,14 @@ export function notFound(resource: string = "Resource"): ApiResponse<never> {
 /**
  * Unauthorized error helper
  */
-export function unauthorized(
-  message: string = "Authentication required"
-): ApiResponse<never> {
+export function unauthorized(message: string = "Authentication required"): ApiResponse<never> {
   return fail(message, 401, "UNAUTHORIZED");
 }
 
 /**
  * Forbidden error helper
  */
-export function forbidden(
-  message: string = "Access denied"
-): ApiResponse<never> {
+export function forbidden(message: string = "Access denied"): ApiResponse<never> {
   return fail(message, 403, "FORBIDDEN");
 }
 
@@ -110,9 +106,7 @@ export function rateLimited(retryAfter?: number): ApiResponse<never> {
 /**
  * Internal server error helper
  */
-export function serverError(
-  message: string = "Internal server error"
-): ApiResponse<never> {
+export function serverError(message: string = "Internal server error"): ApiResponse<never> {
   return fail(message, 500, "INTERNAL_SERVER_ERROR");
 }
 
@@ -124,8 +118,7 @@ export function createResponse<T>(
   status?: number,
   headers?: Record<string, string>
 ): Response {
-  const finalStatus =
-    status || (responseData.success ? 200 : responseData.error?.code || 500);
+  const finalStatus = status || (responseData.success ? 200 : responseData.error?.code || 500);
 
   return new Response(JSON.stringify(responseData), {
     status: finalStatus,
@@ -140,8 +133,7 @@ export function createResponse<T>(
  * Quick response creators
  */
 export const respond = {
-  ok: <T>(data: T, panelData?: any, meta?: any) =>
-    createResponse(ok(data, panelData, meta)),
+  ok: <T>(data: T, panelData?: any, meta?: any) => createResponse(ok(data, panelData, meta)),
 
   fail: (message: string, code = 500, type?: string, details?: any) =>
     createResponse(fail(message, code, type, details)),
@@ -196,11 +188,7 @@ export const panel = {
     },
   }),
 
-  risks: (
-    warnings: string[] = [],
-    financial: any[] = [],
-    compliance: any[] = []
-  ) => ({
+  risks: (warnings: string[] = [], financial: any[] = [], compliance: any[] = []) => ({
     nutritional: warnings,
     financial,
     compliance,

@@ -1,0 +1,44 @@
+{
+  "timestamp": "2025-10-18T07:08:07.770Z",
+  "scheduler_version": "1.0",
+  "conflict_prevention": true,
+  "schedule_mode": "sequential",
+  "runs": [
+    {
+      "run_number": 1,
+      "test_name": "nightly-report",
+      "test_type": "nightly",
+      "success": true,
+      "conflict_detected": false,
+      "duration_ms": 3035,
+      "timestamp": "2025-10-18T07:08:10.806Z",
+      "message": "Test başarıyla tamamlandı"
+    },
+    {
+      "run_number": 2,
+      "test_name": "integration-test",
+      "test_type": "integration",
+      "success": true,
+      "conflict_detected": false,
+      "duration_ms": 5039,
+      "timestamp": "2025-10-18T07:08:15.845Z",
+      "message": "Test başarıyla tamamlandı"
+    },
+    {
+      "run_number": 3,
+      "test_name": "nightly-report-2",
+      "test_type": "nightly",
+      "success": true,
+      "conflict_detected": false,
+      "duration_ms": 3038,
+      "timestamp": "2025-10-18T07:08:18.883Z",
+      "message": "Test başarıyla tamamlandı"
+    }
+  ],
+  "conflicts": [],
+  "summary": {
+    "total_runs": 3,
+    "conflict_count": 0,
+    "successful_scheduling": true
+  }
+}

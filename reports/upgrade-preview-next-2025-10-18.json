@@ -1,0 +1,77 @@
+{
+  "timestamp": "2025-10-18T06:34:53.147Z",
+  "date": "2025-10-18",
+  "upgrade": {
+    "package": "next",
+    "current_version": "14.2.5",
+    "target_version": "14.3.0",
+    "upgrade_type": "core"
+  },
+  "preview": {
+    "manifest_check": {
+      "status": "warning",
+      "details": [
+        "Routes detected: 1",
+        "Build warnings: present",
+        "Build errors: none"
+      ],
+      "route_count": 1,
+      "build_clean": false
+    },
+    "build_test": {
+      "status": "passed",
+      "details": [
+        "Build time: 28.9s",
+        "Bundle size: 1.3M",
+        "Optimizations: enabled"
+      ],
+      "build_time_ms": 28935,
+      "bundle_size_bytes": 2809856,
+      "optimizations_enabled": true
+    },
+    "test_suite": {
+      "status": "failed",
+      "details": [
+        "Test suite failed: Command failed: npm run test:integration 2>&1"
+      ],
+      "type_check_clean": false,
+      "integration_tests_passed": false,
+      "test_count": 0
+    },
+    "alert_validation": {
+      "status": "passed",
+      "details": [
+        "Report generation: working",
+        "Alert system: working",
+        "Hash integrity: working"
+      ],
+      "nightly_system_working": true
+    }
+  },
+  "risk_assessment": {
+    "level": "medium",
+    "factors": [
+      "Test suite compatibility issues",
+      "Core framework changes may require code updates"
+    ],
+    "mitigations": [
+      "Update test configurations and dependencies",
+      "Review migration guide and breaking changes"
+    ],
+    "recommendation": "MEDIUM RISK: Proceed with caution, monitor closely"
+  },
+  "rollback_plan": {
+    "required": true,
+    "steps": [
+      "Backup current package.json and package-lock.json",
+      "Document current versions",
+      "Prepare rollback script",
+      "Monitor error logs during upgrade"
+    ]
+  },
+  "integrity": {
+    "hash": "baa234adb524c91468ff0c1a66deb54704b77eef80d3b3f79d6de36ba02dc9a9",
+    "timestamp": "2025-10-18T06:36:16.397Z",
+    "readonly": true
+  }
+}

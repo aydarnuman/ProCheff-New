@@ -1,0 +1,166 @@
+{
+  "auditDate": "2025-10-18T07:52:33.916Z",
+  "designSystemVersion": "v1.0.0",
+  "currentPrinciples": {
+    "colorSystem": {
+      "primary": "Emerald (emerald-400, emerald-500, emerald-600)",
+      "secondary": "Blue, Purple, Orange, Amber",
+      "backgrounds": "Gray-900 (dark), Gray-50 (light), Gray-800 (cards)",
+      "text": "White, Gray-300, Gray-600, Gray-900",
+      "borders": "Gray-700 (dark), border colors via hsl vars",
+      "status": {
+        "success": "Green/Emerald",
+        "warning": "Yellow/Amber",
+        "error": "Red",
+        "info": "Blue/Sky"
+      }
+    },
+    "typography": {
+      "fontFamily": "Inter (Google Fonts)",
+      "headings": "text-3xl, text-2xl, text-xl, text-lg",
+      "body": "text-sm, text-base",
+      "weight": "font-bold, font-semibold, font-medium, font-normal"
+    },
+    "spacing": {
+      "containers": "max-w-4xl, max-w-7xl mx-auto",
+      "padding": "p-4, p-6, p-8",
+      "margins": "mb-6, mb-8, mt-8",
+      "gaps": "gap-4, gap-6, space-y-2, space-y-4"
+    },
+    "components": {
+      "cards": {
+        "base": "rounded-lg border bg-gray-800 shadow-xl",
+        "dark": "border-gray-700",
+        "content": "p-6 pt-0",
+        "header": "p-6 space-y-1.5"
+      },
+      "buttons": {
+        "primary": "bg-emerald-600 hover:bg-emerald-700",
+        "secondary": "bg-blue-600, bg-purple-600, bg-orange-600",
+        "text": "text-white transition-colors",
+        "padding": "px-4 py-2 rounded"
+      },
+      "progress": {
+        "base": "h-4 w-full overflow-hidden rounded-full bg-gray-200",
+        "indicator": "bg-emerald-500 transition-all",
+        "risk": "bg-emerald-500 (safe), bg-yellow-500 (medium), bg-red-500 (high)"
+      },
+      "sliders": {
+        "track": "h-2 w-full bg-gray-200 rounded-full",
+        "range": "bg-emerald-500",
+        "thumb": "h-5 w-5 rounded-full border-2 border-emerald-500 bg-white"
+      }
+    },
+    "layout": {
+      "dashboard": "grid gap-6 lg:grid-cols-3",
+      "cards": "grid gap-4 sm:grid-cols-2 lg:grid-cols-4",
+      "responsive": "min-h-screen bg-gray-50 p-6"
+    },
+    "iconography": {
+      "navigation": "🧑‍🍳 (ProCheff), 📊 (Menu), 🏪 (Market), 📈 (Dashboard)",
+      "status": "✅ (success), ⚠️ (warning), ❌ (error), 🟢🟡🔴 (risk levels)",
+      "categories": "🥗 (nutrition), 💰 (finance), ✅ (compliance)",
+      "actions": "🔄 (refresh), ⏳ (loading), 🎯 (optimal)"
+    },
+    "interactions": {
+      "hover": "hover:bg-emerald-700, hover:shadow-md",
+      "focus": "focus-visible:ring-2 focus-visible:ring-emerald-500",
+      "disabled": "disabled:pointer-events-none disabled:opacity-50",
+      "transitions": "transition-colors, transition-all"
+    },
+    "dataViz": {
+      "charts": "BarChart with ResponsiveContainer",
+      "colors": {
+        "protein": "#22c55e (green)",
+        "fat": "#f59e0b (amber)",
+        "carb": "#3b82f6 (blue)"
+      },
+      "tooltips": "Custom formatters for percentages"
+    },
+    "responseStates": {
+      "loading": "\"⏳ Simülasyon Çalışıyor...\", loading state management",
+      "empty": "\"Henüz insight verisi yok. Simülasyon çalıştırın.\"",
+      "error": "Console.error logging, try-catch patterns"
+    },
+    "contentTone": {
+      "language": "Turkish (tr)",
+      "style": "Professional but friendly",
+      "terminology": "ProCheff AI, Beslenme Dengesi, Risk Skoru, Teklif Fiyatı",
+      "messaging": "Clear status messages, actionable guidance"
+    }
+  },
+  "conflictMatrix": {
+    "colorSystem": {
+      "conflicts": 0,
+      "overlaps": []
+    },
+    "typography": {
+      "conflicts": 0,
+      "overlaps": []
+    },
+    "spacing": {
+      "conflicts": 0,
+      "overlaps": []
+    },
+    "components": {
+      "conflicts": 0,
+      "overlaps": []
+    },
+    "layout": {
+      "conflicts": 0,
+      "overlaps": []
+    },
+    "iconography": {
+      "conflicts": 0,
+      "overlaps": []
+    },
+    "interactions": {
+      "conflicts": 0,
+      "overlaps": []
+    },
+    "dataViz": {
+      "conflicts": 0,
+      "overlaps": []
+    },
+    "responseStates": {
+      "conflicts": 0,
+      "overlaps": []
+    },
+    "contentTone": {
+      "conflicts": 0,
+      "overlaps": []
+    }
+  },
+  "gapsIdentified": [
+    "Bu aşamada belirlenmiş gap yok"
+  ],
+  "decision": {
+    "status": "GO",
+    "criteria": {
+      "zeroConflicts": true,
+      "noRedefinition": true,
+      "singleSource": true,
+      "namingConsistency": true,
+      "corePreservation": true
+    },
+    "reasoning": "Mevcut tasarım sistemi tutarlı ve çakışmasız. Sadece boşlukları doldurma için GO.",
+    "recommendations": [
+      "Mevcut ilkeler korunmalı",
+      "Sadece eksik alanlar doldurulmalı",
+      "İdempotent ekleme prensibi uygulanmalı",
+      "Nightly drift kontrolü aktif edilmeli"
+    ]
+  },
+  "driftCheck": {
+    "status": "clean",
+    "timestamp": "2025-10-18T07:52:33.917Z",
+    "conflicts": 0,
+    "warnings": []
+  },
+  "nextSteps": [
+    "Yeni tasarım önerileri geldiğinde bu denetimi tekrarla",
+    "Nightly rapora design_drift_check alanını ekle",
+    "Her PR'da çakışma kontrolü yap",
+    "Versiyon numaralandırması uygula"
+  ]
+}

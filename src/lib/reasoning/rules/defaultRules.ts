@@ -17,10 +17,7 @@ export interface ReasoningResult {
 /**
  * Ana kural değerlendirme fonksiyonu
  */
-export function evaluateRules(
-  menu: MenuAnalysis,
-  offer: OfferResult
-): ReasoningResult {
+export function evaluateRules(menu: MenuAnalysis, offer: OfferResult): ReasoningResult {
   const risks: string[] = [];
   const suggestions: string[] = [];
   const compliance: string[] = [];
@@ -98,11 +95,7 @@ function evaluateNutritionalRisks(
 /**
  * Finansal riskler değerlendirmesi
  */
-function evaluateFinancialRisks(
-  offer: OfferResult,
-  risks: string[],
-  suggestions: string[]
-): void {
+function evaluateFinancialRisks(offer: OfferResult, risks: string[], suggestions: string[]): void {
   // Kar oranı kontrolü (offer.detail varsa)
   if (offer.detail && offer.detail.profit) {
     if (offer.detail.profit < 3) {
@@ -116,8 +109,7 @@ function evaluateFinancialRisks(
 
   // Maliyet-fiyat oranı kontrolü
   if (offer.totalCost && offer.offerPrice) {
-    const margin =
-      ((offer.offerPrice - offer.totalCost) / offer.offerPrice) * 100;
+    const margin = ((offer.offerPrice - offer.totalCost) / offer.offerPrice) * 100;
 
     if (margin < 10) {
       risks.push("Kar marjı çok düşük");
@@ -135,10 +127,7 @@ function evaluateFinancialRisks(
 /**
  * Uyumluluk riskleri değerlendirmesi
  */
-function evaluateComplianceRisks(
-  offer: OfferResult,
-  compliance: string[]
-): void {
+function evaluateComplianceRisks(offer: OfferResult, compliance: string[]): void {
   // KİK uyum kontrolü
   if (offer.kThreshold && offer.kThreshold === 0.93) {
     compliance.push("KİK uyumlu teklif (K=0.93)");
@@ -157,9 +146,7 @@ function evaluateComplianceRisks(
   if (offer.offerPrice && offer.totalCost) {
     const ratio = offer.offerPrice / offer.totalCost;
     if (ratio > 2) {
-      compliance.push(
-        "UYARI: Fiyat-maliyet oranı yüksek, inceleme gerekebilir"
-      );
+      compliance.push("UYARI: Fiyat-maliyet oranı yüksek, inceleme gerekebilir");
     } else if (ratio >= 1.1 && ratio <= 1.5) {
       compliance.push("Fiyat-maliyet oranı makul seviyede");
     }
@@ -169,16 +156,10 @@ function evaluateComplianceRisks(
 /**
  * Akıllı içgörüler üretimi
  */
-function generateInsights(
-  menu: MenuAnalysis,
-  offer: OfferResult,
-  insights: string[]
-): void {
+function generateInsights(menu: MenuAnalysis, offer: OfferResult, insights: string[]): void {
   // Beslenme-maliyet ilişkisi
   if (menu.macroBalance.protein < 15 && offer.totalCost) {
-    insights.push(
-      "Düşük protein oranı maliyeti azaltabilir ancak beslenme kalitesi düşer"
-    );
+    insights.push("Düşük protein oranı maliyeti azaltabilir ancak beslenme kalitesi düşer");
   }
 
   // Menü tipi analizi
@@ -199,8 +180,7 @@ function generateInsights(
 
   // Fiyat rekabet gücü
   if (offer.offerPrice && offer.totalCost) {
-    const margin =
-      ((offer.offerPrice - offer.totalCost) / offer.offerPrice) * 100;
+    const margin = ((offer.offerPrice - offer.totalCost) / offer.offerPrice) * 100;
     if (margin >= 10 && margin <= 20) {
       insights.push("Rekabetçi kar marjı ile dengeli teklif");
     }
@@ -236,9 +216,7 @@ function calculateOverallScore(risks: string[], compliance: string[]): number {
 /**
  * Hızlı risk seviyesi belirleme
  */
-export function getRiskLevel(
-  score: number
-): "low" | "medium" | "high" | "critical" {
+export function getRiskLevel(score: number): "low" | "medium" | "high" | "critical" {
   if (score >= 80) return "low";
   if (score >= 60) return "medium";
   if (score >= 40) return "high";

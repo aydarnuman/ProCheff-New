@@ -23,14 +23,8 @@ export function runSimulation(input: SimulationInput): SimulationResult {
   const { menu, offer, adjustments } = input;
 
   // Besin oranlarını güncelle
-  const newProtein = Math.max(
-    0,
-    menu.macroBalance.protein + (adjustments.proteinDelta || 0)
-  );
-  const newCarb = Math.max(
-    0,
-    menu.macroBalance.carb + (adjustments.carbDelta || 0)
-  );
+  const newProtein = Math.max(0, menu.macroBalance.protein + (adjustments.proteinDelta || 0));
+  const newCarb = Math.max(0, menu.macroBalance.carb + (adjustments.carbDelta || 0));
   const fat = 100 - (newProtein + newCarb);
   const newMenu = {
     ...menu,
@@ -39,14 +33,11 @@ export function runSimulation(input: SimulationInput): SimulationResult {
 
   // Yeni teklif hesapla
   const newProfitRate =
-    (offer.detail.profit / offer.totalCost) * 100 +
-    (adjustments.profitRateDelta || 0);
+    (offer.detail.profit / offer.totalCost) * 100 + (adjustments.profitRateDelta || 0);
   const newOffer = calculateOffer({
     materialCost: offer.detail.material,
     laborCost: offer.detail.labor,
-    overheadRate:
-      (offer.detail.overhead / (offer.detail.material + offer.detail.labor)) *
-      100,
+    overheadRate: (offer.detail.overhead / (offer.detail.material + offer.detail.labor)) * 100,
     profitRate: newProfitRate,
   });
 

@@ -34,11 +34,7 @@ export interface SecurityConfig {
  * Tüm güvenlik katmanlarını sıralı şekilde uygular
  */
 export function withCompleteSecurity(
-  handler: (
-    request: Request,
-    context?: AuthContext,
-    ...args: any[]
-  ) => Promise<Response>,
+  handler: (request: Request, context?: AuthContext, ...args: any[]) => Promise<Response>,
   config: SecurityConfig = {}
 ) {
   const {
@@ -64,10 +60,7 @@ export function withCompleteSecurity(
   }
 
   // 4. Method Validation
-  const methodValidatedHandler = async (
-    request: Request,
-    ...args: any[]
-  ): Promise<Response> => {
+  const methodValidatedHandler = async (request: Request, ...args: any[]): Promise<Response> => {
     if (!allowedMethods.includes(request.method)) {
       return new Response(
         JSON.stringify({
@@ -173,20 +166,13 @@ export const SecurityPresets = {
  * Quick security helpers
  */
 export const secureEndpoint = {
-  public: (handler: any) =>
-    withCompleteSecurity(handler, SecurityPresets.PUBLIC),
-  readOnly: (handler: any) =>
-    withCompleteSecurity(handler, SecurityPresets.READ_ONLY),
-  menuAnalysis: (handler: any) =>
-    withCompleteSecurity(handler, SecurityPresets.MENU_ANALYSIS),
-  offerCalc: (handler: any) =>
-    withCompleteSecurity(handler, SecurityPresets.OFFER_CALCULATION),
-  marketData: (handler: any) =>
-    withCompleteSecurity(handler, SecurityPresets.MARKET_DATA),
-  pipeline: (handler: any) =>
-    withCompleteSecurity(handler, SecurityPresets.PIPELINE),
-  writeOps: (handler: any) =>
-    withCompleteSecurity(handler, SecurityPresets.WRITE_OPERATIONS),
+  public: (handler: any) => withCompleteSecurity(handler, SecurityPresets.PUBLIC),
+  readOnly: (handler: any) => withCompleteSecurity(handler, SecurityPresets.READ_ONLY),
+  menuAnalysis: (handler: any) => withCompleteSecurity(handler, SecurityPresets.MENU_ANALYSIS),
+  offerCalc: (handler: any) => withCompleteSecurity(handler, SecurityPresets.OFFER_CALCULATION),
+  marketData: (handler: any) => withCompleteSecurity(handler, SecurityPresets.MARKET_DATA),
+  pipeline: (handler: any) => withCompleteSecurity(handler, SecurityPresets.PIPELINE),
+  writeOps: (handler: any) => withCompleteSecurity(handler, SecurityPresets.WRITE_OPERATIONS),
 };
 
 /**

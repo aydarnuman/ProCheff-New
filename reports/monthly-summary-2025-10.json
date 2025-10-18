@@ -1,0 +1,145 @@
+{
+  "meta": {
+    "generated_at": "2025-10-18T06:37:25.101Z",
+    "month": "Ekim 2025",
+    "month_key": "2025-10",
+    "report_count": 1,
+    "period_start": "2025-10-18",
+    "period_end": "2025-10-18"
+  },
+  "environment": {
+    "node_env": "development",
+    "production_grade": false
+  },
+  "summary": {
+    "total_days": 1,
+    "healthy_days": 1,
+    "warning_days": 0,
+    "critical_days": 0,
+    "uptime_percentage": 100
+  },
+  "metrics": {
+    "build_success_rate": 100,
+    "test_success_rate": 100,
+    "route_stability_rate": 100
+  },
+  "slo_compliance": {
+    "uptime": {
+      "target": 99.5,
+      "actual": 100,
+      "compliant": true
+    },
+    "build_success": {
+      "target": 95,
+      "actual": 100,
+      "compliant": true
+    },
+    "test_success": {
+      "target": 90,
+      "actual": 100,
+      "compliant": true
+    },
+    "route_stability": {
+      "target": 100,
+      "actual": 100,
+      "compliant": true
+    }
+  },
+  "alerts": {
+    "total_incidents": 1,
+    "critical_days": 0,
+    "most_frequent_issues": []
+  },
+  "error_budget": {
+    "uptime": {
+      "target_percentage": 99.5,
+      "actual_percentage": 100,
+      "allowed_downtime_days": 0.005,
+      "actual_downtime_days": 0,
+      "remaining_budget_days": 0.005,
+      "budget_consumed_percentage": 0
+    },
+    "build_success": {
+      "target_percentage": 95,
+      "actual_percentage": 100,
+      "allowed_downtime_days": 0.05,
+      "actual_downtime_days": 0,
+      "remaining_budget_days": 0.05,
+      "budget_consumed_percentage": 0
+    },
+    "test_success": {
+      "target_percentage": 90,
+      "actual_percentage": 100,
+      "allowed_downtime_days": 0.1,
+      "actual_downtime_days": 0,
+      "remaining_budget_days": 0.1,
+      "budget_consumed_percentage": 0
+    },
+    "route_stability": {
+      "target_percentage": 100,
+      "actual_percentage": 100,
+      "allowed_downtime_days": 0,
+      "actual_downtime_days": 0,
+      "remaining_budget_days": 0,
+      "budget_consumed_percentage": null
+    }
+  },
+  "slo_heatmap": {
+    "weeks": [
+      {
+        "week": 1,
+        "start_date": "2025-10-18",
+        "end_date": "2025-10-18",
+        "metrics": {
+          "uptime": 100,
+          "build_success": 100,
+          "test_success": 100,
+          "route_stability": 100
+        },
+        "heatmap": {
+          "uptime": "green",
+          "build_success": "green",
+          "test_success": "green",
+          "route_stability": "green"
+        },
+        "status": "healthy"
+      }
+    ],
+    "legend": {
+      "green": "Above SLO target",
+      "yellow": "Near SLO target (90-100%)",
+      "red": "Below SLO target"
+    },
+    "matrix_summary": {
+      "total_weeks": 1,
+      "healthy_weeks": 1,
+      "warning_weeks": 0,
+      "critical_weeks": 0,
+      "weekly_slo_compliance": "100.0%"
+    }
+  },
+  "trend_analysis": {
+    "summary": "Insufficient data for trend analysis (minimum 7 days required)",
+    "trend": "unknown",
+    "recommendation": "Continue monitoring for meaningful trend data"
+  },
+  "raw_data": [
+    {
+      "date": "2025-10-18",
+      "status": "healthy",
+      "build_success": true,
+      "test_passed": 1,
+      "test_failed": 0,
+      "route_conflicts": false,
+      "health_css": "clean",
+      "health_flags": "clean",
+      "alerts_count": 1,
+      "route_count": 31
+    }
+  ],
+  "integrity": {
+    "hash": "9fa0845b5b05e88f9bba4d2a935cfda57c5f7dceecc0dc89dd056528835e28a5",
+    "timestamp": "2025-10-18T06:37:25.102Z",
+    "verified": true
+  }
+}

@@ -20,26 +20,17 @@ export async function POST(req: Request) {
 
     // Basit validation
     if (!menu || !offer) {
-      return NextResponse.json(
-        fail("Eksik veri: menu veya offer bulunamadı", 400)
-      );
+      return NextResponse.json(fail("Eksik veri: menu veya offer bulunamadı", 400));
     }
 
     // Menu validation
     if (!menu.macroBalance || typeof menu.macroBalance.protein !== "number") {
-      return NextResponse.json(
-        fail("Geçersiz menu verisi: macroBalance.protein gerekli", 400)
-      );
+      return NextResponse.json(fail("Geçersiz menu verisi: macroBalance.protein gerekli", 400));
     }
 
     // Offer validation
-    if (
-      typeof offer.offerPrice !== "number" ||
-      typeof offer.totalCost !== "number"
-    ) {
-      return NextResponse.json(
-        fail("Geçersiz offer verisi: offerPrice ve totalCost gerekli", 400)
-      );
+    if (typeof offer.offerPrice !== "number" || typeof offer.totalCost !== "number") {
+      return NextResponse.json(fail("Geçersiz offer verisi: offerPrice ve totalCost gerekli", 400));
     }
 
     log.info("Reasoning analiz başlatıldı", {
@@ -60,10 +51,10 @@ export async function POST(req: Request) {
           reasoning.score >= 80
             ? "low"
             : reasoning.score >= 60
-            ? "medium"
-            : reasoning.score >= 40
-            ? "high"
-            : "critical",
+              ? "medium"
+              : reasoning.score >= 40
+                ? "high"
+                : "critical",
         risks: reasoning.risks,
         suggestions: reasoning.suggestions,
         compliance: reasoning.compliance,
@@ -118,11 +109,7 @@ export async function GET() {
         ],
         usage: {
           rateLimit: "10 requests per minute",
-          requiredFields: [
-            "menu.macroBalance",
-            "offer.offerPrice",
-            "offer.totalCost",
-          ],
+          requiredFields: ["menu.macroBalance", "offer.offerPrice", "offer.totalCost"],
         },
       })
     );

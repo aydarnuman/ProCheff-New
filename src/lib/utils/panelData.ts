@@ -55,9 +55,7 @@ export function generatePanelData(
       total: offerResult.totalCost,
     },
     profit: {
-      rate: Math.round(
-        (offerResult.detail.profit / offerResult.totalCost) * 100
-      ),
+      rate: Math.round((offerResult.detail.profit / offerResult.totalCost) * 100),
       amount: offerResult.detail.profit,
     },
     threshold: {

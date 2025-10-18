@@ -19,8 +19,7 @@ async function checkPdfService(): Promise<{
   } catch (error) {
     return {
       status: false,
-      details:
-        error instanceof Error ? error.message : "PDF service check failed",
+      details: error instanceof Error ? error.message : "PDF service check failed",
     };
   }
 }
@@ -34,9 +33,7 @@ async function checkMenuService(): Promise<{
     const { analyzeMenu } = await import("@/lib/menu/analyze");
 
     // Basit bir test yap
-    const testResult = analyzeMenu(
-      "Test menü\nKuru fasulye (protein 10, yağ 5, karbonhidrat 20)"
-    );
+    const testResult = analyzeMenu("Test menü\nKuru fasulye (protein 10, yağ 5, karbonhidrat 20)");
     return {
       status: testResult.totalItems > 0,
       details: `Processed ${testResult.totalItems} items`,
@@ -44,8 +41,7 @@ async function checkMenuService(): Promise<{
   } catch (error) {
     return {
       status: false,
-      details:
-        error instanceof Error ? error.message : "Menu service check failed",
+      details: error instanceof Error ? error.message : "Menu service check failed",
     };
   }
 }
@@ -73,8 +69,7 @@ async function checkOfferService(): Promise<{
   } catch (error) {
     return {
       status: false,
-      details:
-        error instanceof Error ? error.message : "Offer service check failed",
+      details: error instanceof Error ? error.message : "Offer service check failed",
     };
   }
 }
@@ -96,8 +91,7 @@ async function checkMarketService(): Promise<{
   } catch (error) {
     return {
       status: false,
-      details:
-        error instanceof Error ? error.message : "Market service check failed",
+      details: error instanceof Error ? error.message : "Market service check failed",
     };
   }
 }
@@ -116,12 +110,9 @@ async function handleHealthCheck(request: Request) {
       checkMarketService(),
     ]);
 
-    const allServicesHealthy = [
-      pdfCheck,
-      menuCheck,
-      offerCheck,
-      marketCheck,
-    ].every((check) => check.status);
+    const allServicesHealthy = [pdfCheck, menuCheck, offerCheck, marketCheck].every(
+      (check) => check.status
+    );
 
     const responseTime = Date.now() - startTime;
 

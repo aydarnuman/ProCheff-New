@@ -5,8 +5,8 @@ import './globals.css'
 const inter = Inter({ subsets: ['latin'] })
 
 export const metadata: Metadata = {
-  title: 'ProCheff Dashboard',
-  description: 'AI-powered menu analysis and pricing dashboard',
+  title: 'ProCheff Kontrol Paneli',
+  description: 'Yapay zeka destekli menü analizi ve fiyatlandırma paneli',
 }
 
 export default function RootLayout({
@@ -16,7 +16,9 @@ export default function RootLayout({
 }) {
   return (
     <html lang="tr">
-      <body className={inter.className}>{children}</body>
+      <body className={inter.className}>
+        {children}
+      </body>
     </html>
   )
 }

@@ -4,6 +4,7 @@ export interface MarketPrice {
   unit: string;
   price: number;
   date: string;
+  confidence?: number; // 0-1 arası güven skoru
 }
 
 export interface AveragePrice {

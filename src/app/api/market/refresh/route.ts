@@ -23,12 +23,7 @@ export async function POST() {
       fetchSOKPrices(),
     ]);
 
-    const allPrices = [
-      ...a101Prices,
-      ...bimPrices,
-      ...migrosPrices,
-      ...sokPrices,
-    ];
+    const allPrices = [...a101Prices, ...bimPrices, ...migrosPrices, ...sokPrices];
 
     const averagePrices = calculateAveragePrices(allPrices);
     const duration = Date.now() - startTime;

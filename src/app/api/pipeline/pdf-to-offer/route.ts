@@ -29,10 +29,7 @@ export async function POST(req: Request) {
     const profitRate = Number(formData.get("profitRate")) || 8;
 
     if (!file) {
-      return NextResponse.json(
-        { error: "PDF dosyası gerekli" },
-        { status: 400 }
-      );
+      return NextResponse.json({ error: "PDF dosyası gerekli" }, { status: 400 });
     }
 
     // Geçici dosya oluştur
@@ -78,24 +75,13 @@ export async function POST(req: Request) {
       fetchSOKPrices(),
     ]);
 
-    const allPrices = [
-      ...a101Prices,
-      ...bimPrices,
-      ...migrosPrices,
-      ...sokPrices,
-    ];
+    const allPrices = [...a101Prices, ...bimPrices, ...migrosPrices, ...sokPrices];
     const averagePrices = calculateAveragePrices(allPrices);
 
     // 5. Material Cost Estimation (basit algoritma)
     const estimatedMaterialCost = averagePrices
       .filter((p) =>
-        [
-          "Pirinç (Baldo)",
-          "Dana Kıyma",
-          "Tavuk But",
-          "Soğan",
-          "Domates",
-        ].includes(p.product)
+        ["Pirinç (Baldo)", "Dana Kıyma", "Tavuk But", "Soğan", "Domates"].includes(p.product)
       )
       .reduce((sum, p) => sum + p.average * 0.5, 0); // Her üründen 500g varsayım
 
@@ -113,12 +99,7 @@ export async function POST(req: Request) {
     const totalDuration = Date.now() - startTime;
 
     // Generate Panel Data for Frontend
-    const panelData = generatePanelData(
-      menuAnalysis,
-      offerResult,
-      averagePrices,
-      startTime
-    );
+    const panelData = generatePanelData(menuAnalysis, offerResult, averagePrices, startTime);
 
     // Complete Result with Panel Data
     const result = {
@@ -127,12 +108,7 @@ export async function POST(req: Request) {
       pipeline: {
         status: "success",
         duration: `${totalDuration}ms`,
-        steps: [
-          "pdf-ingest",
-          "menu-analysis",
-          "price-intelligence",
-          "offer-calculation",
-        ],
+        steps: ["pdf-ingest", "menu-analysis", "price-intelligence", "offer-calculation"],
       },
       pdf: {
         filename: file.name,
@@ -166,9 +142,6 @@ export async function POST(req: Request) {
     return NextResponse.json(result, { status: 200 });
   } catch (err: any) {
     log.error("PDF-to-Offer pipeline failed", { err: err.message });
-    return NextResponse.json(
-      { error: "Pipeline başarısız", detail: err.message },
-      { status: 500 }
-    );
+    return NextResponse.json({ error: "Pipeline başarısız", detail: err.message }, { status: 500 });
   }
 }

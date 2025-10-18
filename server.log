@@ -1,0 +1,651 @@
+
+> procheff@0.1.0 dev
+> next dev
+
+  ▲ Next.js 14.2.5
+  - Local:        http://localhost:3000
+
+ ✓ Starting...
+ ✓ Ready in 1498ms
+ ○ Compiling / ...
+ ✓ Compiled / in 3.3s (524 modules)
+ GET / 307 in 3433ms
+ ○ Compiling /menu ...
+ ✓ Compiled /menu in 1926ms (521 modules)
+ GET /menu 200 in 2009ms
+ GET / 307 in 38ms
+ GET /menu 200 in 22ms
+ GET / 307 in 38ms
+ GET /menu 200 in 21ms
+ ✓ Compiled in 163ms (264 modules)
+ ✓ Compiled in 66ms (264 modules)
+Error: Cannot apply unknown utility class `bg-gray-900`. Are you using CSS modules or similar and missing `@reference`? https://tailwindcss.com/docs/functions-and-directives#reference-directive
+    at onInvalidCandidate (/Users/numanaydar/Desktop/ProCheff-New/node_modules/tailwindcss/dist/lib.js:18:1332)
+    at ge (/Users/numanaydar/Desktop/ProCheff-New/node_modules/tailwindcss/dist/lib.js:13:30343)
+    at /Users/numanaydar/Desktop/ProCheff-New/node_modules/tailwindcss/dist/lib.js:18:373
+    at L (/Users/numanaydar/Desktop/ProCheff-New/node_modules/tailwindcss/dist/lib.js:3:1656)
+    at Ie (/Users/numanaydar/Desktop/ProCheff-New/node_modules/tailwindcss/dist/lib.js:18:172)
+    at xi (/Users/numanaydar/Desktop/ProCheff-New/node_modules/tailwindcss/dist/lib.js:37:294)
+    at process.processTicksAndRejections (node:internal/process/task_queues:105:5)
+    at async Ai (/Users/numanaydar/Desktop/ProCheff-New/node_modules/tailwindcss/dist/lib.js:37:637)
+    at async Ur (/Users/numanaydar/Desktop/ProCheff-New/node_modules/@tailwindcss/node/dist/index.js:10:3384)
+    at async ue (/Users/numanaydar/Desktop/ProCheff-New/node_modules/@tailwindcss/postcss/dist/index.js:10:3981)
+    at async Object.Once (/Users/numanaydar/Desktop/ProCheff-New/node_modules/@tailwindcss/postcss/dist/index.js:10:4833)
+    at async LazyResult.runAsync (/Users/numanaydar/Desktop/ProCheff-New/node_modules/next/node_modules/postcss/lib/lazy-result.js:261:11)
+    at async Span.traceAsyncFn (/Users/numanaydar/Desktop/ProCheff-New/node_modules/next/dist/trace/trace.js:154:20)
+    at async /Users/numanaydar/Desktop/ProCheff-New/node_modules/next/dist/build/webpack/loaders/postcss-loader/src/index.js:54:22
+    at async Span.traceAsyncFn (/Users/numanaydar/Desktop/ProCheff-New/node_modules/next/dist/trace/trace.js:154:20)
+ ⨯ ./src/app/globals.css:1:1
+Syntax error: tailwindcss: /Users/numanaydar/Desktop/ProCheff-New/src/app/globals.css Cannot apply unknown utility class `bg-gray-900`. Are you using CSS modules or similar and missing `@reference`? https://tailwindcss.com/docs/functions-and-directives#reference-directive
+
+> 1 | @tailwind base;
+    | ^
+  2 | @tailwind components;
+  3 | @tailwind utilities;
+Error: Cannot apply unknown utility class `bg-gray-900`. Are you using CSS modules or similar and missing `@reference`? https://tailwindcss.com/docs/functions-and-directives#reference-directive
+    at onInvalidCandidate (/Users/numanaydar/Desktop/ProCheff-New/node_modules/tailwindcss/dist/lib.js:18:1332)
+    at ge (/Users/numanaydar/Desktop/ProCheff-New/node_modules/tailwindcss/dist/lib.js:13:30343)
+    at /Users/numanaydar/Desktop/ProCheff-New/node_modules/tailwindcss/dist/lib.js:18:373
+    at L (/Users/numanaydar/Desktop/ProCheff-New/node_modules/tailwindcss/dist/lib.js:3:1656)
+    at Ie (/Users/numanaydar/Desktop/ProCheff-New/node_modules/tailwindcss/dist/lib.js:18:172)
+    at xi (/Users/numanaydar/Desktop/ProCheff-New/node_modules/tailwindcss/dist/lib.js:37:294)
+    at async Ai (/Users/numanaydar/Desktop/ProCheff-New/node_modules/tailwindcss/dist/lib.js:37:637)
+    at async Ur (/Users/numanaydar/Desktop/ProCheff-New/node_modules/@tailwindcss/node/dist/index.js:10:3384)
+    at async ue (/Users/numanaydar/Desktop/ProCheff-New/node_modules/@tailwindcss/postcss/dist/index.js:10:3981)
+    at async Object.Once (/Users/numanaydar/Desktop/ProCheff-New/node_modules/@tailwindcss/postcss/dist/index.js:10:4252)
+    at async LazyResult.runAsync (/Users/numanaydar/Desktop/ProCheff-New/node_modules/next/node_modules/postcss/lib/lazy-result.js:261:11)
+    at async Span.traceAsyncFn (/Users/numanaydar/Desktop/ProCheff-New/node_modules/next/dist/trace/trace.js:154:20)
+    at async /Users/numanaydar/Desktop/ProCheff-New/node_modules/next/dist/build/webpack/loaders/postcss-loader/src/index.js:54:22
+    at async Span.traceAsyncFn (/Users/numanaydar/Desktop/ProCheff-New/node_modules/next/dist/trace/trace.js:154:20)
+ ○ Compiling /_error ...
+ ⨯ ./src/app/globals.css:1:1
+Syntax error: tailwindcss: /Users/numanaydar/Desktop/ProCheff-New/src/app/globals.css Cannot apply unknown utility class `bg-gray-900`. Are you using CSS modules or similar and missing `@reference`? https://tailwindcss.com/docs/functions-and-directives#reference-directive
+
+> 1 | @tailwind base;
+    | ^
+  2 | @tailwind components;
+  3 | @tailwind utilities;
+ GET /menu 500 in 20ms
+ GET /menu 500 in 30ms
+ GET /menu 500 in 27ms
+Error: Cannot apply unknown utility class `bg-gray-900`. Are you using CSS modules or similar and missing `@reference`? https://tailwindcss.com/docs/functions-and-directives#reference-directive
+    at onInvalidCandidate (/Users/numanaydar/Desktop/ProCheff-New/node_modules/tailwindcss/dist/lib.js:18:1332)
+    at ge (/Users/numanaydar/Desktop/ProCheff-New/node_modules/tailwindcss/dist/lib.js:13:30343)
+    at /Users/numanaydar/Desktop/ProCheff-New/node_modules/tailwindcss/dist/lib.js:18:373
+    at L (/Users/numanaydar/Desktop/ProCheff-New/node_modules/tailwindcss/dist/lib.js:3:1656)
+    at Ie (/Users/numanaydar/Desktop/ProCheff-New/node_modules/tailwindcss/dist/lib.js:18:172)
+    at xi (/Users/numanaydar/Desktop/ProCheff-New/node_modules/tailwindcss/dist/lib.js:37:294)
+    at process.processTicksAndRejections (node:internal/process/task_queues:105:5)
+    at async Ai (/Users/numanaydar/Desktop/ProCheff-New/node_modules/tailwindcss/dist/lib.js:37:637)
+    at async Ur (/Users/numanaydar/Desktop/ProCheff-New/node_modules/@tailwindcss/node/dist/index.js:10:3384)
+    at async ue (/Users/numanaydar/Desktop/ProCheff-New/node_modules/@tailwindcss/postcss/dist/index.js:10:3981)
+    at async Object.Once (/Users/numanaydar/Desktop/ProCheff-New/node_modules/@tailwindcss/postcss/dist/index.js:10:4252)
+    at async LazyResult.runAsync (/Users/numanaydar/Desktop/ProCheff-New/node_modules/next/node_modules/postcss/lib/lazy-result.js:261:11)
+    at async Span.traceAsyncFn (/Users/numanaydar/Desktop/ProCheff-New/node_modules/next/dist/trace/trace.js:154:20)
+    at async /Users/numanaydar/Desktop/ProCheff-New/node_modules/next/dist/build/webpack/loaders/postcss-loader/src/index.js:54:22
+    at async Span.traceAsyncFn (/Users/numanaydar/Desktop/ProCheff-New/node_modules/next/dist/trace/trace.js:154:20)
+ ⨯ ./src/app/globals.css:1:1
+Syntax error: tailwindcss: /Users/numanaydar/Desktop/ProCheff-New/src/app/globals.css Cannot apply unknown utility class `bg-gray-900`. Are you using CSS modules or similar and missing `@reference`? https://tailwindcss.com/docs/functions-and-directives#reference-directive
+
+> 1 | @tailwind base;
+    | ^
+  2 | @tailwind components;
+  3 | @tailwind utilities;
+ ⨯ ./src/app/layout.tsx
+Error: 
+  [31mx[0m Expression expected
+    ,-[[36;1;4m/Users/numanaydar/Desktop/ProCheff-New/src/app/layout.tsx[0m:20:1]
+ [2m20[0m |     </html>
+ [2m21[0m |   );
+ [2m22[0m | }
+ [2m23[0m |   )
+    : [31;1m  ^[0m
+ [2m24[0m | }
+    `----
+
+Caused by:
+    Syntax Error
+
+Import trace for requested module:
+./src/app/layout.tsx
+ ⨯ ./src/app/layout.tsx
+Error: 
+  [31mx[0m Expression expected
+    ,-[[36;1;4m/Users/numanaydar/Desktop/ProCheff-New/src/app/layout.tsx[0m:20:1]
+ [2m20[0m |     </html>
+ [2m21[0m |   );
+ [2m22[0m | }
+ [2m23[0m |   )
+    : [31;1m  ^[0m
+ [2m24[0m | }
+    `----
+
+Caused by:
+    Syntax Error
+
+Import trace for requested module:
+./src/app/layout.tsx
+ GET /_next/static/webpack/a498690a90685b0d.webpack.hot-update.json 500 in 363ms
+ ⚠ Fast Refresh had to perform a full reload. Read more: https://nextjs.org/docs/messages/fast-refresh-reload
+ GET /_next/static/webpack/a498690a90685b0d.webpack.hot-update.json 500 in 4ms
+ ⚠ Fast Refresh had to perform a full reload. Read more: https://nextjs.org/docs/messages/fast-refresh-reload
+ GET /_next/static/webpack/a498690a90685b0d.webpack.hot-update.json 500 in 5ms
+ ⚠ Fast Refresh had to perform a full reload. Read more: https://nextjs.org/docs/messages/fast-refresh-reload
+ GET /menu 500 in 13ms
+ GET /menu 500 in 17ms
+ GET /menu 500 in 16ms
+ ⨯ ./src/app/layout.tsx
+Error: 
+  [31mx[0m Expression expected
+    ,-[[36;1;4m/Users/numanaydar/Desktop/ProCheff-New/src/app/layout.tsx[0m:20:1]
+ [2m20[0m |     </html>
+ [2m21[0m |   );
+ [2m22[0m | }
+ [2m23[0m |   )
+    : [31;1m  ^[0m
+ [2m24[0m | }
+    `----
+
+Caused by:
+    Syntax Error
+
+Import trace for requested module:
+./src/app/layout.tsx
+ GET /_next/static/webpack/a498690a90685b0d.webpack.hot-update.json 500 in 226ms
+ ⚠ Fast Refresh had to perform a full reload. Read more: https://nextjs.org/docs/messages/fast-refresh-reload
+ GET /_next/static/webpack/a498690a90685b0d.webpack.hot-update.json 500 in 9ms
+ ⚠ Fast Refresh had to perform a full reload. Read more: https://nextjs.org/docs/messages/fast-refresh-reload
+ GET /menu 500 in 40ms
+ GET /_next/static/webpack/a498690a90685b0d.webpack.hot-update.json 500 in 10ms
+ ⚠ Fast Refresh had to perform a full reload. Read more: https://nextjs.org/docs/messages/fast-refresh-reload
+ GET /menu 500 in 14ms
+ GET /menu 500 in 19ms
+ GET /_next/static/webpack/a498690a90685b0d.webpack.hot-update.json 500 in 6ms
+ ⚠ Fast Refresh had to perform a full reload. Read more: https://nextjs.org/docs/messages/fast-refresh-reload
+ ⨯ ./src/app/layout.tsx
+Error: 
+  [31mx[0m Expression expected
+    ,-[[36;1;4m/Users/numanaydar/Desktop/ProCheff-New/src/app/layout.tsx[0m:20:1]
+ [2m20[0m |     </html>
+ [2m21[0m |   );
+ [2m22[0m | }
+ [2m23[0m |   )
+    : [31;1m  ^[0m
+ [2m24[0m | }
+    `----
+
+Caused by:
+    Syntax Error
+
+Import trace for requested module:
+./src/app/layout.tsx
+ GET /_next/static/webpack/a498690a90685b0d.webpack.hot-update.json 500 in 102ms
+ ⚠ Fast Refresh had to perform a full reload. Read more: https://nextjs.org/docs/messages/fast-refresh-reload
+ GET /menu 500 in 106ms
+ GET /_next/static/webpack/a498690a90685b0d.webpack.hot-update.json 500 in 7ms
+ GET /menu 500 in 6ms
+ ⚠ Fast Refresh had to perform a full reload. Read more: https://nextjs.org/docs/messages/fast-refresh-reload
+ GET /menu 500 in 5ms
+ ⨯ ./src/app/layout.tsx
+Error: 
+  [31mx[0m Expression expected
+    ,-[[36;1;4m/Users/numanaydar/Desktop/ProCheff-New/src/app/layout.tsx[0m:20:1]
+ [2m20[0m |     </html>
+ [2m21[0m |   );
+ [2m22[0m | }
+ [2m23[0m |   )
+    : [31;1m  ^[0m
+ [2m24[0m | }
+    `----
+
+Caused by:
+    Syntax Error
+
+Import trace for requested module:
+./src/app/layout.tsx
+ GET /_next/static/webpack/a498690a90685b0d.webpack.hot-update.json 500 in 97ms
+ ⚠ Fast Refresh had to perform a full reload. Read more: https://nextjs.org/docs/messages/fast-refresh-reload
+ GET /_next/static/webpack/a498690a90685b0d.webpack.hot-update.json 500 in 3ms
+ ⚠ Fast Refresh had to perform a full reload. Read more: https://nextjs.org/docs/messages/fast-refresh-reload
+ GET /_next/static/webpack/a498690a90685b0d.webpack.hot-update.json 500 in 4ms
+ ⚠ Fast Refresh had to perform a full reload. Read more: https://nextjs.org/docs/messages/fast-refresh-reload
+ GET /menu 500 in 6ms
+ GET /menu 500 in 5ms
+ GET /menu 500 in 7ms
+ ⨯ ./src/app/layout.tsx
+Error: 
+  [31mx[0m Expression expected
+    ,-[[36;1;4m/Users/numanaydar/Desktop/ProCheff-New/src/app/layout.tsx[0m:20:1]
+ [2m20[0m |     </html>
+ [2m21[0m |   );
+ [2m22[0m | }
+ [2m23[0m |   )
+    : [31;1m  ^[0m
+ [2m24[0m | }
+    `----
+
+Caused by:
+    Syntax Error
+
+Import trace for requested module:
+./src/app/layout.tsx
+ GET /_next/static/webpack/a498690a90685b0d.webpack.hot-update.json 500 in 6ms
+ ⚠ Fast Refresh had to perform a full reload. Read more: https://nextjs.org/docs/messages/fast-refresh-reload
+ GET /menu 500 in 5ms
+ GET /_next/static/webpack/a498690a90685b0d.webpack.hot-update.json 500 in 9ms
+ ⚠ Fast Refresh had to perform a full reload. Read more: https://nextjs.org/docs/messages/fast-refresh-reload
+ GET /menu 500 in 6ms
+ GET /_next/static/webpack/a498690a90685b0d.webpack.hot-update.json 500 in 14ms
+ ⚠ Fast Refresh had to perform a full reload. Read more: https://nextjs.org/docs/messages/fast-refresh-reload
+ GET /_next/static/webpack/a498690a90685b0d.webpack.hot-update.json 500 in 17ms
+ GET /menu 500 in 14ms
+ ⚠ Fast Refresh had to perform a full reload. Read more: https://nextjs.org/docs/messages/fast-refresh-reload
+ GET /menu 500 in 20ms
+ GET /_next/static/webpack/a498690a90685b0d.webpack.hot-update.json 500 in 5ms
+ ⚠ Fast Refresh had to perform a full reload. Read more: https://nextjs.org/docs/messages/fast-refresh-reload
+ GET /menu 500 in 5ms
+ GET /_next/static/webpack/a498690a90685b0d.webpack.hot-update.json 500 in 7ms
+ ⚠ Fast Refresh had to perform a full reload. Read more: https://nextjs.org/docs/messages/fast-refresh-reload
+ GET /menu 500 in 4ms
+ GET /_next/static/webpack/a498690a90685b0d.webpack.hot-update.json 500 in 11ms
+ ⚠ Fast Refresh had to perform a full reload. Read more: https://nextjs.org/docs/messages/fast-refresh-reload
+ GET /menu 500 in 11ms
+ GET /_next/static/webpack/a498690a90685b0d.webpack.hot-update.json 500 in 14ms
+ ⚠ Fast Refresh had to perform a full reload. Read more: https://nextjs.org/docs/messages/fast-refresh-reload
+ GET /menu 500 in 11ms
+ GET /_next/static/webpack/a498690a90685b0d.webpack.hot-update.json 500 in 5ms
+ ⚠ Fast Refresh had to perform a full reload. Read more: https://nextjs.org/docs/messages/fast-refresh-reload
+ GET /menu 500 in 4ms
+ GET /_next/static/webpack/a498690a90685b0d.webpack.hot-update.json 500 in 5ms
+ ⚠ Fast Refresh had to perform a full reload. Read more: https://nextjs.org/docs/messages/fast-refresh-reload
+ GET /menu 500 in 3ms
+ GET /_next/static/webpack/a498690a90685b0d.webpack.hot-update.json 500 in 4ms
+ ⚠ Fast Refresh had to perform a full reload. Read more: https://nextjs.org/docs/messages/fast-refresh-reload
+ GET /menu 500 in 4ms
+ GET /_next/static/webpack/a498690a90685b0d.webpack.hot-update.json 500 in 12ms
+ ⚠ Fast Refresh had to perform a full reload. Read more: https://nextjs.org/docs/messages/fast-refresh-reload
+ GET /menu 500 in 7ms
+ GET /_next/static/webpack/a498690a90685b0d.webpack.hot-update.json 500 in 6ms
+ ⚠ Fast Refresh had to perform a full reload. Read more: https://nextjs.org/docs/messages/fast-refresh-reload
+ GET /menu 500 in 5ms
+ GET /_next/static/webpack/a498690a90685b0d.webpack.hot-update.json 500 in 10ms
+ ⚠ Fast Refresh had to perform a full reload. Read more: https://nextjs.org/docs/messages/fast-refresh-reload
+ GET /menu 500 in 3ms
+ GET /_next/static/webpack/a498690a90685b0d.webpack.hot-update.json 500 in 3ms
+ ⚠ Fast Refresh had to perform a full reload. Read more: https://nextjs.org/docs/messages/fast-refresh-reload
+ GET /menu 500 in 4ms
+ GET /_next/static/webpack/a498690a90685b0d.webpack.hot-update.json 500 in 13ms
+ ⚠ Fast Refresh had to perform a full reload. Read more: https://nextjs.org/docs/messages/fast-refresh-reload
+ GET /menu 500 in 4ms
+ GET /_next/static/webpack/a498690a90685b0d.webpack.hot-update.json 500 in 5ms
+ ⚠ Fast Refresh had to perform a full reload. Read more: https://nextjs.org/docs/messages/fast-refresh-reload
+ GET /menu 500 in 6ms
+ GET /_next/static/webpack/a498690a90685b0d.webpack.hot-update.json 500 in 6ms
+ ⚠ Fast Refresh had to perform a full reload. Read more: https://nextjs.org/docs/messages/fast-refresh-reload
+ GET /menu 500 in 8ms
+ GET /_next/static/webpack/a498690a90685b0d.webpack.hot-update.json 500 in 4ms
+ ⚠ Fast Refresh had to perform a full reload. Read more: https://nextjs.org/docs/messages/fast-refresh-reload
+ GET /menu 500 in 3ms
+ GET /_next/static/webpack/a498690a90685b0d.webpack.hot-update.json 500 in 4ms
+ ⚠ Fast Refresh had to perform a full reload. Read more: https://nextjs.org/docs/messages/fast-refresh-reload
+ GET /menu 500 in 5ms
+ GET /_next/static/webpack/a498690a90685b0d.webpack.hot-update.json 500 in 2ms
+ ⚠ Fast Refresh had to perform a full reload. Read more: https://nextjs.org/docs/messages/fast-refresh-reload
+ GET /menu 500 in 7ms
+ GET /_next/static/webpack/a498690a90685b0d.webpack.hot-update.json 500 in 6ms
+ ⚠ Fast Refresh had to perform a full reload. Read more: https://nextjs.org/docs/messages/fast-refresh-reload
+ GET /menu 500 in 5ms
+ GET /_next/static/webpack/a498690a90685b0d.webpack.hot-update.json 500 in 4ms
+ ⚠ Fast Refresh had to perform a full reload. Read more: https://nextjs.org/docs/messages/fast-refresh-reload
+ GET /menu 500 in 4ms
+ GET /_next/static/webpack/a498690a90685b0d.webpack.hot-update.json 500 in 4ms
+ ⚠ Fast Refresh had to perform a full reload. Read more: https://nextjs.org/docs/messages/fast-refresh-reload
+ GET /menu 500 in 4ms
+ GET /_next/static/webpack/a498690a90685b0d.webpack.hot-update.json 500 in 4ms
+ ⚠ Fast Refresh had to perform a full reload. Read more: https://nextjs.org/docs/messages/fast-refresh-reload
+ GET /menu 500 in 5ms
+ GET /_next/static/webpack/a498690a90685b0d.webpack.hot-update.json 500 in 6ms
+ ⚠ Fast Refresh had to perform a full reload. Read more: https://nextjs.org/docs/messages/fast-refresh-reload
+ GET /menu 500 in 4ms
+ GET /_next/static/webpack/a498690a90685b0d.webpack.hot-update.json 500 in 5ms
+ ⚠ Fast Refresh had to perform a full reload. Read more: https://nextjs.org/docs/messages/fast-refresh-reload
+ GET /menu 500 in 3ms
+ GET /_next/static/webpack/a498690a90685b0d.webpack.hot-update.json 500 in 4ms
+ ⚠ Fast Refresh had to perform a full reload. Read more: https://nextjs.org/docs/messages/fast-refresh-reload
+ GET /menu 500 in 3ms
+ GET /_next/static/webpack/a498690a90685b0d.webpack.hot-update.json 500 in 4ms
+ ⚠ Fast Refresh had to perform a full reload. Read more: https://nextjs.org/docs/messages/fast-refresh-reload
+ GET /menu 500 in 4ms
+ GET /_next/static/webpack/a498690a90685b0d.webpack.hot-update.json 500 in 4ms
+ ⚠ Fast Refresh had to perform a full reload. Read more: https://nextjs.org/docs/messages/fast-refresh-reload
+ GET /menu 500 in 5ms
+ GET /_next/static/webpack/a498690a90685b0d.webpack.hot-update.json 500 in 4ms
+ ⚠ Fast Refresh had to perform a full reload. Read more: https://nextjs.org/docs/messages/fast-refresh-reload
+ GET /menu 500 in 4ms
+ GET /_next/static/webpack/a498690a90685b0d.webpack.hot-update.json 500 in 4ms
+ ⚠ Fast Refresh had to perform a full reload. Read more: https://nextjs.org/docs/messages/fast-refresh-reload
+ GET /menu 500 in 4ms
+ GET /_next/static/webpack/a498690a90685b0d.webpack.hot-update.json 500 in 4ms
+ ⚠ Fast Refresh had to perform a full reload. Read more: https://nextjs.org/docs/messages/fast-refresh-reload
+ GET /menu 500 in 3ms
+ GET /_next/static/webpack/a498690a90685b0d.webpack.hot-update.json 500 in 4ms
+ ⚠ Fast Refresh had to perform a full reload. Read more: https://nextjs.org/docs/messages/fast-refresh-reload
+ GET /menu 500 in 4ms
+ GET /_next/static/webpack/a498690a90685b0d.webpack.hot-update.json 500 in 3ms
+ ⚠ Fast Refresh had to perform a full reload. Read more: https://nextjs.org/docs/messages/fast-refresh-reload
+ GET /menu 500 in 3ms
+ GET /_next/static/webpack/a498690a90685b0d.webpack.hot-update.json 500 in 3ms
+ ⚠ Fast Refresh had to perform a full reload. Read more: https://nextjs.org/docs/messages/fast-refresh-reload
+ GET /menu 500 in 5ms
+ GET /_next/static/webpack/a498690a90685b0d.webpack.hot-update.json 500 in 3ms
+ ⚠ Fast Refresh had to perform a full reload. Read more: https://nextjs.org/docs/messages/fast-refresh-reload
+ GET /menu 500 in 3ms
+ GET /_next/static/webpack/a498690a90685b0d.webpack.hot-update.json 500 in 5ms
+ ⚠ Fast Refresh had to perform a full reload. Read more: https://nextjs.org/docs/messages/fast-refresh-reload
+ GET /menu 500 in 4ms
+ GET /_next/static/webpack/a498690a90685b0d.webpack.hot-update.json 500 in 5ms
+ ⚠ Fast Refresh had to perform a full reload. Read more: https://nextjs.org/docs/messages/fast-refresh-reload
+ GET /menu 500 in 2ms
+ GET /_next/static/webpack/a498690a90685b0d.webpack.hot-update.json 500 in 4ms
+ ⚠ Fast Refresh had to perform a full reload. Read more: https://nextjs.org/docs/messages/fast-refresh-reload
+ GET /menu 500 in 4ms
+ GET /_next/static/webpack/a498690a90685b0d.webpack.hot-update.json 500 in 5ms
+ ⚠ Fast Refresh had to perform a full reload. Read more: https://nextjs.org/docs/messages/fast-refresh-reload
+ GET /menu 500 in 4ms
+ GET /_next/static/webpack/a498690a90685b0d.webpack.hot-update.json 500 in 4ms
+ ⚠ Fast Refresh had to perform a full reload. Read more: https://nextjs.org/docs/messages/fast-refresh-reload
+ GET /menu 500 in 4ms
+ GET /_next/static/webpack/a498690a90685b0d.webpack.hot-update.json 500 in 5ms
+ ⚠ Fast Refresh had to perform a full reload. Read more: https://nextjs.org/docs/messages/fast-refresh-reload
+ GET /menu 500 in 4ms
+ GET /_next/static/webpack/a498690a90685b0d.webpack.hot-update.json 500 in 4ms
+ ⚠ Fast Refresh had to perform a full reload. Read more: https://nextjs.org/docs/messages/fast-refresh-reload
+ GET /menu 500 in 3ms
+ GET /_next/static/webpack/a498690a90685b0d.webpack.hot-update.json 500 in 5ms
+ ⚠ Fast Refresh had to perform a full reload. Read more: https://nextjs.org/docs/messages/fast-refresh-reload
+ GET /menu 500 in 4ms
+ GET /_next/static/webpack/a498690a90685b0d.webpack.hot-update.json 500 in 5ms
+ ⚠ Fast Refresh had to perform a full reload. Read more: https://nextjs.org/docs/messages/fast-refresh-reload
+ GET /menu 500 in 4ms
+ GET /_next/static/webpack/a498690a90685b0d.webpack.hot-update.json 500 in 6ms
+ ⚠ Fast Refresh had to perform a full reload. Read more: https://nextjs.org/docs/messages/fast-refresh-reload
+ GET /menu 500 in 7ms
+ GET /_next/static/webpack/a498690a90685b0d.webpack.hot-update.json 500 in 7ms
+ ⚠ Fast Refresh had to perform a full reload. Read more: https://nextjs.org/docs/messages/fast-refresh-reload
+ GET /menu 500 in 6ms
+ GET /_next/static/webpack/a498690a90685b0d.webpack.hot-update.json 500 in 4ms
+ ⚠ Fast Refresh had to perform a full reload. Read more: https://nextjs.org/docs/messages/fast-refresh-reload
+ GET /menu 500 in 4ms
+ GET /_next/static/webpack/a498690a90685b0d.webpack.hot-update.json 500 in 4ms
+ ⚠ Fast Refresh had to perform a full reload. Read more: https://nextjs.org/docs/messages/fast-refresh-reload
+ GET /menu 500 in 3ms
+ GET /_next/static/webpack/a498690a90685b0d.webpack.hot-update.json 500 in 18ms
+ ⚠ Fast Refresh had to perform a full reload. Read more: https://nextjs.org/docs/messages/fast-refresh-reload
+ GET /menu 500 in 3ms
+ GET /_next/static/webpack/a498690a90685b0d.webpack.hot-update.json 500 in 3ms
+ ⚠ Fast Refresh had to perform a full reload. Read more: https://nextjs.org/docs/messages/fast-refresh-reload
+ GET /menu 500 in 3ms
+ GET /_next/static/webpack/a498690a90685b0d.webpack.hot-update.json 500 in 4ms
+ ⚠ Fast Refresh had to perform a full reload. Read more: https://nextjs.org/docs/messages/fast-refresh-reload
+ GET /menu 500 in 3ms
+ GET /_next/static/webpack/a498690a90685b0d.webpack.hot-update.json 500 in 4ms
+ ⚠ Fast Refresh had to perform a full reload. Read more: https://nextjs.org/docs/messages/fast-refresh-reload
+ GET /menu 500 in 4ms
+ GET /_next/static/webpack/a498690a90685b0d.webpack.hot-update.json 500 in 4ms
+ ⚠ Fast Refresh had to perform a full reload. Read more: https://nextjs.org/docs/messages/fast-refresh-reload
+ GET /menu 500 in 5ms
+ GET /_next/static/webpack/a498690a90685b0d.webpack.hot-update.json 500 in 5ms
+ ⚠ Fast Refresh had to perform a full reload. Read more: https://nextjs.org/docs/messages/fast-refresh-reload
+ GET /menu 500 in 6ms
+ GET /_next/static/webpack/a498690a90685b0d.webpack.hot-update.json 500 in 3ms
+ ⚠ Fast Refresh had to perform a full reload. Read more: https://nextjs.org/docs/messages/fast-refresh-reload
+ GET /menu 500 in 3ms
+ GET /_next/static/webpack/a498690a90685b0d.webpack.hot-update.json 500 in 4ms
+ ⚠ Fast Refresh had to perform a full reload. Read more: https://nextjs.org/docs/messages/fast-refresh-reload
+ GET /menu 500 in 4ms
+ GET /_next/static/webpack/a498690a90685b0d.webpack.hot-update.json 500 in 4ms
+ ⚠ Fast Refresh had to perform a full reload. Read more: https://nextjs.org/docs/messages/fast-refresh-reload
+ GET /menu 500 in 3ms
+ GET /_next/static/webpack/a498690a90685b0d.webpack.hot-update.json 500 in 4ms
+ ⚠ Fast Refresh had to perform a full reload. Read more: https://nextjs.org/docs/messages/fast-refresh-reload
+ GET /menu 500 in 7ms
+ GET /_next/static/webpack/a498690a90685b0d.webpack.hot-update.json 500 in 4ms
+ ⚠ Fast Refresh had to perform a full reload. Read more: https://nextjs.org/docs/messages/fast-refresh-reload
+ GET /menu 500 in 3ms
+ GET /_next/static/webpack/a498690a90685b0d.webpack.hot-update.json 500 in 4ms
+ ⚠ Fast Refresh had to perform a full reload. Read more: https://nextjs.org/docs/messages/fast-refresh-reload
+ GET /menu 500 in 4ms
+ GET /_next/static/webpack/a498690a90685b0d.webpack.hot-update.json 500 in 4ms
+ ⚠ Fast Refresh had to perform a full reload. Read more: https://nextjs.org/docs/messages/fast-refresh-reload
+ GET /menu 500 in 5ms
+ GET /_next/static/webpack/a498690a90685b0d.webpack.hot-update.json 500 in 5ms
+ ⚠ Fast Refresh had to perform a full reload. Read more: https://nextjs.org/docs/messages/fast-refresh-reload
+ GET /menu 500 in 3ms
+ GET /_next/static/webpack/a498690a90685b0d.webpack.hot-update.json 500 in 5ms
+ ⚠ Fast Refresh had to perform a full reload. Read more: https://nextjs.org/docs/messages/fast-refresh-reload
+ GET /menu 500 in 5ms
+ GET /_next/static/webpack/a498690a90685b0d.webpack.hot-update.json 500 in 5ms
+ ⚠ Fast Refresh had to perform a full reload. Read more: https://nextjs.org/docs/messages/fast-refresh-reload
+ GET /menu 500 in 4ms
+ GET /_next/static/webpack/a498690a90685b0d.webpack.hot-update.json 500 in 4ms
+ ⚠ Fast Refresh had to perform a full reload. Read more: https://nextjs.org/docs/messages/fast-refresh-reload
+ GET /menu 500 in 3ms
+ GET /_next/static/webpack/a498690a90685b0d.webpack.hot-update.json 500 in 4ms
+ ⚠ Fast Refresh had to perform a full reload. Read more: https://nextjs.org/docs/messages/fast-refresh-reload
+ GET /menu 500 in 3ms
+ GET /_next/static/webpack/a498690a90685b0d.webpack.hot-update.json 500 in 10ms
+ ⚠ Fast Refresh had to perform a full reload. Read more: https://nextjs.org/docs/messages/fast-refresh-reload
+ GET /menu 500 in 11ms
+ GET /_next/static/webpack/a498690a90685b0d.webpack.hot-update.json 500 in 4ms
+ ⚠ Fast Refresh had to perform a full reload. Read more: https://nextjs.org/docs/messages/fast-refresh-reload
+ GET /menu 500 in 4ms
+ GET /_next/static/webpack/a498690a90685b0d.webpack.hot-update.json 500 in 6ms
+ ⚠ Fast Refresh had to perform a full reload. Read more: https://nextjs.org/docs/messages/fast-refresh-reload
+ GET /menu 500 in 6ms
+ GET /_next/static/webpack/a498690a90685b0d.webpack.hot-update.json 500 in 3ms
+ ⚠ Fast Refresh had to perform a full reload. Read more: https://nextjs.org/docs/messages/fast-refresh-reload
+ GET /menu 500 in 3ms
+ GET /_next/static/webpack/a498690a90685b0d.webpack.hot-update.json 500 in 4ms
+ ⚠ Fast Refresh had to perform a full reload. Read more: https://nextjs.org/docs/messages/fast-refresh-reload
+ GET /menu 500 in 5ms
+ ⨯ ./src/app/layout.tsx
+Error: 
+  [31mx[0m Expression expected
+    ,-[[36;1;4m/Users/numanaydar/Desktop/ProCheff-New/src/app/layout.tsx[0m:20:1]
+ [2m20[0m |     </html>
+ [2m21[0m |   );
+ [2m22[0m | }
+ [2m23[0m |   )
+    : [31;1m  ^[0m
+ [2m24[0m | }
+    `----
+
+Caused by:
+    Syntax Error
+
+Import trace for requested module:
+./src/app/layout.tsx
+ GET /menu 200 in 383ms
+ GET /_next/static/webpack/a498690a90685b0d.webpack.hot-update.json 500 in 265ms
+ ⚠ Fast Refresh had to perform a full reload. Read more: https://nextjs.org/docs/messages/fast-refresh-reload
+ GET /_next/static/webpack/a498690a90685b0d.webpack.hot-update.json 500 in 16ms
+ GET /menu 500 in 32ms
+ ⚠ Fast Refresh had to perform a full reload. Read more: https://nextjs.org/docs/messages/fast-refresh-reload
+ GET /menu 500 in 16ms
+ GET /menu 500 in 40ms
+ GET /_next/static/webpack/a498690a90685b0d.webpack.hot-update.json 500 in 4ms
+ ⚠ Fast Refresh had to perform a full reload. Read more: https://nextjs.org/docs/messages/fast-refresh-reload
+ ⨯ ./src/app/layout.tsx
+Error: 
+  [31mx[0m Expression expected
+    ,-[[36;1;4m/Users/numanaydar/Desktop/ProCheff-New/src/app/layout.tsx[0m:20:1]
+ [2m20[0m |     </html>
+ [2m21[0m |   );
+ [2m22[0m | }
+ [2m23[0m |   )
+    : [31;1m  ^[0m
+ [2m24[0m | }
+    `----
+
+Caused by:
+    Syntax Error
+
+Import trace for requested module:
+./src/app/layout.tsx
+ GET /_next/static/webpack/a498690a90685b0d.webpack.hot-update.json 500 in 107ms
+ ⚠ Fast Refresh had to perform a full reload. Read more: https://nextjs.org/docs/messages/fast-refresh-reload
+ GET /menu 500 in 111ms
+ GET /_next/static/webpack/a498690a90685b0d.webpack.hot-update.json 500 in 7ms
+ ⚠ Fast Refresh had to perform a full reload. Read more: https://nextjs.org/docs/messages/fast-refresh-reload
+ GET /menu 500 in 10ms
+ GET /menu 500 in 4ms
+ GET /menu 500 in 7ms
+ ⨯ ./src/app/layout.tsx
+Error: 
+  [31mx[0m Expression expected
+    ,-[[36;1;4m/Users/numanaydar/Desktop/ProCheff-New/src/app/layout.tsx[0m:20:1]
+ [2m20[0m |     </html>
+ [2m21[0m |   );
+ [2m22[0m | }
+ [2m23[0m |   )
+    : [31;1m  ^[0m
+ [2m24[0m | }
+    `----
+
+Caused by:
+    Syntax Error
+
+Import trace for requested module:
+./src/app/layout.tsx
+ ⨯ ./src/app/layout.tsx
+Error: 
+  [31mx[0m Expression expected
+    ,-[[36;1;4m/Users/numanaydar/Desktop/ProCheff-New/src/app/layout.tsx[0m:20:1]
+ [2m20[0m |     </html>
+ [2m21[0m |   );
+ [2m22[0m | }
+ [2m23[0m |   )
+    : [31;1m  ^[0m
+ [2m24[0m | }
+    `----
+
+Caused by:
+    Syntax Error
+
+Import trace for requested module:
+./src/app/layout.tsx
+ GET / 500 in 156ms
+ ⨯ ./src/app/layout.tsx
+Error: 
+  [31mx[0m Expression expected
+    ,-[[36;1;4m/Users/numanaydar/Desktop/ProCheff-New/src/app/layout.tsx[0m:20:1]
+ [2m20[0m |     </html>
+ [2m21[0m |   );
+ [2m22[0m | }
+ [2m23[0m |   )
+    : [31;1m  ^[0m
+ [2m24[0m | }
+    `----
+
+Caused by:
+    Syntax Error
+
+Import trace for requested module:
+./src/app/layout.tsx
+<w> [webpack.cache.PackFileCacheStrategy] Skipped not serializable cache item 'Compilation/modules|/Users/numanaydar/Desktop/ProCheff-New/node_modules/next/dist/build/webpack/loaders/css-loader/src/index.js??ruleSet[1].rules[13].oneOf[12].use[2]!/Users/numanaydar/Desktop/ProCheff-New/node_modules/next/dist/build/webpack/loaders/postcss-loader/src/index.js??ruleSet[1].rules[13].oneOf[12].use[3]!/Users/numanaydar/Desktop/ProCheff-New/src/app/globals.css': No serializer registered for PostCSSSyntaxError
+<w> while serializing webpack/lib/cache/PackFileCacheStrategy.PackContentItems -> webpack/lib/NormalModule -> webpack/lib/ModuleBuildError -> PostCSSSyntaxError
+ ⨯ ./src/app/layout.tsx
+Error: 
+  [31mx[0m Expression expected
+    ,-[[36;1;4m/Users/numanaydar/Desktop/ProCheff-New/src/app/layout.tsx[0m:20:1]
+ [2m20[0m |     </html>
+ [2m21[0m |   );
+ [2m22[0m | }
+ [2m23[0m |   )
+    : [31;1m  ^[0m
+ [2m24[0m | }
+    `----
+
+Caused by:
+    Syntax Error
+
+Import trace for requested module:
+./src/app/layout.tsx
+ ⨯ ./src/app/layout.tsx
+Error: 
+  [31mx[0m Expression expected
+    ,-[[36;1;4m/Users/numanaydar/Desktop/ProCheff-New/src/app/layout.tsx[0m:20:1]
+ [2m20[0m |     </html>
+ [2m21[0m |   );
+ [2m22[0m | }
+ [2m23[0m |   )
+    : [31;1m  ^[0m
+ [2m24[0m | }
+    `----
+
+Caused by:
+    Syntax Error
+
+Import trace for requested module:
+./src/app/layout.tsx
+ ⨯ ./src/app/layout.tsx
+Error: 
+  [31mx[0m Expression expected
+    ,-[[36;1;4m/Users/numanaydar/Desktop/ProCheff-New/src/app/layout.tsx[0m:20:1]
+ [2m20[0m |     </html>
+ [2m21[0m |   );
+ [2m22[0m | }
+ [2m23[0m |   )
+    : [31;1m  ^[0m
+ [2m24[0m | }
+    `----
+
+Caused by:
+    Syntax Error
+
+Import trace for requested module:
+./src/app/layout.tsx
+ GET /menu 500 in 9ms
+Error: Cannot apply unknown utility class `bg-gray-900`. Are you using CSS modules or similar and missing `@reference`? https://tailwindcss.com/docs/functions-and-directives#reference-directive
+    at onInvalidCandidate (/Users/numanaydar/Desktop/ProCheff-New/node_modules/tailwindcss/dist/lib.js:18:1332)
+    at ge (/Users/numanaydar/Desktop/ProCheff-New/node_modules/tailwindcss/dist/lib.js:13:30343)
+    at /Users/numanaydar/Desktop/ProCheff-New/node_modules/tailwindcss/dist/lib.js:18:373
+    at L (/Users/numanaydar/Desktop/ProCheff-New/node_modules/tailwindcss/dist/lib.js:3:1656)
+    at Ie (/Users/numanaydar/Desktop/ProCheff-New/node_modules/tailwindcss/dist/lib.js:18:172)
+    at xi (/Users/numanaydar/Desktop/ProCheff-New/node_modules/tailwindcss/dist/lib.js:37:294)
+    at async Ai (/Users/numanaydar/Desktop/ProCheff-New/node_modules/tailwindcss/dist/lib.js:37:637)
+    at async Ur (/Users/numanaydar/Desktop/ProCheff-New/node_modules/@tailwindcss/node/dist/index.js:10:3384)
+    at async ue (/Users/numanaydar/Desktop/ProCheff-New/node_modules/@tailwindcss/postcss/dist/index.js:10:3981)
+    at async Object.Once (/Users/numanaydar/Desktop/ProCheff-New/node_modules/@tailwindcss/postcss/dist/index.js:10:4252)
+    at async LazyResult.runAsync (/Users/numanaydar/Desktop/ProCheff-New/node_modules/next/node_modules/postcss/lib/lazy-result.js:261:11)
+    at async Span.traceAsyncFn (/Users/numanaydar/Desktop/ProCheff-New/node_modules/next/dist/trace/trace.js:154:20)
+    at async /Users/numanaydar/Desktop/ProCheff-New/node_modules/next/dist/build/webpack/loaders/postcss-loader/src/index.js:54:22
+    at async Span.traceAsyncFn (/Users/numanaydar/Desktop/ProCheff-New/node_modules/next/dist/trace/trace.js:154:20)
+Error: Cannot apply unknown utility class `bg-gray-900`. Are you using CSS modules or similar and missing `@reference`? https://tailwindcss.com/docs/functions-and-directives#reference-directive
+    at onInvalidCandidate (/Users/numanaydar/Desktop/ProCheff-New/node_modules/tailwindcss/dist/lib.js:18:1332)
+    at ge (/Users/numanaydar/Desktop/ProCheff-New/node_modules/tailwindcss/dist/lib.js:13:30343)
+    at /Users/numanaydar/Desktop/ProCheff-New/node_modules/tailwindcss/dist/lib.js:18:373
+    at L (/Users/numanaydar/Desktop/ProCheff-New/node_modules/tailwindcss/dist/lib.js:3:1656)
+    at Ie (/Users/numanaydar/Desktop/ProCheff-New/node_modules/tailwindcss/dist/lib.js:18:172)
+    at xi (/Users/numanaydar/Desktop/ProCheff-New/node_modules/tailwindcss/dist/lib.js:37:294)
+    at process.processTicksAndRejections (node:internal/process/task_queues:105:5)
+    at async Ai (/Users/numanaydar/Desktop/ProCheff-New/node_modules/tailwindcss/dist/lib.js:37:637)
+    at async Ur (/Users/numanaydar/Desktop/ProCheff-New/node_modules/@tailwindcss/node/dist/index.js:10:3384)
+    at async ue (/Users/numanaydar/Desktop/ProCheff-New/node_modules/@tailwindcss/postcss/dist/index.js:10:3981)
+    at async Object.Once (/Users/numanaydar/Desktop/ProCheff-New/node_modules/@tailwindcss/postcss/dist/index.js:10:4252)
+    at async LazyResult.runAsync (/Users/numanaydar/Desktop/ProCheff-New/node_modules/next/node_modules/postcss/lib/lazy-result.js:261:11)
+    at async Span.traceAsyncFn (/Users/numanaydar/Desktop/ProCheff-New/node_modules/next/dist/trace/trace.js:154:20)
+    at async /Users/numanaydar/Desktop/ProCheff-New/node_modules/next/dist/build/webpack/loaders/postcss-loader/src/index.js:54:22
+    at async Span.traceAsyncFn (/Users/numanaydar/Desktop/ProCheff-New/node_modules/next/dist/trace/trace.js:154:20)
+ ⨯ ./src/app/globals.css:1:1
+Syntax error: tailwindcss: /Users/numanaydar/Desktop/ProCheff-New/src/app/globals.css Cannot apply unknown utility class `bg-gray-900`. Are you using CSS modules or similar and missing `@reference`? https://tailwindcss.com/docs/functions-and-directives#reference-directive
+
+> 1 | @tailwind base;
+    | ^
+  2 | @tailwind components;
+  3 | @tailwind utilities;
+ GET /_next/static/webpack/a498690a90685b0d.webpack.hot-update.json 500 in 492ms
+ ⚠ Fast Refresh had to perform a full reload due to a runtime error.
+ GET /menu 500 in 10ms
+ GET /menu 500 in 9ms
+[?25h

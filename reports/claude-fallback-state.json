@@ -1,0 +1,32 @@
+{
+  "timestamp": "2025-10-18T07:46:14.675Z",
+  "total_tests": 4,
+  "passed": 4,
+  "failed": 0,
+  "results": [
+    {
+      "prompt": "ping",
+      "success": true,
+      "responseLength": 56,
+      "fallback": true
+    },
+    {
+      "prompt": "tasarım analizi",
+      "success": true,
+      "responseLength": 107,
+      "fallback": true
+    },
+    {
+      "prompt": "debug kod",
+      "success": true,
+      "responseLength": 59,
+      "fallback": true
+    },
+    {
+      "prompt": "test response",
+      "success": true,
+      "responseLength": 44,
+      "fallback": true
+    }
+  ]
+}

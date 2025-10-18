@@ -5,9 +5,7 @@ export function detectMenuType(text: string): string {
   return "Belirsiz";
 }
 
-export function calculateMacroBalance(
-  items: { protein?: number; fat?: number; carb?: number }[]
-) {
+export function calculateMacroBalance(items: { protein?: number; fat?: number; carb?: number }[]) {
   const sum = { protein: 0, fat: 0, carb: 0 };
   for (const i of items) {
     sum.protein += i.protein || 0;

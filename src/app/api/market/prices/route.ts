@@ -23,12 +23,7 @@ export async function GET() {
     ]);
 
     // Tüm fiyatları birleştir
-    const allPrices = [
-      ...a101Prices,
-      ...bimPrices,
-      ...migrosPrices,
-      ...sokPrices,
-    ];
+    const allPrices = [...a101Prices, ...bimPrices, ...migrosPrices, ...sokPrices];
 
     // Ortalama fiyatları hesapla
     const averagePrices = calculateAveragePrices(allPrices);

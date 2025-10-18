@@ -1,0 +1,55 @@
+{
+  "timestamp": "2025-10-18T07:06:30.485Z",
+  "test_type": "prod_determinism",
+  "total_runs": 3,
+  "results": [
+    {
+      "test_number": 1,
+      "success": true,
+      "duration_ms": 3259,
+      "port_used": 3000,
+      "server_lifecycle": "clean",
+      "port_conflict": false,
+      "health_check": {
+        "status": "healthy",
+        "response_code": 200,
+        "retries": 1
+      },
+      "timestamp": "2025-10-18T07:06:33.745Z"
+    },
+    {
+      "test_number": 2,
+      "success": true,
+      "duration_ms": 3195,
+      "port_used": 3000,
+      "server_lifecycle": "clean",
+      "port_conflict": false,
+      "health_check": {
+        "status": "healthy",
+        "response_code": 200,
+        "retries": 1
+      },
+      "timestamp": "2025-10-18T07:06:37.476Z"
+    },
+    {
+      "test_number": 3,
+      "success": true,
+      "duration_ms": 3186,
+      "port_used": 3000,
+      "server_lifecycle": "clean",
+      "port_conflict": false,
+      "health_check": {
+        "status": "healthy",
+        "response_code": 200,
+        "retries": 1
+      },
+      "timestamp": "2025-10-18T07:06:41.197Z"
+    }
+  ],
+  "summary": {
+    "success_count": 3,
+    "fail_count": 0,
+    "deterministic": true,
+    "flaky_risk": "low"
+  }
+}

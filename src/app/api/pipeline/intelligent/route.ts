@@ -1,10 +1,7 @@
 import { ingestPDF } from "@/lib/ingest";
 import { analyzeMenu } from "@/lib/menu/analyze";
 import { calculateOffer } from "@/lib/offer/calc";
-import {
-  runReasoning,
-  generateDetailedReport,
-} from "@/lib/reasoning/core/engine";
+import { runReasoning, generateDetailedReport } from "@/lib/reasoning/core/engine";
 import { log } from "@/lib/utils/logger";
 import { withRateLimit } from "@/lib/middleware/rateLimit";
 import { respond, panel } from "@/lib/utils/response";
@@ -47,9 +44,7 @@ async function handleIntelligentPipeline(request: Request): Promise<Response> {
     fs.unlinkSync(tempPath);
 
     // 2️⃣ Menu Analysis
-    const fullText = pdfData.sections
-      .map((section) => section.content)
-      .join("\n");
+    const fullText = pdfData.sections.map((section) => section.content).join("\n");
     const menuAnalysis = analyzeMenu(fullText);
 
     // 3️⃣ Market Data (simulated)
@@ -95,12 +90,7 @@ async function handleIntelligentPipeline(request: Request): Promise<Response> {
       // 🧠 Yeni: Akıllı analiz sonuçları
       reasoning: {
         score: reasoning.score,
-        riskLevel:
-          reasoning.score >= 80
-            ? "low"
-            : reasoning.score >= 60
-            ? "medium"
-            : "high",
+        riskLevel: reasoning.score >= 80 ? "low" : reasoning.score >= 60 ? "medium" : "high",
         risks: reasoning.risks,
         suggestions: reasoning.suggestions,
         compliance: reasoning.compliance,
@@ -126,13 +116,7 @@ async function handleIntelligentPipeline(request: Request): Promise<Response> {
       // Pipeline metadata
       pipeline: {
         version: "v3.0-cognitive",
-        steps: [
-          "pdf-ingest",
-          "menu-analysis",
-          "market-data",
-          "offer-calc",
-          "cognitive-reasoning",
-        ],
+        steps: ["pdf-ingest", "menu-analysis", "market-data", "offer-calc", "cognitive-reasoning"],
         processingTime: `${Date.now() - startTime}ms`,
         timestamp: new Date().toISOString(),
       },

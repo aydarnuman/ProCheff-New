@@ -10,6 +10,17 @@ npm ci
 npm run dev
 ```
 
+### 🔧 Sorun Giderme
+
+Eğer yerel geliştirme ortamında sorun yaşıyorsanız:
+
+```bash
+# Sunucuyu yeniden başlat
+npm run dev
+```
+
+**VS Code Task:** `Ctrl+Shift+P` → "Tasks: Run Task" → "🌐 Run Local"
+
 ## Üretim
 
 Git push → main → Cloud Run deploy  

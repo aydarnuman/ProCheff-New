@@ -1,0 +1,12 @@
+{
+  "timestamp": "2025-10-18T07:18:48.055Z",
+  "preview_mode": "dev",
+  "port_conflict": false,
+  "health_wait": "ok",
+  "server_lifecycle": "clean",
+  "hot_reload_active": true,
+  "panel_opened": true,
+  "port": 3000,
+  "pid": 35539,
+  "log_file": "/Users/numanaydar/Desktop/ProCheff-New/reports/dev-preview.log"
+}

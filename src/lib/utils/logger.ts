@@ -41,11 +41,7 @@ class Logger {
   private version: string = process.env.GIT_SHA || "dev";
   private environment: string = process.env.NODE_ENV || "development";
 
-  private createLogEntry(
-    level: LogLevel,
-    message: string,
-    context?: LogContext
-  ): LogEntry {
+  private createLogEntry(level: LogLevel, message: string, context?: LogContext): LogEntry {
     return {
       timestamp: new Date().toISOString(),
       level,
@@ -100,11 +96,7 @@ class Logger {
   }
 
   // HTTP request logging helper
-  httpRequest(
-    request: Request,
-    response: { status: number },
-    duration: number
-  ): void {
+  httpRequest(request: Request, response: { status: number }, duration: number): void {
     const context: LogContext = {
       endpoint: new URL(request.url).pathname,
       method: request.method,
@@ -118,8 +110,8 @@ class Logger {
       response.status >= 500
         ? LogLevel.ERROR
         : response.status >= 400
-        ? LogLevel.WARN
-        : LogLevel.INFO;
+          ? LogLevel.WARN
+          : LogLevel.INFO;
 
     this.output(
       this.createLogEntry(
@@ -167,10 +159,7 @@ export const log = new Logger();
 
 // Legacy compatibility (deprecated - migrate to new logger)
 export const legacyLog = {
-  info: (msg: string, meta?: Record<string, unknown>) =>
-    log.info(msg, meta as LogContext),
-  warn: (msg: string, meta?: Record<string, unknown>) =>
-    log.warn(msg, meta as LogContext),
-  error: (msg: string, meta?: Record<string, unknown>) =>
-    log.error(msg, meta as LogContext),
+  info: (msg: string, meta?: Record<string, unknown>) => log.info(msg, meta as LogContext),
+  warn: (msg: string, meta?: Record<string, unknown>) => log.warn(msg, meta as LogContext),
+  error: (msg: string, meta?: Record<string, unknown>) => log.error(msg, meta as LogContext),
 };

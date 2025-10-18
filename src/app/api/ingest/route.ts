@@ -35,9 +35,6 @@ export async function POST(req: Request) {
     return NextResponse.json(result, { status: 200 });
   } catch (err: any) {
     log.error("Ingest hatası", { err: err.message });
-    return NextResponse.json(
-      { error: "PDF işleme hatası", detail: err.message },
-      { status: 500 }
-    );
+    return NextResponse.json({ error: "PDF işleme hatası", detail: err.message }, { status: 500 });
   }
 }

@@ -1,20 +1,22 @@
-import { NextResponse } from "next/server";
-import { analyzeMenu } from "@/lib/menu/analyze";
-import { log } from "@/lib/utils/logger";
+import { analyzeMenu, analyzeMenuWithAI } from "@/lib/menu/analyze";
 import { withSecurity } from "@/lib/middleware/errorHandler";
-import {
-  withValidation,
-  MenuAnalysisSchema,
-} from "@/lib/middleware/validation";
+import { MenuAnalysisSchema, withValidation } from "@/lib/middleware/validation";
+import { log } from "@/lib/utils/logger";
 
 export const dynamic = "force-dynamic";
 
 // Güvenli handler
 async function handleMenuAnalysis(data: any, request: Request) {
   try {
-    log.info("Menu analysis request", { textLength: data.text.length });
+    log.info("Menu analysis request", { 
+      textLength: data.text.length,
+      aiEnabled: data.useAI !== false 
+    });
 
-    const menuAnalysis = analyzeMenu(data.text);
+    // AI analizi kullan (varsayılan) veya fallback
+    const menuAnalysis = data.useAI !== false 
+      ? await analyzeMenuWithAI(data.text)
+      : analyzeMenu(data.text);
 
     // Panel-friendly response
     const result = {
@@ -30,6 +32,8 @@ async function handleMenuAnalysis(data: any, request: Request) {
             carb: menuAnalysis.macroBalance.carb,
           },
           warnings: menuAnalysis.warnings,
+          aiPowered: menuAnalysis.aiPowered,
+          itemDetails: menuAnalysis.items?.slice(0, 5), // İlk 5 item
         },
         risks: {
           nutritional: menuAnalysis.warnings,
@@ -38,7 +42,8 @@ async function handleMenuAnalysis(data: any, request: Request) {
         },
         meta: {
           processedAt: new Date().toISOString(),
-          confidence: menuAnalysis.totalItems > 0 ? 85 : 30,
+          confidence: menuAnalysis.aiPowered ? 95 : (menuAnalysis.totalItems > 0 ? 85 : 30),
+          analysisMethod: menuAnalysis.aiPowered ? 'AI' : 'Regex',
         },
       },
     };
@@ -58,10 +63,7 @@ async function handleMenuAnalysis(data: any, request: Request) {
 }
 
 // Güvenlik middleware'leri ile wrapped handler
-export const POST = withSecurity(
-  withValidation(MenuAnalysisSchema, handleMenuAnalysis),
-  {
-    allowedMethods: ["POST"],
-    rateLimit: true,
-  }
-);
+export const POST = withSecurity(withValidation(MenuAnalysisSchema, handleMenuAnalysis), {
+  allowedMethods: ["POST"],
+  rateLimit: true,
+});

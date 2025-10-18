@@ -7,6 +7,15 @@ const nextConfig = {
     return config;
   },
   output: "standalone",
+  async redirects() {
+    return [
+      {
+        source: '/\\(admin\\)/:path*',
+        destination: '/admin/:path*',
+        permanent: true,
+      },
+    ];
+  },
 };
 
 module.exports = nextConfig;

@@ -1,0 +1,55 @@
+
+> procheff@0.1.0 build
+> next build
+
+  ▲ Next.js 14.2.5
+  - Environments: .env.local
+
+   Creating an optimized production build ...
+ ✓ Compiled successfully
+   Linting and checking validity of types ...
+   Collecting page data ...
+   Generating static pages (0/10) ...
+   Generating static pages (2/10) 
+   Generating static pages (4/10) 
+   Generating static pages (7/10) 
+ ✓ Generating static pages (10/10)
+   Finalizing page optimization ...
+   Collecting build traces ...
+
+Route (app)                              Size     First Load JS
+┌ ○ /                                    153 B          87.3 kB
+├ ○ /_not-found                          871 B            88 kB
+├ ○ /admin/ai-settings                   153 B          87.3 kB
+├ ○ /ai-settings                         153 B          87.3 kB
+├ ƒ /api/advisor/simulate                0 B                0 B
+├ ƒ /api/claude                          0 B                0 B
+├ ƒ /api/health                          0 B                0 B
+├ ƒ /api/health-clean                    0 B                0 B
+├ ƒ /api/ingest                          0 B                0 B
+├ ƒ /api/market/prices                   0 B                0 B
+├ ƒ /api/market/refresh                  0 B                0 B
+├ ƒ /api/menu/analyze                    0 B                0 B
+├ ƒ /api/menu/analyze-clean              0 B                0 B
+├ ƒ /api/menu/analyze-v2                 0 B                0 B
+├ ƒ /api/metrics                         0 B                0 B
+├ ƒ /api/offer/calc                      0 B                0 B
+├ ƒ /api/offer/calc-clean                0 B                0 B
+├ ƒ /api/pipeline/auto-refresh           0 B                0 B
+├ ƒ /api/pipeline/intelligent            0 B                0 B
+├ ƒ /api/pipeline/pdf-to-offer           0 B                0 B
+├ ƒ /api/pipeline/status                 0 B                0 B
+├ ƒ /api/reasoning/analyze               0 B                0 B
+├ ○ /dashboard                           103 kB          195 kB
+├ ○ /menu                                153 B          87.3 kB
+├ ○ /offer                               4.31 kB        96.7 kB
+└ ○ /upload                              4.72 kB        91.8 kB
++ First Load JS shared by all            87.1 kB
+  ├ chunks/23-306dcc8970920510.js        31.5 kB
+  ├ chunks/fd9d1056-b5397b5edf30a95b.js  53.6 kB
+  └ other shared chunks (total)          1.96 kB
+
+
+○  (Static)   prerendered as static content
+ƒ  (Dynamic)  server-rendered on demand
+

@@ -15,10 +15,7 @@ const nonEmptyString = z.string().min(1).trim();
 export const MenuAnalysisSchema = z.object({
   text: nonEmptyString
     .max(10000, "Menü metni 10,000 karakter limitini aşamaz")
-    .refine(
-      (text) => text.split("\n").length >= 2,
-      "Menü en az 2 satır içermelidir"
-    ),
+    .refine((text) => text.split("\n").length >= 2, "Menü en az 2 satır içermelidir"),
 });
 
 export type MenuAnalysisRequest = z.infer<typeof MenuAnalysisSchema>;
@@ -27,22 +24,13 @@ export type MenuAnalysisRequest = z.infer<typeof MenuAnalysisSchema>;
  * Offer Calculation Request Schema
  */
 export const OfferCalculationSchema = z.object({
-  materialCost: positiveNumber.max(
-    1000000,
-    "Malzeme maliyeti 1,000,000 TL limitini aşamaz"
-  ),
-  laborCost: positiveNumber.max(
-    500000,
-    "İşçilik maliyeti 500,000 TL limitini aşamaz"
-  ),
+  materialCost: positiveNumber.max(1000000, "Malzeme maliyeti 1,000,000 TL limitini aşamaz"),
+  laborCost: positiveNumber.max(500000, "İşçilik maliyeti 500,000 TL limitini aşamaz"),
   overheadRate: z
     .number()
     .min(0, "Genel gider oranı negatif olamaz")
     .max(1, "Genel gider oranı %100'ü aşamaz"),
-  profitMargin: z
-    .number()
-    .min(0, "Kâr marjı negatif olamaz")
-    .max(1, "Kâr marjı %100'ü aşamaz"),
+  profitMargin: z.number().min(0, "Kâr marjı negatif olamaz").max(1, "Kâr marjı %100'ü aşamaz"),
 });
 
 export type OfferCalculationRequest = z.infer<typeof OfferCalculationSchema>;
@@ -81,10 +69,7 @@ export const FileUploadSchema = z.object({
       (file) => file.size <= 10 * 1024 * 1024, // 10MB
       "Dosya boyutu 10MB'ı aşamaz"
     )
-    .refine(
-      (file) => file.type === "application/pdf",
-      "Sadece PDF dosyaları desteklenir"
-    ),
+    .refine((file) => file.type === "application/pdf", "Sadece PDF dosyaları desteklenir"),
 });
 
 export type FileUploadRequest = z.infer<typeof FileUploadSchema>;

@@ -103,10 +103,7 @@ function validateApiKey(apiKey: string): AuthContext | null {
 /**
  * İzin kontrolü
  */
-function hasPermission(
-  context: AuthContext,
-  requiredPermission: string
-): boolean {
+function hasPermission(context: AuthContext, requiredPermission: string): boolean {
   if (context.permissions.includes("*")) {
     return true; // Admin izni
   }
@@ -132,16 +129,9 @@ export const Permissions = {
 /**
  * Authentication middleware
  */
-export function withAuth(
-  requiredPermissions: string[] = [],
-  options: { optional?: boolean } = {}
-) {
+export function withAuth(requiredPermissions: string[] = [], options: { optional?: boolean } = {}) {
   return function (
-    handler: (
-      request: Request,
-      context?: AuthContext,
-      ...args: any[]
-    ) => Promise<Response>
+    handler: (request: Request, context?: AuthContext, ...args: any[]) => Promise<Response>
   ) {
     return async (request: Request, ...args: any[]): Promise<Response> => {
       const apiKey = extractApiKey(request);
@@ -279,10 +269,7 @@ export const ApiKeyManager = {
     }));
   },
 
-  getUsageStats: (): Record<
-    string,
-    { lastUsed?: Date; usageCount: number }
-  > => {
+  getUsageStats: (): Record<string, { lastUsed?: Date; usageCount: number }> => {
     const stats: Record<string, any> = {};
 
     API_KEYS.forEach((key, keyValue) => {

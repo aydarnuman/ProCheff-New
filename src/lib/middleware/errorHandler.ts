@@ -3,7 +3,8 @@
  * Standart hata formatı ve error boundary
  */
 
-import { log } from "../utils/logger";
+import { log } from "@/lib/utils/logger";
+import { withRateLimit } from "./rateLimiter";
 
 // Standart hata tipleri
 export interface ApiError {
@@ -76,20 +77,10 @@ export function createErrorResponse(
  */
 export const ErrorResponses = {
   validation: (details: any) =>
-    createErrorResponse(
-      "Validation failed",
-      400,
-      ErrorType.VALIDATION_ERROR,
-      details
-    ),
+    createErrorResponse("Validation failed", 400, ErrorType.VALIDATION_ERROR, details),
 
   rateLimit: (retryAfter: number) =>
-    createErrorResponse(
-      "Rate limit exceeded",
-      429,
-      ErrorType.RATE_LIMIT_EXCEEDED,
-      { retryAfter }
-    ),
+    createErrorResponse("Rate limit exceeded", 429, ErrorType.RATE_LIMIT_EXCEEDED, { retryAfter }),
 
   fileUpload: (message: string = "File upload failed") =>
     createErrorResponse(message, 400, ErrorType.FILE_UPLOAD_ERROR),
@@ -110,12 +101,9 @@ export const ErrorResponses = {
     createErrorResponse(`${resource} not found`, 404, ErrorType.NOT_FOUND),
 
   methodNotAllowed: (method: string, allowed: string[]) =>
-    createErrorResponse(
-      `Method ${method} not allowed`,
-      405,
-      ErrorType.METHOD_NOT_ALLOWED,
-      { allowedMethods: allowed }
-    ),
+    createErrorResponse(`Method ${method} not allowed`, 405, ErrorType.METHOD_NOT_ALLOWED, {
+      allowedMethods: allowed,
+    }),
 
   internal: (message: string = "Internal server error") =>
     createErrorResponse(message, 500, ErrorType.INTERNAL_SERVER_ERROR),
@@ -169,10 +157,7 @@ export function withErrorBoundary(
 /**
  * Method validation helper
  */
-export function validateMethod(
-  request: Request,
-  allowedMethods: string[]
-): Response | null {
+export function validateMethod(request: Request, allowedMethods: string[]): Response | null {
   if (!allowedMethods.includes(request.method)) {
     return ErrorResponses.methodNotAllowed(request.method, allowedMethods);
   }
@@ -216,15 +201,11 @@ export function withSecurity(
 
   // Rate limiting
   if (rateLimit) {
-    const { withRateLimit } = require("./rateLimiter");
     wrappedHandler = withRateLimit(wrappedHandler);
   }
 
   // Method validation
-  const finalHandler = async (
-    request: Request,
-    ...args: any[]
-  ): Promise<Response> => {
+  const finalHandler = async (request: Request, ...args: any[]): Promise<Response> => {
     const methodError = validateMethod(request, allowedMethods);
     if (methodError) return methodError;
 

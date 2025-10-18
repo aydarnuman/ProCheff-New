@@ -2,10 +2,7 @@ import { NextResponse } from "next/server";
 import { calculateOffer } from "@/lib/offer/calc";
 import { log } from "@/lib/utils/logger";
 import { withSecurity } from "@/lib/middleware/errorHandler";
-import {
-  withValidation,
-  OfferCalculationSchema,
-} from "@/lib/middleware/validation";
+import { withValidation, OfferCalculationSchema } from "@/lib/middleware/validation";
 
 export const dynamic = "force-dynamic";
 
@@ -43,10 +40,7 @@ async function handleOfferCalculation(data: any, request: Request) {
 }
 
 // Güvenlik middleware'leri ile wrapped handler
-export const POST = withSecurity(
-  withValidation(OfferCalculationSchema, handleOfferCalculation),
-  {
-    allowedMethods: ["POST"],
-    rateLimit: true,
-  }
-);
+export const POST = withSecurity(withValidation(OfferCalculationSchema, handleOfferCalculation), {
+  allowedMethods: ["POST"],
+  rateLimit: true,
+});

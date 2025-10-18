@@ -3,19 +3,13 @@
  * System health ve performance metrics
  */
 
-import {
-  getMetricsSummary,
-  getHealthMetrics,
-} from "@/lib/middleware/monitoring";
+import { getMetricsSummary, getHealthMetrics } from "@/lib/middleware/monitoring";
 import { withMetricsEndpoint, type AuthContext } from "@/lib/middleware";
 import { log } from "@/lib/utils/logger";
 
 export const dynamic = "force-dynamic";
 
-async function handleMetrics(
-  request: Request,
-  context?: AuthContext
-): Promise<Response> {
+async function handleMetrics(request: Request, context?: AuthContext): Promise<Response> {
   try {
     const url = new URL(request.url);
     const type = url.searchParams.get("type") || "summary";

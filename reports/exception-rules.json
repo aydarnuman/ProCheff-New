@@ -1,0 +1,51 @@
+{
+  "version": "1.0",
+  "created": "2025-10-18T07:10:33.560Z",
+  "last_cleanup": "2025-10-18T07:10:33.562Z",
+  "rules": [
+    {
+      "id": "build-warning-buffer-deprecation",
+      "type": "warning_suppression",
+      "pattern": "Buffer\\(\\) is deprecated",
+      "reason": "Known Next.js dependency issue",
+      "created_date": "2025-10-15T00:00:00.000Z",
+      "expiry_date": "2025-11-15T00:00:00.000Z",
+      "status": "active",
+      "auto_created": true
+    },
+    {
+      "id": "test-flaky-timeout",
+      "type": "test_retry",
+      "pattern": "timeout.*integration",
+      "reason": "Flaky network conditions in CI",
+      "created_date": "2025-10-10T00:00:00.000Z",
+      "expiry_date": "2025-10-25T00:00:00.000Z",
+      "status": "active",
+      "auto_created": false
+    },
+    {
+      "id": "css-import-warning",
+      "type": "style_warning",
+      "pattern": "multiple.*css.*import",
+      "reason": "Temporary during CSS refactoring",
+      "created_date": "2025-10-01T00:00:00.000Z",
+      "expiry_date": "2025-10-20T00:00:00.000Z",
+      "status": "active",
+      "auto_created": false
+    },
+    {
+      "id": "health-check-skip",
+      "type": "health_exception",
+      "pattern": "ANTHROPIC_API_KEY.*Required",
+      "reason": "Test environment API key not needed",
+      "created_date": "2025-10-18T00:00:00.000Z",
+      "expiry_date": "2025-12-18T00:00:00.000Z",
+      "status": "active",
+      "auto_created": true
+    }
+  ],
+  "cleanup_stats": {
+    "removed_count": 1,
+    "last_cleanup_timestamp": "2025-10-18T07:10:33.562Z"
+  }
+}

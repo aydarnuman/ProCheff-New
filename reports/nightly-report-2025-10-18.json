@@ -1,0 +1,107 @@
+{
+  "timestamp": "2025-10-18T06:42:58.869Z",
+  "date": "2025-10-18",
+  "status": "healthy",
+  "environment": {
+    "node_env": "development",
+    "production_mode": false,
+    "hostname": "Numan-MacBook-Pro.local",
+    "node_version": "v22.20.0"
+  },
+  "build": {
+    "success": true,
+    "routes": [
+      "┌ ○ /                                    153 B          87.3 kB",
+      "├ ○ /_not-found                          871 B            88 kB",
+      "├ ○ /admin/ai-settings                   153 B          87.3 kB",
+      "├ ○ /ai-settings                         153 B          87.3 kB",
+      "├ ƒ /api/advisor/simulate                0 B                0 B",
+      "├ ƒ /api/claude                          0 B                0 B",
+      "├ ƒ /api/health                          0 B                0 B",
+      "├ ƒ /api/health-clean                    0 B                0 B",
+      "├ ƒ /api/ingest                          0 B                0 B",
+      "├ ƒ /api/market/prices                   0 B                0 B",
+      "├ ƒ /api/market/refresh                  0 B                0 B",
+      "├ ƒ /api/menu/analyze                    0 B                0 B",
+      "├ ƒ /api/menu/analyze-clean              0 B                0 B",
+      "├ ƒ /api/menu/analyze-v2                 0 B                0 B",
+      "├ ƒ /api/metrics                         0 B                0 B",
+      "├ ƒ /api/offer/calc                      0 B                0 B",
+      "├ ƒ /api/offer/calc-clean                0 B                0 B",
+      "├ ƒ /api/pipeline/auto-refresh           0 B                0 B",
+      "├ ƒ /api/pipeline/intelligent            0 B                0 B",
+      "├ ƒ /api/pipeline/pdf-to-offer           0 B                0 B",
+      "├ ƒ /api/pipeline/status                 0 B                0 B",
+      "├ ƒ /api/reasoning/analyze               0 B                0 B",
+      "├ ○ /dashboard                           103 kB          195 kB",
+      "├ ○ /menu                                153 B          87.3 kB",
+      "├ ○ /offer                               4.31 kB        96.7 kB",
+      "└ ○ /upload                              4.72 kB        91.8 kB",
+      "├ chunks/23-306dcc8970920510.js        31.5 kB",
+      "├ chunks/fd9d1056-b5397b5edf30a95b.js  53.6 kB",
+      "└ other shared chunks (total)          1.96 kB",
+      "○  (Static)   prerendered as static content",
+      "ƒ  (Dynamic)  server-rendered on demand"
+    ],
+    "errors": [],
+    "warnings": []
+  },
+  "tests": {
+    "integration": {
+      "passed": 1,
+      "failed": 0,
+      "skipped": 0,
+      "details": [
+        "Build-based test evaluation"
+      ]
+    }
+  },
+  "routes": {
+    "root_conflict": false,
+    "dashboard_separate": true,
+    "total_routes": 31
+  },
+  "health_checks": {
+    "css_imports": "clean",
+    "client_server_separation": "separated",
+    "temp_flags": "clean"
+  },
+  "alerts": [
+    "⚠️ NON-PRODUCTION ENVIRONMENT DETECTED"
+  ],
+  "integrity": {
+    "hash": "58085e351e8f50f2f595c6a3b56c9eaaf46d0a877ac441c8cc101e2ca472e478",
+    "timestamp": "2025-10-18T06:43:17.978Z",
+    "readonly": false
+  },
+  "flakey_analysis": {
+    "quarantined_tests": 0,
+    "build_stability": true,
+    "noise_reduction": false
+  },
+  "slo_compliance": {
+    "overall_compliant": true,
+    "violations": 0,
+    "warnings": 0,
+    "uptime": 100,
+    "build_success_rate": 100
+  },
+  "exception_rules": {
+    "original_alerts": 0,
+    "filtered_alerts": 0,
+    "rules_applied": false,
+    "suppressed_count": 0,
+    "active_rules": [
+      "buffer_deprecation",
+      "vite_cjs_warning",
+      "nextjs_config_restart",
+      "non_production_env"
+    ]
+  },
+  "privacy_check": {
+    "status": "clean",
+    "scan_date": "2025-10-18T06:43:17.978Z",
+    "violations_count": 0,
+    "violations": []
+  }
+}

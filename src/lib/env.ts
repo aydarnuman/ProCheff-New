@@ -14,9 +14,7 @@ export type Env = z.infer<typeof EnvSchema>;
 export function getEnv(): Env {
   const parsed = EnvSchema.safeParse(process.env);
   if (!parsed.success) {
-    const issues = parsed.error.issues
-      .map((i) => `${i.path.join(".")}: ${i.message}`)
-      .join("; ");
+    const issues = parsed.error.issues.map((i) => `${i.path.join(".")}: ${i.message}`).join("; ");
     throw new Error(`ENV_INVALID: ${issues}`);
   }
   return parsed.data;

@@ -1,0 +1,83 @@
+{
+  "generated_at": "2025-10-18T06:22:12.854Z",
+  "measurement_periods": {
+    "short_term": "14 days",
+    "long_term": "30 days"
+  },
+  "data_coverage": {
+    "reports_14_days": 1,
+    "reports_30_days": 1
+  },
+  "compliance": {
+    "uptime": {
+      "metric": "uptime",
+      "target": 99.5,
+      "actual": 100,
+      "status": "compliant",
+      "error_budget": 0.5,
+      "error_budget_used": 0,
+      "error_budget_remaining": 0.5,
+      "violation": false,
+      "description": "System availability",
+      "measurement_period": "30 days"
+    },
+    "build_success": {
+      "metric": "build_success",
+      "target": 95,
+      "actual": 100,
+      "status": "compliant",
+      "error_budget": 5,
+      "error_budget_used": 0,
+      "error_budget_remaining": 5,
+      "violation": false,
+      "description": "Build reliability",
+      "measurement_period": "14 days"
+    },
+    "test_success": {
+      "metric": "test_success",
+      "target": 90,
+      "actual": 100,
+      "status": "compliant",
+      "error_budget": 10,
+      "error_budget_used": 0,
+      "error_budget_remaining": 10,
+      "violation": false,
+      "description": "Test suite reliability",
+      "measurement_period": "14 days"
+    },
+    "route_stability": {
+      "metric": "route_stability",
+      "target": 100,
+      "actual": 100,
+      "status": "compliant",
+      "error_budget": 0,
+      "error_budget_used": 0,
+      "error_budget_remaining": 0,
+      "violation": false,
+      "description": "Route configuration stability",
+      "measurement_period": "30 days"
+    },
+    "config_hygiene": {
+      "metric": "config_hygiene",
+      "target": 100,
+      "actual": 100,
+      "status": "compliant",
+      "error_budget": 0,
+      "error_budget_used": 0,
+      "error_budget_remaining": 0,
+      "violation": false,
+      "description": "Configuration hygiene",
+      "measurement_period": "14 days"
+    }
+  },
+  "violations": {
+    "total_violations": 0,
+    "total_warnings": 0,
+    "violations": [],
+    "warnings": [],
+    "overall_compliance": true
+  },
+  "incident": null,
+  "overall_status": "compliant",
+  "next_review": "2025-10-19T06:22:12.854Z"
+}

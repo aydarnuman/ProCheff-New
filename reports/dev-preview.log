@@ -1,0 +1,15 @@
+[2025-10-18T07:18:38.155Z] STDOUT: 
+> procheff@0.1.0 dev
+> next dev
+
+[2025-10-18T07:18:38.611Z] STDOUT:   ▲ Next.js 14.2.5
+[2025-10-18T07:18:38.612Z] STDOUT:   - Local:        http://localhost:3000
+  - Environments: .env.local
+
+ ✓ Starting...
+[2025-10-18T07:18:40.063Z] STDOUT:  ✓ Ready in 1558ms
+[2025-10-18T07:18:41.487Z] STDOUT:  ✓ Compiled /api/health in 387ms (62 modules)
+[2025-10-18T07:18:41.726Z] STDOUT: {"timestamp":"2025-10-18T07:18:41.726Z","level":"info","message":"Health check completed","service":"procheff","version":"dev","environment":"development","context":{"status":"healthy","responseTime":179,"servicesCount":4}}
+[2025-10-18T07:18:42.932Z] STDERR: (node:35561) [DEP0005] DeprecationWarning: Buffer() is deprecated due to security and usability issues. Please use the Buffer.alloc(), Buffer.allocUnsafe(), or Buffer.from() methods instead.
+(Use `node --trace-deprecation ...` to show where the warning was created)
+[2025-10-18T07:18:42.933Z] STDOUT:  GET /api/health 200 in 640ms

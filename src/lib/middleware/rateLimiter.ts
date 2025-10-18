@@ -106,10 +106,7 @@ export function addRateLimitHeaders(
 
   headers.set("X-RateLimit-Limit", RATE_LIMIT_CONFIG.maxRequests.toString());
   headers.set("X-RateLimit-Remaining", result.remaining.toString());
-  headers.set(
-    "X-RateLimit-Reset",
-    Math.ceil(result.resetTime / 1000).toString()
-  );
+  headers.set("X-RateLimit-Reset", Math.ceil(result.resetTime / 1000).toString());
 
   return new Response(response.body, {
     status: response.status,
@@ -121,7 +118,9 @@ export function addRateLimitHeaders(
 /**
  * Rate limit middleware wrapper
  */
-export function withRateLimit(handler: Function): Function {
+export function withRateLimit(
+  handler: (request: Request, ...args: any[]) => Promise<Response>
+): (request: Request, ...args: any[]) => Promise<Response> {
   return async (request: Request, ...args: any[]) => {
     const rateLimitResult = checkRateLimit(request);
 
@@ -141,12 +140,8 @@ export function withRateLimit(handler: Function): Function {
             "Content-Type": "application/json",
             "X-RateLimit-Limit": RATE_LIMIT_CONFIG.maxRequests.toString(),
             "X-RateLimit-Remaining": "0",
-            "X-RateLimit-Reset": Math.ceil(
-              rateLimitResult.resetTime / 1000
-            ).toString(),
-            "Retry-After": Math.ceil(
-              (rateLimitResult.resetTime - Date.now()) / 1000
-            ).toString(),
+            "X-RateLimit-Reset": Math.ceil(rateLimitResult.resetTime / 1000).toString(),
+            "Retry-After": Math.ceil((rateLimitResult.resetTime - Date.now()) / 1000).toString(),
           },
         }
       );

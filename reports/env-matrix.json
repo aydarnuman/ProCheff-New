@@ -1,0 +1,159 @@
+{
+  "timestamp": "2025-10-18T07:09:35.217Z",
+  "generator_version": "1.0",
+  "environments": {
+    "production": {
+      "profile_type": "production",
+      "active": false,
+      "variables": {
+        "NODE_ENV": "production",
+        "PORT": "3000",
+        "ANTHROPIC_API_KEY": "sk-ant-api03-***-masked",
+        "NEXTAUTH_SECRET": "prod-secret-***-masked",
+        "DB_URL_SECRET": "postgresql://prod-***-masked",
+        "NEXT_PUBLIC_DISABLE_AUTH": "false",
+        "LOG_LEVEL": "error",
+        "CACHE_TTL": "3600",
+        "RATE_LIMIT": "100"
+      },
+      "variable_count": 9,
+      "security_level": "medium"
+    },
+    "development": {
+      "profile_type": "development",
+      "active": true,
+      "variables": {
+        "NODE_ENV": "development",
+        "PORT": "3000",
+        "ANTHROPIC_API_KEY": "sk-ant-api03-***-masked",
+        "NEXTAUTH_SECRET": "dev-secret-***-masked",
+        "NEXT_PUBLIC_DISABLE_AUTH": "false",
+        "LOG_LEVEL": "debug",
+        "HOT_RELOAD": "true",
+        "CACHE_TTL": "60"
+      },
+      "variable_count": 8,
+      "security_level": "medium"
+    },
+    "test": {
+      "profile_type": "test",
+      "active": false,
+      "variables": {
+        "NODE_ENV": "test",
+        "PORT": "3001",
+        "ANTHROPIC_API_KEY": "test-key-***-masked",
+        "NEXTAUTH_SECRET": "test-secret-***-masked",
+        "NEXT_PUBLIC_DISABLE_AUTH": "true",
+        "LOG_LEVEL": "silent",
+        "CACHE_TTL": "0",
+        "TEST_TIMEOUT": "30000"
+      },
+      "variable_count": 8,
+      "security_level": "medium"
+    }
+  },
+  "profile_analysis": {
+    "production": {
+      "environment": "production",
+      "total_variables": 9,
+      "public_variables": 3,
+      "secret_variables": 4,
+      "config_profile": {
+        "logging": "minimal",
+        "caching": "aggressive",
+        "security": "strict",
+        "debugging": "disabled"
+      },
+      "validation_rules": {
+        "required_vars": [
+          "NODE_ENV",
+          "PORT"
+        ],
+        "optional_vars": [
+          "LOG_LEVEL",
+          "CACHE_TTL"
+        ],
+        "forbidden_vars": [
+          "DEBUG",
+          "DEVELOPMENT"
+        ],
+        "secret_validation": "strict"
+      },
+      "risk_assessment": {
+        "score": 0,
+        "level": "low",
+        "issues": []
+      }
+    },
+    "development": {
+      "environment": "development",
+      "total_variables": 8,
+      "public_variables": 3,
+      "secret_variables": 3,
+      "config_profile": {
+        "logging": "verbose",
+        "caching": "minimal",
+        "security": "relaxed",
+        "debugging": "enabled"
+      },
+      "validation_rules": {
+        "required_vars": [
+          "NODE_ENV",
+          "PORT"
+        ],
+        "optional_vars": [
+          "LOG_LEVEL",
+          "CACHE_TTL"
+        ],
+        "forbidden_vars": [],
+        "secret_validation": "relaxed"
+      },
+      "risk_assessment": {
+        "score": 0,
+        "level": "low",
+        "issues": []
+      }
+    },
+    "test": {
+      "environment": "test",
+      "total_variables": 8,
+      "public_variables": 3,
+      "secret_variables": 3,
+      "config_profile": {
+        "logging": "silent",
+        "caching": "disabled",
+        "security": "bypass",
+        "debugging": "enabled"
+      },
+      "validation_rules": {
+        "required_vars": [
+          "NODE_ENV",
+          "PORT"
+        ],
+        "optional_vars": [
+          "LOG_LEVEL",
+          "CACHE_TTL"
+        ],
+        "forbidden_vars": [],
+        "secret_validation": "relaxed"
+      },
+      "risk_assessment": {
+        "score": 0,
+        "level": "low",
+        "issues": []
+      }
+    }
+  },
+  "security_scan": {
+    "masked_values": 7,
+    "exposed_secrets": [],
+    "secure_profile": true,
+    "scan_timestamp": "2025-10-18T07:09:35.219Z"
+  },
+  "compliance": {
+    "env_separation": true,
+    "config_validation": true,
+    "secret_management": false,
+    "compliance_score": 100
+  }
+}

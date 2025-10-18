@@ -40,9 +40,7 @@ class RequestTracker {
     this.metrics.endTime = Date.now();
     this.metrics.duration = this.metrics.endTime - this.metrics.startTime;
     this.metrics.statusCode = response.status;
-    this.metrics.contentLength = parseInt(
-      response.headers.get("content-length") || "0"
-    );
+    this.metrics.contentLength = parseInt(response.headers.get("content-length") || "0");
 
     // Metrics'i store et
     const key = `${this.metrics.method}:${this.metrics.endpoint}`;
@@ -133,9 +131,7 @@ class RequestTracker {
 /**
  * Monitoring middleware wrapper
  */
-export function withMonitoring(
-  handler: (request: Request, ...args: any[]) => Promise<Response>
-) {
+export function withMonitoring(handler: (request: Request, ...args: any[]) => Promise<Response>) {
   return async (request: Request, ...args: any[]): Promise<Response> => {
     const tracker = new RequestTracker(request);
 
@@ -186,9 +182,7 @@ export function getMetricsSummary(): Record<
         durations.reduce((a: number, b: number) => a + b, 0) / durations.length
       ),
       errorRate: Math.round((errors.length / metrics.length) * 100),
-      lastSeen: new Date(
-        Math.max(...metrics.map((m: RequestMetrics) => m.endTime!))
-      ).toISOString(),
+      lastSeen: new Date(Math.max(...metrics.map((m: RequestMetrics) => m.endTime!))).toISOString(),
     };
   });
 

@@ -20,18 +20,10 @@ async function handleOfferCalculation(request: Request): Promise<Response> {
     if (typeof laborCost !== "number" || laborCost <= 0) {
       errors.laborCost = "Must be a positive number";
     }
-    if (
-      typeof overheadRate !== "number" ||
-      overheadRate < 0 ||
-      overheadRate > 1
-    ) {
+    if (typeof overheadRate !== "number" || overheadRate < 0 || overheadRate > 1) {
       errors.overheadRate = "Must be between 0 and 1";
     }
-    if (
-      typeof profitMargin !== "number" ||
-      profitMargin < 0 ||
-      profitMargin > 1
-    ) {
+    if (typeof profitMargin !== "number" || profitMargin < 0 || profitMargin > 1) {
       errors.profitMargin = "Must be between 0 and 1";
     }
 

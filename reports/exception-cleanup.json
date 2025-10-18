@@ -1,0 +1,73 @@
+{
+  "timestamp": "2025-10-18T07:10:33.561Z",
+  "manager_version": "1.0",
+  "before_cleanup": {
+    "total_rules": 5,
+    "active_rules": 5,
+    "expired_rules": 1
+  },
+  "cleanup_process": [
+    {
+      "action": "kept",
+      "rule_id": "build-warning-buffer-deprecation",
+      "rule_type": "warning_suppression",
+      "reason": "still_valid",
+      "expiry_date": "2025-11-15T00:00:00.000Z",
+      "timestamp": "2025-10-18T07:10:33.562Z"
+    },
+    {
+      "action": "kept",
+      "rule_id": "test-flaky-timeout",
+      "rule_type": "test_retry",
+      "reason": "still_valid",
+      "expiry_date": "2025-10-25T00:00:00.000Z",
+      "timestamp": "2025-10-18T07:10:33.562Z"
+    },
+    {
+      "action": "kept",
+      "rule_id": "css-import-warning",
+      "rule_type": "style_warning",
+      "reason": "still_valid",
+      "expiry_date": "2025-10-20T00:00:00.000Z",
+      "timestamp": "2025-10-18T07:10:33.562Z"
+    },
+    {
+      "action": "kept",
+      "rule_id": "health-check-skip",
+      "rule_type": "health_exception",
+      "reason": "still_valid",
+      "expiry_date": "2025-12-18T00:00:00.000Z",
+      "timestamp": "2025-10-18T07:10:33.562Z"
+    },
+    {
+      "action": "removed",
+      "rule_id": "legacy-alert-suppression",
+      "rule_type": "alert_suppression",
+      "reason": "expired",
+      "expiry_date": "2025-10-01T00:00:00.000Z",
+      "days_overdue": 18,
+      "timestamp": "2025-10-18T07:10:33.562Z"
+    }
+  ],
+  "after_cleanup": {
+    "total_rules": 4,
+    "active_rules": 4,
+    "removed_rules": 1
+  },
+  "expiry_analysis": {
+    "rules_with_expiry": 5,
+    "rules_without_expiry": 0,
+    "expiring_soon": [
+      {
+        "id": "test-flaky-timeout",
+        "expiry_date": "2025-10-25T00:00:00.000Z",
+        "days_remaining": 7
+      },
+      {
+        "id": "css-import-warning",
+        "expiry_date": "2025-10-20T00:00:00.000Z",
+        "days_remaining": 2
+      }
+    ]
+  }
+}

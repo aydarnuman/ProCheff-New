@@ -1,0 +1,41 @@
+{
+  "timestamp": "2025-10-18T07:23:07.243Z",
+  "test_type": "hot_reload_determinism",
+  "target_file": "/Users/numanaydar/Desktop/ProCheff-New/src/app/page.tsx",
+  "total_tests": 3,
+  "results": [
+    {
+      "test_number": 1,
+      "success": true,
+      "reload_time_ms": 1549,
+      "server_response_code": 200,
+      "file_changed": true,
+      "timestamp": "2025-10-18T07:23:08.844Z",
+      "details": "File updated and server responded with 200"
+    },
+    {
+      "test_number": 2,
+      "success": true,
+      "reload_time_ms": 1536,
+      "server_response_code": 200,
+      "file_changed": true,
+      "timestamp": "2025-10-18T07:23:11.381Z",
+      "details": "File updated and server responded with 200"
+    },
+    {
+      "test_number": 3,
+      "success": true,
+      "reload_time_ms": 1530,
+      "server_response_code": 200,
+      "file_changed": true,
+      "timestamp": "2025-10-18T07:23:13.914Z",
+      "details": "File updated and server responded with 200"
+    }
+  ],
+  "summary": {
+    "successful_updates": 3,
+    "failed_updates": 0,
+    "deterministic": true,
+    "average_reload_time": 1538
+  }
+}

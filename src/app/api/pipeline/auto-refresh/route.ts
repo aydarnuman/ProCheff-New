@@ -16,14 +16,10 @@ export async function POST() {
     const averages = calculateAveragePrices(prices);
 
     // 2. Gramaj oranlarına göre malzeme maliyetini hesapla (şartname sabit)
-    const rice =
-      averages.find((p) => p.product.includes("Pirinç"))?.average ?? 42;
-    const meat =
-      averages.find((p) => p.product.includes("Dana Kıyma"))?.average ?? 187;
-    const onion =
-      averages.find((p) => p.product.includes("Soğan"))?.average ?? 15;
-    const oil =
-      averages.find((p) => p.product.includes("Ayçiçek Yağı"))?.average ?? 85;
+    const rice = averages.find((p) => p.product.includes("Pirinç"))?.average ?? 42;
+    const meat = averages.find((p) => p.product.includes("Dana Kıyma"))?.average ?? 187;
+    const onion = averages.find((p) => p.product.includes("Soğan"))?.average ?? 15;
+    const oil = averages.find((p) => p.product.includes("Ayçiçek Yağı"))?.average ?? 85;
 
     // Gramaj oranları sabit (KİK spesifikasyonu)
     const materialCost = rice * 0.15 + meat * 0.3 + onion * 0.08 + oil * 0.05;

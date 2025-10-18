@@ -1,0 +1,1454 @@
+{
+  "scan_timestamp": "2025-10-18T06:34:47.423Z",
+  "scan_status": "warning",
+  "privacy_summary": {
+    "total_files_scanned": 130,
+    "sensitive_files_found": 25,
+    "total_violations": 143,
+    "risk_level": "high"
+  },
+  "violations": [
+    {
+      "file": ".env.local",
+      "line": 1,
+      "category": "api_keys",
+      "pattern_type": "API Keys / Secrets",
+      "matched_text": "API**************************************************************************************************************AAA",
+      "context": "ANTHROPIC_[REDACTED]",
+      "severity": "high",
+      "recommendation": "Store in environment variables or secure key vault"
+    },
+    {
+      "file": ".vscode/api-tests.http",
+      "line": 5,
+      "category": "database",
+      "pattern_type": "Database Credentials",
+      "matched_text": "hos**************lth",
+      "context": "GET http://local[REDACTED]",
+      "severity": "high",
+      "recommendation": "Use environment variables for database credentials"
+    },
+    {
+      "file": ".vscode/api-tests.http",
+      "line": 10,
+      "category": "database",
+      "pattern_type": "Database Credentials",
+      "matched_text": "hos**************ude",
+      "context": "POST http://local[REDACTED]",
+      "severity": "high",
+      "recommendation": "Use environment variables for database credentials"
+    },
+    {
+      "file": ".vscode/api-tests.http",
+      "line": 20,
+      "category": "database",
+      "pattern_type": "Database Credentials",
+      "matched_text": "hos********************yze",
+      "context": "POST http://local[REDACTED]",
+      "severity": "high",
+      "recommendation": "Use environment variables for database credentials"
+    },
+    {
+      "file": ".vscode/api-tests.http",
+      "line": 31,
+      "category": "database",
+      "pattern_type": "Database Credentials",
+      "matched_text": "hos*************************************************ros",
+      "context": "GET http://local[REDACTED]",
+      "severity": "high",
+      "recommendation": "Use environment variables for database credentials"
+    },
+    {
+      "file": ".vscode/api-tests.http",
+      "line": 36,
+      "category": "database",
+      "pattern_type": "Database Credentials",
+      "matched_text": "hos******************alc",
+      "context": "POST http://local[REDACTED]",
+      "severity": "high",
+      "recommendation": "Use environment variables for database credentials"
+    },
+    {
+      "file": ".vscode/api-tests.http",
+      "line": 50,
+      "category": "database",
+      "pattern_type": "Database Credentials",
+      "matched_text": "hos************************ate",
+      "context": "POST http://local[REDACTED]",
+      "severity": "high",
+      "recommendation": "Use environment variables for database credentials"
+    },
+    {
+      "file": ".vscode/extensions.json",
+      "line": 27,
+      "category": "database",
+      "pattern_type": "Database Credentials",
+      "matched_text": "use**************ens",
+      "context": "        \"[REDACTED]\",",
+      "severity": "high",
+      "recommendation": "Use environment variables for database credentials"
+    },
+    {
+      "file": ".vscode/launch.json",
+      "line": 22,
+      "category": "database",
+      "pattern_type": "Database Credentials",
+      "matched_text": "hos***000",
+      "context": "            \"url\": \"http://local[REDACTED]\",",
+      "severity": "high",
+      "recommendation": "Use environment variables for database credentials"
+    },
+    {
+      "file": ".vscode/tasks.json",
+      "line": 169,
+      "category": "database",
+      "pattern_type": "Database Credentials",
+      "matched_text": "hos**************lth",
+      "context": "      \"command\": \"curl -X GET http://local[REDACTED]\",",
+      "severity": "high",
+      "recommendation": "Use environment variables for database credentials"
+    },
+    {
+      "file": ".vscode/tasks.json",
+      "line": 178,
+      "category": "database",
+      "pattern_type": "Database Credentials",
+      "matched_text": "hos**************lth",
+      "context": "                        \"command\": \"curl -X GET http://local[REDACTED]\",",
+      "severity": "high",
+      "recommendation": "Use environment variables for database credentials"
+    },
+    {
+      "file": "DEVELOPMENT.md",
+      "line": 126,
+      "category": "database",
+      "pattern_type": "Database Credentials",
+      "matched_text": "Use*********nce",
+      "context": "- [REDACTED] tracking",
+      "severity": "high",
+      "recommendation": "Use environment variables for database credentials"
+    },
+    {
+      "file": "package.json",
+      "line": 28,
+      "category": "database",
+      "pattern_type": "Database Credentials",
+      "matched_text": "hos**************lth",
+      "context": "    \"health\": \"curl -f http://local[REDACTED] || exit 1\",",
+      "severity": "high",
+      "recommendation": "Use environment variables for database credentials"
+    },
+    {
+      "file": "reports/nightly-report-2025-10-18.json",
+      "line": 8,
+      "category": "database",
+      "pattern_type": "Database Credentials",
+      "matched_text": "********",
+      "context": "    \"[REDACTED]\": \"Numan-MacBook-Pro.local\",",
+      "severity": "high",
+      "recommendation": "Use environment variables for database credentials"
+    },
+    {
+      "file": "scripts/generate-api-docs.js",
+      "line": 72,
+      "category": "database",
+      "pattern_type": "Database Credentials",
+      "matched_text": "hos****00$",
+      "context": "        markdown += `${method} http://local[REDACTED]{route.endpoint}\\n`;",
+      "severity": "high",
+      "recommendation": "Use environment variables for database credentials"
+    },
+    {
+      "file": "scripts/generate-api-docs.js",
+      "line": 74,
+      "category": "database",
+      "pattern_type": "Database Credentials",
+      "matched_text": "hos****00$",
+      "context": "        markdown += `${method} http://local[REDACTED]{route.endpoint}\\n`;",
+      "severity": "high",
+      "recommendation": "Use environment variables for database credentials"
+    },
+    {
+      "file": "scripts/generate-api-docs.js",
+      "line": 98,
+      "category": "database",
+      "pattern_type": "Database Credentials",
+      "matched_text": "hos****00$",
+      "context": "        markdown += `${method} http://local[REDACTED]{route.endpoint}\\n\\n`;",
+      "severity": "high",
+      "recommendation": "Use environment variables for database credentials"
+    },
+    {
+      "file": "scripts/generate-api-docs.js",
+      "line": 100,
+      "category": "database",
+      "pattern_type": "Database Credentials",
+      "matched_text": "hos****00$",
+      "context": "        markdown += `${method} http://local[REDACTED]{route.endpoint}\\n`;",
+      "severity": "high",
+      "recommendation": "Use environment variables for database credentials"
+    },
+    {
+      "file": "scripts/generate.js",
+      "line": 156,
+      "category": "database",
+      "pattern_type": "Database Credentials",
+      "matched_text": "*****",
+      "context": "  node scripts/generate.js api [REDACTED] --route=admin/users",
+      "severity": "high",
+      "recommendation": "Use environment variables for database credentials"
+    },
+    {
+      "file": "scripts/generate.js",
+      "line": 156,
+      "category": "database",
+      "pattern_type": "Database Credentials",
+      "matched_text": "*****",
+      "context": "  node scripts/generate.js api [REDACTED] --route=admin/users",
+      "severity": "high",
+      "recommendation": "Use environment variables for database credentials"
+    },
+    {
+      "file": "scripts/monitor.js",
+      "line": 20,
+      "category": "database",
+      "pattern_type": "Database Credentials",
+      "matched_text": "hos**************lth",
+      "context": "      const curl = spawn('curl', ['-s', '-f', 'http://local[REDACTED]']);",
+      "severity": "high",
+      "recommendation": "Use environment variables for database credentials"
+    },
+    {
+      "file": "scripts/nightly-report.js",
+      "line": 47,
+      "category": "database",
+      "pattern_type": "Database Credentials",
+      "matched_text": "hos***me:",
+      "context": "    [REDACTED] require('os').hostname(),",
+      "severity": "high",
+      "recommendation": "Use environment variables for database credentials"
+    },
+    {
+      "file": "scripts/nightly-report.js",
+      "line": 47,
+      "category": "database",
+      "pattern_type": "Database Credentials",
+      "matched_text": "hos*****(),",
+      "context": "    hostname: require('os').[REDACTED]",
+      "severity": "high",
+      "recommendation": "Use environment variables for database credentials"
+    },
+    {
+      "file": "scripts/nightly-report.js",
+      "line": 374,
+      "category": "database",
+      "pattern_type": "Database Credentials",
+      "matched_text": "********",
+      "context": "  console.log(`🏷️  Environment: ${report.environment.node_env.toUpperCase()} on ${report.environment.[REDACTED]}`);",
+      "severity": "high",
+      "recommendation": "Use environment variables for database credentials"
+    },
+    {
+      "file": "scripts/privacy-scanner.js",
+      "line": 23,
+      "category": "database",
+      "pattern_type": "Database Credentials",
+      "matched_text": "pas*******wd)",
+      "context": "        /(?:[REDACTED][\\s=:\"']*([^\"\\s'{}\\[\\]]+)/gi,",
+      "severity": "high",
+      "recommendation": "Use environment variables for database credentials"
+    },
+    {
+      "file": "scripts/privacy-scanner.js",
+      "line": 24,
+      "category": "database",
+      "pattern_type": "Database Credentials",
+      "matched_text": "use********er)",
+      "context": "        /(?:[REDACTED][\\s=:\"']*([^\"\\s'{}\\[\\]]+)/gi,",
+      "severity": "high",
+      "recommendation": "Use environment variables for database credentials"
+    },
+    {
+      "file": "scripts/privacy-scanner.js",
+      "line": 25,
+      "category": "database",
+      "pattern_type": "Database Credentials",
+      "matched_text": "hos********me)",
+      "context": "        /(?:[REDACTED][\\s=:\"']*([^\"\\s'{}\\[\\]]+)/gi,",
+      "severity": "high",
+      "recommendation": "Use environment variables for database credentials"
+    },
+    {
+      "file": "scripts/privacy-scanner.js",
+      "line": 66,
+      "category": "database",
+      "pattern_type": "Database Credentials",
+      "matched_text": "********",
+      "context": "      /local[REDACTED]",
+      "severity": "high",
+      "recommendation": "Use environment variables for database credentials"
+    },
+    {
+      "file": "scripts/privacy-scanner.js",
+      "line": 50,
+      "category": "private_keys",
+      "pattern_type": "Private Keys",
+      "matched_text": "---*************************---",
+      "context": "        /[REDACTED]/g,",
+      "severity": "high",
+      "recommendation": "Store private keys securely, never in code"
+    },
+    {
+      "file": "scripts/privacy-scanner.js",
+      "line": 51,
+      "category": "private_keys",
+      "pattern_type": "Private Keys",
+      "matched_text": "---************************---",
+      "context": "        /[REDACTED]/g",
+      "severity": "high",
+      "recommendation": "Store private keys securely, never in code"
+    },
+    {
+      "file": "scripts/privacy-scanner.js",
+      "line": 50,
+      "category": "private_keys",
+      "pattern_type": "Private Keys",
+      "matched_text": "---*************************---",
+      "context": "        /[REDACTED]/g,",
+      "severity": "high",
+      "recommendation": "Store private keys securely, never in code"
+    },
+    {
+      "file": "scripts/privacy-scanner.js",
+      "line": 51,
+      "category": "private_keys",
+      "pattern_type": "Private Keys",
+      "matched_text": "---************************---",
+      "context": "        /[REDACTED]/g",
+      "severity": "high",
+      "recommendation": "Store private keys securely, never in code"
+    },
+    {
+      "file": "scripts/setup-nightly.sh",
+      "line": 8,
+      "category": "database",
+      "pattern_type": "Database Credentials",
+      "matched_text": "****",
+      "context": "PROJECT_DIR=\"$(cd \"$(dirname \"$0\")/..\" && [REDACTED]\"",
+      "severity": "high",
+      "recommendation": "Use environment variables for database credentials"
+    },
+    {
+      "file": "scripts/setup-nightly.sh",
+      "line": 39,
+      "category": "database",
+      "pattern_type": "Database Credentials",
+      "matched_text": "hos***me)",
+      "context": "    # echo \"Nightly report failed on \\$([REDACTED] at \\$(date)\" | mail -s \"ProCheff Nightly Report Failed\" admin@example.com",
+      "severity": "high",
+      "recommendation": "Use environment variables for database credentials"
+    },
+    {
+      "file": "scripts/test-apis.js",
+      "line": 7,
+      "category": "database",
+      "pattern_type": "Database Credentials",
+      "matched_text": "hos***000",
+      "context": "const API_BASE = 'http://local[REDACTED]';",
+      "severity": "high",
+      "recommendation": "Use environment variables for database credentials"
+    },
+    {
+      "file": "server.log",
+      "line": 23,
+      "category": "database",
+      "pattern_type": "Database Credentials",
+      "matched_text": "Use*****************************************************************************32)",
+      "context": "    at onInvalidCandidate (/[REDACTED]",
+      "severity": "high",
+      "recommendation": "Use environment variables for database credentials"
+    },
+    {
+      "file": "server.log",
+      "line": 24,
+      "category": "database",
+      "pattern_type": "Database Credentials",
+      "matched_text": "Use******************************************************************************43)",
+      "context": "    at ge (/[REDACTED]",
+      "severity": "high",
+      "recommendation": "Use environment variables for database credentials"
+    },
+    {
+      "file": "server.log",
+      "line": 25,
+      "category": "database",
+      "pattern_type": "Database Credentials",
+      "matched_text": "Use***************************************************************************373",
+      "context": "    at /[REDACTED]",
+      "severity": "high",
+      "recommendation": "Use environment variables for database credentials"
+    },
+    {
+      "file": "server.log",
+      "line": 26,
+      "category": "database",
+      "pattern_type": "Database Credentials",
+      "matched_text": "Use****************************************************************************56)",
+      "context": "    at L (/[REDACTED]",
+      "severity": "high",
+      "recommendation": "Use environment variables for database credentials"
+    },
+    {
+      "file": "server.log",
+      "line": 27,
+      "category": "database",
+      "pattern_type": "Database Credentials",
+      "matched_text": "Use****************************************************************************72)",
+      "context": "    at Ie (/[REDACTED]",
+      "severity": "high",
+      "recommendation": "Use environment variables for database credentials"
+    },
+    {
+      "file": "server.log",
+      "line": 28,
+      "category": "database",
+      "pattern_type": "Database Credentials",
+      "matched_text": "Use****************************************************************************94)",
+      "context": "    at xi (/[REDACTED]",
+      "severity": "high",
+      "recommendation": "Use environment variables for database credentials"
+    },
+    {
+      "file": "server.log",
+      "line": 30,
+      "category": "database",
+      "pattern_type": "Database Credentials",
+      "matched_text": "Use****************************************************************************37)",
+      "context": "    at async Ai (/[REDACTED]",
+      "severity": "high",
+      "recommendation": "Use environment variables for database credentials"
+    },
+    {
+      "file": "server.log",
+      "line": 31,
+      "category": "database",
+      "pattern_type": "Database Credentials",
+      "matched_text": "Use*************************************************************************************84)",
+      "context": "    at async Ur (/[REDACTED]",
+      "severity": "high",
+      "recommendation": "Use environment variables for database credentials"
+    },
+    {
+      "file": "server.log",
+      "line": 32,
+      "category": "database",
+      "pattern_type": "Database Credentials",
+      "matched_text": "Use****************************************************************************************81)",
+      "context": "    at async ue (/[REDACTED]",
+      "severity": "high",
+      "recommendation": "Use environment variables for database credentials"
+    },
+    {
+      "file": "server.log",
+      "line": 33,
+      "category": "database",
+      "pattern_type": "Database Credentials",
+      "matched_text": "Use****************************************************************************************33)",
+      "context": "    at async Object.Once (/[REDACTED]",
+      "severity": "high",
+      "recommendation": "Use environment variables for database credentials"
+    },
+    {
+      "file": "server.log",
+      "line": 34,
+      "category": "database",
+      "pattern_type": "Database Credentials",
+      "matched_text": "Use*************************************************************************************************11)",
+      "context": "    at async LazyResult.runAsync (/[REDACTED]",
+      "severity": "high",
+      "recommendation": "Use environment variables for database credentials"
+    },
+    {
+      "file": "server.log",
+      "line": 35,
+      "category": "database",
+      "pattern_type": "Database Credentials",
+      "matched_text": "Use*****************************************************************************20)",
+      "context": "    at async Span.traceAsyncFn (/[REDACTED]",
+      "severity": "high",
+      "recommendation": "Use environment variables for database credentials"
+    },
+    {
+      "file": "server.log",
+      "line": 36,
+      "category": "database",
+      "pattern_type": "Database Credentials",
+      "matched_text": "Use**************************************************************************************************************:22",
+      "context": "    at async /[REDACTED]",
+      "severity": "high",
+      "recommendation": "Use environment variables for database credentials"
+    },
+    {
+      "file": "server.log",
+      "line": 37,
+      "category": "database",
+      "pattern_type": "Database Credentials",
+      "matched_text": "Use*****************************************************************************20)",
+      "context": "    at async Span.traceAsyncFn (/[REDACTED]",
+      "severity": "high",
+      "recommendation": "Use environment variables for database credentials"
+    },
+    {
+      "file": "server.log",
+      "line": 39,
+      "category": "database",
+      "pattern_type": "Database Credentials",
+      "matched_text": "Use***************************************************css",
+      "context": "Syntax error: tailwindcss: /[REDACTED] Cannot apply unknown utility class `bg-gray-900`. Are you using CSS modules or similar and missing `@reference`? https://tailwindcss.com/docs/functions-and-directives#reference-directive",
+      "severity": "high",
+      "recommendation": "Use environment variables for database credentials"
+    },
+    {
+      "file": "server.log",
+      "line": 46,
+      "category": "database",
+      "pattern_type": "Database Credentials",
+      "matched_text": "Use*****************************************************************************32)",
+      "context": "    at onInvalidCandidate (/[REDACTED]",
+      "severity": "high",
+      "recommendation": "Use environment variables for database credentials"
+    },
+    {
+      "file": "server.log",
+      "line": 47,
+      "category": "database",
+      "pattern_type": "Database Credentials",
+      "matched_text": "Use******************************************************************************43)",
+      "context": "    at ge (/[REDACTED]",
+      "severity": "high",
+      "recommendation": "Use environment variables for database credentials"
+    },
+    {
+      "file": "server.log",
+      "line": 48,
+      "category": "database",
+      "pattern_type": "Database Credentials",
+      "matched_text": "Use***************************************************************************373",
+      "context": "    at /[REDACTED]",
+      "severity": "high",
+      "recommendation": "Use environment variables for database credentials"
+    },
+    {
+      "file": "server.log",
+      "line": 49,
+      "category": "database",
+      "pattern_type": "Database Credentials",
+      "matched_text": "Use****************************************************************************56)",
+      "context": "    at L (/[REDACTED]",
+      "severity": "high",
+      "recommendation": "Use environment variables for database credentials"
+    },
+    {
+      "file": "server.log",
+      "line": 50,
+      "category": "database",
+      "pattern_type": "Database Credentials",
+      "matched_text": "Use****************************************************************************72)",
+      "context": "    at Ie (/[REDACTED]",
+      "severity": "high",
+      "recommendation": "Use environment variables for database credentials"
+    },
+    {
+      "file": "server.log",
+      "line": 51,
+      "category": "database",
+      "pattern_type": "Database Credentials",
+      "matched_text": "Use****************************************************************************94)",
+      "context": "    at xi (/[REDACTED]",
+      "severity": "high",
+      "recommendation": "Use environment variables for database credentials"
+    },
+    {
+      "file": "server.log",
+      "line": 52,
+      "category": "database",
+      "pattern_type": "Database Credentials",
+      "matched_text": "Use****************************************************************************37)",
+      "context": "    at async Ai (/[REDACTED]",
+      "severity": "high",
+      "recommendation": "Use environment variables for database credentials"
+    },
+    {
+      "file": "server.log",
+      "line": 53,
+      "category": "database",
+      "pattern_type": "Database Credentials",
+      "matched_text": "Use*************************************************************************************84)",
+      "context": "    at async Ur (/[REDACTED]",
+      "severity": "high",
+      "recommendation": "Use environment variables for database credentials"
+    },
+    {
+      "file": "server.log",
+      "line": 54,
+      "category": "database",
+      "pattern_type": "Database Credentials",
+      "matched_text": "Use****************************************************************************************81)",
+      "context": "    at async ue (/[REDACTED]",
+      "severity": "high",
+      "recommendation": "Use environment variables for database credentials"
+    },
+    {
+      "file": "server.log",
+      "line": 55,
+      "category": "database",
+      "pattern_type": "Database Credentials",
+      "matched_text": "Use****************************************************************************************52)",
+      "context": "    at async Object.Once (/[REDACTED]",
+      "severity": "high",
+      "recommendation": "Use environment variables for database credentials"
+    },
+    {
+      "file": "server.log",
+      "line": 56,
+      "category": "database",
+      "pattern_type": "Database Credentials",
+      "matched_text": "Use*************************************************************************************************11)",
+      "context": "    at async LazyResult.runAsync (/[REDACTED]",
+      "severity": "high",
+      "recommendation": "Use environment variables for database credentials"
+    },
+    {
+      "file": "server.log",
+      "line": 57,
+      "category": "database",
+      "pattern_type": "Database Credentials",
+      "matched_text": "Use*****************************************************************************20)",
+      "context": "    at async Span.traceAsyncFn (/[REDACTED]",
+      "severity": "high",
+      "recommendation": "Use environment variables for database credentials"
+    },
+    {
+      "file": "server.log",
+      "line": 58,
+      "category": "database",
+      "pattern_type": "Database Credentials",
+      "matched_text": "Use**************************************************************************************************************:22",
+      "context": "    at async /[REDACTED]",
+      "severity": "high",
+      "recommendation": "Use environment variables for database credentials"
+    },
+    {
+      "file": "server.log",
+      "line": 59,
+      "category": "database",
+      "pattern_type": "Database Credentials",
+      "matched_text": "Use*****************************************************************************20)",
+      "context": "    at async Span.traceAsyncFn (/[REDACTED]",
+      "severity": "high",
+      "recommendation": "Use environment variables for database credentials"
+    },
+    {
+      "file": "server.log",
+      "line": 62,
+      "category": "database",
+      "pattern_type": "Database Credentials",
+      "matched_text": "Use***************************************************css",
+      "context": "Syntax error: tailwindcss: /[REDACTED] Cannot apply unknown utility class `bg-gray-900`. Are you using CSS modules or similar and missing `@reference`? https://tailwindcss.com/docs/functions-and-directives#reference-directive",
+      "severity": "high",
+      "recommendation": "Use environment variables for database credentials"
+    },
+    {
+      "file": "server.log",
+      "line": 72,
+      "category": "database",
+      "pattern_type": "Database Credentials",
+      "matched_text": "Use*****************************************************************************32)",
+      "context": "    at onInvalidCandidate (/[REDACTED]",
+      "severity": "high",
+      "recommendation": "Use environment variables for database credentials"
+    },
+    {
+      "file": "server.log",
+      "line": 73,
+      "category": "database",
+      "pattern_type": "Database Credentials",
+      "matched_text": "Use******************************************************************************43)",
+      "context": "    at ge (/[REDACTED]",
+      "severity": "high",
+      "recommendation": "Use environment variables for database credentials"
+    },
+    {
+      "file": "server.log",
+      "line": 74,
+      "category": "database",
+      "pattern_type": "Database Credentials",
+      "matched_text": "Use***************************************************************************373",
+      "context": "    at /[REDACTED]",
+      "severity": "high",
+      "recommendation": "Use environment variables for database credentials"
+    },
+    {
+      "file": "server.log",
+      "line": 75,
+      "category": "database",
+      "pattern_type": "Database Credentials",
+      "matched_text": "Use****************************************************************************56)",
+      "context": "    at L (/[REDACTED]",
+      "severity": "high",
+      "recommendation": "Use environment variables for database credentials"
+    },
+    {
+      "file": "server.log",
+      "line": 76,
+      "category": "database",
+      "pattern_type": "Database Credentials",
+      "matched_text": "Use****************************************************************************72)",
+      "context": "    at Ie (/[REDACTED]",
+      "severity": "high",
+      "recommendation": "Use environment variables for database credentials"
+    },
+    {
+      "file": "server.log",
+      "line": 77,
+      "category": "database",
+      "pattern_type": "Database Credentials",
+      "matched_text": "Use****************************************************************************94)",
+      "context": "    at xi (/[REDACTED]",
+      "severity": "high",
+      "recommendation": "Use environment variables for database credentials"
+    },
+    {
+      "file": "server.log",
+      "line": 79,
+      "category": "database",
+      "pattern_type": "Database Credentials",
+      "matched_text": "Use****************************************************************************37)",
+      "context": "    at async Ai (/[REDACTED]",
+      "severity": "high",
+      "recommendation": "Use environment variables for database credentials"
+    },
+    {
+      "file": "server.log",
+      "line": 80,
+      "category": "database",
+      "pattern_type": "Database Credentials",
+      "matched_text": "Use*************************************************************************************84)",
+      "context": "    at async Ur (/[REDACTED]",
+      "severity": "high",
+      "recommendation": "Use environment variables for database credentials"
+    },
+    {
+      "file": "server.log",
+      "line": 81,
+      "category": "database",
+      "pattern_type": "Database Credentials",
+      "matched_text": "Use****************************************************************************************81)",
+      "context": "    at async ue (/[REDACTED]",
+      "severity": "high",
+      "recommendation": "Use environment variables for database credentials"
+    },
+    {
+      "file": "server.log",
+      "line": 82,
+      "category": "database",
+      "pattern_type": "Database Credentials",
+      "matched_text": "Use****************************************************************************************52)",
+      "context": "    at async Object.Once (/[REDACTED]",
+      "severity": "high",
+      "recommendation": "Use environment variables for database credentials"
+    },
+    {
+      "file": "server.log",
+      "line": 83,
+      "category": "database",
+      "pattern_type": "Database Credentials",
+      "matched_text": "Use*************************************************************************************************11)",
+      "context": "    at async LazyResult.runAsync (/[REDACTED]",
+      "severity": "high",
+      "recommendation": "Use environment variables for database credentials"
+    },
+    {
+      "file": "server.log",
+      "line": 84,
+      "category": "database",
+      "pattern_type": "Database Credentials",
+      "matched_text": "Use*****************************************************************************20)",
+      "context": "    at async Span.traceAsyncFn (/[REDACTED]",
+      "severity": "high",
+      "recommendation": "Use environment variables for database credentials"
+    },
+    {
+      "file": "server.log",
+      "line": 85,
+      "category": "database",
+      "pattern_type": "Database Credentials",
+      "matched_text": "Use**************************************************************************************************************:22",
+      "context": "    at async /[REDACTED]",
+      "severity": "high",
+      "recommendation": "Use environment variables for database credentials"
+    },
+    {
+      "file": "server.log",
+      "line": 86,
+      "category": "database",
+      "pattern_type": "Database Credentials",
+      "matched_text": "Use*****************************************************************************20)",
+      "context": "    at async Span.traceAsyncFn (/[REDACTED]",
+      "severity": "high",
+      "recommendation": "Use environment variables for database credentials"
+    },
+    {
+      "file": "server.log",
+      "line": 88,
+      "category": "database",
+      "pattern_type": "Database Credentials",
+      "matched_text": "Use***************************************************css",
+      "context": "Syntax error: tailwindcss: /[REDACTED] Cannot apply unknown utility class `bg-gray-900`. Are you using CSS modules or similar and missing `@reference`? https://tailwindcss.com/docs/functions-and-directives#reference-directive",
+      "severity": "high",
+      "recommendation": "Use environment variables for database credentials"
+    },
+    {
+      "file": "server.log",
+      "line": 97,
+      "category": "database",
+      "pattern_type": "Database Credentials",
+      "matched_text": "Use***************************************************sx\u001b",
+      "context": "    ,-[\u001b[36;1;4m/[REDACTED][0m:20:1]",
+      "severity": "high",
+      "recommendation": "Use environment variables for database credentials"
+    },
+    {
+      "file": "server.log",
+      "line": 114,
+      "category": "database",
+      "pattern_type": "Database Credentials",
+      "matched_text": "Use***************************************************sx\u001b",
+      "context": "    ,-[\u001b[36;1;4m/[REDACTED][0m:20:1]",
+      "severity": "high",
+      "recommendation": "Use environment variables for database credentials"
+    },
+    {
+      "file": "server.log",
+      "line": 140,
+      "category": "database",
+      "pattern_type": "Database Credentials",
+      "matched_text": "Use***************************************************sx\u001b",
+      "context": "    ,-[\u001b[36;1;4m/[REDACTED][0m:20:1]",
+      "severity": "high",
+      "recommendation": "Use environment variables for database credentials"
+    },
+    {
+      "file": "server.log",
+      "line": 168,
+      "category": "database",
+      "pattern_type": "Database Credentials",
+      "matched_text": "Use***************************************************sx\u001b",
+      "context": "    ,-[\u001b[36;1;4m/[REDACTED][0m:20:1]",
+      "severity": "high",
+      "recommendation": "Use environment variables for database credentials"
+    },
+    {
+      "file": "server.log",
+      "line": 192,
+      "category": "database",
+      "pattern_type": "Database Credentials",
+      "matched_text": "Use***************************************************sx\u001b",
+      "context": "    ,-[\u001b[36;1;4m/[REDACTED][0m:20:1]",
+      "severity": "high",
+      "recommendation": "Use environment variables for database credentials"
+    },
+    {
+      "file": "server.log",
+      "line": 218,
+      "category": "database",
+      "pattern_type": "Database Credentials",
+      "matched_text": "Use***************************************************sx\u001b",
+      "context": "    ,-[\u001b[36;1;4m/[REDACTED][0m:20:1]",
+      "severity": "high",
+      "recommendation": "Use environment variables for database credentials"
+    },
+    {
+      "file": "server.log",
+      "line": 454,
+      "category": "database",
+      "pattern_type": "Database Credentials",
+      "matched_text": "Use***************************************************sx\u001b",
+      "context": "    ,-[\u001b[36;1;4m/[REDACTED][0m:20:1]",
+      "severity": "high",
+      "recommendation": "Use environment variables for database credentials"
+    },
+    {
+      "file": "server.log",
+      "line": 481,
+      "category": "database",
+      "pattern_type": "Database Credentials",
+      "matched_text": "Use***************************************************sx\u001b",
+      "context": "    ,-[\u001b[36;1;4m/[REDACTED][0m:20:1]",
+      "severity": "high",
+      "recommendation": "Use environment variables for database credentials"
+    },
+    {
+      "file": "server.log",
+      "line": 506,
+      "category": "database",
+      "pattern_type": "Database Credentials",
+      "matched_text": "Use***************************************************sx\u001b",
+      "context": "    ,-[\u001b[36;1;4m/[REDACTED][0m:20:1]",
+      "severity": "high",
+      "recommendation": "Use environment variables for database credentials"
+    },
+    {
+      "file": "server.log",
+      "line": 523,
+      "category": "database",
+      "pattern_type": "Database Credentials",
+      "matched_text": "Use***************************************************sx\u001b",
+      "context": "    ,-[\u001b[36;1;4m/[REDACTED][0m:20:1]",
+      "severity": "high",
+      "recommendation": "Use environment variables for database credentials"
+    },
+    {
+      "file": "server.log",
+      "line": 541,
+      "category": "database",
+      "pattern_type": "Database Credentials",
+      "matched_text": "Use***************************************************sx\u001b",
+      "context": "    ,-[\u001b[36;1;4m/[REDACTED][0m:20:1]",
+      "severity": "high",
+      "recommendation": "Use environment variables for database credentials"
+    },
+    {
+      "file": "server.log",
+      "line": 555,
+      "category": "database",
+      "pattern_type": "Database Credentials",
+      "matched_text": "Use*************************************************************************************************************Set",
+      "context": "<w> [webpack.cache.PackFileCacheStrategy] Skipped not serializable cache item 'Compilation/modules|/[REDACTED][1].rules[13].oneOf[12].use[2]!/Users/numanaydar/Desktop/ProCheff-New/node_modules/next/dist/build/webpack/loaders/postcss-loader/src/index.js??ruleSet[1].rules[13].oneOf[12].use[3]!/Users/numanaydar/Desktop/ProCheff-New/src/app/globals.css': No serializer registered for PostCSSSyntaxError",
+      "severity": "high",
+      "recommendation": "Use environment variables for database credentials"
+    },
+    {
+      "file": "server.log",
+      "line": 555,
+      "category": "database",
+      "pattern_type": "Database Credentials",
+      "matched_text": "Use*****************************************************************************************************************Set",
+      "context": "<w> [webpack.cache.PackFileCacheStrategy] Skipped not serializable cache item 'Compilation/modules|/Users/numanaydar/Desktop/ProCheff-New/node_modules/next/dist/build/webpack/loaders/css-loader/src/index.js??ruleSet[1].rules[13].oneOf[12].use[2]!/[REDACTED][1].rules[13].oneOf[12].use[3]!/Users/numanaydar/Desktop/ProCheff-New/src/app/globals.css': No serializer registered for PostCSSSyntaxError",
+      "severity": "high",
+      "recommendation": "Use environment variables for database credentials"
+    },
+    {
+      "file": "server.log",
+      "line": 555,
+      "category": "database",
+      "pattern_type": "Database Credentials",
+      "matched_text": "Use***************************************************css",
+      "context": "<w> [webpack.cache.PackFileCacheStrategy] Skipped not serializable cache item 'Compilation/modules|/Users/numanaydar/Desktop/ProCheff-New/node_modules/next/dist/build/webpack/loaders/css-loader/src/index.js??ruleSet[1].rules[13].oneOf[12].use[2]!/Users/numanaydar/Desktop/ProCheff-New/node_modules/next/dist/build/webpack/loaders/postcss-loader/src/index.js??ruleSet[1].rules[13].oneOf[12].use[3]!/[REDACTED]': No serializer registered for PostCSSSyntaxError",
+      "severity": "high",
+      "recommendation": "Use environment variables for database credentials"
+    },
+    {
+      "file": "server.log",
+      "line": 560,
+      "category": "database",
+      "pattern_type": "Database Credentials",
+      "matched_text": "Use***************************************************sx\u001b",
+      "context": "    ,-[\u001b[36;1;4m/[REDACTED][0m:20:1]",
+      "severity": "high",
+      "recommendation": "Use environment variables for database credentials"
+    },
+    {
+      "file": "server.log",
+      "line": 577,
+      "category": "database",
+      "pattern_type": "Database Credentials",
+      "matched_text": "Use***************************************************sx\u001b",
+      "context": "    ,-[\u001b[36;1;4m/[REDACTED][0m:20:1]",
+      "severity": "high",
+      "recommendation": "Use environment variables for database credentials"
+    },
+    {
+      "file": "server.log",
+      "line": 594,
+      "category": "database",
+      "pattern_type": "Database Credentials",
+      "matched_text": "Use***************************************************sx\u001b",
+      "context": "    ,-[\u001b[36;1;4m/[REDACTED][0m:20:1]",
+      "severity": "high",
+      "recommendation": "Use environment variables for database credentials"
+    },
+    {
+      "file": "server.log",
+      "line": 610,
+      "category": "database",
+      "pattern_type": "Database Credentials",
+      "matched_text": "Use*****************************************************************************32)",
+      "context": "    at onInvalidCandidate (/[REDACTED]",
+      "severity": "high",
+      "recommendation": "Use environment variables for database credentials"
+    },
+    {
+      "file": "server.log",
+      "line": 611,
+      "category": "database",
+      "pattern_type": "Database Credentials",
+      "matched_text": "Use******************************************************************************43)",
+      "context": "    at ge (/[REDACTED]",
+      "severity": "high",
+      "recommendation": "Use environment variables for database credentials"
+    },
+    {
+      "file": "server.log",
+      "line": 612,
+      "category": "database",
+      "pattern_type": "Database Credentials",
+      "matched_text": "Use***************************************************************************373",
+      "context": "    at /[REDACTED]",
+      "severity": "high",
+      "recommendation": "Use environment variables for database credentials"
+    },
+    {
+      "file": "server.log",
+      "line": 613,
+      "category": "database",
+      "pattern_type": "Database Credentials",
+      "matched_text": "Use****************************************************************************56)",
+      "context": "    at L (/[REDACTED]",
+      "severity": "high",
+      "recommendation": "Use environment variables for database credentials"
+    },
+    {
+      "file": "server.log",
+      "line": 614,
+      "category": "database",
+      "pattern_type": "Database Credentials",
+      "matched_text": "Use****************************************************************************72)",
+      "context": "    at Ie (/[REDACTED]",
+      "severity": "high",
+      "recommendation": "Use environment variables for database credentials"
+    },
+    {
+      "file": "server.log",
+      "line": 615,
+      "category": "database",
+      "pattern_type": "Database Credentials",
+      "matched_text": "Use****************************************************************************94)",
+      "context": "    at xi (/[REDACTED]",
+      "severity": "high",
+      "recommendation": "Use environment variables for database credentials"
+    },
+    {
+      "file": "server.log",
+      "line": 616,
+      "category": "database",
+      "pattern_type": "Database Credentials",
+      "matched_text": "Use****************************************************************************37)",
+      "context": "    at async Ai (/[REDACTED]",
+      "severity": "high",
+      "recommendation": "Use environment variables for database credentials"
+    },
+    {
+      "file": "server.log",
+      "line": 617,
+      "category": "database",
+      "pattern_type": "Database Credentials",
+      "matched_text": "Use*************************************************************************************84)",
+      "context": "    at async Ur (/[REDACTED]",
+      "severity": "high",
+      "recommendation": "Use environment variables for database credentials"
+    },
+    {
+      "file": "server.log",
+      "line": 618,
+      "category": "database",
+      "pattern_type": "Database Credentials",
+      "matched_text": "Use****************************************************************************************81)",
+      "context": "    at async ue (/[REDACTED]",
+      "severity": "high",
+      "recommendation": "Use environment variables for database credentials"
+    },
+    {
+      "file": "server.log",
+      "line": 619,
+      "category": "database",
+      "pattern_type": "Database Credentials",
+      "matched_text": "Use****************************************************************************************52)",
+      "context": "    at async Object.Once (/[REDACTED]",
+      "severity": "high",
+      "recommendation": "Use environment variables for database credentials"
+    },
+    {
+      "file": "server.log",
+      "line": 620,
+      "category": "database",
+      "pattern_type": "Database Credentials",
+      "matched_text": "Use*************************************************************************************************11)",
+      "context": "    at async LazyResult.runAsync (/[REDACTED]",
+      "severity": "high",
+      "recommendation": "Use environment variables for database credentials"
+    },
+    {
+      "file": "server.log",
+      "line": 621,
+      "category": "database",
+      "pattern_type": "Database Credentials",
+      "matched_text": "Use*****************************************************************************20)",
+      "context": "    at async Span.traceAsyncFn (/[REDACTED]",
+      "severity": "high",
+      "recommendation": "Use environment variables for database credentials"
+    },
+    {
+      "file": "server.log",
+      "line": 622,
+      "category": "database",
+      "pattern_type": "Database Credentials",
+      "matched_text": "Use**************************************************************************************************************:22",
+      "context": "    at async /[REDACTED]",
+      "severity": "high",
+      "recommendation": "Use environment variables for database credentials"
+    },
+    {
+      "file": "server.log",
+      "line": 623,
+      "category": "database",
+      "pattern_type": "Database Credentials",
+      "matched_text": "Use*****************************************************************************20)",
+      "context": "    at async Span.traceAsyncFn (/[REDACTED]",
+      "severity": "high",
+      "recommendation": "Use environment variables for database credentials"
+    },
+    {
+      "file": "server.log",
+      "line": 625,
+      "category": "database",
+      "pattern_type": "Database Credentials",
+      "matched_text": "Use*****************************************************************************32)",
+      "context": "    at onInvalidCandidate (/[REDACTED]",
+      "severity": "high",
+      "recommendation": "Use environment variables for database credentials"
+    },
+    {
+      "file": "server.log",
+      "line": 626,
+      "category": "database",
+      "pattern_type": "Database Credentials",
+      "matched_text": "Use******************************************************************************43)",
+      "context": "    at ge (/[REDACTED]",
+      "severity": "high",
+      "recommendation": "Use environment variables for database credentials"
+    },
+    {
+      "file": "server.log",
+      "line": 627,
+      "category": "database",
+      "pattern_type": "Database Credentials",
+      "matched_text": "Use***************************************************************************373",
+      "context": "    at /[REDACTED]",
+      "severity": "high",
+      "recommendation": "Use environment variables for database credentials"
+    },
+    {
+      "file": "server.log",
+      "line": 628,
+      "category": "database",
+      "pattern_type": "Database Credentials",
+      "matched_text": "Use****************************************************************************56)",
+      "context": "    at L (/[REDACTED]",
+      "severity": "high",
+      "recommendation": "Use environment variables for database credentials"
+    },
+    {
+      "file": "server.log",
+      "line": 629,
+      "category": "database",
+      "pattern_type": "Database Credentials",
+      "matched_text": "Use****************************************************************************72)",
+      "context": "    at Ie (/[REDACTED]",
+      "severity": "high",
+      "recommendation": "Use environment variables for database credentials"
+    },
+    {
+      "file": "server.log",
+      "line": 630,
+      "category": "database",
+      "pattern_type": "Database Credentials",
+      "matched_text": "Use****************************************************************************94)",
+      "context": "    at xi (/[REDACTED]",
+      "severity": "high",
+      "recommendation": "Use environment variables for database credentials"
+    },
+    {
+      "file": "server.log",
+      "line": 632,
+      "category": "database",
+      "pattern_type": "Database Credentials",
+      "matched_text": "Use****************************************************************************37)",
+      "context": "    at async Ai (/[REDACTED]",
+      "severity": "high",
+      "recommendation": "Use environment variables for database credentials"
+    },
+    {
+      "file": "server.log",
+      "line": 633,
+      "category": "database",
+      "pattern_type": "Database Credentials",
+      "matched_text": "Use*************************************************************************************84)",
+      "context": "    at async Ur (/[REDACTED]",
+      "severity": "high",
+      "recommendation": "Use environment variables for database credentials"
+    },
+    {
+      "file": "server.log",
+      "line": 634,
+      "category": "database",
+      "pattern_type": "Database Credentials",
+      "matched_text": "Use****************************************************************************************81)",
+      "context": "    at async ue (/[REDACTED]",
+      "severity": "high",
+      "recommendation": "Use environment variables for database credentials"
+    },
+    {
+      "file": "server.log",
+      "line": 635,
+      "category": "database",
+      "pattern_type": "Database Credentials",
+      "matched_text": "Use****************************************************************************************52)",
+      "context": "    at async Object.Once (/[REDACTED]",
+      "severity": "high",
+      "recommendation": "Use environment variables for database credentials"
+    },
+    {
+      "file": "server.log",
+      "line": 636,
+      "category": "database",
+      "pattern_type": "Database Credentials",
+      "matched_text": "Use*************************************************************************************************11)",
+      "context": "    at async LazyResult.runAsync (/[REDACTED]",
+      "severity": "high",
+      "recommendation": "Use environment variables for database credentials"
+    },
+    {
+      "file": "server.log",
+      "line": 637,
+      "category": "database",
+      "pattern_type": "Database Credentials",
+      "matched_text": "Use*****************************************************************************20)",
+      "context": "    at async Span.traceAsyncFn (/[REDACTED]",
+      "severity": "high",
+      "recommendation": "Use environment variables for database credentials"
+    },
+    {
+      "file": "server.log",
+      "line": 638,
+      "category": "database",
+      "pattern_type": "Database Credentials",
+      "matched_text": "Use**************************************************************************************************************:22",
+      "context": "    at async /[REDACTED]",
+      "severity": "high",
+      "recommendation": "Use environment variables for database credentials"
+    },
+    {
+      "file": "server.log",
+      "line": 639,
+      "category": "database",
+      "pattern_type": "Database Credentials",
+      "matched_text": "Use*****************************************************************************20)",
+      "context": "    at async Span.traceAsyncFn (/[REDACTED]",
+      "severity": "high",
+      "recommendation": "Use environment variables for database credentials"
+    },
+    {
+      "file": "server.log",
+      "line": 641,
+      "category": "database",
+      "pattern_type": "Database Credentials",
+      "matched_text": "Use***************************************************css",
+      "context": "Syntax error: tailwindcss: /[REDACTED] Cannot apply unknown utility class `bg-gray-900`. Are you using CSS modules or similar and missing `@reference`? https://tailwindcss.com/docs/functions-and-directives#reference-directive",
+      "severity": "high",
+      "recommendation": "Use environment variables for database credentials"
+    },
+    {
+      "file": "server.log",
+      "line": 6,
+      "category": "database",
+      "pattern_type": "Database Credentials",
+      "matched_text": "hos***000",
+      "context": "  - Local:        http://local[REDACTED]",
+      "severity": "high",
+      "recommendation": "Use environment variables for database credentials"
+    },
+    {
+      "file": "src/app/api/claude/route.ts",
+      "line": 42,
+      "category": "api_keys",
+      "pattern_type": "API Keys / Secrets",
+      "matched_text": "api*********************KEY",
+      "context": "        \"x-[REDACTED],",
+      "severity": "high",
+      "recommendation": "Store in environment variables or secure key vault"
+    },
+    {
+      "file": "src/app/api/claude/route.ts",
+      "line": 52,
+      "category": "database",
+      "pattern_type": "Database Credentials",
+      "matched_text": "******",
+      "context": "            role: \"[REDACTED]",
+      "severity": "high",
+      "recommendation": "Use environment variables for database credentials"
+    },
+    {
+      "file": "src/app/api/health/route.ts",
+      "line": 27,
+      "category": "database",
+      "pattern_type": "Database Credentials",
+      "matched_text": "uSe*****():",
+      "context": "async function checkMen[REDACTED] Promise<{",
+      "severity": "high",
+      "recommendation": "Use environment variables for database credentials"
+    },
+    {
+      "file": "src/app/api/health/route.ts",
+      "line": 108,
+      "category": "database",
+      "pattern_type": "Database Credentials",
+      "matched_text": "uSe*****(),",
+      "context": "      checkMen[REDACTED]",
+      "severity": "high",
+      "recommendation": "Use environment variables for database credentials"
+    },
+    {
+      "file": "src/lib/api/routes.ts",
+      "line": 71,
+      "category": "database",
+      "pattern_type": "Database Credentials",
+      "matched_text": "hos***000",
+      "context": "export function getApiUrl(route: keyof typeof API_ROUTES, baseUrl = 'http://local[REDACTED]'): string {",
+      "severity": "high",
+      "recommendation": "Use environment variables for database credentials"
+    },
+    {
+      "file": "src/lib/market/core/scraper.ts",
+      "line": 63,
+      "category": "database",
+      "pattern_type": "Database Credentials",
+      "matched_text": "Use****ent",
+      "context": "        '[REDACTED]': 'Mozilla/5.0 (Macintosh; Intel Mac OS X 10_15_7) AppleWebKit/537.36',",
+      "severity": "high",
+      "recommendation": "Use environment variables for database credentials"
+    },
+    {
+      "file": "src/lib/middleware/auth.ts",
+      "line": 198,
+      "category": "database",
+      "pattern_type": "Database Credentials",
+      "matched_text": "use**********ns:",
+      "context": "            [REDACTED] authContext.permissions,",
+      "severity": "high",
+      "recommendation": "Use environment variables for database credentials"
+    },
+    {
+      "file": "src/lib/middleware/errorHandler.ts",
+      "line": 63,
+      "category": "database",
+      "pattern_type": "Database Credentials",
+      "matched_text": "use****nt:",
+      "context": "    [REDACTED] \"unknown\", // Request context'ten gelecek",
+      "severity": "high",
+      "recommendation": "Use environment variables for database credentials"
+    },
+    {
+      "file": "src/lib/middleware/errorHandler.ts",
+      "line": 134,
+      "category": "database",
+      "pattern_type": "Database Credentials",
+      "matched_text": "use****nt:",
+      "context": "        [REDACTED] request.headers.get(\"user-agent\") || \"unknown\",",
+      "severity": "high",
+      "recommendation": "Use environment variables for database credentials"
+    },
+    {
+      "file": "src/lib/middleware/errorHandler.ts",
+      "line": 134,
+      "category": "database",
+      "pattern_type": "Database Credentials",
+      "matched_text": "use****ent",
+      "context": "        userAgent: request.headers.get(\"[REDACTED]\") || \"unknown\",",
+      "severity": "high",
+      "recommendation": "Use environment variables for database credentials"
+    },
+    {
+      "file": "src/lib/utils/logger.ts",
+      "line": 16,
+      "category": "database",
+      "pattern_type": "Database Credentials",
+      "matched_text": "********",
+      "context": "  [REDACTED] string;",
+      "severity": "high",
+      "recommendation": "Use environment variables for database credentials"
+    },
+    {
+      "file": "src/lib/utils/logger.ts",
+      "line": 18,
+      "category": "database",
+      "pattern_type": "Database Credentials",
+      "matched_text": "use*****t?:",
+      "context": "  [REDACTED] string;",
+      "severity": "high",
+      "recommendation": "Use environment variables for database credentials"
+    },
+    {
+      "file": "src/lib/utils/logger.ts",
+      "line": 106,
+      "category": "database",
+      "pattern_type": "Database Credentials",
+      "matched_text": "use****nt:",
+      "context": "      [REDACTED] request.headers.get(\"user-agent\") || \"unknown\",",
+      "severity": "high",
+      "recommendation": "Use environment variables for database credentials"
+    },
+    {
+      "file": "src/lib/utils/logger.ts",
+      "line": 106,
+      "category": "database",
+      "pattern_type": "Database Credentials",
+      "matched_text": "use****ent",
+      "context": "      userAgent: request.headers.get(\"[REDACTED]\") || \"unknown\",",
+      "severity": "high",
+      "recommendation": "Use environment variables for database credentials"
+    },
+    {
+      "file": "src/scripts/deploy.sh",
+      "line": 19,
+      "category": "api_keys",
+      "pattern_type": "API Keys / Secrets",
+      "matched_text": "API*******************KEY",
+      "context": "  --set-secrets \"ANTHROPIC_[REDACTED]:3\" \\",
+      "severity": "high",
+      "recommendation": "Store in environment variables or secure key vault"
+    },
+    {
+      "file": "test/integration/setup.ts",
+      "line": 6,
+      "category": "database",
+      "pattern_type": "Database Credentials",
+      "matched_text": "hos***000",
+      "context": "process.env.NEXTAUTH_URL = 'http://local[REDACTED]'",
+      "severity": "high",
+      "recommendation": "Use environment variables for database credentials"
+    }
+  ],
+  "excluded_files": [
+    ".git",
+    ".github",
+    ".gitignore",
+    ".next",
+    "build.log",
+    "node_modules",
+    "package-lock.json",
+    "reports/build-log-2025-10-18.txt",
+    "test/data/05-versions-space.pdf",
+    "tsconfig.tsbuildinfo"
+  ]
+}
