@@ -12,10 +12,9 @@ const nextConfig = {
   images: {
     unoptimized: true,
   },
-  // Relative assets for local development  
-  assetPrefix: process.env.GITHUB_PAGES === 'true' ? '/ProCheff-New/' : '',
-  // GitHub Pages base path only for production deployment
-  basePath: process.env.GITHUB_PAGES === 'true' ? '/ProCheff-New' : '',
+  // GitHub Pages static paths - always active for export
+  assetPrefix: '/ProCheff-New/',
+  basePath: '/ProCheff-New',
   // API routes'ları static export'ta çalışmaz, bu yüzden onları exclude edelim
   experimental: {
     missingSuspenseWithCSRBailout: false,
