@@ -1,0 +1,1443 @@
+<!DOCTYPE html>
+<html lang="tr">
+<head>
+    <meta charset="utf-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1">
+    <title>ProCheff AI - Kontrol Merkezi</title>
+    <meta name="description" content="ProCheff AI Kontrol Merkezi - Tüm işlemler tek yerden">
+    <style>
+        * {
+            margin: 0;
+            padding: 0;
+            box-sizing: border-box;
+        }
+        
+        body {
+            font-family: -apple-system, BlinkMacSystemFont, 'Segoe UI', Roboto, sans-serif;
+            background: linear-gradient(135deg, #0F172A 0%, #1E293B 50%, #1A1B23 100%);
+            color: #F8FAFC;
+            height: 100vh;
+            overflow: hidden;
+        }
+        
+        .container {
+            display: flex;
+            height: 100vh;
+        }
+        
+        /* Sidebar */
+        .sidebar {
+            width: 280px;
+            background: linear-gradient(145deg, rgba(15, 23, 42, 0.95), rgba(30, 41, 59, 0.9));
+            border-right: 1px solid rgba(148, 163, 184, 0.1);
+            backdrop-filter: blur(12px);
+            display: flex;
+            flex-direction: column;
+            position: relative;
+            box-shadow: 2px 0 20px rgba(0, 0, 0, 0.1);
+        }
+        
+        .logo {
+            padding: 24px 20px;
+            border-bottom: 1px solid rgba(71, 85, 105, 0.2);
+            text-align: center;
+        }
+        
+        .logo h1 {
+            font-size: 1.4rem;
+            font-weight: 700;
+            background: linear-gradient(135deg, #10B981, #3B82F6);
+            -webkit-background-clip: text;
+            background-clip: text;
+            -webkit-text-fill-color: transparent;
+            margin-bottom: 4px;
+        }
+        
+        .logo p {
+            font-size: 0.8rem;
+            color: #94A3B8;
+        }
+        
+        .nav-menu {
+            flex: 1;
+            padding: 16px 0;
+            overflow-y: auto;
+        }
+        
+        .nav-section {
+            margin-bottom: 24px;
+        }
+        
+        .nav-section-title {
+            margin: 16px 20px 12px 20px;
+            font-size: 0.75rem;
+            font-weight: 700;
+            color: #64748B;
+            text-transform: uppercase;
+            letter-spacing: 0.05em;
+            border-bottom: 1px solid rgba(71, 85, 105, 0.2);
+            padding-bottom: 8px;
+        }
+        
+        .nav-item {
+            margin: 2px 16px;
+            padding: 12px 16px;
+            border-radius: 10px;
+            cursor: pointer;
+            transition: all 0.3s ease;
+            display: flex;
+            align-items: center;
+            gap: 12px;
+            font-size: 0.85rem;
+            color: #CBD5E1;
+        }
+        
+        .nav-item:hover {
+            background: rgba(16, 185, 129, 0.1);
+            color: #10B981;
+            transform: translateX(4px);
+        }
+        
+        .nav-item.active {
+            background: linear-gradient(145deg, rgba(16, 185, 129, 0.15), rgba(5, 150, 105, 0.1));
+            border: 1px solid rgba(16, 185, 129, 0.25);
+            color: #10B981;
+            box-shadow: 0 2px 8px rgba(16, 185, 129, 0.1);
+        }
+        
+        .nav-icon {
+            font-size: 1.2rem;
+            width: 20px;
+            text-align: center;
+        }
+        
+        /* Main Content */
+        .main-content {
+            flex: 1;
+            display: flex;
+            flex-direction: column;
+            overflow: hidden;
+        }
+        
+        .header {
+            background: rgba(15, 23, 42, 0.8);
+            backdrop-filter: blur(12px);
+            border-bottom: 1px solid rgba(71, 85, 105, 0.2);
+            padding: 20px 32px;
+            display: flex;
+            align-items: center;
+            justify-content: space-between;
+        }
+        
+        .header h2 {
+            font-size: 1.5rem;
+            font-weight: 600;
+            color: #F8FAFC;
+        }
+        
+        .status-badge {
+            padding: 6px 16px;
+            border-radius: 20px;
+            font-size: 0.8rem;
+            font-weight: 500;
+            background: rgba(16, 185, 129, 0.2);
+            color: #10B981;
+            border: 1px solid rgba(16, 185, 129, 0.3);
+        }
+        
+        .content-area {
+            flex: 1;
+            padding: 32px;
+            overflow-y: auto;
+            background: linear-gradient(135deg, rgba(15, 23, 42, 0.3) 0%, rgba(30, 41, 59, 0.2) 100%);
+        }
+        
+        .page-section {
+            display: none;
+        }
+        
+        .page-section.active {
+            display: block;
+            animation: fadeIn 0.3s ease;
+        }
+        
+        @keyframes fadeIn {
+            from { opacity: 0; transform: translateY(10px); }
+            to { opacity: 1; transform: translateY(0); }
+        }
+        
+        /* Dashboard Cards */
+        .dashboard-grid {
+            display: grid;
+            grid-template-columns: repeat(auto-fit, minmax(300px, 1fr));
+            gap: 24px;
+            margin-bottom: 32px;
+        }
+        
+        .card {
+            background: linear-gradient(145deg, rgba(37, 41, 54, 0.9), rgba(30, 33, 43, 0.8));
+            border: 1px solid rgba(71, 85, 105, 0.25);
+            border-radius: 16px;
+            padding: 24px;
+            box-shadow: 0 8px 32px rgba(0, 0, 0, 0.15);
+            backdrop-filter: blur(12px);
+            transition: all 0.3s ease;
+        }
+        
+        .card:hover {
+            transform: translateY(-4px);
+            box-shadow: 0 12px 40px rgba(0, 0, 0, 0.2);
+        }
+        
+        .card-header {
+            display: flex;
+            align-items: center;
+            gap: 12px;
+            margin-bottom: 16px;
+        }
+        
+        .card-icon {
+            font-size: 2rem;
+            filter: drop-shadow(0 2px 4px rgba(0, 0, 0, 0.2));
+        }
+        
+        .card-title {
+            font-size: 1.1rem;
+            font-weight: 600;
+            color: #F8FAFC;
+        }
+        
+        .card-value {
+            font-size: 2rem;
+            font-weight: 700;
+            color: #10B981;
+            margin-bottom: 8px;
+        }
+        
+        .card-description {
+            font-size: 0.85rem;
+            color: #94A3B8;
+        }
+        
+        /* Forms */
+        .form-group {
+            margin-bottom: 20px;
+        }
+        
+        .form-label {
+            display: block;
+            margin-bottom: 8px;
+            font-size: 0.9rem;
+            font-weight: 500;
+            color: #CBD5E1;
+        }
+        
+        .form-input {
+            width: 100%;
+            padding: 12px 16px;
+            border-radius: 8px;
+            border: 1px solid rgba(148, 163, 184, 0.2);
+            background: rgba(15, 23, 42, 0.7);
+            color: #F8FAFC;
+            font-size: 0.9rem;
+            transition: all 0.3s ease;
+        }
+        
+        .form-input:focus {
+            outline: none;
+            border-color: #10B981;
+            box-shadow: 0 0 0 2px rgba(16, 185, 129, 0.1);
+        }
+        
+        .btn {
+            padding: 12px 24px;
+            border-radius: 8px;
+            border: none;
+            font-weight: 600;
+            cursor: pointer;
+            transition: all 0.3s ease;
+            font-size: 0.9rem;
+        }
+        
+        .btn-primary {
+            background: #10B981;
+            color: white;
+            box-shadow: 0 2px 4px rgba(16, 185, 129, 0.2);
+        }
+        
+        .btn-primary:hover {
+            background: #059669;
+            transform: translateY(-1px);
+            box-shadow: 0 4px 8px rgba(16, 185, 129, 0.3);
+        }
+        
+        .btn-secondary {
+            background: rgba(71, 85, 105, 0.3);
+            color: #CBD5E1;
+            border: 1px solid rgba(148, 163, 184, 0.2);
+        }
+        
+        .btn-secondary:hover {
+            background: rgba(71, 85, 105, 0.5);
+        }
+        
+        /* Progress Bars */
+        .progress-bar {
+            width: 100%;
+            height: 8px;
+            background: rgba(71, 85, 105, 0.3);
+            border-radius: 4px;
+            overflow: hidden;
+            margin-top: 8px;
+        }
+        
+        .progress-fill {
+            height: 100%;
+            background: linear-gradient(90deg, #10B981, #059669);
+            border-radius: 4px;
+            transition: width 0.3s ease;
+        }
+        
+        /* Tab System */
+        .tab-container {
+            background: linear-gradient(145deg, rgba(37, 41, 54, 0.9), rgba(30, 33, 43, 0.8));
+            border: 1px solid rgba(71, 85, 105, 0.25);
+            border-radius: 16px;
+            overflow: hidden;
+            box-shadow: 0 8px 32px rgba(0, 0, 0, 0.15);
+        }
+        
+        .tab-nav {
+            display: flex;
+            background: rgba(15, 23, 42, 0.5);
+            border-bottom: 1px solid rgba(71, 85, 105, 0.2);
+            overflow-x: auto;
+        }
+        
+        .tab-btn {
+            padding: 16px 24px;
+            background: transparent;
+            border: none;
+            color: #94A3B8;
+            font-size: 0.9rem;
+            font-weight: 500;
+            cursor: pointer;
+            transition: all 0.3s ease;
+            white-space: nowrap;
+            border-bottom: 2px solid transparent;
+        }
+        
+        .tab-btn:hover {
+            color: #CBD5E1;
+            background: rgba(71, 85, 105, 0.1);
+        }
+        
+        .tab-btn.active {
+            color: #10B981;
+            background: rgba(16, 185, 129, 0.1);
+            border-bottom-color: #10B981;
+        }
+        
+        .tab-content {
+            display: none;
+            padding: 32px;
+        }
+        
+        .tab-content.active {
+            display: block;
+            animation: fadeIn 0.3s ease;
+        }
+        
+        /* Responsive */
+        @media (max-width: 768px) {
+            .sidebar {
+                width: 240px;
+            }
+            
+            .content-area {
+                padding: 20px;
+            }
+            
+            .dashboard-grid {
+                grid-template-columns: 1fr;
+            }
+            
+            .tab-nav {
+                flex-direction: column;
+            }
+            
+            .tab-btn {
+                text-align: left;
+            }
+        }
+    </style>
+</head>
+<body>
+    <div class="container">
+        <!-- Sidebar -->
+        <div class="sidebar">
+            <div class="logo">
+                <h1>🧑‍🍳 ProCheff AI</h1>
+                <p>Kontrol Merkezi v2.0</p>
+            </div>
+            
+            <nav class="nav-menu">
+                <!-- ANA İŞ AKIŞI -->
+                <div class="nav-section">
+                    <div class="nav-section-title">📊 ANA İŞ AKIŞI</div>
+                    <div class="nav-item active" data-page="dashboard">
+                        <span class="nav-icon">🏠</span>
+                        <span>Ana Sayfa</span>
+                    </div>
+
+                    <div class="nav-item" data-page="spec-analysis">
+                        <span class="nav-icon">�</span>
+                        <span>Şartname Analizi</span>
+                    </div>
+                    <div class="nav-item" data-page="kik-analysis">
+                        <span class="nav-icon">🧮</span>
+                        <span>KİK Analiz (PRO)</span>
+                    </div>
+                    <div class="nav-item" data-page="tender-center">
+                        <span class="nav-icon">🏛️</span>
+                        <span>İhale Merkezi</span>
+                    </div>
+                </div>
+                
+                <!-- ZEKÂ & VERİLER -->
+                <div class="nav-section">
+                    <div class="nav-section-title">🧠 ZEKÂ & VERİLER</div>
+                    <div class="nav-item" data-page="spec-database">
+                        <span class="nav-icon">📚</span>
+                        <span>Şartname Veritabanı</span>
+                    </div>
+                    <div class="nav-item" data-page="market-intelligence">
+                        <span class="nav-icon">�</span>
+                        <span>Piyasa Trend Zekâsı</span>
+                    </div>
+                    <div class="nav-item" data-page="price-tracking">
+                        <span class="nav-icon">�</span>
+                        <span>Fiyat Takip Sistemi</span>
+                    </div>
+                </div>
+                
+                <!-- YÖNETİM -->
+                <div class="nav-section">
+                    <div class="nav-section-title">⚙️ YÖNETİM</div>
+                    <div class="nav-item" data-page="menu-management">
+                        <span class="nav-icon">�</span>
+                        <span>Menü Yönetimi</span>
+                    </div>
+                    <div class="nav-item" data-page="reports">
+                        <span class="nav-icon">�</span>
+                        <span>Raporlar</span>
+                    </div>
+                    <div class="nav-item" data-page="ai-settings">
+                        <span class="nav-icon">🔧</span>
+                        <span>AI Ayarları</span>
+                    </div>
+                </div>
+            </nav>
+        </div>
+        
+        <!-- Main Content -->
+        <div class="main-content">
+            <header class="header">
+                <h2 id="page-title">Ana Dashboard</h2>
+                <div class="status-badge">● Sistem Aktif</div>
+            </header>
+            
+            <div class="content-area">
+                <!-- Ana Sayfa -->
+                <div id="dashboard" class="page-section active">
+                    <div class="dashboard-grid">
+                        <div class="card">
+                            <div class="card-header">
+                                <span class="card-icon">�</span>
+                                <span class="card-title">Aktif Şartnameler</span>
+                            </div>
+                            <div class="card-value">23</div>
+                            <div class="card-description">Analiz edilen dosya sayısı</div>
+                        </div>
+                        
+                        <div class="card">
+                            <div class="card-header">
+                                <span class="card-icon">💰</span>
+                                <span class="card-title">Bu Ay Teklifler</span>
+                            </div>
+                            <div class="card-value">₺847.2K</div>
+                            <div class="card-description">Toplam teklif değeri</div>
+                        </div>
+                        
+                        <div class="card">
+                            <div class="card-header">
+                                <span class="card-icon">🎯</span>
+                                <span class="card-title">KİK Uyum Oranı</span>
+                            </div>
+                            <div class="card-value">96.3%</div>
+                            <div class="card-description">Tebliğ uygunluğu</div>
+                            <div class="progress-bar">
+                                <div class="progress-fill" style="width: 96.3%"></div>
+                            </div>
+                        </div>
+                        
+                        <div class="card">
+                            <div class="card-header">
+                                <span class="card-icon">🏛️</span>
+                                <span class="card-title">İhale Takibi</span>
+                            </div>
+                            <div class="card-value">12</div>
+                            <div class="card-description">Açık ihale sayısı</div>
+                        </div>
+                        
+                        <div class="card">
+                            <div class="card-header">
+                                <span class="card-icon">�</span>
+                                <span class="card-title">Piyasa Analizi</span>
+                            </div>
+                            <div class="card-value">+2.4%</div>
+                            <div class="card-description">Son 30 gün fiyat değişimi</div>
+                        </div>
+                        
+                        <div class="card">
+                            <div class="card-header">
+                                <span class="card-icon">🤖</span>
+                                <span class="card-title">AI Doğruluğu</span>
+                            </div>
+                            <div class="card-value">94.8%</div>
+                            <div class="card-description">Şartname analiz başarısı</div>
+                            <div class="progress-bar">
+                                <div class="progress-fill" style="width: 94.8%"></div>
+                            </div>
+                        </div>
+                    </div>
+                    
+                    <div class="card">
+                        <div class="card-header">
+                            <span class="card-icon">🚀</span>
+                            <span class="card-title">Hızlı İşlemler</span>
+                        </div>
+                        <div style="display: flex; gap: 16px; flex-wrap: wrap; margin-top: 16px;">
+                            <button class="btn btn-primary" onclick="showPage('spec-analysis')">Şartname Analiz Et</button>
+                            <button class="btn btn-secondary" onclick="showPage('offer-panel')">Teklif Oluştur</button>
+                            <button class="btn btn-secondary" onclick="showPage('kik-analysis')">KİK Hesapla</button>
+                            <button class="btn btn-secondary" onclick="showPage('reports')">Rapor Al</button>
+                        </div>
+                    </div>
+                </div>
+                
+                <!-- İhale Merkezi -->
+                <div id="tender-center" class="page-section">
+                    <div class="tab-container">
+                        <div class="tab-nav">
+                            <button class="tab-btn active" onclick="showTab('ihale-genel')">Genel Bakış</button>
+                            <button class="tab-btn" onclick="showTab('teklif-paneli-tab')">Teklif Paneli</button>
+                            <button class="tab-btn" onclick="showTab('sartname-analizi-tab')">Şartname Analizi</button>
+                            <button class="tab-btn" onclick="showTab('kik-analiz-tab')">KİK Analiz</button>
+                        </div>
+                        
+                        <!-- Genel Bakış Tab -->
+                        <div id="ihale-genel" class="tab-content active">
+                            <div class="dashboard-grid">
+                                <div class="card">
+                                    <div class="card-header">
+                                        <span class="card-icon">🏛️</span>
+                                        <span class="card-title">Aktif İhaleler</span>
+                                    </div>
+                                    <div style="margin-top: 16px;">
+                                        <div style="display: flex; justify-content: space-between; margin-bottom: 8px;">
+                                            <span style="color: #CBD5E1;">Açık İhaleler</span>
+                                            <span style="color: #10B981; font-weight: 600;">12</span>
+                                        </div>
+                                        <div style="display: flex; justify-content: space-between; margin-bottom: 8px;">
+                                            <span style="color: #CBD5E1;">Değerlendirmede</span>
+                                            <span style="color: #F59E0B; font-weight: 600;">8</span>
+                                        </div>
+                                        <div style="display: flex; justify-content: space-between; margin-bottom: 8px;">
+                                            <span style="color: #CBD5E1;">Tamamlanan</span>
+                                            <span style="color: #6B7280; font-weight: 600;">45</span>
+                                        </div>
+                                    </div>
+                                </div>
+                                
+                                <div class="card">
+                                    <div class="card-header">
+                                        <span class="card-icon">⚡</span>
+                                        <span class="card-title">Hızlı Analiz</span>
+                                    </div>
+                                    <div style="margin-top: 16px;">
+                                        <p style="color: #94A3B8; margin-bottom: 16px;">İhale dokümanlarını analiz edin</p>
+                                        <button class="btn btn-primary" style="width: 100%;">📄 Dosya Yükle & Analiz Et</button>
+                                    </div>
+                                </div>
+                                
+                                <div class="card">
+                                    <div class="card-header">
+                                        <span class="card-icon">📊</span>
+                                        <span class="card-title">İstatistikler</span>
+                                    </div>
+                                    <div style="margin-top: 16px;">
+                                        <div style="display: flex; justify-content: space-between; margin-bottom: 8px;">
+                                            <span style="color: #CBD5E1;">Bu Ay Kazanılan</span>
+                                            <span style="color: #10B981; font-weight: 600;">7</span>
+                                        </div>
+                                        <div style="display: flex; justify-content: space-between; margin-bottom: 8px;">
+                                            <span style="color: #CBD5E1;">Toplam Değer</span>
+                                            <span style="color: #10B981; font-weight: 600;">₺2.4M</span>
+                                        </div>
+                                        <div style="display: flex; justify-content: space-between; margin-bottom: 8px;">
+                                            <span style="color: #CBD5E1;">Başarı Oranı</span>
+                                            <span style="color: #10B981; font-weight: 600;">78%</span>
+                                        </div>
+                                    </div>
+                                </div>
+                            </div>
+                        </div>
+                        
+                        <!-- Teklif Paneli Tab -->
+                        <div id="teklif-paneli-tab" class="tab-content">
+                            <div class="dashboard-grid">
+                                <div class="card">
+                                    <div class="card-header">
+                                        <span class="card-icon">📝</span>
+                                        <span class="card-title">Teklif Oluştur</span>
+                                    </div>
+                                    <div class="form-group">
+                                        <label class="form-label">İhale Adı</label>
+                                        <input type="text" class="form-input" placeholder="İhale adını girin">
+                                    </div>
+                                    <div class="form-group">
+                                        <label class="form-label">Teklif Tutarı (TL)</label>
+                                        <input type="number" class="form-input" placeholder="Teklif tutarını girin">
+                                    </div>
+                                    <div class="form-group">
+                                        <label class="form-label">Teklif Türü</label>
+                                        <select class="form-input">
+                                            <option>Açık İhale</option>
+                                            <option>Belli İstekliler Arası İhale</option>
+                                            <option>Pazarlık Usulü</option>
+                                        </select>
+                                    </div>
+                                    <button class="btn btn-primary" style="width: 100%;">Teklif Oluştur</button>
+                                </div>
+                                
+                                <div class="card">
+                                    <div class="card-header">
+                                        <span class="card-icon">📋</span>
+                                        <span class="card-title">Aktif Teklifler</span>
+                                    </div>
+                                    <div style="margin-top: 16px;">
+                                        <div style="display: flex; justify-content: space-between; margin-bottom: 8px;">
+                                            <span style="color: #CBD5E1;">Bekleyen</span>
+                                            <span style="color: #F59E0B; font-weight: 600;">5</span>
+                                        </div>
+                                        <div style="display: flex; justify-content: space-between; margin-bottom: 8px;">
+                                            <span style="color: #CBD5E1;">Onaylanan</span>
+                                            <span style="color: #10B981; font-weight: 600;">12</span>
+                                        </div>
+                                        <div style="display: flex; justify-content: space-between; margin-bottom: 8px;">
+                                            <span style="color: #CBD5E1;">Reddedilen</span>
+                                            <span style="color: #EF4444; font-weight: 600;">3</span>
+                                        </div>
+                                    </div>
+                                </div>
+                                
+                                <div class="card">
+                                    <div class="card-header">
+                                        <span class="card-icon">🔍</span>
+                                        <span class="card-title">Teklif Analizi</span>
+                                    </div>
+                                    <div style="margin-top: 16px;">
+                                        <p style="color: #94A3B8; margin-bottom: 16px;">Tekliflerinizin detaylı analizi</p>
+                                        <button class="btn btn-secondary" style="width: 100%;">📊 Analiz Raporu Al</button>
+                                    </div>
+                                </div>
+                            </div>
+                        </div>
+                        
+                        <!-- Şartname Analizi Tab -->
+                        <div id="sartname-analizi-tab" class="tab-content">
+                            <div class="dashboard-grid">
+                                <div class="card">
+                                    <div class="card-header">
+                                        <span class="card-icon">📄</span>
+                                        <span class="card-title">Şartname Yükle</span>
+                                    </div>
+                                    <div class="form-group">
+                                        <label class="form-label">Şartname Dosyası</label>
+                                        <input type="file" class="form-input" accept=".pdf,.doc,.docx">
+                                    </div>
+                                    <div class="form-group">
+                                        <label class="form-label">İhale Türü</label>
+                                        <select class="form-input">
+                                            <option>Mal Alımı</option>
+                                            <option>Hizmet Alımı</option>
+                                            <option>Yapım İşi</option>
+                                        </select>
+                                    </div>
+                                    <button class="btn btn-primary" style="width: 100%;" onclick="simulateSpecAnalysis()">🔍 Şartname Analiz Et</button>
+                                </div>
+                                
+                                <div class="card">
+                                    <div class="card-header">
+                                        <span class="card-icon">✅</span>
+                                        <span class="card-title">Analiz Sonuçları</span>
+                                    </div>
+                                    <div id="specAnalysisResult" style="margin-top: 16px; color: #94A3B8;">
+                                        <p>Şartname analizi için dosya yükleyin</p>
+                                    </div>
+                                </div>
+                                
+                                <div class="card">
+                                    <div class="card-header">
+                                        <span class="card-icon">⚠️</span>
+                                        <span class="card-title">Kritik Noktalar</span>
+                                    </div>
+                                    <div style="margin-top: 16px;">
+                                        <div style="display: flex; justify-content: space-between; margin-bottom: 8px;">
+                                            <span style="color: #CBD5E1;">Zorunlu Şartlar</span>
+                                            <span style="color: #6B7280; font-weight: 600;">-</span>
+                                        </div>
+                                        <div style="display: flex; justify-content: space-between; margin-bottom: 8px;">
+                                            <span style="color: #CBD5E1;">Teknik Özellikler</span>
+                                            <span style="color: #6B7280; font-weight: 600;">-</span>
+                                        </div>
+                                        <div style="display: flex; justify-content: space-between; margin-bottom: 8px;">
+                                            <span style="color: #CBD5E1;">Teslim Süresi</span>
+                                            <span style="color: #6B7280; font-weight: 600;">-</span>
+                                        </div>
+                                    </div>
+                                </div>
+                            </div>
+                        </div>
+                        
+                        <!-- KİK Analiz Tab -->
+                        <div id="kik-analiz-tab" class="tab-content">
+                            <div class="dashboard-grid">
+                                <div class="card">
+                                    <div class="card-header">
+                                        <span class="card-icon">🧮</span>
+                                        <span class="card-title">KİK Hesaplama</span>
+                                    </div>
+                                    <div class="form-group">
+                                        <label class="form-label">Brüt Birim Fiyat (TL)</label>
+                                        <input type="number" id="brutFiyatTab" class="form-input" placeholder="Örn: 100">
+                                    </div>
+                                    <div class="form-group">
+                                        <label class="form-label">KDV Oranı (%)</label>
+                                        <input type="number" id="kdvOraniTab" class="form-input" placeholder="Örn: 18" value="18">
+                                    </div>
+                                    <div class="form-group">
+                                        <label class="form-label">Miktar</label>
+                                        <input type="number" id="miktarTab" class="form-input" placeholder="Örn: 1000" value="1">
+                                    </div>
+                                    <button onclick="hesaplaKIKTab()" class="btn btn-primary" style="width: 100%;">KİK Hesapla</button>
+                                    <div id="kikSonucTab" style="margin-top: 16px;"></div>
+                                </div>
+                                
+                                <div class="card">
+                                    <div class="card-header">
+                                        <span class="card-icon">📊</span>
+                                        <span class="card-title">Toplu KİK Analizi</span>
+                                    </div>
+                                    <div style="margin-top: 16px;">
+                                        <p style="color: #94A3B8; margin-bottom: 16px;">Excel dosyasından toplu hesaplama</p>
+                                        <button class="btn btn-secondary" style="width: 100%;">📎 Excel Yükle</button>
+                                    </div>
+                                </div>
+                                
+                                <div class="card">
+                                    <div class="card-header">
+                                        <span class="card-icon">📈</span>
+                                        <span class="card-title">KİK Geçmişi</span>
+                                    </div>
+                                    <div style="margin-top: 16px;">
+                                        <div style="display: flex; justify-content: space-between; margin-bottom: 8px;">
+                                            <span style="color: #CBD5E1;">Bugün Hesaplanan</span>
+                                            <span style="color: #10B981; font-weight: 600;">0</span>
+                                        </div>
+                                        <div style="display: flex; justify-content: space-between; margin-bottom: 8px;">
+                                            <span style="color: #CBD5E1;">Bu Hafta</span>
+                                            <span style="color: #10B981; font-weight: 600;">0</span>
+                                        </div>
+                                        <div style="display: flex; justify-content: space-between; margin-bottom: 8px;">
+                                            <span style="color: #CBD5E1;">Toplam</span>
+                                            <span style="color: #10B981; font-weight: 600;">0</span>
+                                        </div>
+                                    </div>
+                                </div>
+                            </div>
+                        </div>
+                    </div>
+                </div>
+                
+
+                    <div class="dashboard-grid">
+                        <div class="card">
+                            <div class="card-header">
+                                <span class="card-icon">�</span>
+                                <span class="card-title">KİK Sınır Değeri Hesaplama</span>
+                            </div>
+                            <div class="form-group">
+                                <label class="form-label">İhale Türü</label>
+                                <select class="form-input">
+                                    <option>Açık İhale</option>
+                                    <option>Belli İstekliler Arası İhale</option>
+                                    <option>Pazarlık Usulü</option>
+                                </select>
+                            </div>
+                            <div class="form-group">
+                                <label class="form-label">Tahmini Değer (₺)</label>
+                                <input type="number" class="form-input" placeholder="0.00" id="estimate-value">
+                            </div>
+                            <div class="form-group">
+                                <label class="form-label">KİK Oranı (%)</label>
+                                <input type="range" class="form-input" min="5" max="25" value="15" id="kik-rate">
+                                <div style="text-align: center; margin-top: 8px; color: #10B981;" id="kik-display">%15</div>
+                            </div>
+                            <button class="btn btn-primary" style="width: 100%;" onclick="calculateKIK()">KİK Hesapla</button>
+                        </div>
+                        
+                        <div class="card">
+                            <div class="card-header">
+                                <span class="card-icon">�</span>
+                                <span class="card-title">Hesaplama Sonuçları</span>
+                            </div>
+                            <div style="margin-top: 16px;">
+                                <div style="display: flex; justify-content: space-between; margin-bottom: 12px;">
+                                    <span style="color: #CBD5E1;">Tahmini Değer:</span>
+                                    <span style="color: #F8FAFC;" id="result-estimate">₺0.00</span>
+                                </div>
+                                <div style="display: flex; justify-content: space-between; margin-bottom: 12px;">
+                                    <span style="color: #CBD5E1;">KİK Oranı:</span>
+                                    <span style="color: #F8FAFC;" id="result-rate">%0</span>
+                                </div>
+                                <div style="display: flex; justify-content: space-between; margin-bottom: 12px; padding-top: 12px; border-top: 1px solid rgba(71, 85, 105, 0.3);">
+                                    <span style="color: #10B981; font-weight: 600;">KİK Sınır Değeri:</span>
+                                    <span style="color: #10B981; font-weight: 700; font-size: 1.2rem;" id="result-kik">₺0.00</span>
+                                </div>
+                                <div style="display: flex; justify-content: space-between; margin-bottom: 12px;">
+                                    <span style="color: #CBD5E1;">Teklif Alt Sınırı:</span>
+                                    <span style="color: #F59E0B; font-weight: 600;" id="result-min">₺0.00</span>
+                                </div>
+                            </div>
+                        </div>
+                        
+                        <div class="card">
+                            <div class="card-header">
+                                <span class="card-icon">🎯</span>
+                                <span class="card-title">Teklif Stratejisi</span>
+                            </div>
+                            <div style="margin-top: 16px; color: #94A3B8; font-size: 0.9rem;" id="strategy-advice">
+                                <p>• KİK hesaplaması için değerleri girin</p>
+                                <p>• Yasal sınırlar otomatik hesaplanacak</p>
+                                <p>• Rekabet analizi dahil edilecek</p>
+                            </div>
+                        </div>
+                    </div>
+                </div>
+                
+
+                    <div class="dashboard-grid">
+                        <div class="card">
+                            <div class="card-header">
+                                <span class="card-icon">📄</span>
+                                <span class="card-title">Şartname Dosyası Yükle</span>
+                            </div>
+                            <div class="form-group">
+                                <label class="form-label">Dosya Seç (PDF/Word)</label>
+                                <input type="file" class="form-input" accept=".pdf,.doc,.docx" id="spec-file">
+                            </div>
+                            <div class="form-group">
+                                <label class="form-label">Kurum Türü</label>
+                                <select class="form-input" id="institution-type">
+                                    <option>Belediye</option>
+                                    <option>Üniversite</option>
+                                    <option>Hastane</option>
+                                    <option>Okul</option>
+                                    <option>Kamu Kurumu</option>
+                                    <option>Diğer</option>
+                                </select>
+                            </div>
+                            <div class="form-group">
+                                <label class="form-label">Analiz Türü</label>
+                                <select class="form-input" id="analysis-type">
+                                    <option>Kurum Profili Çıkarımı</option>
+                                    <option>Fiyat Analizi</option>
+                                    <option>Teknik Şartlar</option>
+                                    <option>Tam Analiz</option>
+                                </select>
+                            </div>
+                            <button class="btn btn-primary" style="width: 100%;" onclick="analyzeSpecification()">Analizi Başlat</button>
+                        </div>
+                        
+                        <div class="card">
+                            <div class="card-header">
+                                <span class="card-icon">🤖</span>
+                                <span class="card-title">AI Analiz Sonuçları</span>
+                            </div>
+                            <div id="analysis-results" style="margin-top: 16px; color: #94A3B8; font-size: 0.9rem;">
+                                <p>📋 Şartname analizi için dosya yükleyin</p>
+                                <p>🔍 AI sistemi şartnamenizdeki:</p>
+                                <ul style="margin-left: 20px; margin-top: 8px;">
+                                    <li>Kurum profilini çıkaracak</li>
+                                    <li>Teknik şartları analiz edecek</li>
+                                    <li>Fiyat stratejisi önerecek</li>
+                                    <li>Risk faktörlerini belirleyecek</li>
+                                </ul>
+                            </div>
+                        </div>
+                        
+                        <div class="card">
+                            <div class="card-header">
+                                <span class="card-icon">📊</span>
+                                <span class="card-title">Kurum Profili</span>
+                            </div>
+                            <div id="institution-profile" style="margin-top: 16px; color: #94A3B8; font-size: 0.9rem;">
+                                <p>📈 Geçmiş ihale verileri analiz edilecek</p>
+                                <p>🎯 Kuruma özel strateji önerileri sunulacak</p>
+                                <p>💡 Başarı oranını artıracak ipuçları verilecek</p>
+                            </div>
+                        </div>
+                    </div>
+                </div>
+                
+
+                    <div class="dashboard-grid">
+                        <div class="card">
+                            <div class="card-header">
+                                <span class="card-icon">💰</span>
+                                <span class="card-title">Maliyet Simülasyonu</span>
+                            </div>
+                            <div class="form-group">
+                                <label class="form-label">Ürün Adı</label>
+                                <input type="text" class="form-input" placeholder="Ürün adını girin">
+                            </div>
+                            <div class="form-group">
+                                <label class="form-label">Temel Maliyet (₺)</label>
+                                <input type="number" class="form-input" placeholder="0.00">
+                            </div>
+                            <div class="form-group">
+                                <label class="form-label">Kar Marjı (%)</label>
+                                <input type="range" class="form-input" min="10" max="200" value="50">
+                                <div style="text-align: center; margin-top: 8px; color: #10B981;">%50</div>
+                            </div>
+                            <button class="btn btn-primary" style="width: 100%;">Hesapla</button>
+                        </div>
+                        
+                        <div class="card">
+                            <div class="card-header">
+                                <span class="card-icon">📊</span>
+                                <span class="card-title">Sonuçlar</span>
+                            </div>
+                            <div style="margin-top: 16px;">
+                                <div style="display: flex; justify-content: space-between; margin-bottom: 12px;">
+                                    <span style="color: #CBD5E1;">Temel Maliyet:</span>
+                                    <span style="color: #F8FAFC;">₺0.00</span>
+                                </div>
+                                <div style="display: flex; justify-content: space-between; margin-bottom: 12px;">
+                                    <span style="color: #CBD5E1;">Kar Marjı:</span>
+                                    <span style="color: #F8FAFC;">₺0.00</span>
+                                </div>
+                                <div style="display: flex; justify-content: space-between; margin-bottom: 12px; padding-top: 12px; border-top: 1px solid rgba(71, 85, 105, 0.3);">
+                                    <span style="color: #10B981; font-weight: 600;">Önerilen Fiyat:</span>
+                                    <span style="color: #10B981; font-weight: 700; font-size: 1.2rem;">₺0.00</span>
+                                </div>
+                            </div>
+                        </div>
+                        
+                        <div class="card">
+                            <div class="card-header">
+                                <span class="card-icon">🎯</span>
+                                <span class="card-title">AI Önerileri</span>
+                            </div>
+                            <div style="margin-top: 16px; color: #94A3B8; font-size: 0.9rem;">
+                                <p>• Piyasa ortalamasının %15 altında fiyatlandırma öneriyoruz</p>
+                                <p>• Benzer ürünler için %45-60 kar marjı optimal</p>
+                                <p>• Sezonluk talep artışı bekleniyor (+8%)</p>
+                            </div>
+                        </div>
+                    </div>
+                </div>
+                
+                <!-- AI Settings Page -->
+                <div id="ai-settings" class="page-section">
+                    <div class="dashboard-grid">
+                        <div class="card">
+                            <div class="card-header">
+                                <span class="card-icon">🧠</span>
+                                <span class="card-title">Model Ayarları</span>
+                            </div>
+                            <div class="form-group">
+                                <label class="form-label">Analiz Hassasiyeti</label>
+                                <input type="range" class="form-input" min="1" max="10" value="7">
+                                <div style="text-align: center; margin-top: 8px; color: #10B981;">7/10</div>
+                            </div>
+                            <div class="form-group">
+                                <label class="form-label">Güven Eşiği (%)</label>
+                                <input type="range" class="form-input" min="50" max="99" value="85">
+                                <div style="text-align: center; margin-top: 8px; color: #10B981;">%85</div>
+                            </div>
+                            <div class="form-group">
+                                <label class="form-label">Öğrenme Hızı</label>
+                                <select class="form-input">
+                                    <option>Yavaş (Kararlı)</option>
+                                    <option selected>Orta (Dengeli)</option>
+                                    <option>Hızlı (Agresif)</option>
+                                </select>
+                            </div>
+                            <button class="btn btn-primary" style="width: 100%;">Ayarları Kaydet</button>
+                        </div>
+                        
+                        <div class="card">
+                            <div class="card-header">
+                                <span class="card-icon">⚡</span>
+                                <span class="card-title">Performans</span>
+                            </div>
+                            <div style="margin-top: 16px;">
+                                <div style="margin-bottom: 16px;">
+                                    <div style="display: flex; justify-content: space-between; margin-bottom: 4px;">
+                                        <span style="color: #CBD5E1;">CPU Kullanımı</span>
+                                        <span style="color: #10B981;">34%</span>
+                                    </div>
+                                    <div class="progress-bar">
+                                        <div class="progress-fill" style="width: 34%"></div>
+                                    </div>
+                                </div>
+                                <div style="margin-bottom: 16px;">
+                                    <div style="display: flex; justify-content: space-between; margin-bottom: 4px;">
+                                        <span style="color: #CBD5E1;">Bellek Kullanımı</span>
+                                        <span style="color: #10B981;">67%</span>
+                                    </div>
+                                    <div class="progress-bar">
+                                        <div class="progress-fill" style="width: 67%"></div>
+                                    </div>
+                                </div>
+                                <div style="margin-bottom: 16px;">
+                                    <div style="display: flex; justify-content: space-between; margin-bottom: 4px;">
+                                        <span style="color: #CBD5E1;">Model Doğruluğu</span>
+                                        <span style="color: #10B981;">94%</span>
+                                    </div>
+                                    <div class="progress-bar">
+                                        <div class="progress-fill" style="width: 94%"></div>
+                                    </div>
+                                </div>
+                            </div>
+                        </div>
+                    </div>
+                </div>
+                
+                <!-- Menu Analysis Page -->
+                <div id="menu-analysis" class="page-section">
+                    <div class="card">
+                        <div class="card-header">
+                            <span class="card-icon">📋</span>
+                            <span class="card-title">Menü Analizi</span>
+                        </div>
+                        <div class="form-group">
+                            <label class="form-label">Menü Dosyası Yükle</label>
+                            <input type="file" class="form-input" accept=".pdf,.jpg,.png">
+                        </div>
+                        <div class="form-group">
+                            <label class="form-label">Analiz Türü</label>
+                            <select class="form-input">
+                                <option>Fiyat Analizi</option>
+                                <option>Rekabetçi Analiz</option>
+                                <option>Maliyet Optimizasyonu</option>
+                                <option>Tam Analiz</option>
+                            </select>
+                        </div>
+                        <button class="btn btn-primary" style="width: 100%;">Analizi Başlat</button>
+                    </div>
+                </div>
+                
+                <!-- Market Data Page -->
+                <div id="market-data" class="page-section">
+                    <div class="dashboard-grid">
+                        <div class="card">
+                            <div class="card-header">
+                                <span class="card-icon">💰</span>
+                                <span class="card-title">Güncel Fiyatlar</span>
+                            </div>
+                            <div style="margin-top: 16px;">
+                                <div style="display: flex; justify-content: space-between; margin-bottom: 12px;">
+                                    <span style="color: #CBD5E1;">Domates (kg):</span>
+                                    <span style="color: #F8FAFC;">₺12.50</span>
+                                </div>
+                                <div style="display: flex; justify-content: space-between; margin-bottom: 12px;">
+                                    <span style="color: #CBD5E1;">Soğan (kg):</span>
+                                    <span style="color: #F8FAFC;">₺8.75</span>
+                                </div>
+                                <div style="display: flex; justify-content: space-between; margin-bottom: 12px;">
+                                    <span style="color: #CBD5E1;">Tavuk (kg):</span>
+                                    <span style="color: #F8FAFC;">₺45.00</span>
+                                </div>
+                            </div>
+                        </div>
+                        
+                        <div class="card">
+                            <div class="card-header">
+                                <span class="card-icon">📈</span>
+                                <span class="card-title">Trend Analizi</span>
+                            </div>
+                            <div style="margin-top: 16px; color: #94A3B8; font-size: 0.9rem;">
+                                <p>• Sebze fiyatları bu hafta %3.2 arttı</p>
+                                <p>• Et fiyatları stabil seyrediyor</p>
+                                <p>• Sezonluk ürünlerde %15 indirim bekleniyor</p>
+                            </div>
+                        </div>
+                    </div>
+                </div>
+                
+                <!-- Inventory Page -->
+                <div id="inventory" class="page-section">
+                    <div class="card">
+                        <div class="card-header">
+                            <span class="card-icon">📦</span>
+                            <span class="card-title">Stok Durumu</span>
+                        </div>
+                        <div style="margin-top: 20px;">
+                            <div style="margin-bottom: 16px;">
+                                <div style="display: flex; justify-content: space-between; margin-bottom: 4px;">
+                                    <span style="color: #CBD5E1;">Sebzeler</span>
+                                    <span style="color: #10B981;">85%</span>
+                                </div>
+                                <div class="progress-bar">
+                                    <div class="progress-fill" style="width: 85%"></div>
+                                </div>
+                            </div>
+                            <div style="margin-bottom: 16px;">
+                                <div style="display: flex; justify-content: space-between; margin-bottom: 4px;">
+                                    <span style="color: #CBD5E1;">Et Ürünleri</span>
+                                    <span style="color: #F59E0B;">45%</span>
+                                </div>
+                                <div class="progress-bar">
+                                    <div class="progress-fill" style="width: 45%; background: linear-gradient(90deg, #F59E0B, #D97706);"></div>
+                                </div>
+                            </div>
+                            <div style="margin-bottom: 16px;">
+                                <div style="display: flex; justify-content: space-between; margin-bottom: 4px;">
+                                    <span style="color: #CBD5E1;">Baharatlar</span>
+                                    <span style="color: #EF4444;">15%</span>
+                                </div>
+                                <div class="progress-bar">
+                                    <div class="progress-fill" style="width: 15%; background: linear-gradient(90deg, #EF4444, #DC2626);"></div>
+                                </div>
+                            </div>
+                        </div>
+                    </div>
+                </div>
+                
+                <!-- Reports Page -->
+                <div id="reports" class="page-section">
+                    <div class="dashboard-grid">
+                        <div class="card">
+                            <div class="card-header">
+                                <span class="card-icon">📈</span>
+                                <span class="card-title">Rapor Oluştur</span>
+                            </div>
+                            <div class="form-group">
+                                <label class="form-label">Rapor Türü</label>
+                                <select class="form-input">
+                                    <option>Günlük Özet</option>
+                                    <option>Haftalık Analiz</option>
+                                    <option>Aylık Rapor</option>
+                                    <option>Yıllık Değerlendirme</option>
+                                </select>
+                            </div>
+                            <div class="form-group">
+                                <label class="form-label">Tarih Aralığı</label>
+                                <input type="date" class="form-input">
+                            </div>
+                            <button class="btn btn-primary" style="width: 100%;">Rapor Oluştur</button>
+                        </div>
+                    </div>
+                </div>
+                
+                <!-- Settings Page -->
+                <div id="settings" class="page-section">
+                    <div class="card">
+                        <div class="card-header">
+                            <span class="card-icon">⚙️</span>
+                            <span class="card-title">Sistem Ayarları</span>
+                        </div>
+                        <div class="form-group">
+                            <label class="form-label">Dil</label>
+                            <select class="form-input">
+                                <option selected>Türkçe</option>
+                                <option>English</option>
+                            </select>
+                        </div>
+                        <div class="form-group">
+                            <label class="form-label">Tema</label>
+                            <select class="form-input">
+                                <option selected>Koyu Tema</option>
+                                <option>Açık Tema</option>
+                                <option>Otomatik</option>
+                            </select>
+                        </div>
+                        <div class="form-group">
+                            <label class="form-label">Bildirimler</label>
+                            <select class="form-input">
+                                <option>Tümü</option>
+                                <option selected>Önemli</option>
+                                <option>Kapalı</option>
+                            </select>
+                        </div>
+                        <button class="btn btn-primary" style="width: 100%;">Ayarları Kaydet</button>
+                    </div>
+                </div>
+            </div>
+        </div>
+    </div>
+    
+    <script>
+        // Navigation functionality
+        document.addEventListener('DOMContentLoaded', function() {
+            const navItems = document.querySelectorAll('.nav-item');
+            const pageTitle = document.getElementById('page-title');
+            const pages = document.querySelectorAll('.page-section');
+            
+            const pageTitles = {
+                'dashboard': 'Ana Sayfa',
+                'tender-center': 'İhale Merkezi',
+                'spec-database': 'Şartname Veritabanı',
+                'market-intelligence': 'Piyasa Trend Zekâsı',
+                'price-tracking': 'Fiyat Takip Sistemi',
+                'menu-management': 'Menü Yönetimi',
+                'reports': 'Raporlar',
+                'ai-settings': 'AI Ayarları'
+            };
+            
+            navItems.forEach(item => {
+                item.addEventListener('click', function() {
+                    const targetPage = this.dataset.page;
+                    
+                    // Update active nav item
+                    navItems.forEach(nav => nav.classList.remove('active'));
+                    this.classList.add('active');
+                    
+                    // Update page title
+                    pageTitle.textContent = pageTitles[targetPage];
+                    
+                    // Show target page
+                    pages.forEach(page => page.classList.remove('active'));
+                    document.getElementById(targetPage).classList.add('active');
+                });
+            });
+            
+            // Cost simulation functionality
+            const costForm = document.querySelector('#cost-simulation');
+            if (costForm) {
+                const rangeInput = costForm.querySelector('input[type="range"]');
+                const rangeValue = costForm.querySelector('div[style*="text-align: center"]');
+                
+                if (rangeInput && rangeValue) {
+                    rangeInput.addEventListener('input', function() {
+                        rangeValue.textContent = '%' + this.value;
+                    });
+                }
+            }
+            
+            // KİK rate input
+            const kikRateInput = document.getElementById('kik-rate');
+            const kikDisplay = document.getElementById('kik-display');
+            if (kikRateInput && kikDisplay) {
+                kikRateInput.addEventListener('input', function() {
+                    kikDisplay.textContent = '%' + this.value;
+                });
+            }
+            
+            // AI Settings range inputs
+            const aiSettingsRanges = document.querySelectorAll('#ai-settings input[type="range"]');
+            aiSettingsRanges.forEach(range => {
+                const valueDisplay = range.parentNode.querySelector('div[style*="text-align: center"]');
+                if (valueDisplay) {
+                    range.addEventListener('input', function() {
+                        if (this.max == '10') {
+                            valueDisplay.textContent = this.value + '/10';
+                        } else {
+                            valueDisplay.textContent = '%' + this.value;
+                        }
+                    });
+                }
+            });
+            
+            // Simulate real-time updates
+            setInterval(() => {
+                // Update random metrics
+                const metrics = document.querySelectorAll('.card-value');
+                const randomMetric = Math.floor(Math.random() * metrics.length);
+                const currentValue = metrics[randomMetric].textContent;
+                
+                if (currentValue.includes('ms')) {
+                    const newValue = Math.floor(Math.random() * 50) + 70;
+                    metrics[randomMetric].textContent = newValue + 'ms';
+                } else if (currentValue.includes('%')) {
+                    const currentNum = parseFloat(currentValue);
+                    const variation = (Math.random() - 0.5) * 2;
+                    const newValue = Math.max(0, Math.min(100, currentNum + variation));
+                    metrics[randomMetric].textContent = newValue.toFixed(1) + '%';
+                }
+            }, 5000);
+        });
+        
+        // Tab functionality
+        function showTab(tabId) {
+            // Hide all tab contents
+            document.querySelectorAll('.tab-content').forEach(content => {
+                content.classList.remove('active');
+            });
+            
+            // Remove active class from all tab buttons
+            document.querySelectorAll('.tab-btn').forEach(btn => {
+                btn.classList.remove('active');
+            });
+            
+            // Show selected tab content
+            const selectedContent = document.getElementById(tabId);
+            if (selectedContent) {
+                selectedContent.classList.add('active');
+            }
+            
+            // Set active tab button
+            event.target.classList.add('active');
+        }
+        
+        // KİK Hesaplama for tab
+        function hesaplaKIKTab() {
+            const brut = parseFloat(document.getElementById('brutFiyatTab').value) || 0;
+            const kdv = parseFloat(document.getElementById('kdvOraniTab').value) || 18;
+            const miktar = parseFloat(document.getElementById('miktarTab').value) || 1;
+            
+            const sonucDiv = document.getElementById('kikSonucTab');
+            
+            if (brut <= 0) {
+                sonucDiv.innerHTML = '<div style="color: #EF4444; font-size: 0.9rem;">⚠️ Lütfen geçerli bir fiyat girin</div>';
+                return;
+            }
+            
+            const netFiyat = brut / (1 + kdv/100);
+            const kdvTutari = brut - netFiyat;
+            const toplamTutar = brut * miktar;
+            const toplamKdv = kdvTutari * miktar;
+            const toplamNet = netFiyat * miktar;
+            
+            sonucDiv.innerHTML = `
+                <div style="background: rgba(16, 185, 129, 0.1); border: 1px solid rgba(16, 185, 129, 0.2); border-radius: 8px; padding: 16px; margin-top: 16px;">
+                    <div style="display: flex; justify-content: space-between; margin-bottom: 8px;">
+                        <span style="color: #CBD5E1;">Net Birim Fiyat:</span>
+                        <span style="color: #F8FAFC; font-weight: 600;">₺${netFiyat.toFixed(2)}</span>
+                    </div>
+                    <div style="display: flex; justify-content: space-between; margin-bottom: 8px;">
+                        <span style="color: #CBD5E1;">KDV Tutarı:</span>
+                        <span style="color: #F8FAFC; font-weight: 600;">₺${kdvTutari.toFixed(2)}</span>
+                    </div>
+                    <div style="display: flex; justify-content: space-between; margin-bottom: 12px; padding-top: 8px; border-top: 1px solid rgba(71, 85, 105, 0.3);">
+                        <span style="color: #10B981; font-weight: 600;">Toplam Tutar (${miktar} adet):</span>
+                        <span style="color: #10B981; font-weight: 700; font-size: 1.1rem;">₺${toplamTutar.toFixed(2)}</span>
+                    </div>
+                </div>
+            `;
+        }
+        
+        // ProCheff specific functions
+        function showPage(pageId) {
+            const navItems = document.querySelectorAll('.nav-item');
+            const pages = document.querySelectorAll('.page-section');
+            const pageTitle = document.getElementById('page-title');
+            
+            const pageTitles = {
+                'dashboard': 'Ana Sayfa',
+                'tender-center': 'İhale Merkezi',
+                'spec-database': 'Şartname Veritabanı',
+                'market-intelligence': 'Piyasa Trend Zekâsı',
+                'price-tracking': 'Fiyat Takip Sistemi',
+                'menu-management': 'Menü Yönetimi',
+                'reports': 'Raporlar',
+                'ai-settings': 'AI Ayarları'
+            };
+            
+            // Update active nav item
+            navItems.forEach(nav => nav.classList.remove('active'));
+            const targetNav = document.querySelector(`[data-page="${pageId}"]`);
+            if (targetNav) targetNav.classList.add('active');
+            
+            // Update page title
+            pageTitle.textContent = pageTitles[pageId];
+            
+            // Show target page
+            pages.forEach(page => page.classList.remove('active'));
+            const targetPage = document.getElementById(pageId);
+            if (targetPage) targetPage.classList.add('active');
+        }
+        
+        function calculateKIK() {
+            const estimateValue = parseFloat(document.getElementById('estimate-value').value) || 0;
+            const kikRate = parseFloat(document.getElementById('kik-rate').value) || 15;
+            
+            if (estimateValue <= 0) {
+                alert('Lütfen geçerli bir tahmini değer girin!');
+                return;
+            }
+            
+            const kikValue = estimateValue * (kikRate / 100);
+            const minBid = estimateValue - kikValue;
+            
+            // Update results
+            document.getElementById('result-estimate').textContent = `₺${estimateValue.toLocaleString('tr-TR', {minimumFractionDigits: 2})}`;
+            document.getElementById('result-rate').textContent = `%${kikRate}`;
+            document.getElementById('result-kik').textContent = `₺${kikValue.toLocaleString('tr-TR', {minimumFractionDigits: 2})}`;
+            document.getElementById('result-min').textContent = `₺${minBid.toLocaleString('tr-TR', {minimumFractionDigits: 2})}`;
+            
+            // Update strategy advice
+            let strategy = '';
+            if (kikRate <= 10) {
+                strategy = '• Düşük KİK oranı - Rekabet yoğun olabilir<br>• Maliyet optimizasyonuna odaklanın<br>• Kalite-fiyat dengesini gözleyin';
+            } else if (kikRate <= 20) {
+                strategy = '• Orta seviye KİK oranı - Dengeli strateji<br>• Teknik şartlara uyumu önceliklendirin<br>• Piyasa ortalamalarını takip edin';
+            } else {
+                strategy = '• Yüksek KİK oranı - Daha esnek hareket alanı<br>• Kalite ve hizmet odaklı teklif verin<br>• Uzun vadeli ortaklık değeri vurgulayın';
+            }
+            
+            document.getElementById('strategy-advice').innerHTML = strategy;
+        }
+        
+        function analyzeSpecification() {
+            const fileInput = document.getElementById('spec-file');
+            const institutionType = document.getElementById('institution-type').value;
+            const analysisType = document.getElementById('analysis-type').value;
+            
+            if (!fileInput.files.length) {
+                alert('Lütfen analiz edilecek şartname dosyasını seçin!');
+                return;
+            }
+            
+            // Simulate analysis process
+            const resultsDiv = document.getElementById('analysis-results');
+            const profileDiv = document.getElementById('institution-profile');
+            
+            resultsDiv.innerHTML = '<div style="color: #F59E0B;">🔄 Şartname analiz ediliyor... Lütfen bekleyin.</div>';
+            
+            setTimeout(() => {
+                resultsDiv.innerHTML = `
+                    <div style="color: #10B981; margin-bottom: 12px;">✅ Analiz tamamlandı!</div>
+                    <div style="margin-bottom: 8px;"><strong>Dosya:</strong> ${fileInput.files[0].name}</div>
+                    <div style="margin-bottom: 8px;"><strong>Kurum:</strong> ${institutionType}</div>
+                    <div style="margin-bottom: 8px;"><strong>Sayfa Sayısı:</strong> ${Math.floor(Math.random() * 20) + 10}</div>
+                    <div style="margin-bottom: 8px;"><strong>Anahtar Kelimeler:</strong> Yemek servisi, hijyen, kalite standardı</div>
+                `;
+                
+                profileDiv.innerHTML = `
+                    <div style="color: #10B981; margin-bottom: 12px;">📊 Kurum Profili Analizi</div>
+                    <div>• <strong>Geçmiş İhaleler:</strong> 15 adet benzer ihale</div>
+                    <div>• <strong>Ortalama Bütçe:</strong> ₺${(Math.random() * 500000 + 200000).toLocaleString('tr-TR')}</div>
+                    <div>• <strong>Tercih Edilen:</strong> Kalite odaklı teklifler</div>
+                    <div>• <strong>Başarı Faktörü:</strong> Referans ve sertifikalar önemli</div>
+                    <div style="margin-top: 12px; color: #F59E0B;">💡 <strong>Strateji Önerisi:</strong> Bu kurum için kalite vurgulu, detaylı teknik şartname hazırlayın.</div>
+                `;
+            }, 3000);
+        }
+    </script>
+</body>
+</html>
