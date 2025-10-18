@@ -1,1 +1,2636 @@
-<!DOCTYPE html><html lang="tr"><head><meta charSet="utf-8"/><meta name="viewport" content="width=device-width, initial-scale=1"/><link rel="preload" href="/ProCheff-New/_next/static/media/e4af272ccee01ff0-s.p.woff2" as="font" crossorigin="" type="font/woff2"/><link rel="stylesheet" href="/ProCheff-New/_next/static/css/1365fdde46582cbb.css" data-precedence="next"/><link rel="preload" as="script" fetchPriority="low" href="/ProCheff-New/_next/static/chunks/webpack-42b3ad18259c36c0.js"/><script src="/ProCheff-New/_next/static/chunks/fd9d1056-b5397b5edf30a95b.js" async=""></script><script src="/ProCheff-New/_next/static/chunks/23-bbfb631229f1cc84.js" async=""></script><script src="/ProCheff-New/_next/static/chunks/main-app-279bcc8ea3e46717.js" async=""></script><script src="/ProCheff-New/_next/static/chunks/231-83db80a956ca26be.js" async=""></script><script src="/ProCheff-New/_next/static/chunks/app/(admin)/layout-9eedcbedc878186c.js" async=""></script><script src="/ProCheff-New/_next/static/chunks/app/global-error-5acc598a53424c67.js" async=""></script><title>ProCheff Kontrol Paneli</title><meta name="description" content="Yapay zeka destekli menü analizi ve fiyatlandırma paneli"/><meta name="next-size-adjust"/><script src="/ProCheff-New/_next/static/chunks/polyfills-78c92fac7aa8fdd8.js" noModule=""></script></head><body class="__className_2e35f2"><div class="flex min-h-screen bg-[#0f1117] text-gray-100"><aside class="w-64 bg-[#161a23] border-r border-gray-800 p-4 flex flex-col justify-between"><div><h1 class="text-lg font-bold mb-6 text-emerald-400">ProCheff</h1><nav class="space-y-2 text-sm"><a class="block px-3 py-2 rounded hover:bg-gray-800" href="/ProCheff-New/">🏠 Ana Sayfa</a><a class="block px-3 py-2 rounded hover:bg-gray-800" href="/ProCheff-New/dashboard/">📊 Dashboard</a><a class="block px-3 py-2 rounded hover:bg-gray-800" href="/ProCheff-New/offer/">💰 Teklif Paneli</a><a class="block px-3 py-2 rounded hover:bg-gray-800" href="/ProCheff-New/menu/">📄 Şartname Analizi</a><a class="block px-3 py-2 rounded hover:bg-gray-800" href="/ProCheff-New/simulation/">⚖️ Maliyet Simülasyonu</a><a class="block px-3 py-2 rounded bg-emerald-600 text-white" href="/ProCheff-New/ai-settings/">🧠 AI Ayarları</a></nav></div><div class="text-xs text-gray-400 mt-6"><p>● Tüm Sistemler Aktif</p><p class="mt-1 opacity-70">v2.3.0</p></div></aside><main class="flex-1 p-8 overflow-y-auto"><div><h1 class="text-2xl font-semibold mb-6 text-gray-100">🔧 AI Entegrasyonları</h1><p class="text-gray-400 mb-8">Yapay zeka modellerini ve harici API&#x27;leri yönetin</p><div class="grid grid-cols-1 md:grid-cols-2 lg:grid-cols-3 gap-6"><div class="bg-[#161a23] border-gray-800 hover:border-gray-700 transition-colors" style="background:rgba(35, 39, 47, 0.8);border:1px solid rgba(59, 130, 246, 0.2);border-radius:12px;padding:24px;color:#F1F5F9"><div class="" style="margin-bottom:16px"><h3 class="flex items-center gap-2 text-gray-100" style="font-size:1.125rem;font-weight:bold;color:#F1F5F9;margin:0"><div class="w-8 h-8 bg-gradient-to-br from-orange-500 to-red-600 rounded-lg flex items-center justify-center text-white text-sm font-bold">A</div><div class="flex-1"><div class="text-base">Anthropic Claude</div><div class="text-xs text-gray-400 font-normal">Claude-3.5 Sonnet</div></div><span class="inline-flex items-center rounded-full px-2.5 py-0.5 text-xs font-semibold transition-colors focus:outline-none focus:ring-2 focus:ring-ring focus:ring-offset-2 bg-emerald-600 text-white hover:bg-emerald-600/80 ">Connected</span></h3></div><div class="text-sm space-y-3 text-gray-300" style="color:#F1F5F9"><div class="space-y-2"><p>✅ Claude AI modelleri aktif</p><p>✅ Reasoning &amp; Analysis çalışıyor</p><p>✅ Menu parsing optimizasyonu</p></div><div class="text-xs text-gray-400 border-t border-gray-700 pt-2">Son senkronizasyon: 5 dakika önce</div><button class="w-full bg-red-600 hover:bg-red-700 rounded-lg py-2.5 text-white text-sm font-medium transition-colors">Bağlantıyı Kes</button></div></div><div class="bg-[#161a23] border-gray-800 hover:border-gray-700 transition-colors" style="background:rgba(35, 39, 47, 0.8);border:1px solid rgba(59, 130, 246, 0.2);border-radius:12px;padding:24px;color:#F1F5F9"><div class="" style="margin-bottom:16px"><h3 class="flex items-center gap-2 text-gray-100" style="font-size:1.125rem;font-weight:bold;color:#F1F5F9;margin:0"><div class="w-8 h-8 bg-gradient-to-br from-green-400 to-blue-500 rounded-lg flex items-center justify-center text-white text-sm font-bold">O</div><div class="flex-1"><div class="text-base">OpenAI GPT</div><div class="text-xs text-gray-400 font-normal">GPT-4 Turbo</div></div><span class="inline-flex items-center rounded-full px-2.5 py-0.5 text-xs font-semibold transition-colors focus:outline-none focus:ring-2 focus:ring-ring focus:ring-offset-2 border border-gray-500 text-gray-300 hover:bg-gray-800 ">Available</span></h3></div><div class="text-sm space-y-3 text-gray-300" style="color:#F1F5F9"><div class="space-y-2"><p>🔑 GPT modellerine erişim için API key gerekli</p><p>🎯 Menü analizi ve teklif optimizasyonu</p><p>📊 Piyasa trend analizi desteği</p></div><div class="text-xs text-gray-400 border-t border-gray-700 pt-2">API Key: <span class="text-red-400">Yapılandırılmamış</span></div><button class="w-full bg-emerald-600 hover:bg-emerald-700 rounded-lg py-2.5 text-white text-sm font-medium transition-colors">Bağlan</button></div></div><div class="bg-[#161a23] border-gray-800 hover:border-gray-700 transition-colors" style="background:rgba(35, 39, 47, 0.8);border:1px solid rgba(59, 130, 246, 0.2);border-radius:12px;padding:24px;color:#F1F5F9"><div class="" style="margin-bottom:16px"><h3 class="flex items-center gap-2 text-gray-100" style="font-size:1.125rem;font-weight:bold;color:#F1F5F9;margin:0"><div class="w-8 h-8 bg-gradient-to-br from-blue-500 to-purple-600 rounded-lg flex items-center justify-center text-white text-sm font-bold">G</div><div class="flex-1"><div class="text-base">Google Gemini Pro</div><div class="text-xs text-gray-400 font-normal">Gemini-1.5-Pro</div></div><span class="inline-flex items-center rounded-full px-2.5 py-0.5 text-xs font-semibold transition-colors focus:outline-none focus:ring-2 focus:ring-ring focus:ring-offset-2 border border-gray-500 text-gray-300 hover:bg-gray-800 ">Available</span></h3></div><div class="text-sm space-y-3 text-gray-300" style="color:#F1F5F9"><div class="space-y-2"><p>💎 Piyasa analizi ve fiyat tahminleri</p><p>📈 Trend analizi ve risk değerlendirmesi</p><p>🎯 Maliyet optimizasyonu önerileri</p></div><div class="text-xs text-gray-400 border-t border-gray-700 pt-2">API Key: <span class="text-red-400">Yapılandırılmamış</span></div><button class="w-full bg-emerald-600 hover:bg-emerald-700 rounded-lg py-2.5 text-white text-sm font-medium transition-colors">Bağlan</button></div></div><div class="bg-[#161a23] border-gray-800 hover:border-gray-700 transition-colors md:col-span-2 lg:col-span-1" style="background:rgba(35, 39, 47, 0.8);border:1px solid rgba(59, 130, 246, 0.2);border-radius:12px;padding:24px;color:#F1F5F9"><div class="" style="margin-bottom:16px"><h3 class="flex items-center gap-2 text-gray-100" style="font-size:1.125rem;font-weight:bold;color:#F1F5F9;margin:0"><div class="w-8 h-8 bg-gradient-to-br from-yellow-500 to-orange-600 rounded-lg flex items-center justify-center text-white text-sm font-bold">M</div><div class="flex-1"><div class="text-base">Market API</div><div class="text-xs text-gray-400 font-normal">Fiyat Entegrasyonları</div></div><span class="inline-flex items-center rounded-full px-2.5 py-0.5 text-xs font-semibold transition-colors focus:outline-none focus:ring-2 focus:ring-ring focus:ring-offset-2 bg-gray-700 text-gray-200 hover:bg-gray-700/80 ">Development</span></h3></div><div class="text-sm space-y-3 text-gray-300" style="color:#F1F5F9"><div class="space-y-2"><p>🛒 Desteklenen Marketler:</p><div class="flex flex-wrap gap-2"><span class="inline-flex items-center rounded-full px-2.5 py-0.5 text-xs font-semibold transition-colors focus:outline-none focus:ring-2 focus:ring-ring focus:ring-offset-2 bg-gray-700 text-gray-200 hover:bg-gray-700/80 ">A101</span><span class="inline-flex items-center rounded-full px-2.5 py-0.5 text-xs font-semibold transition-colors focus:outline-none focus:ring-2 focus:ring-ring focus:ring-offset-2 bg-gray-700 text-gray-200 hover:bg-gray-700/80 ">BİM</span><span class="inline-flex items-center rounded-full px-2.5 py-0.5 text-xs font-semibold transition-colors focus:outline-none focus:ring-2 focus:ring-ring focus:ring-offset-2 bg-gray-700 text-gray-200 hover:bg-gray-700/80 ">ŞOK</span><span class="inline-flex items-center rounded-full px-2.5 py-0.5 text-xs font-semibold transition-colors focus:outline-none focus:ring-2 focus:ring-ring focus:ring-offset-2 bg-gray-700 text-gray-200 hover:bg-gray-700/80 ">Migros</span><span class="inline-flex items-center rounded-full px-2.5 py-0.5 text-xs font-semibold transition-colors focus:outline-none focus:ring-2 focus:ring-ring focus:ring-offset-2 bg-gray-700 text-gray-200 hover:bg-gray-700/80 ">Metro</span><span class="inline-flex items-center rounded-full px-2.5 py-0.5 text-xs font-semibold transition-colors focus:outline-none focus:ring-2 focus:ring-ring focus:ring-offset-2 bg-gray-700 text-gray-200 hover:bg-gray-700/80 ">Tarım Kredi</span></div><p>📊 Real-time fiyat güncellemeleri</p></div><div class="text-xs text-gray-400 border-t border-gray-700 pt-2">API Status: <span class="text-yellow-400">Geliştiriliyor</span></div><button class="w-full bg-gray-600 hover:bg-gray-700 rounded-lg py-2.5 text-white text-sm font-medium transition-colors" disabled="">Yakında Gelecek</button></div></div><div class="bg-[#161a23] border-gray-800 hover:border-gray-700 transition-colors" style="background:rgba(35, 39, 47, 0.8);border:1px solid rgba(59, 130, 246, 0.2);border-radius:12px;padding:24px;color:#F1F5F9"><div class="" style="margin-bottom:16px"><h3 class="flex items-center gap-2 text-gray-100" style="font-size:1.125rem;font-weight:bold;color:#F1F5F9;margin:0"><div class="w-8 h-8 bg-gradient-to-br from-purple-500 to-pink-600 rounded-lg flex items-center justify-center text-white text-sm font-bold">R</div><div class="flex-1"><div class="text-base">Reasoning Engine</div><div class="text-xs text-gray-400 font-normal">Cognitive AI</div></div><span class="inline-flex items-center rounded-full px-2.5 py-0.5 text-xs font-semibold transition-colors focus:outline-none focus:ring-2 focus:ring-ring focus:ring-offset-2 bg-emerald-600 text-white hover:bg-emerald-600/80 ">Active</span></h3></div><div class="text-sm space-y-3 text-gray-300" style="color:#F1F5F9"><div class="space-y-2"><p>🧠 Akıllı risk değerlendirmesi</p><p>⚖️ Maliyet-fayda analizi</p><p>💡 Optimizasyon önerileri</p></div><div class="text-xs text-gray-400 border-t border-gray-700 pt-2">Engine Status: <span class="text-green-400">Çalışıyor</span></div><button class="w-full bg-purple-600 hover:bg-purple-700 rounded-lg py-2.5 text-white text-sm font-medium transition-colors">Konfigüre Et</button></div></div><div class="bg-[#161a23] border-gray-800 hover:border-gray-700 transition-colors" style="background:rgba(35, 39, 47, 0.8);border:1px solid rgba(59, 130, 246, 0.2);border-radius:12px;padding:24px;color:#F1F5F9"><div class="" style="margin-bottom:16px"><h3 class="flex items-center gap-2 text-gray-100" style="font-size:1.125rem;font-weight:bold;color:#F1F5F9;margin:0"><div class="w-8 h-8 bg-gradient-to-br from-teal-500 to-cyan-600 rounded-lg flex items-center justify-center text-white text-sm font-bold">P</div><div class="flex-1"><div class="text-base">AI Pipeline</div><div class="text-xs text-gray-400 font-normal">PDF-to-Offer</div></div><span class="inline-flex items-center rounded-full px-2.5 py-0.5 text-xs font-semibold transition-colors focus:outline-none focus:ring-2 focus:ring-ring focus:ring-offset-2 bg-emerald-600 text-white hover:bg-emerald-600/80 ">Operational</span></h3></div><div class="text-sm space-y-3 text-gray-300" style="color:#F1F5F9"><div class="space-y-2"><p>📄 PDF işleme ve analiz</p><p>🔄 Otomatik pipeline çalışıyor</p><p>⚡ End-to-end süreç optimizasyonu</p></div><div class="text-xs text-gray-400 border-t border-gray-700 pt-2">Son işlem: <span class="text-green-400">2 dakika önce</span></div><button class="w-full bg-teal-600 hover:bg-teal-700 rounded-lg py-2.5 text-white text-sm font-medium transition-colors">Pipeline Detayları</button></div></div></div><div class="mt-8 p-4 bg-[#161a23] border border-gray-800 rounded-lg"><h2 class="text-lg font-semibold mb-4 text-gray-100">📊 Sistem Durumu</h2><div class="grid grid-cols-1 md:grid-cols-3 gap-4 text-sm"><div class="flex justify-between"><span class="text-gray-400">API Çağrıları (24s):</span><span class="text-green-400">1,247</span></div><div class="flex justify-between"><span class="text-gray-400">Başarı Oranı:</span><span class="text-green-400">98.5%</span></div><div class="flex justify-between"><span class="text-gray-400">Ortalama Yanıt Süresi:</span><span class="text-blue-400">1.2s</span></div></div></div></div></main></div><script src="/ProCheff-New/_next/static/chunks/webpack-42b3ad18259c36c0.js" async=""></script><script>(self.__next_f=self.__next_f||[]).push([0]);self.__next_f.push([2,null])</script><script>self.__next_f.push([1,"1:HL[\"/ProCheff-New/_next/static/media/e4af272ccee01ff0-s.p.woff2\",\"font\",{\"crossOrigin\":\"\",\"type\":\"font/woff2\"}]\n2:HL[\"/ProCheff-New/_next/static/css/1365fdde46582cbb.css\",\"style\"]\n"])</script><script>self.__next_f.push([1,"3:I[5751,[],\"\"]\n5:I[9275,[],\"\"]\n6:I[1343,[],\"\"]\n7:I[845,[\"231\",\"static/chunks/231-83db80a956ca26be.js\",\"480\",\"static/chunks/app/(admin)/layout-9eedcbedc878186c.js\"],\"default\"]\nd:I[7490,[\"470\",\"static/chunks/app/global-error-5acc598a53424c67.js\"],\"default\"]\n8:{\"fontFamily\":\"system-ui,\\\"Segoe UI\\\",Roboto,Helvetica,Arial,sans-serif,\\\"Apple Color Emoji\\\",\\\"Segoe UI Emoji\\\"\",\"height\":\"100vh\",\"textAlign\":\"center\",\"display\":\"flex\",\"flexDirection\":\"column\",\"alignItems\":\"center\",\"justifyContent\":\"center\"}\n9:{\"display\":\"inline-block\",\"margin\":\"0 20px 0 0\",\"padding\":\"0 23px 0 0\",\"fontSize\":24,\"fontWeight\":500,\"verticalAlign\":\"top\",\"lineHeight\":\"49px\"}\na:{\"display\":\"inline-block\"}\nb:{\"fontSize\":14,\"fontWeight\":400,\"lineHeight\":\"49px\",\"margin\":0}\ne:[]\n"])</script><script>self.__next_f.push([1,"0:[[[\"$\",\"link\",\"0\",{\"rel\":\"stylesheet\",\"href\":\"/ProCheff-New/_next/static/css/1365fdde46582cbb.css\",\"precedence\":\"next\",\"crossOrigin\":\"$undefined\"}]],[\"$\",\"$L3\",null,{\"buildId\":\"26H0psgzobjYeSJBGkhaB\",\"assetPrefix\":\"/ProCheff-New\",\"initialCanonicalUrl\":\"/ai-settings/\",\"initialTree\":[\"\",{\"children\":[\"(admin)\",{\"children\":[\"ai-settings\",{\"children\":[\"__PAGE__\",{}]}]}]},\"$undefined\",\"$undefined\",true],\"initialSeedData\":[\"\",{\"children\":[\"(admin)\",{\"children\":[\"ai-settings\",{\"children\":[\"__PAGE__\",{},[[\"$L4\",[\"$\",\"div\",null,{\"children\":[[\"$\",\"h1\",null,{\"className\":\"text-2xl font-semibold mb-6 text-gray-100\",\"children\":\"🔧 AI Entegrasyonları\"}],[\"$\",\"p\",null,{\"className\":\"text-gray-400 mb-8\",\"children\":\"Yapay zeka modellerini ve harici API'leri yönetin\"}],[\"$\",\"div\",null,{\"className\":\"grid grid-cols-1 md:grid-cols-2 lg:grid-cols-3 gap-6\",\"children\":[[\"$\",\"div\",null,{\"className\":\"bg-[#161a23] border-gray-800 hover:border-gray-700 transition-colors\",\"style\":{\"background\":\"rgba(35, 39, 47, 0.8)\",\"border\":\"1px solid rgba(59, 130, 246, 0.2)\",\"borderRadius\":\"12px\",\"padding\":\"24px\",\"color\":\"#F1F5F9\"},\"children\":[[\"$\",\"div\",null,{\"className\":\"\",\"style\":{\"marginBottom\":\"16px\"},\"children\":[\"$\",\"h3\",null,{\"className\":\"flex items-center gap-2 text-gray-100\",\"style\":{\"fontSize\":\"1.125rem\",\"fontWeight\":\"bold\",\"color\":\"#F1F5F9\",\"margin\":0},\"children\":[[\"$\",\"div\",null,{\"className\":\"w-8 h-8 bg-gradient-to-br from-orange-500 to-red-600 rounded-lg flex items-center justify-center text-white text-sm font-bold\",\"children\":\"A\"}],[\"$\",\"div\",null,{\"className\":\"flex-1\",\"children\":[[\"$\",\"div\",null,{\"className\":\"text-base\",\"children\":\"Anthropic Claude\"}],[\"$\",\"div\",null,{\"className\":\"text-xs text-gray-400 font-normal\",\"children\":\"Claude-3.5 Sonnet\"}]]}],[\"$\",\"span\",null,{\"className\":\"inline-flex items-center rounded-full px-2.5 py-0.5 text-xs font-semibold transition-colors focus:outline-none focus:ring-2 focus:ring-ring focus:ring-offset-2 bg-emerald-600 text-white hover:bg-emerald-600/80 \",\"children\":\"Connected\"}]]}]}],[\"$\",\"div\",null,{\"className\":\"text-sm space-y-3 text-gray-300\",\"style\":{\"color\":\"#F1F5F9\"},\"children\":[[\"$\",\"div\",null,{\"className\":\"space-y-2\",\"children\":[[\"$\",\"p\",null,{\"children\":\"✅ Claude AI modelleri aktif\"}],[\"$\",\"p\",null,{\"children\":\"✅ Reasoning \u0026 Analysis çalışıyor\"}],[\"$\",\"p\",null,{\"children\":\"✅ Menu parsing optimizasyonu\"}]]}],[\"$\",\"div\",null,{\"className\":\"text-xs text-gray-400 border-t border-gray-700 pt-2\",\"children\":\"Son senkronizasyon: 5 dakika önce\"}],[\"$\",\"button\",null,{\"className\":\"w-full bg-red-600 hover:bg-red-700 rounded-lg py-2.5 text-white text-sm font-medium transition-colors\",\"children\":\"Bağlantıyı Kes\"}]]}]]}],[\"$\",\"div\",null,{\"className\":\"bg-[#161a23] border-gray-800 hover:border-gray-700 transition-colors\",\"style\":{\"background\":\"rgba(35, 39, 47, 0.8)\",\"border\":\"1px solid rgba(59, 130, 246, 0.2)\",\"borderRadius\":\"12px\",\"padding\":\"24px\",\"color\":\"#F1F5F9\"},\"children\":[[\"$\",\"div\",null,{\"className\":\"\",\"style\":{\"marginBottom\":\"16px\"},\"children\":[\"$\",\"h3\",null,{\"className\":\"flex items-center gap-2 text-gray-100\",\"style\":{\"fontSize\":\"1.125rem\",\"fontWeight\":\"bold\",\"color\":\"#F1F5F9\",\"margin\":0},\"children\":[[\"$\",\"div\",null,{\"className\":\"w-8 h-8 bg-gradient-to-br from-green-400 to-blue-500 rounded-lg flex items-center justify-center text-white text-sm font-bold\",\"children\":\"O\"}],[\"$\",\"div\",null,{\"className\":\"flex-1\",\"children\":[[\"$\",\"div\",null,{\"className\":\"text-base\",\"children\":\"OpenAI GPT\"}],[\"$\",\"div\",null,{\"className\":\"text-xs text-gray-400 font-normal\",\"children\":\"GPT-4 Turbo\"}]]}],[\"$\",\"span\",null,{\"className\":\"inline-flex items-center rounded-full px-2.5 py-0.5 text-xs font-semibold transition-colors focus:outline-none focus:ring-2 focus:ring-ring focus:ring-offset-2 border border-gray-500 text-gray-300 hover:bg-gray-800 \",\"children\":\"Available\"}]]}]}],[\"$\",\"div\",null,{\"className\":\"text-sm space-y-3 text-gray-300\",\"style\":{\"color\":\"#F1F5F9\"},\"children\":[[\"$\",\"div\",null,{\"className\":\"space-y-2\",\"children\":[[\"$\",\"p\",null,{\"children\":\"🔑 GPT modellerine erişim için API key gerekli\"}],[\"$\",\"p\",null,{\"children\":\"🎯 Menü analizi ve teklif optimizasyonu\"}],[\"$\",\"p\",null,{\"children\":\"📊 Piyasa trend analizi desteği\"}]]}],[\"$\",\"div\",null,{\"className\":\"text-xs text-gray-400 border-t border-gray-700 pt-2\",\"children\":[\"API Key: \",[\"$\",\"span\",null,{\"className\":\"text-red-400\",\"children\":\"Yapılandırılmamış\"}]]}],[\"$\",\"button\",null,{\"className\":\"w-full bg-emerald-600 hover:bg-emerald-700 rounded-lg py-2.5 text-white text-sm font-medium transition-colors\",\"children\":\"Bağlan\"}]]}]]}],[\"$\",\"div\",null,{\"className\":\"bg-[#161a23] border-gray-800 hover:border-gray-700 transition-colors\",\"style\":{\"background\":\"rgba(35, 39, 47, 0.8)\",\"border\":\"1px solid rgba(59, 130, 246, 0.2)\",\"borderRadius\":\"12px\",\"padding\":\"24px\",\"color\":\"#F1F5F9\"},\"children\":[[\"$\",\"div\",null,{\"className\":\"\",\"style\":{\"marginBottom\":\"16px\"},\"children\":[\"$\",\"h3\",null,{\"className\":\"flex items-center gap-2 text-gray-100\",\"style\":{\"fontSize\":\"1.125rem\",\"fontWeight\":\"bold\",\"color\":\"#F1F5F9\",\"margin\":0},\"children\":[[\"$\",\"div\",null,{\"className\":\"w-8 h-8 bg-gradient-to-br from-blue-500 to-purple-600 rounded-lg flex items-center justify-center text-white text-sm font-bold\",\"children\":\"G\"}],[\"$\",\"div\",null,{\"className\":\"flex-1\",\"children\":[[\"$\",\"div\",null,{\"className\":\"text-base\",\"children\":\"Google Gemini Pro\"}],[\"$\",\"div\",null,{\"className\":\"text-xs text-gray-400 font-normal\",\"children\":\"Gemini-1.5-Pro\"}]]}],[\"$\",\"span\",null,{\"className\":\"inline-flex items-center rounded-full px-2.5 py-0.5 text-xs font-semibold transition-colors focus:outline-none focus:ring-2 focus:ring-ring focus:ring-offset-2 border border-gray-500 text-gray-300 hover:bg-gray-800 \",\"children\":\"Available\"}]]}]}],[\"$\",\"div\",null,{\"className\":\"text-sm space-y-3 text-gray-300\",\"style\":{\"color\":\"#F1F5F9\"},\"children\":[[\"$\",\"div\",null,{\"className\":\"space-y-2\",\"children\":[[\"$\",\"p\",null,{\"children\":\"💎 Piyasa analizi ve fiyat tahminleri\"}],[\"$\",\"p\",null,{\"children\":\"📈 Trend analizi ve risk değerlendirmesi\"}],[\"$\",\"p\",null,{\"children\":\"🎯 Maliyet optimizasyonu önerileri\"}]]}],[\"$\",\"div\",null,{\"className\":\"text-xs text-gray-400 border-t border-gray-700 pt-2\",\"children\":[\"API Key: \",[\"$\",\"span\",null,{\"className\":\"text-red-400\",\"children\":\"Yapılandırılmamış\"}]]}],[\"$\",\"button\",null,{\"className\":\"w-full bg-emerald-600 hover:bg-emerald-700 rounded-lg py-2.5 text-white text-sm font-medium transition-colors\",\"children\":\"Bağlan\"}]]}]]}],[\"$\",\"div\",null,{\"className\":\"bg-[#161a23] border-gray-800 hover:border-gray-700 transition-colors md:col-span-2 lg:col-span-1\",\"style\":{\"background\":\"rgba(35, 39, 47, 0.8)\",\"border\":\"1px solid rgba(59, 130, 246, 0.2)\",\"borderRadius\":\"12px\",\"padding\":\"24px\",\"color\":\"#F1F5F9\"},\"children\":[[\"$\",\"div\",null,{\"className\":\"\",\"style\":{\"marginBottom\":\"16px\"},\"children\":[\"$\",\"h3\",null,{\"className\":\"flex items-center gap-2 text-gray-100\",\"style\":{\"fontSize\":\"1.125rem\",\"fontWeight\":\"bold\",\"color\":\"#F1F5F9\",\"margin\":0},\"children\":[[\"$\",\"div\",null,{\"className\":\"w-8 h-8 bg-gradient-to-br from-yellow-500 to-orange-600 rounded-lg flex items-center justify-center text-white text-sm font-bold\",\"children\":\"M\"}],[\"$\",\"div\",null,{\"className\":\"flex-1\",\"children\":[[\"$\",\"div\",null,{\"className\":\"text-base\",\"children\":\"Market API\"}],[\"$\",\"div\",null,{\"className\":\"text-xs text-gray-400 font-normal\",\"children\":\"Fiyat Entegrasyonları\"}]]}],[\"$\",\"span\",null,{\"className\":\"inline-flex items-center rounded-full px-2.5 py-0.5 text-xs font-semibold transition-colors focus:outline-none focus:ring-2 focus:ring-ring focus:ring-offset-2 bg-gray-700 text-gray-200 hover:bg-gray-700/80 \",\"children\":\"Development\"}]]}]}],[\"$\",\"div\",null,{\"className\":\"text-sm space-y-3 text-gray-300\",\"style\":{\"color\":\"#F1F5F9\"},\"children\":[[\"$\",\"div\",null,{\"className\":\"space-y-2\",\"children\":[[\"$\",\"p\",null,{\"children\":\"🛒 Desteklenen Marketler:\"}],[\"$\",\"div\",null,{\"className\":\"flex flex-wrap gap-2\",\"children\":[[\"$\",\"span\",null,{\"className\":\"inline-flex items-center rounded-full px-2.5 py-0.5 text-xs font-semibold transition-colors focus:outline-none focus:ring-2 focus:ring-ring focus:ring-offset-2 bg-gray-700 text-gray-200 hover:bg-gray-700/80 \",\"children\":\"A101\"}],[\"$\",\"span\",null,{\"className\":\"inline-flex items-center rounded-full px-2.5 py-0.5 text-xs font-semibold transition-colors focus:outline-none focus:ring-2 focus:ring-ring focus:ring-offset-2 bg-gray-700 text-gray-200 hover:bg-gray-700/80 \",\"children\":\"BİM\"}],[\"$\",\"span\",null,{\"className\":\"inline-flex items-center rounded-full px-2.5 py-0.5 text-xs font-semibold transition-colors focus:outline-none focus:ring-2 focus:ring-ring focus:ring-offset-2 bg-gray-700 text-gray-200 hover:bg-gray-700/80 \",\"children\":\"ŞOK\"}],[\"$\",\"span\",null,{\"className\":\"inline-flex items-center rounded-full px-2.5 py-0.5 text-xs font-semibold transition-colors focus:outline-none focus:ring-2 focus:ring-ring focus:ring-offset-2 bg-gray-700 text-gray-200 hover:bg-gray-700/80 \",\"children\":\"Migros\"}],[\"$\",\"span\",null,{\"className\":\"inline-flex items-center rounded-full px-2.5 py-0.5 text-xs font-semibold transition-colors focus:outline-none focus:ring-2 focus:ring-ring focus:ring-offset-2 bg-gray-700 text-gray-200 hover:bg-gray-700/80 \",\"children\":\"Metro\"}],[\"$\",\"span\",null,{\"className\":\"inline-flex items-center rounded-full px-2.5 py-0.5 text-xs font-semibold transition-colors focus:outline-none focus:ring-2 focus:ring-ring focus:ring-offset-2 bg-gray-700 text-gray-200 hover:bg-gray-700/80 \",\"children\":\"Tarım Kredi\"}]]}],[\"$\",\"p\",null,{\"children\":\"📊 Real-time fiyat güncellemeleri\"}]]}],[\"$\",\"div\",null,{\"className\":\"text-xs text-gray-400 border-t border-gray-700 pt-2\",\"children\":[\"API Status: \",[\"$\",\"span\",null,{\"className\":\"text-yellow-400\",\"children\":\"Geliştiriliyor\"}]]}],[\"$\",\"button\",null,{\"className\":\"w-full bg-gray-600 hover:bg-gray-700 rounded-lg py-2.5 text-white text-sm font-medium transition-colors\",\"disabled\":true,\"children\":\"Yakında Gelecek\"}]]}]]}],[\"$\",\"div\",null,{\"className\":\"bg-[#161a23] border-gray-800 hover:border-gray-700 transition-colors\",\"style\":{\"background\":\"rgba(35, 39, 47, 0.8)\",\"border\":\"1px solid rgba(59, 130, 246, 0.2)\",\"borderRadius\":\"12px\",\"padding\":\"24px\",\"color\":\"#F1F5F9\"},\"children\":[[\"$\",\"div\",null,{\"className\":\"\",\"style\":{\"marginBottom\":\"16px\"},\"children\":[\"$\",\"h3\",null,{\"className\":\"flex items-center gap-2 text-gray-100\",\"style\":{\"fontSize\":\"1.125rem\",\"fontWeight\":\"bold\",\"color\":\"#F1F5F9\",\"margin\":0},\"children\":[[\"$\",\"div\",null,{\"className\":\"w-8 h-8 bg-gradient-to-br from-purple-500 to-pink-600 rounded-lg flex items-center justify-center text-white text-sm font-bold\",\"children\":\"R\"}],[\"$\",\"div\",null,{\"className\":\"flex-1\",\"children\":[[\"$\",\"div\",null,{\"className\":\"text-base\",\"children\":\"Reasoning Engine\"}],[\"$\",\"div\",null,{\"className\":\"text-xs text-gray-400 font-normal\",\"children\":\"Cognitive AI\"}]]}],[\"$\",\"span\",null,{\"className\":\"inline-flex items-center rounded-full px-2.5 py-0.5 text-xs font-semibold transition-colors focus:outline-none focus:ring-2 focus:ring-ring focus:ring-offset-2 bg-emerald-600 text-white hover:bg-emerald-600/80 \",\"children\":\"Active\"}]]}]}],[\"$\",\"div\",null,{\"className\":\"text-sm space-y-3 text-gray-300\",\"style\":{\"color\":\"#F1F5F9\"},\"children\":[[\"$\",\"div\",null,{\"className\":\"space-y-2\",\"children\":[[\"$\",\"p\",null,{\"children\":\"🧠 Akıllı risk değerlendirmesi\"}],[\"$\",\"p\",null,{\"children\":\"⚖️ Maliyet-fayda analizi\"}],[\"$\",\"p\",null,{\"children\":\"💡 Optimizasyon önerileri\"}]]}],[\"$\",\"div\",null,{\"className\":\"text-xs text-gray-400 border-t border-gray-700 pt-2\",\"children\":[\"Engine Status: \",[\"$\",\"span\",null,{\"className\":\"text-green-400\",\"children\":\"Çalışıyor\"}]]}],[\"$\",\"button\",null,{\"className\":\"w-full bg-purple-600 hover:bg-purple-700 rounded-lg py-2.5 text-white text-sm font-medium transition-colors\",\"children\":\"Konfigüre Et\"}]]}]]}],[\"$\",\"div\",null,{\"className\":\"bg-[#161a23] border-gray-800 hover:border-gray-700 transition-colors\",\"style\":{\"background\":\"rgba(35, 39, 47, 0.8)\",\"border\":\"1px solid rgba(59, 130, 246, 0.2)\",\"borderRadius\":\"12px\",\"padding\":\"24px\",\"color\":\"#F1F5F9\"},\"children\":[[\"$\",\"div\",null,{\"className\":\"\",\"style\":{\"marginBottom\":\"16px\"},\"children\":[\"$\",\"h3\",null,{\"className\":\"flex items-center gap-2 text-gray-100\",\"style\":{\"fontSize\":\"1.125rem\",\"fontWeight\":\"bold\",\"color\":\"#F1F5F9\",\"margin\":0},\"children\":[[\"$\",\"div\",null,{\"className\":\"w-8 h-8 bg-gradient-to-br from-teal-500 to-cyan-600 rounded-lg flex items-center justify-center text-white text-sm font-bold\",\"children\":\"P\"}],[\"$\",\"div\",null,{\"className\":\"flex-1\",\"children\":[[\"$\",\"div\",null,{\"className\":\"text-base\",\"children\":\"AI Pipeline\"}],[\"$\",\"div\",null,{\"className\":\"text-xs text-gray-400 font-normal\",\"children\":\"PDF-to-Offer\"}]]}],[\"$\",\"span\",null,{\"className\":\"inline-flex items-center rounded-full px-2.5 py-0.5 text-xs font-semibold transition-colors focus:outline-none focus:ring-2 focus:ring-ring focus:ring-offset-2 bg-emerald-600 text-white hover:bg-emerald-600/80 \",\"children\":\"Operational\"}]]}]}],[\"$\",\"div\",null,{\"className\":\"text-sm space-y-3 text-gray-300\",\"style\":{\"color\":\"#F1F5F9\"},\"children\":[[\"$\",\"div\",null,{\"className\":\"space-y-2\",\"children\":[[\"$\",\"p\",null,{\"children\":\"📄 PDF işleme ve analiz\"}],[\"$\",\"p\",null,{\"children\":\"🔄 Otomatik pipeline çalışıyor\"}],[\"$\",\"p\",null,{\"children\":\"⚡ End-to-end süreç optimizasyonu\"}]]}],[\"$\",\"div\",null,{\"className\":\"text-xs text-gray-400 border-t border-gray-700 pt-2\",\"children\":[\"Son işlem: \",[\"$\",\"span\",null,{\"className\":\"text-green-400\",\"children\":\"2 dakika önce\"}]]}],[\"$\",\"button\",null,{\"className\":\"w-full bg-teal-600 hover:bg-teal-700 rounded-lg py-2.5 text-white text-sm font-medium transition-colors\",\"children\":\"Pipeline Detayları\"}]]}]]}]]}],[\"$\",\"div\",null,{\"className\":\"mt-8 p-4 bg-[#161a23] border border-gray-800 rounded-lg\",\"children\":[[\"$\",\"h2\",null,{\"className\":\"text-lg font-semibold mb-4 text-gray-100\",\"children\":\"📊 Sistem Durumu\"}],[\"$\",\"div\",null,{\"className\":\"grid grid-cols-1 md:grid-cols-3 gap-4 text-sm\",\"children\":[[\"$\",\"div\",null,{\"className\":\"flex justify-between\",\"children\":[[\"$\",\"span\",null,{\"className\":\"text-gray-400\",\"children\":\"API Çağrıları (24s):\"}],[\"$\",\"span\",null,{\"className\":\"text-green-400\",\"children\":\"1,247\"}]]}],[\"$\",\"div\",null,{\"className\":\"flex justify-between\",\"children\":[[\"$\",\"span\",null,{\"className\":\"text-gray-400\",\"children\":\"Başarı Oranı:\"}],[\"$\",\"span\",null,{\"className\":\"text-green-400\",\"children\":\"98.5%\"}]]}],[\"$\",\"div\",null,{\"className\":\"flex justify-between\",\"children\":[[\"$\",\"span\",null,{\"className\":\"text-gray-400\",\"children\":\"Ortalama Yanıt Süresi:\"}],[\"$\",\"span\",null,{\"className\":\"text-blue-400\",\"children\":\"1.2s\"}]]}]]}]]}]]}]],null],null]},[\"$\",\"$L5\",null,{\"parallelRouterKey\":\"children\",\"segmentPath\":[\"children\",\"(admin)\",\"children\",\"ai-settings\",\"children\"],\"error\":\"$undefined\",\"errorStyles\":\"$undefined\",\"errorScripts\":\"$undefined\",\"template\":[\"$\",\"$L6\",null,{}],\"templateStyles\":\"$undefined\",\"templateScripts\":\"$undefined\",\"notFound\":\"$undefined\",\"notFoundStyles\":\"$undefined\",\"styles\":null}],null]},[[\"$\",\"$L7\",null,{\"children\":[\"$\",\"$L5\",null,{\"parallelRouterKey\":\"children\",\"segmentPath\":[\"children\",\"(admin)\",\"children\"],\"error\":\"$undefined\",\"errorStyles\":\"$undefined\",\"errorScripts\":\"$undefined\",\"template\":[\"$\",\"$L6\",null,{}],\"templateStyles\":\"$undefined\",\"templateScripts\":\"$undefined\",\"notFound\":[[\"$\",\"title\",null,{\"children\":\"404: This page could not be found.\"}],[\"$\",\"div\",null,{\"style\":{\"fontFamily\":\"system-ui,\\\"Segoe UI\\\",Roboto,Helvetica,Arial,sans-serif,\\\"Apple Color Emoji\\\",\\\"Segoe UI Emoji\\\"\",\"height\":\"100vh\",\"textAlign\":\"center\",\"display\":\"flex\",\"flexDirection\":\"column\",\"alignItems\":\"center\",\"justifyContent\":\"center\"},\"children\":[\"$\",\"div\",null,{\"children\":[[\"$\",\"style\",null,{\"dangerouslySetInnerHTML\":{\"__html\":\"body{color:#000;background:#fff;margin:0}.next-error-h1{border-right:1px solid rgba(0,0,0,.3)}@media (prefers-color-scheme:dark){body{color:#fff;background:#000}.next-error-h1{border-right:1px solid rgba(255,255,255,.3)}}\"}}],[\"$\",\"h1\",null,{\"className\":\"next-error-h1\",\"style\":{\"display\":\"inline-block\",\"margin\":\"0 20px 0 0\",\"padding\":\"0 23px 0 0\",\"fontSize\":24,\"fontWeight\":500,\"verticalAlign\":\"top\",\"lineHeight\":\"49px\"},\"children\":\"404\"}],[\"$\",\"div\",null,{\"style\":{\"display\":\"inline-block\"},\"children\":[\"$\",\"h2\",null,{\"style\":{\"fontSize\":14,\"fontWeight\":400,\"lineHeight\":\"49px\",\"margin\":0},\"children\":\"This page could not be found.\"}]}]]}]}]],\"notFoundStyles\":[],\"styles\":null}],\"params\":{}}],null],null]},[[\"$\",\"html\",null,{\"lang\":\"tr\",\"children\":[\"$\",\"body\",null,{\"className\":\"__className_2e35f2\",\"children\":[\"$\",\"$L5\",null,{\"parallelRouterKey\":\"children\",\"segmentPath\":[\"children\"],\"error\":\"$undefined\",\"errorStyles\":\"$undefined\",\"errorScripts\":\"$undefined\",\"template\":[\"$\",\"$L6\",null,{}],\"templateStyles\":\"$undefined\",\"templateScripts\":\"$undefined\",\"notFound\":[[\"$\",\"title\",null,{\"children\":\"404: This page could not be found.\"}],[\"$\",\"div\",null,{\"style\":\"$8\",\"children\":[\"$\",\"div\",null,{\"children\":[[\"$\",\"style\",null,{\"dangerouslySetInnerHTML\":{\"__html\":\"body{color:#000;background:#fff;margin:0}.next-error-h1{border-right:1px solid rgba(0,0,0,.3)}@media (prefers-color-scheme:dark){body{color:#fff;background:#000}.next-error-h1{border-right:1px solid rgba(255,255,255,.3)}}\"}}],[\"$\",\"h1\",null,{\"className\":\"next-error-h1\",\"style\":\"$9\",\"children\":\"404\"}],[\"$\",\"div\",null,{\"style\":\"$a\",\"children\":[\"$\",\"h2\",null,{\"style\":\"$b\",\"children\":\"This page could not be found.\"}]}]]}]}]],\"notFoundStyles\":[],\"styles\":null}]}]}],null],null],\"couldBeIntercepted\":false,\"initialHead\":[null,\"$Lc\"],\"globalErrorComponent\":\"$d\",\"missingSlots\":\"$We\"}]]\n"])</script><script>self.__next_f.push([1,"c:[[\"$\",\"meta\",\"0\",{\"name\":\"viewport\",\"content\":\"width=device-width, initial-scale=1\"}],[\"$\",\"meta\",\"1\",{\"charSet\":\"utf-8\"}],[\"$\",\"title\",\"2\",{\"children\":\"ProCheff Kontrol Paneli\"}],[\"$\",\"meta\",\"3\",{\"name\":\"description\",\"content\":\"Yapay zeka destekli menü analizi ve fiyatlandırma paneli\"}],[\"$\",\"meta\",\"4\",{\"name\":\"next-size-adjust\"}]]\n4:null\n"])</script></body></html>
+<!DOCTYPE html><!DOCTYPE html><!DOCTYPE html><!DOCTYPE html><!DOCTYPE html>
+
+<html lang="tr">
+
+<head><html lang="tr">
+
+    <meta charset="UTF-8">
+
+    <meta name="viewport" content="width=device-width, initial-scale=1.0"><head><html lang="tr">
+
+    <title>🧠 AI Ayarları - ProCheff</title>
+
+    <link href="https://fonts.googleapis.com/css2?family=Inter:wght@300;400;500;600;700;800&display=swap" rel="stylesheet">    <meta charset="UTF-8">
+
+    <style>
+
+        :root {    <meta name="viewport" content="width=device-width, initial-scale=1.0"><head><html lang="tr"><html lang="tr">
+
+            --primary-950: #0A0B0F;
+
+            --primary-900: #141519;    <title>🧠 AI Ayarları - ProCheff</title>
+
+            --primary-850: #1A1C21;
+
+            --primary-800: #252832;    <link href="https://fonts.googleapis.com/css2?family=Inter:wght@300;400;500;600;700;800;900&display=swap" rel="stylesheet">    <meta charset="UTF-8">
+
+            --ai-purple: #8B5CF6;
+
+            --ai-blue: #3B82F6;    <style>
+
+            --ai-green: #10B981;
+
+            --text-primary: #F8FAFC;        :root {    <meta name="viewport" content="width=device-width, initial-scale=1.0"><head><head>
+
+            --text-secondary: #94A3B8;
+
+            --text-muted: #64748B;            --primary-950: #0C0F14;
+
+            --gradient-ai: linear-gradient(135deg, #6366f1 0%, #8b5cf6 50%, #a855f7 100%);
+
+            --card-bg: linear-gradient(145deg, #1a1c21, #16181d);            --primary-900: #1A1D24;    <title>🧠 AI Ayarları - ProCheff</title>
+
+            --border-subtle: rgba(148, 163, 184, 0.06);
+
+        }            --primary-850: #232936;
+
+
+
+        * { margin: 0; padding: 0; box-sizing: border-box; }            --ai-blue: #3B82F6;    <link href="https://fonts.googleapis.com/css2?family=Inter:wght@300;400;500;600;700;800;900&display=swap" rel="stylesheet">    <meta charset="UTF-8">    <meta charset="UTF-8">
+
+        body {
+
+            font-family: 'Inter', sans-serif;            --ai-green: #10B981;
+
+            background: var(--primary-950);
+
+            color: var(--text-primary);            --ai-purple: #8B5CF6;    <style>
+
+            line-height: 1.5;
+
+        }            --text-primary: #F1F5F9;
+
+
+
+        .container {            --text-secondary: #CBD5E1;        :root {    <meta name="viewport" content="width=device-width, initial-scale=1.0">    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+
+            display: grid;
+
+            grid-template-columns: 240px 1fr;            --gradient-ai: linear-gradient(135deg, #8b5cf6 0%, #3b82f6 50%, #06b6d4 100%);
+
+            height: 100vh;
+
+        }        }            --primary-950: #0C0F14;
+
+
+
+        .nav-panel {
+
+            background: var(--primary-900);
+
+            border-right: 1px solid var(--border-subtle);        * { margin: 0; padding: 0; box-sizing: border-box; }            --primary-900: #1A1D24;    <title>🧠 AI Ayarları - ProCheff</title>    <title>ProCheff AI Ayarları - Yapay Zeka Konfigürasyonu</title>
+
+            padding: 20px 16px;
+
+        }        body {
+
+
+
+        .logo {            font-family: 'Inter', sans-serif;            --primary-850: #232936;
+
+            font-size: 18px;
+
+            font-weight: 700;            background: var(--primary-950);
+
+            background: var(--gradient-ai);
+
+            -webkit-background-clip: text;            color: var(--text-primary);            --ai-blue: #3B82F6;    <link href="https://fonts.googleapis.com/css2?family=Inter:wght@300;400;500;600;700;800;900&display=swap" rel="stylesheet">    <link rel="preconnect" href="https://fonts.googleapis.com">
+
+            -webkit-text-fill-color: transparent;
+
+            text-align: center;            line-height: 1.6;
+
+            margin-bottom: 24px;
+
+        }        }            --ai-green: #10B981;
+
+
+
+        .nav-item {
+
+            display: flex;
+
+            align-items: center;        .container {            --ai-purple: #8B5CF6;    <style>    <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+
+            gap: 10px;
+
+            padding: 8px 12px;            display: grid;
+
+            border-radius: 6px;
+
+            color: var(--text-secondary);            grid-template-columns: 280px 1fr;            --text-primary: #F1F5F9;
+
+            text-decoration: none;
+
+            margin-bottom: 4px;            height: 100vh;
+
+            transition: all 0.2s ease;
+
+            font-size: 14px;        }            --text-secondary: #CBD5E1;        :root {    <link href="https://fonts.googleapis.com/css2?family=Inter:wght@300;400;500;600;700;800;900&display=swap" rel="stylesheet">
+
+        }
+
+
+
+        .nav-item.active {
+
+            background: var(--gradient-ai);        .nav-panel {            --gradient-ai: linear-gradient(135deg, #8b5cf6 0%, #3b82f6 50%, #06b6d4 100%);
+
+            color: white;
+
+        }            background: var(--primary-900);
+
+
+
+        .nav-item:hover:not(.active) {            border-right: 1px solid rgba(139, 92, 246, 0.2);        }            /* Sessiz Zekâ Color Palette */    <style>
+
+            background: var(--primary-850);
+
+            color: var(--text-primary);            padding: 24px 20px;
+
+        }
+
+        }
+
+        .main-panel {
+
+            padding: 24px;
+
+            overflow-y: auto;
+
+            background: var(--primary-950);        .logo {        * {            --primary-950: #0C0F14;        :root {
+
+        }
+
+            font-size: 22px;
+
+        .page-header {
+
+            margin-bottom: 24px;            font-weight: 800;            margin: 0;
+
+        }
+
+            background: var(--gradient-ai);
+
+        .page-title {
+
+            font-size: 24px;            -webkit-background-clip: text;            padding: 0;            --primary-900: #1A1D24;            /* AI Settings Color Palette */
+
+            font-weight: 700;
+
+            margin-bottom: 4px;            -webkit-text-fill-color: transparent;
+
+            background: var(--gradient-ai);
+
+            -webkit-background-clip: text;            text-align: center;            box-sizing: border-box;
+
+            -webkit-text-fill-color: transparent;
+
+        }            margin-bottom: 32px;
+
+
+
+        .page-subtitle {        }        }            --primary-850: #232936;            --primary-950: #0C0F14;
+
+            font-size: 14px;
+
+            color: var(--text-muted);
+
+        }
+
+        .nav-item {
+
+        .ai-models-grid {
+
+            display: grid;            display: flex;
+
+            grid-template-columns: repeat(auto-fit, minmax(280px, 1fr));
+
+            gap: 16px;            align-items: center;        body {            --primary-800: #2D3441;            --primary-900: #1A1D24;
+
+        }
+
+            gap: 12px;
+
+        .ai-card {
+
+            background: var(--card-bg);            padding: 12px;            font-family: 'Inter', sans-serif;
+
+            border: 1px solid var(--border-subtle);
+
+            border-radius: 12px;            border-radius: 8px;
+
+            padding: 18px;
+
+            position: relative;            color: var(--text-secondary);            background: var(--primary-950);            --primary-700: #3B4252;            --primary-850: #232936;
+
+            transition: all 0.3s ease;
+
+        }            text-decoration: none;
+
+
+
+        .ai-card:hover {            margin-bottom: 8px;            color: var(--text-primary);
+
+            border-color: rgba(139, 92, 246, 0.15);
+
+            transform: translateY(-1px);            transition: all 0.3s ease;
+
+        }
+
+        }            line-height: 1.6;            --primary-600: #4C566A;            --primary-800: #2D3441;
+
+        .ai-card::before {
+
+            content: '';
+
+            position: absolute;
+
+            top: 0;        .nav-item.active {        }
+
+            left: 0;
+
+            width: 3px;            background: var(--gradient-ai);
+
+            height: 100%;
+
+            background: var(--ai-purple);            color: white;                        --primary-700: #3B4252;
+
+            border-radius: 12px 0 0 12px;
+
+        }        }
+
+
+
+        .card-header {        .container {
+
+            display: flex;
+
+            justify-content: space-between;        .main-panel {
+
+            align-items: center;
+
+            margin-bottom: 16px;            padding: 32px;            display: grid;            --ai-blue: #3B82F6;            --primary-600: #4C566A;
+
+        }
+
+            overflow-y: auto;
+
+        .card-title {
+
+            font-size: 16px;        }            grid-template-columns: 280px 1fr;
+
+            font-weight: 600;
+
+            color: var(--text-primary);
+
+        }
+
+        .page-title {            height: 100vh;            --ai-green: #10B981;            
+
+        .status-badge {
+
+            padding: 2px 8px;            font-size: 32px;
+
+            border-radius: 4px;
+
+            font-size: 10px;            font-weight: 800;        }
+
+            font-weight: 600;
+
+            text-transform: uppercase;            margin-bottom: 8px;
+
+            background: rgba(16, 185, 129, 0.15);
+
+            color: var(--ai-green);            background: var(--gradient-ai);            --ai-purple: #8B5CF6;            --ai-blue: #3B82F6;
+
+            border: 1px solid rgba(16, 185, 129, 0.2);
+
+        }            -webkit-background-clip: text;
+
+
+
+        .status-badge.training {            -webkit-text-fill-color: transparent;        .nav-panel {
+
+            background: rgba(251, 146, 60, 0.15);
+
+            color: #FB923C;        }
+
+            border-color: rgba(251, 146, 60, 0.2);
+
+        }            background: var(--primary-900);            --ai-orange: #F59E0B;            --ai-green: #10B981;
+
+
+
+        .controls {        .ai-models-grid {
+
+            display: flex;
+
+            flex-direction: column;            display: grid;            border-right: 1px solid rgba(139, 92, 246, 0.2);
+
+            gap: 12px;
+
+        }            grid-template-columns: repeat(auto-fit, minmax(350px, 1fr));
+
+
+
+        .control-group {            gap: 24px;            padding: 24px 20px;            --ai-red: #EF4444;            --ai-purple: #8B5CF6;
+
+            display: flex;
+
+            justify-content: space-between;            margin-top: 32px;
+
+            align-items: center;
+
+        }        }        }
+
+
+
+        .control-label {
+
+            font-size: 13px;
+
+            color: var(--text-secondary);        .ai-card {            --ai-cyan: #06B6D4;            --ai-orange: #F59E0B;
+
+        }
+
+            background: var(--primary-850);
+
+        .range-slider {
+
+            width: 80px;            border: 1px solid rgba(139, 92, 246, 0.2);        .logo {
+
+            height: 4px;
+
+            background: rgba(75, 85, 99, 0.3);            border-radius: 16px;
+
+            border-radius: 2px;
+
+            outline: none;            padding: 24px;            font-size: 22px;            --ai-pink: #EC4899;            --ai-red: #EF4444;
+
+            -webkit-appearance: none;
+
+        }            position: relative;
+
+
+
+        .range-slider::-webkit-slider-thumb {        }            font-weight: 800;
+
+            -webkit-appearance: none;
+
+            width: 14px;
+
+            height: 14px;
+
+            background: var(--ai-purple);        .ai-card::before {            background: var(--gradient-ai);            --ai-yellow: #FDE047;            --ai-cyan: #06B6D4;
+
+            border-radius: 50%;
+
+            cursor: pointer;            content: '';
+
+        }
+
+            position: absolute;            -webkit-background-clip: text;
+
+        .action-btn {
+
+            background: var(--gradient-ai);            top: 0;
+
+            color: white;
+
+            border: none;            left: 0;            -webkit-text-fill-color: transparent;                        --ai-pink: #EC4899;
+
+            padding: 8px 16px;
+
+            border-radius: 6px;            width: 4px;
+
+            font-weight: 500;
+
+            font-size: 13px;            height: 100%;            text-align: center;
+
+            cursor: pointer;
+
+            margin-top: 12px;            background: var(--ai-purple);
+
+            transition: all 0.2s ease;
+
+        }        }            margin-bottom: 32px;            --text-primary: #F1F5F9;            --ai-yellow: #FDE047;
+
+
+
+        .action-btn:hover {
+
+            transform: translateY(-1px);
+
+            box-shadow: 0 4px 12px rgba(139, 92, 246, 0.3);        .card-header {        }
+
+        }
+
+    </style>            display: flex;
+
+</head>
+
+<body>            justify-content: space-between;            --text-secondary: #CBD5E1;            
+
+    <div class="container">
+
+        <nav class="nav-panel">            align-items: center;
+
+            <div class="logo">ProCheff</div>
+
+            <a href="../index.html" class="nav-item">🏠 Ana Sayfa</a>            margin-bottom: 20px;        .nav-item {
+
+            <a href="../dashboard/index.html" class="nav-item">📊 Dashboard</a>
+
+            <a href="../cost-simulation/index.html" class="nav-item">⚖️ Maliyet Sim.</a>        }
+
+            <a href="index.html" class="nav-item active">🧠 AI Ayarları</a>
+
+        </nav>            display: flex;            --text-muted: #94A3B8;            --text-primary: #F1F5F9;
+
+
+
+        <main class="main-panel">        .card-title {
+
+            <div class="page-header">
+
+                <h1 class="page-title">🧠 AI Model Ayarları</h1>            font-size: 18px;            align-items: center;
+
+                <p class="page-subtitle">Yapay zeka modellerini konfigüre edin ve performansı optimize edin</p>
+
+            </div>            font-weight: 700;
+
+
+
+            <div class="ai-models-grid">        }            gap: 12px;                        --text-secondary: #CBD5E1;
+
+                <div class="ai-card">
+
+                    <div class="card-header">
+
+                        <div class="card-title">📈 Trend Analysis</div>
+
+                        <div class="status-badge">Aktif</div>        .status-badge {            padding: 12px;
+
+                    </div>
+
+                    <div class="controls">            padding: 4px 12px;
+
+                        <div class="control-group">
+
+                            <div class="control-label">Hassasiyet</div>            border-radius: 8px;            border-radius: 8px;            --gradient-ai: linear-gradient(135deg, #8b5cf6 0%, #3b82f6 50%, #06b6d4 100%);            --text-muted: #94A3B8;
+
+                            <input type="range" class="range-slider" min="1" max="10" value="8">
+
+                        </div>            font-size: 11px;
+
+                        <div class="control-group">
+
+                            <div class="control-label">Tahmin Aralığı</div>            font-weight: 600;            color: var(--text-secondary);
+
+                            <input type="range" class="range-slider" min="1" max="30" value="15">
+
+                        </div>            text-transform: uppercase;
+
+                        <button class="action-btn">Kaydet</button>
+
+                    </div>            background: rgba(16, 185, 129, 0.2);            text-decoration: none;            --gradient-neural: linear-gradient(135deg, #ec4899 0%, #8b5cf6 50%, #3b82f6 100%);            
+
+                </div>
+
+            color: var(--ai-green);
+
+                <div class="ai-card">
+
+                    <div class="card-header">        }            margin-bottom: 8px;
+
+                        <div class="card-title">🎯 Combination AI</div>
+
+                        <div class="status-badge">Aktif</div>
+
+                    </div>
+
+                    <div class="controls">        .controls {            transition: all 0.3s ease;            --gradient-mind: linear-gradient(135deg, #06b6d4 0%, #10b981 50%, #8b5cf6 100%);            --gradient-ai: linear-gradient(135deg, #8b5cf6 0%, #3b82f6 50%, #06b6d4 100%);
+
+                        <div class="control-group">
+
+                            <div class="control-label">Optimizasyon</div>            display: flex;
+
+                            <input type="range" class="range-slider" min="1" max="10" value="7">
+
+                        </div>            flex-direction: column;        }
+
+                        <div class="control-group">
+
+                            <div class="control-label">Kalite</div>            gap: 16px;
+
+                            <input type="range" class="range-slider" min="50" max="100" value="85">
+
+                        </div>        }        }            --gradient-neural: linear-gradient(135deg, #ec4899 0%, #8b5cf6 50%, #3b82f6 100%);
+
+                        <button class="action-btn">Kaydet</button>
+
+                    </div>
+
+                </div>
+
+        .control-group {        .nav-item.active {
+
+                <div class="ai-card">
+
+                    <div class="card-header">            display: flex;
+
+                        <div class="card-title">🎓 Learning System</div>
+
+                        <div class="status-badge training">Eğitiliyor</div>            justify-content: space-between;            background: var(--gradient-ai);        }
+
+                    </div>
+
+                    <div class="controls">            align-items: center;
+
+                        <div class="control-group">
+
+                            <div class="control-label">Öğrenme Hızı</div>        }            color: white;
+
+                            <input type="range" class="range-slider" min="1" max="10" value="6">
+
+                        </div>
+
+                        <div class="control-group">
+
+                            <div class="control-label">Adaptasyon</div>        .control-label {        }        * {
+
+                            <input type="range" class="range-slider" min="1" max="10" value="8">
+
+                        </div>            font-size: 14px;
+
+                        <button class="action-btn">Kaydet</button>
+
+                    </div>            color: var(--text-secondary);
+
+                </div>
+
+        }
+
+                <div class="ai-card">
+
+                    <div class="card-header">        .main-panel {            margin: 0;        * {
+
+                        <div class="card-title">⭐ Quality Assessment</div>
+
+                        <div class="status-badge">Aktif</div>        .range-slider {
+
+                    </div>
+
+                    <div class="controls">            width: 100px;            padding: 32px;
+
+                        <div class="control-group">
+
+                            <div class="control-label">Kalite Eşiği</div>            height: 6px;
+
+                            <input type="range" class="range-slider" min="1" max="10" value="7">
+
+                        </div>            background: rgba(75, 85, 99, 0.3);            overflow-y: auto;            padding: 0;            margin: 0;
+
+                        <div class="control-group">
+
+                            <div class="control-label">Filtreleme</div>            border-radius: 3px;
+
+                            <input type="range" class="range-slider" min="1" max="10" value="5">
+
+                        </div>            outline: none;        }
+
+                        <button class="action-btn">Kaydet</button>
+
+                    </div>        }
+
+                </div>
+
+            </div>            box-sizing: border-box;            padding: 0;
+
+        </main>
+
+    </div>        .action-btn {
+
+
+
+    <script>            background: var(--gradient-ai);        .page-title {
+
+        console.log('🧠 AI Ayarları sayfası yüklendi');
+
+                    color: white;
+
+        document.querySelectorAll('.action-btn').forEach(btn => {
+
+            btn.addEventListener('click', () => {            border: none;            font-size: 32px;        }            box-sizing: border-box;
+
+                btn.textContent = 'Kaydedildi ✅';
+
+                setTimeout(() => {            padding: 10px 20px;
+
+                    btn.textContent = 'Kaydet';
+
+                }, 2000);            border-radius: 8px;            font-weight: 800;
+
+            });
+
+        });            font-weight: 600;
+
+
+
+        // Range slider değerlerini göster            cursor: pointer;            margin-bottom: 8px;        }
+
+        document.querySelectorAll('.range-slider').forEach(slider => {
+
+            slider.addEventListener('input', function() {            margin-top: 20px;
+
+                console.log(`${this.parentNode.querySelector('.control-label').textContent}: ${this.value}`);
+
+            });        }            background: var(--gradient-ai);
+
+        });
+
+    </script>    </style>
+
+</body>
+
+</html></head>            -webkit-background-clip: text;        body {
+
+<body>
+
+    <div class="container">            -webkit-text-fill-color: transparent;
+
+        <nav class="nav-panel">
+
+            <div class="logo">ProCheff</div>        }            font-family: 'Inter', -apple-system, BlinkMacSystemFont, sans-serif;        body {
+
+            <a href="../index.html" class="nav-item">🏠 Ana Sayfa</a>
+
+            <a href="../dashboard/index.html" class="nav-item">📊 Dashboard</a>
+
+            <a href="../cost-simulation/index.html" class="nav-item">⚖️ Maliyet Simülasyonu</a>
+
+            <a href="index.html" class="nav-item active">🧠 AI Ayarları</a>        .ai-models-grid {            background: var(--primary-950);            font-family: 'Inter', -apple-system, BlinkMacSystemFont, sans-serif;
+
+        </nav>
+
+            display: grid;
+
+        <main class="main-panel">
+
+            <h1 class="page-title">🧠 AI Model Ayarları</h1>            grid-template-columns: repeat(auto-fit, minmax(350px, 1fr));            color: var(--text-primary);            background: var(--primary-950);
+
+            <p>Yapay zeka modellerini konfigüre edin ve performansı optimize edin</p>
+
+            gap: 24px;
+
+            <div class="ai-models-grid">
+
+                <div class="ai-card">            margin-top: 32px;            line-height: 1.6;            color: var(--text-primary);
+
+                    <div class="card-header">
+
+                        <div class="card-title">📈 Trend Analysis AI</div>        }
+
+                        <div class="status-badge">Aktif</div>
+
+                    </div>            overflow-x: hidden;            line-height: 1.6;
+
+                    <div class="controls">
+
+                        <div class="control-group">        .ai-card {
+
+                            <div class="control-label">Analiz Hassasiyeti</div>
+
+                            <input type="range" class="range-slider" min="1" max="10" value="8">            background: var(--primary-850);        }            overflow-x: hidden;
+
+                        </div>
+
+                        <div class="control-group">            border: 1px solid rgba(139, 92, 246, 0.2);
+
+                            <div class="control-label">Tahmin Aralığı</div>
+
+                            <input type="range" class="range-slider" min="1" max="30" value="15">            border-radius: 16px;        }
+
+                        </div>
+
+                        <button class="action-btn">Kaydet</button>            padding: 24px;
+
+                    </div>
+
+                </div>            position: relative;        /* Ana Container */
+
+
+
+                <div class="ai-card">        }
+
+                    <div class="card-header">
+
+                        <div class="card-title">🎯 Combination AI</div>        .ai-container {        /* Ana Container */
+
+                        <div class="status-badge">Aktif</div>
+
+                    </div>        .ai-card::before {
+
+                    <div class="controls">
+
+                        <div class="control-group">            content: '';            display: grid;        .ai-settings-container {
+
+                            <div class="control-label">Optimizasyon Derinliği</div>
+
+                            <input type="range" class="range-slider" min="1" max="10" value="7">            position: absolute;
+
+                        </div>
+
+                        <div class="control-group">            top: 0;            grid-template-columns: 280px 1fr;            display: grid;
+
+                            <div class="control-label">Kalite Faktörü</div>
+
+                            <input type="range" class="range-slider" min="50" max="100" value="85">            left: 0;
+
+                        </div>
+
+                        <button class="action-btn">Kaydet</button>            width: 4px;            height: 100vh;            grid-template-columns: 280px 1fr;
+
+                    </div>
+
+                </div>            height: 100%;
+
+
+
+                <div class="ai-card">            background: var(--ai-purple);            gap: 0;            height: 100vh;
+
+                    <div class="card-header">
+
+                        <div class="card-title">🎓 Learning System</div>        }
+
+                        <div class="status-badge">Eğitiliyor</div>
+
+                    </div>        }            gap: 0;
+
+                    <div class="controls">
+
+                        <div class="control-group">        .card-header {
+
+                            <div class="control-label">Öğrenme Hızı</div>
+
+                            <input type="range" class="range-slider" min="1" max="10" value="6">            display: flex;        }
+
+                        </div>
+
+                        <div class="control-group">            justify-content: space-between;
+
+                            <div class="control-label">Adaptasyon Seviyesi</div>
+
+                            <input type="range" class="range-slider" min="1" max="10" value="8">            align-items: center;        /* Sol Panel - Navigation */
+
+                        </div>
+
+                        <button class="action-btn">Kaydet</button>            margin-bottom: 20px;
+
+                    </div>
+
+                </div>        }        .nav-panel {        /* Sol Panel - Navigation */
+
+
+
+                <div class="ai-card">
+
+                    <div class="card-header">
+
+                        <div class="card-title">⭐ Quality Assessment</div>        .card-title {            background: linear-gradient(180deg, var(--primary-900) 0%, var(--primary-850) 100%);        .nav-panel {
+
+                        <div class="status-badge">Aktif</div>
+
+                    </div>            font-size: 18px;
+
+                    <div class="controls">
+
+                        <div class="control-group">            font-weight: 700;            border-right: 1px solid rgba(139, 92, 246, 0.2);            background: linear-gradient(180deg, var(--primary-900) 0%, var(--primary-850) 100%);
+
+                            <div class="control-label">Kalite Eşiği</div>
+
+                            <input type="range" class="range-slider" min="1" max="10" value="7">        }
+
+                        </div>
+
+                        <div class="control-group">            padding: 24px 20px;            border-right: 1px solid rgba(139, 92, 246, 0.2);
+
+                            <div class="control-label">Filtreleme Seviyesi</div>
+
+                            <input type="range" class="range-slider" min="1" max="10" value="5">        .status-badge {
+
+                        </div>
+
+                        <button class="action-btn">Kaydet</button>            padding: 4px 12px;            overflow-y: auto;            padding: 24px 20px;
+
+                    </div>
+
+                </div>            border-radius: 8px;
+
+            </div>
+
+        </main>            font-size: 11px;        }            overflow-y: auto;
+
+    </div>
+
+            font-weight: 600;
+
+    <script>
+
+        console.log('🧠 AI Ayarları sayfası yüklendi');            text-transform: uppercase;        }
+
+        
+
+        document.querySelectorAll('.action-btn').forEach(btn => {            background: rgba(16, 185, 129, 0.2);
+
+            btn.addEventListener('click', () => {
+
+                btn.textContent = 'Kaydedildi ✅';            color: var(--ai-green);        .nav-header {
+
+                setTimeout(() => {
+
+                    btn.textContent = 'Kaydet';        }
+
+                }, 2000);
+
+            });            text-align: center;        .nav-header {
+
+        });
+
+    </script>        .controls {
+
+</body>
+
+</html>            display: flex;            margin-bottom: 32px;            text-align: center;
+
+            flex-direction: column;
+
+            gap: 16px;            padding-bottom: 20px;            margin-bottom: 32px;
+
+        }
+
+            border-bottom: 1px solid rgba(139, 92, 246, 0.2);            padding-bottom: 20px;
+
+        .control-group {
+
+            display: flex;        }            border-bottom: 1px solid rgba(139, 92, 246, 0.2);
+
+            justify-content: space-between;
+
+            align-items: center;        }
+
+        }
+
+        .logo {
+
+        .control-label {
+
+            font-size: 14px;            font-size: 22px;        .logo {
+
+            color: var(--text-secondary);
+
+        }            font-weight: 800;            font-size: 22px;
+
+
+
+        .range-slider {            background: var(--gradient-ai);            font-weight: 800;
+
+            width: 100px;
+
+            height: 6px;            -webkit-background-clip: text;            background: var(--gradient-ai);
+
+            background: rgba(75, 85, 99, 0.3);
+
+            border-radius: 3px;            -webkit-text-fill-color: transparent;            -webkit-background-clip: text;
+
+            outline: none;
+
+        }            background-clip: text;            -webkit-text-fill-color: transparent;
+
+
+
+        .action-btn {            margin-bottom: 8px;            background-clip: text;
+
+            background: var(--gradient-ai);
+
+            color: white;        }            margin-bottom: 8px;
+
+            border: none;
+
+            padding: 10px 20px;        }
+
+            border-radius: 8px;
+
+            font-weight: 600;        .version-badge {
+
+            cursor: pointer;
+
+            margin-top: 20px;            background: var(--gradient-ai);        .version-badge {
+
+        }
+
+    </style>            color: white;            background: var(--gradient-ai);
+
+</head>
+
+<body>            padding: 4px 12px;            color: white;
+
+    <div class="container">
+
+        <nav class="nav-panel">            border-radius: 12px;            padding: 4px 12px;
+
+            <div class="logo">ProCheff</div>
+
+            <a href="../index.html" class="nav-item">🏠 Ana Sayfa</a>            font-size: 10px;            border-radius: 12px;
+
+            <a href="../dashboard/index.html" class="nav-item">📊 Dashboard</a>
+
+            <a href="../cost-simulation/index.html" class="nav-item">⚖️ Maliyet Simülasyonu</a>            font-weight: 600;            font-size: 10px;
+
+            <a href="index.html" class="nav-item active">🧠 AI Ayarları</a>
+
+        </nav>            text-transform: uppercase;            font-weight: 600;
+
+
+
+        <main class="main-panel">            letter-spacing: 0.5px;            text-transform: uppercase;
+
+            <h1 class="page-title">🧠 AI Model Ayarları</h1>
+
+            <p>Yapay zeka modellerini konfigüre edin ve performansı optimize edin</p>        }            letter-spacing: 0.5px;
+
+
+
+            <div class="ai-models-grid">        }
+
+                <div class="ai-card">
+
+                    <div class="card-header">        .nav-section {
+
+                        <div class="card-title">📈 Trend Analysis AI</div>
+
+                        <div class="status-badge">Aktif</div>            margin-bottom: 24px;        .nav-section {
+
+                    </div>
+
+                    <div class="controls">        }            margin-bottom: 24px;
+
+                        <div class="control-group">
+
+                            <div class="control-label">Analiz Hassasiyeti</div>        }
+
+                            <input type="range" class="range-slider" min="1" max="10" value="8">
+
+                        </div>        .nav-title {
+
+                        <div class="control-group">
+
+                            <div class="control-label">Tahmin Aralığı</div>            font-size: 11px;        .nav-title {
+
+                            <input type="range" class="range-slider" min="1" max="30" value="15">
+
+                        </div>            font-weight: 600;            font-size: 11px;
+
+                        <button class="action-btn">Kaydet</button>
+
+                    </div>            color: var(--text-muted);            font-weight: 600;
+
+                </div>
+
+            text-transform: uppercase;            color: var(--text-muted);
+
+                <div class="ai-card">
+
+                    <div class="card-header">            letter-spacing: 0.5px;            text-transform: uppercase;
+
+                        <div class="card-title">🎯 Combination AI</div>
+
+                        <div class="status-badge">Aktif</div>            margin-bottom: 12px;            letter-spacing: 0.5px;
+
+                    </div>
+
+                    <div class="controls">            padding-left: 12px;            margin-bottom: 12px;
+
+                        <div class="control-group">
+
+                            <div class="control-label">Optimizasyon Derinliği</div>        }            padding-left: 12px;
+
+                            <input type="range" class="range-slider" min="1" max="10" value="7">
+
+                        </div>        }
+
+                        <div class="control-group">
+
+                            <div class="control-label">Kalite Faktörü</div>        .nav-item {
+
+                            <input type="range" class="range-slider" min="50" max="100" value="85">
+
+                        </div>            display: flex;        .nav-item {
+
+                        <button class="action-btn">Kaydet</button>
+
+                    </div>            align-items: center;            display: flex;
+
+                </div>
+
+            gap: 12px;            align-items: center;
+
+                <div class="ai-card">
+
+                    <div class="card-header">            padding: 12px;            gap: 12px;
+
+                        <div class="card-title">🎓 Learning System</div>
+
+                        <div class="status-badge">Eğitiliyor</div>            border-radius: 8px;            padding: 12px;
+
+                    </div>
+
+                    <div class="controls">            color: var(--text-secondary);            border-radius: 8px;
+
+                        <div class="control-group">
+
+                            <div class="control-label">Öğrenme Hızı</div>            text-decoration: none;            color: var(--text-secondary);
+
+                            <input type="range" class="range-slider" min="1" max="10" value="6">
+
+                        </div>            font-size: 14px;            text-decoration: none;
+
+                        <div class="control-group">
+
+                            <div class="control-label">Adaptasyon Seviyesi</div>            font-weight: 500;            font-size: 14px;
+
+                            <input type="range" class="range-slider" min="1" max="10" value="8">
+
+                        </div>            transition: all 0.3s ease;            font-weight: 500;
+
+                        <button class="action-btn">Kaydet</button>
+
+                    </div>            margin-bottom: 4px;            transition: all 0.3s ease;
+
+                </div>
+
+        }            margin-bottom: 4px;
+
+                <div class="ai-card">
+
+                    <div class="card-header">        }
+
+                        <div class="card-title">⭐ Quality Assessment</div>
+
+                        <div class="status-badge">Aktif</div>        .nav-item:hover {
+
+                    </div>
+
+                    <div class="controls">            background: rgba(139, 92, 246, 0.1);        .nav-item:hover {
+
+                        <div class="control-group">
+
+                            <div class="control-label">Kalite Eşiği</div>            color: var(--text-primary);            background: rgba(139, 92, 246, 0.1);
+
+                            <input type="range" class="range-slider" min="1" max="10" value="7">
+
+                        </div>            transform: translateX(4px);            color: var(--text-primary);
+
+                        <div class="control-group">
+
+                            <div class="control-label">Filtreleme Seviyesi</div>        }            transform: translateX(4px);
+
+                            <input type="range" class="range-slider" min="1" max="10" value="5">
+
+                        </div>        }
+
+                        <button class="action-btn">Kaydet</button>
+
+                    </div>        .nav-item.active {
+
+                </div>
+
+            </div>            background: var(--gradient-ai);        .nav-item.active {
+
+        </main>
+
+    </div>            color: white;            background: var(--gradient-ai);
+
+
+
+    <script>            box-shadow: 0 4px 12px rgba(139, 92, 246, 0.3);            color: white;
+
+        console.log('🧠 AI Ayarları sayfası yüklendi');
+
+                }            box-shadow: 0 4px 12px rgba(139, 92, 246, 0.3);
+
+        document.querySelectorAll('.action-btn').forEach(btn => {
+
+            btn.addEventListener('click', () => {        }
+
+                btn.textContent = 'Kaydedildi ✅';
+
+                setTimeout(() => {        .nav-icon {
+
+                    btn.textContent = 'Kaydet';
+
+                }, 2000);            font-size: 16px;        .nav-icon {
+
+            });
+
+        });            width: 20px;            font-size: 16px;
+
+    </script>
+
+</body>            text-align: center;            width: 20px;
+
+</html>
+        }            text-align: center;
+
+        }
+
+        /* Ana Panel */
+
+        .main-panel {        /* Ana Panel */
+
+            background: var(--primary-950);        .main-panel {
+
+            padding: 32px;            background: var(--primary-950);
+
+            overflow-y: auto;            padding: 32px;
+
+        }            overflow-y: auto;
+
+        }
+
+        .main-header {
+
+            margin-bottom: 32px;        .main-header {
+
+        }            margin-bottom: 32px;
+
+        }
+
+        .page-title {
+
+            font-size: 32px;        .page-title {
+
+            font-weight: 800;            font-size: 32px;
+
+            margin-bottom: 8px;            font-weight: 800;
+
+            background: var(--gradient-ai);            margin-bottom: 8px;
+
+            -webkit-background-clip: text;            background: var(--gradient-ai);
+
+            -webkit-text-fill-color: transparent;            -webkit-background-clip: text;
+
+            background-clip: text;            -webkit-text-fill-color: transparent;
+
+        }            background-clip: text;
+
+        }
+
+        .page-subtitle {
+
+            font-size: 16px;        .page-subtitle {
+
+            color: var(--text-muted);            font-size: 16px;
+
+            font-weight: 500;            color: var(--text-muted);
+
+        }            font-weight: 500;
+
+        }
+
+        /* AI Model Grid */
+
+        .ai-models-grid {        /* AI Model Cards */
+
+            display: grid;        .ai-models-grid {
+
+            grid-template-columns: repeat(auto-fit, minmax(380px, 1fr));            display: grid;
+
+            gap: 24px;            grid-template-columns: repeat(auto-fit, minmax(350px, 1fr));
+
+            margin-bottom: 32px;            gap: 24px;
+
+        }            margin-bottom: 32px;
+
+        }
+
+        .ai-model-card {
+
+            background: linear-gradient(135deg, rgba(35, 41, 55, 0.9) 0%, rgba(45, 52, 65, 0.8) 100%);        .ai-model-card {
+
+            border: 1px solid rgba(139, 92, 246, 0.2);            background: rgba(35, 41, 55, 0.8);
+
+            border-radius: 16px;            border: 1px solid rgba(75, 85, 99, 0.3);
+
+            padding: 24px;            border-radius: 16px;
+
+            position: relative;            padding: 24px;
+
+            overflow: hidden;            position: relative;
+
+            transition: all 0.3s ease;            overflow: hidden;
+
+        }        }
+
+
+
+        .ai-model-card:hover {        .ai-model-card::before {
+
+            border-color: rgba(139, 92, 246, 0.4);            content: '';
+
+            box-shadow: 0 8px 32px rgba(139, 92, 246, 0.15);            position: absolute;
+
+            transform: translateY(-2px);            top: 0;
+
+        }            left: 0;
+
+            width: 4px;
+
+        .ai-model-card::before {            height: 100%;
+
+            content: '';        }
+
+            position: absolute;
+
+            top: 0;        .ai-model-card.trend-ai::before {
+
+            left: 0;            background: var(--ai-blue);
+
+            width: 4px;        }
+
+            height: 100%;
+
+        }        .ai-model-card.combination-ai::before {
+
+            background: var(--ai-purple);
+
+        .ai-model-card.trend-ai::before {        }
+
+            background: var(--ai-blue);
+
+        }        .ai-model-card.learning-ai::before {
+
+            background: var(--ai-green);
+
+        .ai-model-card.combination-ai::before {        }
+
+            background: var(--ai-purple);
+
+        }        .ai-model-card.quality-ai::before {
+
+            background: var(--ai-orange);
+
+        .ai-model-card.learning-ai::before {        }
+
+            background: var(--ai-green);
+
+        }        .model-header {
+
+            display: flex;
+
+        .ai-model-card.quality-ai::before {            justify-content: space-between;
+
+            background: var(--ai-orange);            align-items: center;
+
+        }            margin-bottom: 20px;
+
+        }
+
+        .ai-model-card.reasoning-ai::before {
+
+            background: var(--ai-pink);        .model-info {
+
+        }            display: flex;
+
+            align-items: center;
+
+        .ai-model-card.optimization-ai::before {            gap: 12px;
+
+            background: var(--ai-cyan);        }
+
+        }
+
+        .model-icon {
+
+        .model-header {            font-size: 24px;
+
+            display: flex;        }
+
+            justify-content: space-between;
+
+            align-items: center;        .model-title {
+
+            margin-bottom: 20px;            font-size: 18px;
+
+        }            font-weight: 700;
+
+            color: var(--text-primary);
+
+        .model-info {        }
+
+            display: flex;
+
+            align-items: center;        .model-status {
+
+            gap: 12px;            padding: 4px 12px;
+
+        }            border-radius: 8px;
+
+            font-size: 11px;
+
+        .model-icon {            font-weight: 600;
+
+            font-size: 24px;            text-transform: uppercase;
+
+            width: 32px;            letter-spacing: 0.5px;
+
+            height: 32px;        }
+
+            display: flex;
+
+            align-items: center;        .status-active {
+
+            justify-content: center;            background: rgba(16, 185, 129, 0.2);
+
+            border-radius: 8px;            color: var(--ai-green);
+
+            background: rgba(139, 92, 246, 0.1);        }
+
+            color: var(--ai-purple);
+
+        }        .status-training {
+
+            background: rgba(245, 158, 11, 0.2);
+
+        .model-title {            color: var(--ai-orange);
+
+            font-size: 18px;        }
+
+            font-weight: 700;
+
+            color: var(--text-primary);        .status-connected {
+
+            margin-bottom: 2px;            background: rgba(59, 130, 246, 0.2);
+
+        }            color: var(--ai-blue);
+
+        }
+
+        .model-subtitle {
+
+            font-size: 12px;        /* Model Metrics */
+
+            color: var(--text-muted);        .model-metrics {
+
+            font-weight: 500;            display: grid;
+
+        }            grid-template-columns: repeat(3, 1fr);
+
+            gap: 16px;
+
+        .model-status {            margin-bottom: 20px;
+
+            padding: 4px 12px;        }
+
+            border-radius: 8px;
+
+            font-size: 11px;        .metric {
+
+            font-weight: 600;            text-align: center;
+
+            text-transform: uppercase;        }
+
+            letter-spacing: 0.5px;
+
+        }        .metric-value {
+
+            font-size: 20px;
+
+        .status-active {            font-weight: 700;
+
+            background: rgba(16, 185, 129, 0.2);            color: var(--text-primary);
+
+            color: var(--ai-green);            margin-bottom: 4px;
+
+            border: 1px solid rgba(16, 185, 129, 0.3);        }
+
+        }
+
+        .metric-label {
+
+        .status-training {            font-size: 11px;
+
+            background: rgba(245, 158, 11, 0.2);            color: var(--text-muted);
+
+            color: var(--ai-orange);            text-transform: uppercase;
+
+            border: 1px solid rgba(245, 158, 11, 0.3);            letter-spacing: 0.5px;
+
+        }        }
+
+
+
+        .status-ready {        /* Configuration Controls */
+
+            background: rgba(59, 130, 246, 0.2);        .config-section {
+
+            color: var(--ai-blue);            margin-bottom: 20px;
+
+            border: 1px solid rgba(59, 130, 246, 0.3);        }
+
+        }
+
+        .config-title {
+
+        .status-off {            font-size: 14px;
+
+            background: rgba(75, 85, 99, 0.2);            font-weight: 600;
+
+            color: var(--text-muted);            color: var(--text-primary);
+
+            border: 1px solid rgba(75, 85, 99, 0.3);            margin-bottom: 12px;
+
+        }        }
+
+
+
+        /* Model Metrics */        .config-controls {
+
+        .model-metrics {            display: flex;
+
+            display: grid;            flex-direction: column;
+
+            grid-template-columns: repeat(3, 1fr);            gap: 12px;
+
+            gap: 16px;        }
+
+            margin-bottom: 20px;
+
+            padding: 16px;        .control-group {
+
+            background: rgba(15, 17, 23, 0.5);            display: flex;
+
+            border-radius: 12px;            justify-content: space-between;
+
+            border: 1px solid rgba(75, 85, 99, 0.2);            align-items: center;
+
+        }        }
+
+
+
+        .metric {        .control-label {
+
+            text-align: center;            font-size: 12px;
+
+        }            color: var(--text-secondary);
+
+            flex: 1;
+
+        .metric-value {        }
+
+            font-size: 20px;
+
+            font-weight: 700;        .control-input {
+
+            color: var(--text-primary);            flex: 0 0 120px;
+
+            margin-bottom: 4px;            display: flex;
+
+        }            align-items: center;
+
+            gap: 8px;
+
+        .metric-label {        }
+
+            font-size: 11px;
+
+            color: var(--text-muted);        /* Range Slider */
+
+            text-transform: uppercase;        .range-slider {
+
+            letter-spacing: 0.5px;            appearance: none;
+
+        }            width: 80px;
+
+            height: 6px;
+
+        .metric.trend .metric-value {            border-radius: 3px;
+
+            color: var(--ai-blue);            background: rgba(75, 85, 99, 0.3);
+
+        }            outline: none;
+
+            transition: all 0.3s ease;
+
+        .metric.learning .metric-value {        }
+
+            color: var(--ai-green);
+
+        }        .range-slider::-webkit-slider-thumb {
+
+            appearance: none;
+
+        .metric.quality .metric-value {            width: 16px;
+
+            color: var(--ai-orange);            height: 16px;
+
+        }            border-radius: 50%;
+
+            background: var(--ai-purple);
+
+        /* Configuration Controls */            cursor: pointer;
+
+        .config-section {            transition: all 0.3s ease;
+
+            margin-bottom: 20px;        }
+
+        }
+
+        .range-slider::-webkit-slider-thumb:hover {
+
+        .config-title {            background: var(--ai-blue);
+
+            font-size: 14px;            transform: scale(1.1);
+
+            font-weight: 600;        }
+
+            color: var(--text-primary);
+
+            margin-bottom: 12px;        .slider-value {
+
+            display: flex;            font-size: 11px;
+
+            align-items: center;            color: var(--text-primary);
+
+            gap: 8px;            font-weight: 600;
+
+        }            min-width: 30px;
+
+        }
+
+        .config-controls {
+
+            display: flex;        /* Toggle Switch */
+
+            flex-direction: column;        .toggle-switch {
+
+            gap: 12px;            position: relative;
+
+        }            width: 48px;
+
+            height: 24px;
+
+        .control-group {            background: rgba(75, 85, 99, 0.3);
+
+            display: flex;            border-radius: 12px;
+
+            justify-content: space-between;            cursor: pointer;
+
+            align-items: center;            transition: all 0.3s ease;
+
+            padding: 8px 0;        }
+
+        }
+
+        .toggle-switch.active {
+
+        .control-label {            background: var(--ai-green);
+
+            font-size: 12px;        }
+
+            color: var(--text-secondary);
+
+            flex: 1;        .toggle-switch::before {
+
+            font-weight: 500;            content: '';
+
+        }            position: absolute;
+
+            top: 2px;
+
+        .control-input {            left: 2px;
+
+            flex: 0 0 140px;            width: 20px;
+
+            display: flex;            height: 20px;
+
+            align-items: center;            background: white;
+
+            gap: 8px;            border-radius: 50%;
+
+        }            transition: all 0.3s ease;
+
+        }
+
+        /* Range Slider */
+
+        .range-slider {        .toggle-switch.active::before {
+
+            appearance: none;            transform: translateX(24px);
+
+            width: 90px;        }
+
+            height: 6px;
+
+            border-radius: 3px;        /* Action Button */
+
+            background: rgba(75, 85, 99, 0.3);        .action-btn {
+
+            outline: none;            background: var(--gradient-ai);
+
+            transition: all 0.3s ease;            color: white;
+
+        }            border: none;
+
+            padding: 8px 16px;
+
+        .range-slider::-webkit-slider-thumb {            border-radius: 8px;
+
+            appearance: none;            font-size: 12px;
+
+            width: 16px;            font-weight: 600;
+
+            height: 16px;            cursor: pointer;
+
+            border-radius: 50%;            transition: all 0.3s ease;
+
+            background: var(--ai-purple);            margin-top: 12px;
+
+            cursor: pointer;        }
+
+            transition: all 0.3s ease;
+
+            box-shadow: 0 2px 8px rgba(139, 92, 246, 0.3);        .action-btn:hover {
+
+        }            transform: translateY(-2px);
+
+            box-shadow: 0 4px 8px rgba(139, 92, 246, 0.3);
+
+        .range-slider::-webkit-slider-thumb:hover {        }
+
+            background: var(--ai-blue);
+
+            transform: scale(1.1);        .action-btn.disconnect {
+
+            box-shadow: 0 2px 12px rgba(59, 130, 246, 0.4);            background: linear-gradient(135deg, #ef4444 0%, #dc2626 100%);
+
+        }        }
+
+
+
+        .slider-value {        .action-btn.configure {
+
+            font-size: 11px;            background: linear-gradient(135deg, #8b5cf6 0%, #7c3aed 100%);
+
+            color: var(--text-primary);        }
+
+            font-weight: 600;
+
+            min-width: 35px;        /* Responsive */
+
+            text-align: center;        @media (max-width: 1400px) {
+
+            background: rgba(139, 92, 246, 0.1);            .ai-models-grid {
+
+            padding: 2px 6px;                grid-template-columns: 1fr;
+
+            border-radius: 4px;            }
+
+        }        }
+
+
+
+        /* Toggle Switch */        @media (max-width: 1024px) {
+
+        .toggle-switch {            .ai-settings-container {
+
+            position: relative;                grid-template-columns: 1fr;
+
+            width: 48px;            }
+
+            height: 24px;
+
+            background: rgba(75, 85, 99, 0.3);            .nav-panel {
+
+            border-radius: 12px;                display: none;
+
+            cursor: pointer;            }
+
+            transition: all 0.3s ease;        }
+
+            border: 1px solid rgba(75, 85, 99, 0.4);    </style>
+
+        }</head><body class="__className_2e35f2"><div class="flex min-h-screen bg-[#0f1117] text-gray-100"><aside class="w-64 bg-[#161a23] border-r border-gray-800 p-4 flex flex-col justify-between"><div><h1 class="text-lg font-bold mb-6 text-emerald-400">ProCheff</h1><nav class="space-y-2 text-sm"><a class="block px-3 py-2 rounded hover:bg-gray-800" href="/ProCheff-New/">🏠 Ana Sayfa</a><a class="block px-3 py-2 rounded hover:bg-gray-800" href="/ProCheff-New/dashboard/">📊 Dashboard</a><a class="block px-3 py-2 rounded hover:bg-gray-800" href="/ProCheff-New/offer/">💰 Teklif Paneli</a><a class="block px-3 py-2 rounded hover:bg-gray-800" href="/ProCheff-New/menu/">📄 Şartname Analizi</a><a class="block px-3 py-2 rounded hover:bg-gray-800" href="/ProCheff-New/simulation/">⚖️ Maliyet Simülasyonu</a><a class="block px-3 py-2 rounded bg-emerald-600 text-white" href="/ProCheff-New/ai-settings/">🧠 AI Ayarları</a></nav></div><div class="text-xs text-gray-400 mt-6"><p>● Tüm Sistemler Aktif</p><p class="mt-1 opacity-70">v2.3.0</p></div></aside><main class="flex-1 p-8 overflow-y-auto"><div><h1 class="text-2xl font-semibold mb-6 text-gray-100">🔧 AI Entegrasyonları</h1><p class="text-gray-400 mb-8">Yapay zeka modellerini ve harici API&#x27;leri yönetin</p><div class="grid grid-cols-1 md:grid-cols-2 lg:grid-cols-3 gap-6"><div class="bg-[#161a23] border-gray-800 hover:border-gray-700 transition-colors" style="background:rgba(35, 39, 47, 0.8);border:1px solid rgba(59, 130, 246, 0.2);border-radius:12px;padding:24px;color:#F1F5F9"><div class="" style="margin-bottom:16px"><h3 class="flex items-center gap-2 text-gray-100" style="font-size:1.125rem;font-weight:bold;color:#F1F5F9;margin:0"><div class="w-8 h-8 bg-gradient-to-br from-orange-500 to-red-600 rounded-lg flex items-center justify-center text-white text-sm font-bold">A</div><div class="flex-1"><div class="text-base">Anthropic Claude</div><div class="text-xs text-gray-400 font-normal">Claude-3.5 Sonnet</div></div><span class="inline-flex items-center rounded-full px-2.5 py-0.5 text-xs font-semibold transition-colors focus:outline-none focus:ring-2 focus:ring-ring focus:ring-offset-2 bg-emerald-600 text-white hover:bg-emerald-600/80 ">Connected</span></h3></div><div class="text-sm space-y-3 text-gray-300" style="color:#F1F5F9"><div class="space-y-2"><p>✅ Claude AI modelleri aktif</p><p>✅ Reasoning &amp; Analysis çalışıyor</p><p>✅ Menu parsing optimizasyonu</p></div><div class="text-xs text-gray-400 border-t border-gray-700 pt-2">Son senkronizasyon: 5 dakika önce</div><button class="w-full bg-red-600 hover:bg-red-700 rounded-lg py-2.5 text-white text-sm font-medium transition-colors">Bağlantıyı Kes</button></div></div><div class="bg-[#161a23] border-gray-800 hover:border-gray-700 transition-colors" style="background:rgba(35, 39, 47, 0.8);border:1px solid rgba(59, 130, 246, 0.2);border-radius:12px;padding:24px;color:#F1F5F9"><div class="" style="margin-bottom:16px"><h3 class="flex items-center gap-2 text-gray-100" style="font-size:1.125rem;font-weight:bold;color:#F1F5F9;margin:0"><div class="w-8 h-8 bg-gradient-to-br from-green-400 to-blue-500 rounded-lg flex items-center justify-center text-white text-sm font-bold">O</div><div class="flex-1"><div class="text-base">OpenAI GPT</div><div class="text-xs text-gray-400 font-normal">GPT-4 Turbo</div></div><span class="inline-flex items-center rounded-full px-2.5 py-0.5 text-xs font-semibold transition-colors focus:outline-none focus:ring-2 focus:ring-ring focus:ring-offset-2 border border-gray-500 text-gray-300 hover:bg-gray-800 ">Available</span></h3></div><div class="text-sm space-y-3 text-gray-300" style="color:#F1F5F9"><div class="space-y-2"><p>🔑 GPT modellerine erişim için API key gerekli</p><p>🎯 Menü analizi ve teklif optimizasyonu</p><p>📊 Piyasa trend analizi desteği</p></div><div class="text-xs text-gray-400 border-t border-gray-700 pt-2">API Key: <span class="text-red-400">Yapılandırılmamış</span></div><button class="w-full bg-emerald-600 hover:bg-emerald-700 rounded-lg py-2.5 text-white text-sm font-medium transition-colors">Bağlan</button></div></div><div class="bg-[#161a23] border-gray-800 hover:border-gray-700 transition-colors" style="background:rgba(35, 39, 47, 0.8);border:1px solid rgba(59, 130, 246, 0.2);border-radius:12px;padding:24px;color:#F1F5F9"><div class="" style="margin-bottom:16px"><h3 class="flex items-center gap-2 text-gray-100" style="font-size:1.125rem;font-weight:bold;color:#F1F5F9;margin:0"><div class="w-8 h-8 bg-gradient-to-br from-blue-500 to-purple-600 rounded-lg flex items-center justify-center text-white text-sm font-bold">G</div><div class="flex-1"><div class="text-base">Google Gemini Pro</div><div class="text-xs text-gray-400 font-normal">Gemini-1.5-Pro</div></div><span class="inline-flex items-center rounded-full px-2.5 py-0.5 text-xs font-semibold transition-colors focus:outline-none focus:ring-2 focus:ring-ring focus:ring-offset-2 border border-gray-500 text-gray-300 hover:bg-gray-800 ">Available</span></h3></div><div class="text-sm space-y-3 text-gray-300" style="color:#F1F5F9"><div class="space-y-2"><p>💎 Piyasa analizi ve fiyat tahminleri</p><p>📈 Trend analizi ve risk değerlendirmesi</p><p>🎯 Maliyet optimizasyonu önerileri</p></div><div class="text-xs text-gray-400 border-t border-gray-700 pt-2">API Key: <span class="text-red-400">Yapılandırılmamış</span></div><button class="w-full bg-emerald-600 hover:bg-emerald-700 rounded-lg py-2.5 text-white text-sm font-medium transition-colors">Bağlan</button></div></div><div class="bg-[#161a23] border-gray-800 hover:border-gray-700 transition-colors md:col-span-2 lg:col-span-1" style="background:rgba(35, 39, 47, 0.8);border:1px solid rgba(59, 130, 246, 0.2);border-radius:12px;padding:24px;color:#F1F5F9"><div class="" style="margin-bottom:16px"><h3 class="flex items-center gap-2 text-gray-100" style="font-size:1.125rem;font-weight:bold;color:#F1F5F9;margin:0"><div class="w-8 h-8 bg-gradient-to-br from-yellow-500 to-orange-600 rounded-lg flex items-center justify-center text-white text-sm font-bold">M</div><div class="flex-1"><div class="text-base">Market API</div><div class="text-xs text-gray-400 font-normal">Fiyat Entegrasyonları</div></div><span class="inline-flex items-center rounded-full px-2.5 py-0.5 text-xs font-semibold transition-colors focus:outline-none focus:ring-2 focus:ring-ring focus:ring-offset-2 bg-gray-700 text-gray-200 hover:bg-gray-700/80 ">Development</span></h3></div><div class="text-sm space-y-3 text-gray-300" style="color:#F1F5F9"><div class="space-y-2"><p>🛒 Desteklenen Marketler:</p><div class="flex flex-wrap gap-2"><span class="inline-flex items-center rounded-full px-2.5 py-0.5 text-xs font-semibold transition-colors focus:outline-none focus:ring-2 focus:ring-ring focus:ring-offset-2 bg-gray-700 text-gray-200 hover:bg-gray-700/80 ">A101</span><span class="inline-flex items-center rounded-full px-2.5 py-0.5 text-xs font-semibold transition-colors focus:outline-none focus:ring-2 focus:ring-ring focus:ring-offset-2 bg-gray-700 text-gray-200 hover:bg-gray-700/80 ">BİM</span><span class="inline-flex items-center rounded-full px-2.5 py-0.5 text-xs font-semibold transition-colors focus:outline-none focus:ring-2 focus:ring-ring focus:ring-offset-2 bg-gray-700 text-gray-200 hover:bg-gray-700/80 ">ŞOK</span><span class="inline-flex items-center rounded-full px-2.5 py-0.5 text-xs font-semibold transition-colors focus:outline-none focus:ring-2 focus:ring-ring focus:ring-offset-2 bg-gray-700 text-gray-200 hover:bg-gray-700/80 ">Migros</span><span class="inline-flex items-center rounded-full px-2.5 py-0.5 text-xs font-semibold transition-colors focus:outline-none focus:ring-2 focus:ring-ring focus:ring-offset-2 bg-gray-700 text-gray-200 hover:bg-gray-700/80 ">Metro</span><span class="inline-flex items-center rounded-full px-2.5 py-0.5 text-xs font-semibold transition-colors focus:outline-none focus:ring-2 focus:ring-ring focus:ring-offset-2 bg-gray-700 text-gray-200 hover:bg-gray-700/80 ">Tarım Kredi</span></div><p>📊 Real-time fiyat güncellemeleri</p></div><div class="text-xs text-gray-400 border-t border-gray-700 pt-2">API Status: <span class="text-yellow-400">Geliştiriliyor</span></div><button class="w-full bg-gray-600 hover:bg-gray-700 rounded-lg py-2.5 text-white text-sm font-medium transition-colors" disabled="">Yakında Gelecek</button></div></div><div class="bg-[#161a23] border-gray-800 hover:border-gray-700 transition-colors" style="background:rgba(35, 39, 47, 0.8);border:1px solid rgba(59, 130, 246, 0.2);border-radius:12px;padding:24px;color:#F1F5F9"><div class="" style="margin-bottom:16px"><h3 class="flex items-center gap-2 text-gray-100" style="font-size:1.125rem;font-weight:bold;color:#F1F5F9;margin:0"><div class="w-8 h-8 bg-gradient-to-br from-purple-500 to-pink-600 rounded-lg flex items-center justify-center text-white text-sm font-bold">R</div><div class="flex-1"><div class="text-base">Reasoning Engine</div><div class="text-xs text-gray-400 font-normal">Cognitive AI</div></div><span class="inline-flex items-center rounded-full px-2.5 py-0.5 text-xs font-semibold transition-colors focus:outline-none focus:ring-2 focus:ring-ring focus:ring-offset-2 bg-emerald-600 text-white hover:bg-emerald-600/80 ">Active</span></h3></div><div class="text-sm space-y-3 text-gray-300" style="color:#F1F5F9"><div class="space-y-2"><p>🧠 Akıllı risk değerlendirmesi</p><p>⚖️ Maliyet-fayda analizi</p><p>💡 Optimizasyon önerileri</p></div><div class="text-xs text-gray-400 border-t border-gray-700 pt-2">Engine Status: <span class="text-green-400">Çalışıyor</span></div><button class="w-full bg-purple-600 hover:bg-purple-700 rounded-lg py-2.5 text-white text-sm font-medium transition-colors">Konfigüre Et</button></div></div><div class="bg-[#161a23] border-gray-800 hover:border-gray-700 transition-colors" style="background:rgba(35, 39, 47, 0.8);border:1px solid rgba(59, 130, 246, 0.2);border-radius:12px;padding:24px;color:#F1F5F9"><div class="" style="margin-bottom:16px"><h3 class="flex items-center gap-2 text-gray-100" style="font-size:1.125rem;font-weight:bold;color:#F1F5F9;margin:0"><div class="w-8 h-8 bg-gradient-to-br from-teal-500 to-cyan-600 rounded-lg flex items-center justify-center text-white text-sm font-bold">P</div><div class="flex-1"><div class="text-base">AI Pipeline</div><div class="text-xs text-gray-400 font-normal">PDF-to-Offer</div></div><span class="inline-flex items-center rounded-full px-2.5 py-0.5 text-xs font-semibold transition-colors focus:outline-none focus:ring-2 focus:ring-ring focus:ring-offset-2 bg-emerald-600 text-white hover:bg-emerald-600/80 ">Operational</span></h3></div><div class="text-sm space-y-3 text-gray-300" style="color:#F1F5F9"><div class="space-y-2"><p>📄 PDF işleme ve analiz</p><p>🔄 Otomatik pipeline çalışıyor</p><p>⚡ End-to-end süreç optimizasyonu</p></div><div class="text-xs text-gray-400 border-t border-gray-700 pt-2">Son işlem: <span class="text-green-400">2 dakika önce</span></div><button class="w-full bg-teal-600 hover:bg-teal-700 rounded-lg py-2.5 text-white text-sm font-medium transition-colors">Pipeline Detayları</button></div></div></div><div class="mt-8 p-4 bg-[#161a23] border border-gray-800 rounded-lg"><h2 class="text-lg font-semibold mb-4 text-gray-100">📊 Sistem Durumu</h2><div class="grid grid-cols-1 md:grid-cols-3 gap-4 text-sm"><div class="flex justify-between"><span class="text-gray-400">API Çağrıları (24s):</span><span class="text-green-400">1,247</span></div><div class="flex justify-between"><span class="text-gray-400">Başarı Oranı:</span><span class="text-green-400">98.5%</span></div><div class="flex justify-between"><span class="text-gray-400">Ortalama Yanıt Süresi:</span><span class="text-blue-400">1.2s</span></div></div></div></div></main></div><script src="/ProCheff-New/_next/static/chunks/webpack-42b3ad18259c36c0.js" async=""></script><script>(self.__next_f=self.__next_f||[]).push([0]);self.__next_f.push([2,null])</script><script>self.__next_f.push([1,"1:HL[\"/ProCheff-New/_next/static/media/e4af272ccee01ff0-s.p.woff2\",\"font\",{\"crossOrigin\":\"\",\"type\":\"font/woff2\"}]\n2:HL[\"/ProCheff-New/_next/static/css/1365fdde46582cbb.css\",\"style\"]\n"])</script><script>self.__next_f.push([1,"3:I[5751,[],\"\"]\n5:I[9275,[],\"\"]\n6:I[1343,[],\"\"]\n7:I[845,[\"231\",\"static/chunks/231-83db80a956ca26be.js\",\"480\",\"static/chunks/app/(admin)/layout-9eedcbedc878186c.js\"],\"default\"]\nd:I[7490,[\"470\",\"static/chunks/app/global-error-5acc598a53424c67.js\"],\"default\"]\n8:{\"fontFamily\":\"system-ui,\\\"Segoe UI\\\",Roboto,Helvetica,Arial,sans-serif,\\\"Apple Color Emoji\\\",\\\"Segoe UI Emoji\\\"\",\"height\":\"100vh\",\"textAlign\":\"center\",\"display\":\"flex\",\"flexDirection\":\"column\",\"alignItems\":\"center\",\"justifyContent\":\"center\"}\n9:{\"display\":\"inline-block\",\"margin\":\"0 20px 0 0\",\"padding\":\"0 23px 0 0\",\"fontSize\":24,\"fontWeight\":500,\"verticalAlign\":\"top\",\"lineHeight\":\"49px\"}\na:{\"display\":\"inline-block\"}\nb:{\"fontSize\":14,\"fontWeight\":400,\"lineHeight\":\"49px\",\"margin\":0}\ne:[]\n"])</script><script>self.__next_f.push([1,"0:[[[\"$\",\"link\",\"0\",{\"rel\":\"stylesheet\",\"href\":\"/ProCheff-New/_next/static/css/1365fdde46582cbb.css\",\"precedence\":\"next\",\"crossOrigin\":\"$undefined\"}]],[\"$\",\"$L3\",null,{\"buildId\":\"HJy0_YRFuG4SQhDMXEOc5\",\"assetPrefix\":\"/ProCheff-New\",\"initialCanonicalUrl\":\"/ai-settings/\",\"initialTree\":[\"\",{\"children\":[\"(admin)\",{\"children\":[\"ai-settings\",{\"children\":[\"__PAGE__\",{}]}]}]},\"$undefined\",\"$undefined\",true],\"initialSeedData\":[\"\",{\"children\":[\"(admin)\",{\"children\":[\"ai-settings\",{\"children\":[\"__PAGE__\",{},[[\"$L4\",[\"$\",\"div\",null,{\"children\":[[\"$\",\"h1\",null,{\"className\":\"text-2xl font-semibold mb-6 text-gray-100\",\"children\":\"🔧 AI Entegrasyonları\"}],[\"$\",\"p\",null,{\"className\":\"text-gray-400 mb-8\",\"children\":\"Yapay zeka modellerini ve harici API'leri yönetin\"}],[\"$\",\"div\",null,{\"className\":\"grid grid-cols-1 md:grid-cols-2 lg:grid-cols-3 gap-6\",\"children\":[[\"$\",\"div\",null,{\"className\":\"bg-[#161a23] border-gray-800 hover:border-gray-700 transition-colors\",\"style\":{\"background\":\"rgba(35, 39, 47, 0.8)\",\"border\":\"1px solid rgba(59, 130, 246, 0.2)\",\"borderRadius\":\"12px\",\"padding\":\"24px\",\"color\":\"#F1F5F9\"},\"children\":[[\"$\",\"div\",null,{\"className\":\"\",\"style\":{\"marginBottom\":\"16px\"},\"children\":[\"$\",\"h3\",null,{\"className\":\"flex items-center gap-2 text-gray-100\",\"style\":{\"fontSize\":\"1.125rem\",\"fontWeight\":\"bold\",\"color\":\"#F1F5F9\",\"margin\":0},\"children\":[[\"$\",\"div\",null,{\"className\":\"w-8 h-8 bg-gradient-to-br from-orange-500 to-red-600 rounded-lg flex items-center justify-center text-white text-sm font-bold\",\"children\":\"A\"}],[\"$\",\"div\",null,{\"className\":\"flex-1\",\"children\":[[\"$\",\"div\",null,{\"className\":\"text-base\",\"children\":\"Anthropic Claude\"}],[\"$\",\"div\",null,{\"className\":\"text-xs text-gray-400 font-normal\",\"children\":\"Claude-3.5 Sonnet\"}]]}],[\"$\",\"span\",null,{\"className\":\"inline-flex items-center rounded-full px-2.5 py-0.5 text-xs font-semibold transition-colors focus:outline-none focus:ring-2 focus:ring-ring focus:ring-offset-2 bg-emerald-600 text-white hover:bg-emerald-600/80 \",\"children\":\"Connected\"}]]}]}],[\"$\",\"div\",null,{\"className\":\"text-sm space-y-3 text-gray-300\",\"style\":{\"color\":\"#F1F5F9\"},\"children\":[[\"$\",\"div\",null,{\"className\":\"space-y-2\",\"children\":[[\"$\",\"p\",null,{\"children\":\"✅ Claude AI modelleri aktif\"}],[\"$\",\"p\",null,{\"children\":\"✅ Reasoning \u0026 Analysis çalışıyor\"}],[\"$\",\"p\",null,{\"children\":\"✅ Menu parsing optimizasyonu\"}]]}],[\"$\",\"div\",null,{\"className\":\"text-xs text-gray-400 border-t border-gray-700 pt-2\",\"children\":\"Son senkronizasyon: 5 dakika önce\"}],[\"$\",\"button\",null,{\"className\":\"w-full bg-red-600 hover:bg-red-700 rounded-lg py-2.5 text-white text-sm font-medium transition-colors\",\"children\":\"Bağlantıyı Kes\"}]]}]]}],[\"$\",\"div\",null,{\"className\":\"bg-[#161a23] border-gray-800 hover:border-gray-700 transition-colors\",\"style\":{\"background\":\"rgba(35, 39, 47, 0.8)\",\"border\":\"1px solid rgba(59, 130, 246, 0.2)\",\"borderRadius\":\"12px\",\"padding\":\"24px\",\"color\":\"#F1F5F9\"},\"children\":[[\"$\",\"div\",null,{\"className\":\"\",\"style\":{\"marginBottom\":\"16px\"},\"children\":[\"$\",\"h3\",null,{\"className\":\"flex items-center gap-2 text-gray-100\",\"style\":{\"fontSize\":\"1.125rem\",\"fontWeight\":\"bold\",\"color\":\"#F1F5F9\",\"margin\":0},\"children\":[[\"$\",\"div\",null,{\"className\":\"w-8 h-8 bg-gradient-to-br from-green-400 to-blue-500 rounded-lg flex items-center justify-center text-white text-sm font-bold\",\"children\":\"O\"}],[\"$\",\"div\",null,{\"className\":\"flex-1\",\"children\":[[\"$\",\"div\",null,{\"className\":\"text-base\",\"children\":\"OpenAI GPT\"}],[\"$\",\"div\",null,{\"className\":\"text-xs text-gray-400 font-normal\",\"children\":\"GPT-4 Turbo\"}]]}],[\"$\",\"span\",null,{\"className\":\"inline-flex items-center rounded-full px-2.5 py-0.5 text-xs font-semibold transition-colors focus:outline-none focus:ring-2 focus:ring-ring focus:ring-offset-2 border border-gray-500 text-gray-300 hover:bg-gray-800 \",\"children\":\"Available\"}]]}]}],[\"$\",\"div\",null,{\"className\":\"text-sm space-y-3 text-gray-300\",\"style\":{\"color\":\"#F1F5F9\"},\"children\":[[\"$\",\"div\",null,{\"className\":\"space-y-2\",\"children\":[[\"$\",\"p\",null,{\"children\":\"🔑 GPT modellerine erişim için API key gerekli\"}],[\"$\",\"p\",null,{\"children\":\"🎯 Menü analizi ve teklif optimizasyonu\"}],[\"$\",\"p\",null,{\"children\":\"📊 Piyasa trend analizi desteği\"}]]}],[\"$\",\"div\",null,{\"className\":\"text-xs text-gray-400 border-t border-gray-700 pt-2\",\"children\":[\"API Key: \",[\"$\",\"span\",null,{\"className\":\"text-red-400\",\"children\":\"Yapılandırılmamış\"}]]}],[\"$\",\"button\",null,{\"className\":\"w-full bg-emerald-600 hover:bg-emerald-700 rounded-lg py-2.5 text-white text-sm font-medium transition-colors\",\"children\":\"Bağlan\"}]]}]]}],[\"$\",\"div\",null,{\"className\":\"bg-[#161a23] border-gray-800 hover:border-gray-700 transition-colors\",\"style\":{\"background\":\"rgba(35, 39, 47, 0.8)\",\"border\":\"1px solid rgba(59, 130, 246, 0.2)\",\"borderRadius\":\"12px\",\"padding\":\"24px\",\"color\":\"#F1F5F9\"},\"children\":[[\"$\",\"div\",null,{\"className\":\"\",\"style\":{\"marginBottom\":\"16px\"},\"children\":[\"$\",\"h3\",null,{\"className\":\"flex items-center gap-2 text-gray-100\",\"style\":{\"fontSize\":\"1.125rem\",\"fontWeight\":\"bold\",\"color\":\"#F1F5F9\",\"margin\":0},\"children\":[[\"$\",\"div\",null,{\"className\":\"w-8 h-8 bg-gradient-to-br from-blue-500 to-purple-600 rounded-lg flex items-center justify-center text-white text-sm font-bold\",\"children\":\"G\"}],[\"$\",\"div\",null,{\"className\":\"flex-1\",\"children\":[[\"$\",\"div\",null,{\"className\":\"text-base\",\"children\":\"Google Gemini Pro\"}],[\"$\",\"div\",null,{\"className\":\"text-xs text-gray-400 font-normal\",\"children\":\"Gemini-1.5-Pro\"}]]}],[\"$\",\"span\",null,{\"className\":\"inline-flex items-center rounded-full px-2.5 py-0.5 text-xs font-semibold transition-colors focus:outline-none focus:ring-2 focus:ring-ring focus:ring-offset-2 border border-gray-500 text-gray-300 hover:bg-gray-800 \",\"children\":\"Available\"}]]}]}],[\"$\",\"div\",null,{\"className\":\"text-sm space-y-3 text-gray-300\",\"style\":{\"color\":\"#F1F5F9\"},\"children\":[[\"$\",\"div\",null,{\"className\":\"space-y-2\",\"children\":[[\"$\",\"p\",null,{\"children\":\"💎 Piyasa analizi ve fiyat tahminleri\"}],[\"$\",\"p\",null,{\"children\":\"📈 Trend analizi ve risk değerlendirmesi\"}],[\"$\",\"p\",null,{\"children\":\"🎯 Maliyet optimizasyonu önerileri\"}]]}],[\"$\",\"div\",null,{\"className\":\"text-xs text-gray-400 border-t border-gray-700 pt-2\",\"children\":[\"API Key: \",[\"$\",\"span\",null,{\"className\":\"text-red-400\",\"children\":\"Yapılandırılmamış\"}]]}],[\"$\",\"button\",null,{\"className\":\"w-full bg-emerald-600 hover:bg-emerald-700 rounded-lg py-2.5 text-white text-sm font-medium transition-colors\",\"children\":\"Bağlan\"}]]}]]}],[\"$\",\"div\",null,{\"className\":\"bg-[#161a23] border-gray-800 hover:border-gray-700 transition-colors md:col-span-2 lg:col-span-1\",\"style\":{\"background\":\"rgba(35, 39, 47, 0.8)\",\"border\":\"1px solid rgba(59, 130, 246, 0.2)\",\"borderRadius\":\"12px\",\"padding\":\"24px\",\"color\":\"#F1F5F9\"},\"children\":[[\"$\",\"div\",null,{\"className\":\"\",\"style\":{\"marginBottom\":\"16px\"},\"children\":[\"$\",\"h3\",null,{\"className\":\"flex items-center gap-2 text-gray-100\",\"style\":{\"fontSize\":\"1.125rem\",\"fontWeight\":\"bold\",\"color\":\"#F1F5F9\",\"margin\":0},\"children\":[[\"$\",\"div\",null,{\"className\":\"w-8 h-8 bg-gradient-to-br from-yellow-500 to-orange-600 rounded-lg flex items-center justify-center text-white text-sm font-bold\",\"children\":\"M\"}],[\"$\",\"div\",null,{\"className\":\"flex-1\",\"children\":[[\"$\",\"div\",null,{\"className\":\"text-base\",\"children\":\"Market API\"}],[\"$\",\"div\",null,{\"className\":\"text-xs text-gray-400 font-normal\",\"children\":\"Fiyat Entegrasyonları\"}]]}],[\"$\",\"span\",null,{\"className\":\"inline-flex items-center rounded-full px-2.5 py-0.5 text-xs font-semibold transition-colors focus:outline-none focus:ring-2 focus:ring-ring focus:ring-offset-2 bg-gray-700 text-gray-200 hover:bg-gray-700/80 \",\"children\":\"Development\"}]]}]}],[\"$\",\"div\",null,{\"className\":\"text-sm space-y-3 text-gray-300\",\"style\":{\"color\":\"#F1F5F9\"},\"children\":[[\"$\",\"div\",null,{\"className\":\"space-y-2\",\"children\":[[\"$\",\"p\",null,{\"children\":\"🛒 Desteklenen Marketler:\"}],[\"$\",\"div\",null,{\"className\":\"flex flex-wrap gap-2\",\"children\":[[\"$\",\"span\",null,{\"className\":\"inline-flex items-center rounded-full px-2.5 py-0.5 text-xs font-semibold transition-colors focus:outline-none focus:ring-2 focus:ring-ring focus:ring-offset-2 bg-gray-700 text-gray-200 hover:bg-gray-700/80 \",\"children\":\"A101\"}],[\"$\",\"span\",null,{\"className\":\"inline-flex items-center rounded-full px-2.5 py-0.5 text-xs font-semibold transition-colors focus:outline-none focus:ring-2 focus:ring-ring focus:ring-offset-2 bg-gray-700 text-gray-200 hover:bg-gray-700/80 \",\"children\":\"BİM\"}],[\"$\",\"span\",null,{\"className\":\"inline-flex items-center rounded-full px-2.5 py-0.5 text-xs font-semibold transition-colors focus:outline-none focus:ring-2 focus:ring-ring focus:ring-offset-2 bg-gray-700 text-gray-200 hover:bg-gray-700/80 \",\"children\":\"ŞOK\"}],[\"$\",\"span\",null,{\"className\":\"inline-flex items-center rounded-full px-2.5 py-0.5 text-xs font-semibold transition-colors focus:outline-none focus:ring-2 focus:ring-ring focus:ring-offset-2 bg-gray-700 text-gray-200 hover:bg-gray-700/80 \",\"children\":\"Migros\"}],[\"$\",\"span\",null,{\"className\":\"inline-flex items-center rounded-full px-2.5 py-0.5 text-xs font-semibold transition-colors focus:outline-none focus:ring-2 focus:ring-ring focus:ring-offset-2 bg-gray-700 text-gray-200 hover:bg-gray-700/80 \",\"children\":\"Metro\"}],[\"$\",\"span\",null,{\"className\":\"inline-flex items-center rounded-full px-2.5 py-0.5 text-xs font-semibold transition-colors focus:outline-none focus:ring-2 focus:ring-ring focus:ring-offset-2 bg-gray-700 text-gray-200 hover:bg-gray-700/80 \",\"children\":\"Tarım Kredi\"}]]}],[\"$\",\"p\",null,{\"children\":\"📊 Real-time fiyat güncellemeleri\"}]]}],[\"$\",\"div\",null,{\"className\":\"text-xs text-gray-400 border-t border-gray-700 pt-2\",\"children\":[\"API Status: \",[\"$\",\"span\",null,{\"className\":\"text-yellow-400\",\"children\":\"Geliştiriliyor\"}]]}],[\"$\",\"button\",null,{\"className\":\"w-full bg-gray-600 hover:bg-gray-700 rounded-lg py-2.5 text-white text-sm font-medium transition-colors\",\"disabled\":true,\"children\":\"Yakında Gelecek\"}]]}]]}],[\"$\",\"div\",null,{\"className\":\"bg-[#161a23] border-gray-800 hover:border-gray-700 transition-colors\",\"style\":{\"background\":\"rgba(35, 39, 47, 0.8)\",\"border\":\"1px solid rgba(59, 130, 246, 0.2)\",\"borderRadius\":\"12px\",\"padding\":\"24px\",\"color\":\"#F1F5F9\"},\"children\":[[\"$\",\"div\",null,{\"className\":\"\",\"style\":{\"marginBottom\":\"16px\"},\"children\":[\"$\",\"h3\",null,{\"className\":\"flex items-center gap-2 text-gray-100\",\"style\":{\"fontSize\":\"1.125rem\",\"fontWeight\":\"bold\",\"color\":\"#F1F5F9\",\"margin\":0},\"children\":[[\"$\",\"div\",null,{\"className\":\"w-8 h-8 bg-gradient-to-br from-purple-500 to-pink-600 rounded-lg flex items-center justify-center text-white text-sm font-bold\",\"children\":\"R\"}],[\"$\",\"div\",null,{\"className\":\"flex-1\",\"children\":[[\"$\",\"div\",null,{\"className\":\"text-base\",\"children\":\"Reasoning Engine\"}],[\"$\",\"div\",null,{\"className\":\"text-xs text-gray-400 font-normal\",\"children\":\"Cognitive AI\"}]]}],[\"$\",\"span\",null,{\"className\":\"inline-flex items-center rounded-full px-2.5 py-0.5 text-xs font-semibold transition-colors focus:outline-none focus:ring-2 focus:ring-ring focus:ring-offset-2 bg-emerald-600 text-white hover:bg-emerald-600/80 \",\"children\":\"Active\"}]]}]}],[\"$\",\"div\",null,{\"className\":\"text-sm space-y-3 text-gray-300\",\"style\":{\"color\":\"#F1F5F9\"},\"children\":[[\"$\",\"div\",null,{\"className\":\"space-y-2\",\"children\":[[\"$\",\"p\",null,{\"children\":\"🧠 Akıllı risk değerlendirmesi\"}],[\"$\",\"p\",null,{\"children\":\"⚖️ Maliyet-fayda analizi\"}],[\"$\",\"p\",null,{\"children\":\"💡 Optimizasyon önerileri\"}]]}],[\"$\",\"div\",null,{\"className\":\"text-xs text-gray-400 border-t border-gray-700 pt-2\",\"children\":[\"Engine Status: \",[\"$\",\"span\",null,{\"className\":\"text-green-400\",\"children\":\"Çalışıyor\"}]]}],[\"$\",\"button\",null,{\"className\":\"w-full bg-purple-600 hover:bg-purple-700 rounded-lg py-2.5 text-white text-sm font-medium transition-colors\",\"children\":\"Konfigüre Et\"}]]}]]}],[\"$\",\"div\",null,{\"className\":\"bg-[#161a23] border-gray-800 hover:border-gray-700 transition-colors\",\"style\":{\"background\":\"rgba(35, 39, 47, 0.8)\",\"border\":\"1px solid rgba(59, 130, 246, 0.2)\",\"borderRadius\":\"12px\",\"padding\":\"24px\",\"color\":\"#F1F5F9\"},\"children\":[[\"$\",\"div\",null,{\"className\":\"\",\"style\":{\"marginBottom\":\"16px\"},\"children\":[\"$\",\"h3\",null,{\"className\":\"flex items-center gap-2 text-gray-100\",\"style\":{\"fontSize\":\"1.125rem\",\"fontWeight\":\"bold\",\"color\":\"#F1F5F9\",\"margin\":0},\"children\":[[\"$\",\"div\",null,{\"className\":\"w-8 h-8 bg-gradient-to-br from-teal-500 to-cyan-600 rounded-lg flex items-center justify-center text-white text-sm font-bold\",\"children\":\"P\"}],[\"$\",\"div\",null,{\"className\":\"flex-1\",\"children\":[[\"$\",\"div\",null,{\"className\":\"text-base\",\"children\":\"AI Pipeline\"}],[\"$\",\"div\",null,{\"className\":\"text-xs text-gray-400 font-normal\",\"children\":\"PDF-to-Offer\"}]]}],[\"$\",\"span\",null,{\"className\":\"inline-flex items-center rounded-full px-2.5 py-0.5 text-xs font-semibold transition-colors focus:outline-none focus:ring-2 focus:ring-ring focus:ring-offset-2 bg-emerald-600 text-white hover:bg-emerald-600/80 \",\"children\":\"Operational\"}]]}]}],[\"$\",\"div\",null,{\"className\":\"text-sm space-y-3 text-gray-300\",\"style\":{\"color\":\"#F1F5F9\"},\"children\":[[\"$\",\"div\",null,{\"className\":\"space-y-2\",\"children\":[[\"$\",\"p\",null,{\"children\":\"📄 PDF işleme ve analiz\"}],[\"$\",\"p\",null,{\"children\":\"🔄 Otomatik pipeline çalışıyor\"}],[\"$\",\"p\",null,{\"children\":\"⚡ End-to-end süreç optimizasyonu\"}]]}],[\"$\",\"div\",null,{\"className\":\"text-xs text-gray-400 border-t border-gray-700 pt-2\",\"children\":[\"Son işlem: \",[\"$\",\"span\",null,{\"className\":\"text-green-400\",\"children\":\"2 dakika önce\"}]]}],[\"$\",\"button\",null,{\"className\":\"w-full bg-teal-600 hover:bg-teal-700 rounded-lg py-2.5 text-white text-sm font-medium transition-colors\",\"children\":\"Pipeline Detayları\"}]]}]]}]]}],[\"$\",\"div\",null,{\"className\":\"mt-8 p-4 bg-[#161a23] border border-gray-800 rounded-lg\",\"children\":[[\"$\",\"h2\",null,{\"className\":\"text-lg font-semibold mb-4 text-gray-100\",\"children\":\"📊 Sistem Durumu\"}],[\"$\",\"div\",null,{\"className\":\"grid grid-cols-1 md:grid-cols-3 gap-4 text-sm\",\"children\":[[\"$\",\"div\",null,{\"className\":\"flex justify-between\",\"children\":[[\"$\",\"span\",null,{\"className\":\"text-gray-400\",\"children\":\"API Çağrıları (24s):\"}],[\"$\",\"span\",null,{\"className\":\"text-green-400\",\"children\":\"1,247\"}]]}],[\"$\",\"div\",null,{\"className\":\"flex justify-between\",\"children\":[[\"$\",\"span\",null,{\"className\":\"text-gray-400\",\"children\":\"Başarı Oranı:\"}],[\"$\",\"span\",null,{\"className\":\"text-green-400\",\"children\":\"98.5%\"}]]}],[\"$\",\"div\",null,{\"className\":\"flex justify-between\",\"children\":[[\"$\",\"span\",null,{\"className\":\"text-gray-400\",\"children\":\"Ortalama Yanıt Süresi:\"}],[\"$\",\"span\",null,{\"className\":\"text-blue-400\",\"children\":\"1.2s\"}]]}]]}]]}]]}]],null],null]},[\"$\",\"$L5\",null,{\"parallelRouterKey\":\"children\",\"segmentPath\":[\"children\",\"(admin)\",\"children\",\"ai-settings\",\"children\"],\"error\":\"$undefined\",\"errorStyles\":\"$undefined\",\"errorScripts\":\"$undefined\",\"template\":[\"$\",\"$L6\",null,{}],\"templateStyles\":\"$undefined\",\"templateScripts\":\"$undefined\",\"notFound\":\"$undefined\",\"notFoundStyles\":\"$undefined\",\"styles\":null}],null]},[[\"$\",\"$L7\",null,{\"children\":[\"$\",\"$L5\",null,{\"parallelRouterKey\":\"children\",\"segmentPath\":[\"children\",\"(admin)\",\"children\"],\"error\":\"$undefined\",\"errorStyles\":\"$undefined\",\"errorScripts\":\"$undefined\",\"template\":[\"$\",\"$L6\",null,{}],\"templateStyles\":\"$undefined\",\"templateScripts\":\"$undefined\",\"notFound\":[[\"$\",\"title\",null,{\"children\":\"404: This page could not be found.\"}],[\"$\",\"div\",null,{\"style\":{\"fontFamily\":\"system-ui,\\\"Segoe UI\\\",Roboto,Helvetica,Arial,sans-serif,\\\"Apple Color Emoji\\\",\\\"Segoe UI Emoji\\\"\",\"height\":\"100vh\",\"textAlign\":\"center\",\"display\":\"flex\",\"flexDirection\":\"column\",\"alignItems\":\"center\",\"justifyContent\":\"center\"},\"children\":[\"$\",\"div\",null,{\"children\":[[\"$\",\"style\",null,{\"dangerouslySetInnerHTML\":{\"__html\":\"body{color:#000;background:#fff;margin:0}.next-error-h1{border-right:1px solid rgba(0,0,0,.3)}@media (prefers-color-scheme:dark){body{color:#fff;background:#000}.next-error-h1{border-right:1px solid rgba(255,255,255,.3)}}\"}}],[\"$\",\"h1\",null,{\"className\":\"next-error-h1\",\"style\":{\"display\":\"inline-block\",\"margin\":\"0 20px 0 0\",\"padding\":\"0 23px 0 0\",\"fontSize\":24,\"fontWeight\":500,\"verticalAlign\":\"top\",\"lineHeight\":\"49px\"},\"children\":\"404\"}],[\"$\",\"div\",null,{\"style\":{\"display\":\"inline-block\"},\"children\":[\"$\",\"h2\",null,{\"style\":{\"fontSize\":14,\"fontWeight\":400,\"lineHeight\":\"49px\",\"margin\":0},\"children\":\"This page could not be found.\"}]}]]}]}]],\"notFoundStyles\":[],\"styles\":null}],\"params\":{}}],null],null]},[[\"$\",\"html\",null,{\"lang\":\"tr\",\"children\":[\"$\",\"body\",null,{\"className\":\"__className_2e35f2\",\"children\":[\"$\",\"$L5\",null,{\"parallelRouterKey\":\"children\",\"segmentPath\":[\"children\"],\"error\":\"$undefined\",\"errorStyles\":\"$undefined\",\"errorScripts\":\"$undefined\",\"template\":[\"$\",\"$L6\",null,{}],\"templateStyles\":\"$undefined\",\"templateScripts\":\"$undefined\",\"notFound\":[[\"$\",\"title\",null,{\"children\":\"404: This page could not be found.\"}],[\"$\",\"div\",null,{\"style\":\"$8\",\"children\":[\"$\",\"div\",null,{\"children\":[[\"$\",\"style\",null,{\"dangerouslySetInnerHTML\":{\"__html\":\"body{color:#000;background:#fff;margin:0}.next-error-h1{border-right:1px solid rgba(0,0,0,.3)}@media (prefers-color-scheme:dark){body{color:#fff;background:#000}.next-error-h1{border-right:1px solid rgba(255,255,255,.3)}}\"}}],[\"$\",\"h1\",null,{\"className\":\"next-error-h1\",\"style\":\"$9\",\"children\":\"404\"}],[\"$\",\"div\",null,{\"style\":\"$a\",\"children\":[\"$\",\"h2\",null,{\"style\":\"$b\",\"children\":\"This page could not be found.\"}]}]]}]}]],\"notFoundStyles\":[],\"styles\":null}]}]}],null],null],\"couldBeIntercepted\":false,\"initialHead\":[null,\"$Lc\"],\"globalErrorComponent\":\"$d\",\"missingSlots\":\"$We\"}]]\n"])</script><script>self.__next_f.push([1,"c:[[\"$\",\"meta\",\"0\",{\"name\":\"viewport\",\"content\":\"width=device-width, initial-scale=1\"}],[\"$\",\"meta\",\"1\",{\"charSet\":\"utf-8\"}],[\"$\",\"title\",\"2\",{\"children\":\"ProCheff Kontrol Paneli\"}],[\"$\",\"meta\",\"3\",{\"name\":\"description\",\"content\":\"Yapay zeka destekli menü analizi ve fiyatlandırma paneli\"}],[\"$\",\"meta\",\"4\",{\"name\":\"next-size-adjust\"}]]\n4:null\n"])</script></body></html>
+
+
+        .toggle-switch.active {
+            background: var(--ai-green);
+            border-color: var(--ai-green);
+            box-shadow: 0 2px 8px rgba(16, 185, 129, 0.3);
+        }
+
+        .toggle-switch::before {
+            content: '';
+            position: absolute;
+            top: 2px;
+            left: 2px;
+            width: 18px;
+            height: 18px;
+            background: white;
+            border-radius: 50%;
+            transition: all 0.3s ease;
+            box-shadow: 0 2px 4px rgba(0, 0, 0, 0.2);
+        }
+
+        .toggle-switch.active::before {
+            transform: translateX(24px);
+        }
+
+        /* Action Buttons */
+        .action-buttons {
+            display: flex;
+            gap: 12px;
+            margin-top: 16px;
+        }
+
+        .action-btn {
+            flex: 1;
+            border: none;
+            padding: 10px 16px;
+            border-radius: 8px;
+            font-size: 12px;
+            font-weight: 600;
+            cursor: pointer;
+            transition: all 0.3s ease;
+            text-transform: uppercase;
+            letter-spacing: 0.5px;
+        }
+
+        .action-btn:hover {
+            transform: translateY(-2px);
+        }
+
+        .action-btn.configure {
+            background: var(--gradient-ai);
+            color: white;
+            box-shadow: 0 4px 12px rgba(139, 92, 246, 0.3);
+        }
+
+        .action-btn.configure:hover {
+            box-shadow: 0 6px 16px rgba(139, 92, 246, 0.4);
+        }
+
+        .action-btn.reset {
+            background: rgba(239, 68, 68, 0.1);
+            color: var(--ai-red);
+            border: 1px solid rgba(239, 68, 68, 0.3);
+        }
+
+        .action-btn.reset:hover {
+            background: rgba(239, 68, 68, 0.2);
+            box-shadow: 0 4px 12px rgba(239, 68, 68, 0.2);
+        }
+
+        /* System Status Panel */
+        .system-status {
+            background: linear-gradient(135deg, rgba(35, 41, 55, 0.9) 0%, rgba(45, 52, 65, 0.8) 100%);
+            border: 1px solid rgba(139, 92, 246, 0.2);
+            border-radius: 16px;
+            padding: 24px;
+            margin-top: 32px;
+        }
+
+        .status-header {
+            display: flex;
+            align-items: center;
+            gap: 12px;
+            margin-bottom: 20px;
+        }
+
+        .status-icon {
+            font-size: 24px;
+            color: var(--ai-green);
+        }
+
+        .status-title {
+            font-size: 20px;
+            font-weight: 700;
+            color: var(--text-primary);
+        }
+
+        .status-grid {
+            display: grid;
+            grid-template-columns: repeat(auto-fit, minmax(200px, 1fr));
+            gap: 20px;
+        }
+
+        .status-item {
+            display: flex;
+            justify-content: space-between;
+            align-items: center;
+            padding: 12px 16px;
+            background: rgba(15, 17, 23, 0.5);
+            border-radius: 8px;
+            border: 1px solid rgba(75, 85, 99, 0.2);
+        }
+
+        .status-label {
+            font-size: 12px;
+            color: var(--text-secondary);
+            font-weight: 500;
+        }
+
+        .status-value {
+            font-size: 14px;
+            font-weight: 600;
+        }
+
+        .status-value.good {
+            color: var(--ai-green);
+        }
+
+        .status-value.warning {
+            color: var(--ai-orange);
+        }
+
+        .status-value.info {
+            color: var(--ai-blue);
+        }
+
+        /* Responsive */
+        @media (max-width: 1400px) {
+            .ai-models-grid {
+                grid-template-columns: 1fr;
+            }
+        }
+
+        @media (max-width: 1024px) {
+            .ai-container {
+                grid-template-columns: 1fr;
+            }
+
+            .nav-panel {
+                display: none;
+            }
+
+            .main-panel {
+                padding: 20px;
+            }
+        }
+
+        /* Neural Network Background Effect */
+        .neural-bg {
+            position: fixed;
+            top: 0;
+            left: 0;
+            width: 100%;
+            height: 100%;
+            pointer-events: none;
+            z-index: -1;
+            opacity: 0.03;
+            background: radial-gradient(circle at 20% 80%, var(--ai-purple) 0%, transparent 50%),
+                        radial-gradient(circle at 80% 20%, var(--ai-blue) 0%, transparent 50%),
+                        radial-gradient(circle at 40% 40%, var(--ai-green) 0%, transparent 50%);
+        }
+    </style>
+</head>
+<body>
+    <div class="neural-bg"></div>
+    
+    <div class="ai-container">
+        <!-- Sol Navigation Panel -->
+        <nav class="nav-panel">
+            <div class="nav-header">
+                <div class="logo">ProCheff</div>
+                <div class="version-badge">AI v3.2.1</div>
+            </div>
+
+            <div class="nav-section">
+                <div class="nav-title">Ana Menü</div>
+                <a href="../index.html" class="nav-item">
+                    <span class="nav-icon">🏠</span>
+                    Ana Sayfa
+                </a>
+                <a href="../dashboard/index.html" class="nav-item">
+                    <span class="nav-icon">📊</span>
+                    Dashboard
+                </a>
+                <a href="../cost-simulation/index.html" class="nav-item">
+                    <span class="nav-icon">⚖️</span>
+                    Maliyet Simülasyonu
+                </a>
+            </div>
+
+            <div class="nav-section">
+                <div class="nav-title">AI Sistemi</div>
+                <a href="index.html" class="nav-item active">
+                    <span class="nav-icon">🧠</span>
+                    AI Ayarları
+                </a>
+                <a href="#" class="nav-item">
+                    <span class="nav-icon">📈</span>
+                    Model Performansı
+                </a>
+                <a href="#" class="nav-item">
+                    <span class="nav-icon">🔧</span>
+                    API Yönetimi
+                </a>
+            </div>
+
+            <div class="nav-section">
+                <div class="nav-title">Gelişmiş</div>
+                <a href="#" class="nav-item">
+                    <span class="nav-icon">🔬</span>
+                    Test Laborı
+                </a>
+                <a href="#" class="nav-item">
+                    <span class="nav-icon">📋</span>
+                    Raporlar
+                </a>
+            </div>
+        </nav>
+
+        <!-- Ana Panel -->
+        <main class="main-panel">
+            <div class="main-header">
+                <h1 class="page-title">🧠 AI Model Ayarları</h1>
+                <p class="page-subtitle">Yapay zeka modellerini konfigüre edin ve performansı optimize edin</p>
+            </div>
+
+            <!-- AI Models Grid -->
+            <div class="ai-models-grid">
+                <!-- Trend Analysis AI -->
+                <div class="ai-model-card trend-ai">
+                    <div class="model-header">
+                        <div class="model-info">
+                            <div class="model-icon">📈</div>
+                            <div>
+                                <div class="model-title">Trend Analysis AI</div>
+                                <div class="model-subtitle">Piyasa Trend Analizi</div>
+                            </div>
+                        </div>
+                        <div class="model-status status-active">Aktif</div>
+                    </div>
+
+                    <div class="model-metrics">
+                        <div class="metric trend">
+                            <div class="metric-value" id="trend-accuracy">94.2%</div>
+                            <div class="metric-label">Doğruluk</div>
+                        </div>
+                        <div class="metric">
+                            <div class="metric-value" id="trend-speed">1.3s</div>
+                            <div class="metric-label">Hız</div>
+                        </div>
+                        <div class="metric">
+                            <div class="metric-value" id="trend-learning">87%</div>
+                            <div class="metric-label">Öğrenme</div>
+                        </div>
+                    </div>
+
+                    <div class="config-section">
+                        <div class="config-title">
+                            ⚙️ Konfigürasyon
+                        </div>
+                        <div class="config-controls">
+                            <div class="control-group">
+                                <div class="control-label">Analiz Hassasiyeti</div>
+                                <div class="control-input">
+                                    <input type="range" class="range-slider" min="1" max="10" value="8" id="trend-sensitivity">
+                                    <span class="slider-value" id="trend-sensitivity-value">8/10</span>
+                                </div>
+                            </div>
+                            <div class="control-group">
+                                <div class="control-label">Gerçek Zamanlı Güncelleme</div>
+                                <div class="control-input">
+                                    <div class="toggle-switch active" id="trend-realtime"></div>
+                                </div>
+                            </div>
+                            <div class="control-group">
+                                <div class="control-label">Tahmin Aralığı (Gün)</div>
+                                <div class="control-input">
+                                    <input type="range" class="range-slider" min="1" max="30" value="15" id="trend-period">
+                                    <span class="slider-value" id="trend-period-value">15 gün</span>
+                                </div>
+                            </div>
+                        </div>
+                    </div>
+
+                    <div class="action-buttons">
+                        <button class="action-btn configure">Kaydet</button>
+                        <button class="action-btn reset">Sıfırla</button>
+                    </div>
+                </div>
+
+                <!-- Combination Optimization AI -->
+                <div class="ai-model-card combination-ai">
+                    <div class="model-header">
+                        <div class="model-info">
+                            <div class="model-icon">🎯</div>
+                            <div>
+                                <div class="model-title">Combination AI</div>
+                                <div class="model-subtitle">Kombinasyon Optimizasyonu</div>
+                            </div>
+                        </div>
+                        <div class="model-status status-active">Aktif</div>
+                    </div>
+
+                    <div class="model-metrics">
+                        <div class="metric">
+                            <div class="metric-value" id="combo-efficiency">91.8%</div>
+                            <div class="metric-label">Verimlilik</div>
+                        </div>
+                        <div class="metric">
+                            <div class="metric-value" id="combo-combinations">2.4K</div>
+                            <div class="metric-label">Kombinasyon</div>
+                        </div>
+                        <div class="metric">
+                            <div class="metric-value" id="combo-saved">₺18K</div>
+                            <div class="metric-label">Tasarruf</div>
+                        </div>
+                    </div>
+
+                    <div class="config-section">
+                        <div class="config-title">
+                            🎯 Optimizasyon Ayarları
+                        </div>
+                        <div class="config-controls">
+                            <div class="control-group">
+                                <div class="control-label">Optimizasyon Derinliği</div>
+                                <div class="control-input">
+                                    <input type="range" class="range-slider" min="1" max="10" value="7" id="combo-depth">
+                                    <span class="slider-value" id="combo-depth-value">7/10</span>
+                                </div>
+                            </div>
+                            <div class="control-group">
+                                <div class="control-label">Maliyet Odaklı Optimizasyon</div>
+                                <div class="control-input">
+                                    <div class="toggle-switch active" id="combo-cost-focus"></div>
+                                </div>
+                            </div>
+                            <div class="control-group">
+                                <div class="control-label">Kalite Faktörü (%)</div>
+                                <div class="control-input">
+                                    <input type="range" class="range-slider" min="50" max="100" value="85" id="combo-quality">
+                                    <span class="slider-value" id="combo-quality-value">85%</span>
+                                </div>
+                            </div>
+                        </div>
+                    </div>
+
+                    <div class="action-buttons">
+                        <button class="action-btn configure">Kaydet</button>
+                        <button class="action-btn reset">Sıfırla</button>
+                    </div>
+                </div>
+
+                <!-- Learning System AI -->
+                <div class="ai-model-card learning-ai">
+                    <div class="model-header">
+                        <div class="model-info">
+                            <div class="model-icon">🎓</div>
+                            <div>
+                                <div class="model-title">Learning System</div>
+                                <div class="model-subtitle">Adaptif Öğrenme</div>
+                            </div>
+                        </div>
+                        <div class="model-status status-training">Eğitiliyor</div>
+                    </div>
+
+                    <div class="model-metrics">
+                        <div class="metric learning">
+                            <div class="metric-value" id="learning-progress">76%</div>
+                            <div class="metric-label">İlerleme</div>
+                        </div>
+                        <div class="metric">
+                            <div class="metric-value" id="learning-samples">12.4K</div>
+                            <div class="metric-label">Örnek</div>
+                        </div>
+                        <div class="metric">
+                            <div class="metric-value" id="learning-epochs">247</div>
+                            <div class="metric-label">Döngü</div>
+                        </div>
+                    </div>
+
+                    <div class="config-section">
+                        <div class="config-title">
+                            🎓 Öğrenme Parametreleri
+                        </div>
+                        <div class="config-controls">
+                            <div class="control-group">
+                                <div class="control-label">Öğrenme Hızı</div>
+                                <div class="control-input">
+                                    <input type="range" class="range-slider" min="1" max="10" value="6" id="learning-rate">
+                                    <span class="slider-value" id="learning-rate-value">6/10</span>
+                                </div>
+                            </div>
+                            <div class="control-group">
+                                <div class="control-label">Sürekli Öğrenme</div>
+                                <div class="control-input">
+                                    <div class="toggle-switch active" id="learning-continuous"></div>
+                                </div>
+                            </div>
+                            <div class="control-group">
+                                <div class="control-label">Adaptasyon Seviyesi</div>
+                                <div class="control-input">
+                                    <input type="range" class="range-slider" min="1" max="10" value="8" id="learning-adaptation">
+                                    <span class="slider-value" id="learning-adaptation-value">8/10</span>
+                                </div>
+                            </div>
+                        </div>
+                    </div>
+
+                    <div class="action-buttons">
+                        <button class="action-btn configure">Kaydet</button>
+                        <button class="action-btn reset">Sıfırla</button>
+                    </div>
+                </div>
+
+                <!-- Quality Assessment AI -->
+                <div class="ai-model-card quality-ai">
+                    <div class="model-header">
+                        <div class="model-info">
+                            <div class="model-icon">⭐</div>
+                            <div>
+                                <div class="model-title">Quality Assessment</div>
+                                <div class="model-subtitle">Kalite Değerlendirmesi</div>
+                            </div>
+                        </div>
+                        <div class="model-status status-active">Aktif</div>
+                    </div>
+
+                    <div class="model-metrics">
+                        <div class="metric quality">
+                            <div class="metric-value" id="quality-score">9.2/10</div>
+                            <div class="metric-label">Kalite Skoru</div>
+                        </div>
+                        <div class="metric">
+                            <div class="metric-value" id="quality-checks">1.8K</div>
+                            <div class="metric-label">Kontrol</div>
+                        </div>
+                        <div class="metric">
+                            <div class="metric-value" id="quality-pass">96%</div>
+                            <div class="metric-label">Başarı</div>
+                        </div>
+                    </div>
+
+                    <div class="config-section">
+                        <div class="config-title">
+                            ⭐ Kalite Kriterleri
+                        </div>
+                        <div class="config-controls">
+                            <div class="control-group">
+                                <div class="control-label">Minimum Kalite Eşiği</div>
+                                <div class="control-input">
+                                    <input type="range" class="range-slider" min="1" max="10" value="7" id="quality-threshold">
+                                    <span class="slider-value" id="quality-threshold-value">7/10</span>
+                                </div>
+                            </div>
+                            <div class="control-group">
+                                <div class="control-label">Otomatik Filtreleme</div>
+                                <div class="control-input">
+                                    <div class="toggle-switch active" id="quality-auto-filter"></div>
+                                </div>
+                            </div>
+                            <div class="control-group">
+                                <div class="control-label">Detaylı Analiz</div>
+                                <div class="control-input">
+                                    <div class="toggle-switch" id="quality-detailed"></div>
+                                </div>
+                            </div>
+                        </div>
+                    </div>
+
+                    <div class="action-buttons">
+                        <button class="action-btn configure">Kaydet</button>
+                        <button class="action-btn reset">Sıfırla</button>
+                    </div>
+                </div>
+
+                <!-- Reasoning Engine -->
+                <div class="ai-model-card reasoning-ai">
+                    <div class="model-header">
+                        <div class="model-info">
+                            <div class="model-icon">🧮</div>
+                            <div>
+                                <div class="model-title">Reasoning Engine</div>
+                                <div class="model-subtitle">Mantıksal Çıkarım</div>
+                            </div>
+                        </div>
+                        <div class="model-status status-active">Aktif</div>
+                    </div>
+
+                    <div class="model-metrics">
+                        <div class="metric">
+                            <div class="metric-value" id="reasoning-logic">95.7%</div>
+                            <div class="metric-label">Mantık</div>
+                        </div>
+                        <div class="metric">
+                            <div class="metric-value" id="reasoning-insights">342</div>
+                            <div class="metric-label">İçgörü</div>
+                        </div>
+                        <div class="metric">
+                            <div class="metric-value" id="reasoning-decisions">89%</div>
+                            <div class="metric-label">Karar</div>
+                        </div>
+                    </div>
+
+                    <div class="config-section">
+                        <div class="config-title">
+                            🧮 Çıkarım Ayarları
+                        </div>
+                        <div class="config-controls">
+                            <div class="control-group">
+                                <div class="control-label">Mantık Karmaşıklığı</div>
+                                <div class="control-input">
+                                    <input type="range" class="range-slider" min="1" max="10" value="8" id="reasoning-complexity">
+                                    <span class="slider-value" id="reasoning-complexity-value">8/10</span>
+                                </div>
+                            </div>
+                            <div class="control-group">
+                                <div class="control-label">Çok Aşamalı Analiz</div>
+                                <div class="control-input">
+                                    <div class="toggle-switch active" id="reasoning-multi-step"></div>
+                                </div>
+                            </div>
+                            <div class="control-group">
+                                <div class="control-label">Risk Değerlendirmesi</div>
+                                <div class="control-input">
+                                    <div class="toggle-switch active" id="reasoning-risk"></div>
+                                </div>
+                            </div>
+                        </div>
+                    </div>
+
+                    <div class="action-buttons">
+                        <button class="action-btn configure">Kaydet</button>
+                        <button class="action-btn reset">Sıfırla</button>
+                    </div>
+                </div>
+
+                <!-- Optimization AI -->
+                <div class="ai-model-card optimization-ai">
+                    <div class="model-header">
+                        <div class="model-info">
+                            <div class="model-icon">⚡</div>
+                            <div>
+                                <div class="model-title">Optimization AI</div>
+                                <div class="model-subtitle">Performans Optimizasyonu</div>
+                            </div>
+                        </div>
+                        <div class="model-status status-ready">Hazır</div>
+                    </div>
+
+                    <div class="model-metrics">
+                        <div class="metric">
+                            <div class="metric-value" id="opt-efficiency">98.3%</div>
+                            <div class="metric-label">Verimlilik</div>
+                        </div>
+                        <div class="metric">
+                            <div class="metric-value" id="opt-optimizations">1.2K</div>
+                            <div class="metric-label">Optimizasyon</div>
+                        </div>
+                        <div class="metric">
+                            <div class="metric-value" id="opt-improvements">67%</div>
+                            <div class="metric-label">İyileştirme</div>
+                        </div>
+                    </div>
+
+                    <div class="config-section">
+                        <div class="config-title">
+                            ⚡ Optimizasyon Motorları
+                        </div>
+                        <div class="config-controls">
+                            <div class="control-group">
+                                <div class="control-label">Optimizasyon Agresifliği</div>
+                                <div class="control-input">
+                                    <input type="range" class="range-slider" min="1" max="10" value="6" id="opt-aggressiveness">
+                                    <span class="slider-value" id="opt-aggressiveness-value">6/10</span>
+                                </div>
+                            </div>
+                            <div class="control-group">
+                                <div class="control-label">Sürekli Optimizasyon</div>
+                                <div class="control-input">
+                                    <div class="toggle-switch" id="opt-continuous"></div>
+                                </div>
+                            </div>
+                            <div class="control-group">
+                                <div class="control-label">Kaynak Kullanımı (%)</div>
+                                <div class="control-input">
+                                    <input type="range" class="range-slider" min="30" max="100" value="75" id="opt-resources">
+                                    <span class="slider-value" id="opt-resources-value">75%</span>
+                                </div>
+                            </div>
+                        </div>
+                    </div>
+
+                    <div class="action-buttons">
+                        <button class="action-btn configure">Kaydet</button>
+                        <button class="action-btn reset">Sıfırla</button>
+                    </div>
+                </div>
+            </div>
+
+            <!-- System Status Panel -->
+            <div class="system-status">
+                <div class="status-header">
+                    <div class="status-icon">🔍</div>
+                    <div class="status-title">Sistem Durumu ve Performans</div>
+                </div>
+                <div class="status-grid">
+                    <div class="status-item">
+                        <div class="status-label">Toplam İşlem Sayısı</div>
+                        <div class="status-value good" id="total-operations">24,789</div>
+                    </div>
+                    <div class="status-item">
+                        <div class="status-label">Başarı Oranı</div>
+                        <div class="status-value good" id="success-rate">97.2%</div>
+                    </div>
+                    <div class="status-item">
+                        <div class="status-label">Ortalama Yanıt Süresi</div>
+                        <div class="status-value info" id="avg-response">1.24s</div>
+                    </div>
+                    <div class="status-item">
+                        <div class="status-label">Aktif Model Sayısı</div>
+                        <div class="status-value good" id="active-models">5/6</div>
+                    </div>
+                    <div class="status-item">
+                        <div class="status-label">Kaynak Kullanımı</div>
+                        <div class="status-value warning" id="resource-usage">74%</div>
+                    </div>
+                    <div class="status-item">
+                        <div class="status-label">Son Güncelleme</div>
+                        <div class="status-value info" id="last-update">3 dakika önce</div>
+                    </div>
+                </div>
+            </div>
+        </main>
+    </div>
+
+    <script>
+        class AISettingsManager {
+            constructor() {
+                this.models = {
+                    trend: { sensitivity: 8, realtime: true, period: 15 },
+                    combination: { depth: 7, costFocus: true, quality: 85 },
+                    learning: { rate: 6, continuous: true, adaptation: 8 },
+                    quality: { threshold: 7, autoFilter: true, detailed: false },
+                    reasoning: { complexity: 8, multiStep: true, risk: true },
+                    optimization: { aggressiveness: 6, continuous: false, resources: 75 }
+                };
+
+                this.init();
+                this.startRealTimeUpdates();
+            }
+
+            init() {
+                this.initializeControls();
+                this.attachEventListeners();
+                this.updateMetrics();
+                console.log('🧠 AI Settings Manager başlatıldı');
+            }
+
+            initializeControls() {
+                document.querySelectorAll('.range-slider').forEach(slider => {
+                    slider.addEventListener('input', (e) => this.updateSliderValue(e.target));
+                });
+
+                document.querySelectorAll('.toggle-switch').forEach(toggle => {
+                    toggle.addEventListener('click', (e) => this.toggleSwitch(e.target));
+                });
+
+                document.querySelectorAll('.action-btn').forEach(btn => {
+                    btn.addEventListener('click', (e) => this.handleAction(e.target));
+                });
+            }
+
+            attachEventListeners() {
+                document.addEventListener('change', (e) => {
+                    if (e.target.classList.contains('range-slider')) {
+                        this.updateModelConfig(e.target);
+                    }
+                });
+            }
+
+            updateSliderValue(slider) {
+                const valueSpan = document.getElementById(slider.id + '-value');
+                if (valueSpan) {
+                    let displayValue = slider.value;
+                    
+                    if (slider.id.includes('period')) {
+                        displayValue = slider.value + ' gün';
+                    } else if (slider.id.includes('quality') || slider.id.includes('resources')) {
+                        displayValue = slider.value + '%';
+                    } else if (slider.id.includes('threshold') || slider.id.includes('rate') || 
+                              slider.id.includes('depth') || slider.id.includes('sensitivity') ||
+                              slider.id.includes('adaptation') || slider.id.includes('complexity') ||
+                              slider.id.includes('aggressiveness')) {
+                        displayValue = slider.value + '/10';
+                    }
+                    
+                    valueSpan.textContent = displayValue;
+                }
+
+                slider.style.background = `linear-gradient(to right, var(--ai-purple) 0%, var(--ai-purple) ${(slider.value - slider.min) / (slider.max - slider.min) * 100}%, rgba(75, 85, 99, 0.3) ${(slider.value - slider.min) / (slider.max - slider.min) * 100}%, rgba(75, 85, 99, 0.3) 100%)`;
+            }
+
+            toggleSwitch(toggle) {
+                toggle.classList.toggle('active');
+                this.playToggleSound();
+            }
+
+            handleAction(btn) {
+                const action = btn.textContent.toLowerCase();
+                const card = btn.closest('.ai-model-card');
+                const modelType = this.getModelType(card);
+
+                if (action.includes('kaydet')) {
+                    this.saveModelConfig(modelType, card);
+                } else if (action.includes('sıfırla')) {
+                    this.resetModelConfig(modelType, card);
+                }
+
+                btn.style.transform = 'scale(0.95)';
+                setTimeout(() => { btn.style.transform = ''; }, 150);
+            }
+
+            getModelType(card) {
+                if (card.classList.contains('trend-ai')) return 'trend';
+                if (card.classList.contains('combination-ai')) return 'combination';
+                if (card.classList.contains('learning-ai')) return 'learning';
+                if (card.classList.contains('quality-ai')) return 'quality';
+                if (card.classList.contains('reasoning-ai')) return 'reasoning';
+                if (card.classList.contains('optimization-ai')) return 'optimization';
+                return 'unknown';
+            }
+
+            saveModelConfig(modelType, card) {
+                console.log(`💾 ${modelType} model konfigürasyonu kaydediliyor...`);
+                this.showNotification('Konfigürasyon kaydedildi! ✅', 'success');
+                this.updateModelMetrics(modelType);
+            }
+
+            resetModelConfig(modelType, card) {
+                console.log(`🔄 ${modelType} model ayarları sıfırlanıyor...`);
+                this.restoreDefaults(modelType, card);
+                this.showNotification('Ayarlar varsayılana döndürüldü! 🔄', 'warning');
+            }
+
+            restoreDefaults(modelType, card) {
+                const defaults = {
+                    trend: { sensitivity: 8, period: 15 },
+                    combination: { depth: 7, quality: 85 },
+                    learning: { rate: 6, adaptation: 8 },
+                    quality: { threshold: 7 },
+                    reasoning: { complexity: 8 },
+                    optimization: { aggressiveness: 6, resources: 75 }
+                };
+
+                Object.entries(defaults[modelType] || {}).forEach(([key, value]) => {
+                    const slider = card.querySelector(`#${modelType}-${key}`);
+                    if (slider) {
+                        slider.value = value;
+                        this.updateSliderValue(slider);
+                    }
+                });
+            }
+
+            updateModelMetrics(modelType) {
+                const metrics = {
+                    trend: {
+                        accuracy: () => (92 + Math.random() * 6).toFixed(1) + '%',
+                        speed: () => (1.1 + Math.random() * 0.4).toFixed(1) + 's',
+                        learning: () => (80 + Math.random() * 15).toFixed(0) + '%'
+                    },
+                    combination: {
+                        efficiency: () => (89 + Math.random() * 8).toFixed(1) + '%',
+                        combinations: () => (2.1 + Math.random() * 0.6).toFixed(1) + 'K',
+                        saved: () => '₺' + (15 + Math.random() * 8).toFixed(0) + 'K'
+                    },
+                    learning: {
+                        progress: () => (70 + Math.random() * 20).toFixed(0) + '%',
+                        samples: () => (11 + Math.random() * 3).toFixed(1) + 'K',
+                        epochs: () => (200 + Math.random() * 100).toFixed(0)
+                    },
+                    quality: {
+                        score: () => (8.5 + Math.random() * 1.5).toFixed(1) + '/10',
+                        checks: () => (1.5 + Math.random() * 0.5).toFixed(1) + 'K',
+                        pass: () => (94 + Math.random() * 4).toFixed(0) + '%'
+                    },
+                    reasoning: {
+                        logic: () => (93 + Math.random() * 5).toFixed(1) + '%',
+                        insights: () => (300 + Math.random() * 100).toFixed(0),
+                        decisions: () => (85 + Math.random() * 10).toFixed(0) + '%'
+                    },
+                    optimization: {
+                        efficiency: () => (96 + Math.random() * 3).toFixed(1) + '%',
+                        optimizations: () => (1.0 + Math.random() * 0.4).toFixed(1) + 'K',
+                        improvements: () => (60 + Math.random() * 15).toFixed(0) + '%'
+                    }
+                };
+
+                if (metrics[modelType]) {
+                    Object.entries(metrics[modelType]).forEach(([key, generator]) => {
+                        const element = document.getElementById(`${modelType}-${key}`);
+                        if (element) {
+                            element.textContent = generator();
+                            element.classList.add('loading-pulse');
+                            setTimeout(() => element.classList.remove('loading-pulse'), 1000);
+                        }
+                    });
+                }
+            }
+
+            startRealTimeUpdates() {
+                setInterval(() => this.updateSystemMetrics(), 30000);
+                setInterval(() => this.updateModelStatuses(), 60000);
+                console.log('⏰ Gerçek zamanlı güncellemeler başlatıldı');
+            }
+
+            updateSystemMetrics() {
+                const updates = {
+                    'total-operations': () => (24000 + Math.random() * 2000).toFixed(0).replace(/\B(?=(\d{3})+(?!\d))/g, ","),
+                    'success-rate': () => (96 + Math.random() * 2).toFixed(1) + '%',
+                    'avg-response': () => (1.1 + Math.random() * 0.3).toFixed(2) + 's',
+                    'active-models': () => '5/6',
+                    'resource-usage': () => (70 + Math.random() * 10).toFixed(0) + '%',
+                    'last-update': () => Math.floor(Math.random() * 5) + ' dakika önce'
+                };
+
+                Object.entries(updates).forEach(([id, generator]) => {
+                    const element = document.getElementById(id);
+                    if (element) element.textContent = generator();
+                });
+            }
+
+            updateModelStatuses() {
+                const statusElements = document.querySelectorAll('.model-status');
+                statusElements.forEach(status => {
+                    if (Math.random() < 0.1) {
+                        const currentStatus = status.textContent;
+                        if (currentStatus === 'Eğitiliyor') {
+                            status.textContent = 'Aktif';
+                            status.className = 'model-status status-active';
+                        }
+                    }
+                });
+            }
+
+            updateMetrics() {
+                Object.keys(this.models).forEach(modelType => {
+                    this.updateModelMetrics(modelType);
+                });
+            }
+
+            showNotification(message, type = 'info') {
+                const notification = document.createElement('div');
+                notification.style.cssText = `
+                    position: fixed; top: 20px; right: 20px; z-index: 10000;
+                    background: ${type === 'success' ? 'var(--ai-green)' : type === 'warning' ? 'var(--ai-orange)' : 'var(--ai-blue)'};
+                    color: white; padding: 12px 20px; border-radius: 8px; font-weight: 600; font-size: 14px;
+                    opacity: 0; transform: translateX(100%); transition: all 0.3s ease;
+                    box-shadow: 0 4px 12px rgba(0, 0, 0, 0.3);
+                `;
+                notification.textContent = message;
+                document.body.appendChild(notification);
+                
+                setTimeout(() => {
+                    notification.style.opacity = '1';
+                    notification.style.transform = 'translateX(0)';
+                }, 100);
+                
+                setTimeout(() => {
+                    notification.style.opacity = '0';
+                    notification.style.transform = 'translateX(100%)';
+                    setTimeout(() => document.body.removeChild(notification), 300);
+                }, 3000);
+            }
+
+            playToggleSound() {
+                try {
+                    const audioContext = new (window.AudioContext || window.webkitAudioContext)();
+                    const oscillator = audioContext.createOscillator();
+                    const gainNode = audioContext.createGain();
+                    
+                    oscillator.connect(gainNode);
+                    gainNode.connect(audioContext.destination);
+                    
+                    oscillator.frequency.setValueAtTime(800, audioContext.currentTime);
+                    oscillator.frequency.exponentialRampToValueAtTime(400, audioContext.currentTime + 0.1);
+                    
+                    gainNode.gain.setValueAtTime(0.1, audioContext.currentTime);
+                    gainNode.gain.exponentialRampToValueAtTime(0.001, audioContext.currentTime + 0.1);
+                    
+                    oscillator.start(audioContext.currentTime);
+                    oscillator.stop(audioContext.currentTime + 0.1);
+                } catch (error) {}
+            }
+        }
+
+        document.addEventListener('DOMContentLoaded', () => {
+            new AISettingsManager();
+            console.log('🚀 AI Ayarları sayfası tamamen yüklendi');
+        });
+    </script>
+</body>
+</html>
