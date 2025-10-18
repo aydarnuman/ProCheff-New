@@ -5,6 +5,9 @@
   "scripts": {
     "dev": "next dev",
     "build": "next build",
+    "build:github-pages": "NODE_ENV=production next build",
+    "export": "next export",
+    "deploy:pages": "npm run build:github-pages && touch out/.nojekyll",
     "start": "node .next/standalone/server.js",
     "type-check": "tsc --noEmit",
     "ci": "npm ci && npm run type-check && npm run build",
