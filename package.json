@@ -4,10 +4,10 @@
   "private": true,
   "scripts": {
     "dev": "next dev",
-    "build": "next build && cp public/sitemap.xml public/robots.txt public/manifest.json public/sw.js out/",
+    "build": "next build",
+    "export:full": "npm run build && cp public/sitemap.xml public/robots.txt public/manifest.json public/sw.js out/",
     "build:github-pages": "NODE_ENV=production next build",
-    "export": "next export",
-    "deploy:pages": "GITHUB_PAGES=true npm run build && touch out/.nojekyll",
+    "deploy:pages": "GITHUB_PAGES=true npm run export:full && touch out/.nojekyll",
     "start": "node .next/standalone/server.js",
     "type-check": "tsc --noEmit",
     "ci": "npm ci && npm run type-check && npm run build",
