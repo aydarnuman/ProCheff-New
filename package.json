@@ -57,7 +57,8 @@
     "upgrade:preview": "node scripts/upgrade-preview.js",
     "upgrade:next": "node scripts/upgrade-preview.js next",
     "upgrade:tailwind": "node scripts/upgrade-preview.js tailwindcss",
-    "setup": "npm install && npm run type-check"
+    "setup": "npm install && npm run type-check",
+    "setup:env": "bash scripts/setup-env.sh"
   },
   "dependencies": {
     "@radix-ui/react-progress": "^1.1.7",

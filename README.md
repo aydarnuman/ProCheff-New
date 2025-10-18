@@ -45,8 +45,13 @@ cd ProCheff-New
 npm install
 
 # Environment dosyasını oluştur
-cp .env.example .env.local
+# Otomatik kurulum (önerilen):
+bash scripts/setup-env.sh
+# veya manuel:
+# cp .env.example .env.local
+
 # .env.local dosyasını düzenleyerek API anahtarlarınızı ekleyin
+nano .env.local  # veya favori editörünüz
 
 # Geliştirme sunucusunu başlat
 npm run dev
