@@ -60,7 +60,7 @@ export default function HomePage() {
             AI destekli menü değerlendirmesi ve optimizasyon önerileri
           </p>
           <a 
-            href="./menu/"
+            href="/menu/"
             style={{
               padding: '12px 24px',
               border: 'none',
@@ -114,7 +114,7 @@ export default function HomePage() {
             Gerçek zamanlı fiyat takibi ve pazar analizi
           </p>
           <a 
-            href="./menu/fiyat-takip/"
+            href="/menu/fiyat-takip/"
             style={{
               padding: '12px 24px',
               border: 'none',
@@ -168,7 +168,7 @@ export default function HomePage() {
             Şartname analizi ve ihale stratejisi geliştirme
           </p>
           <a 
-            href="./ihale/"
+            href="/ihale/"
             style={{
               padding: '12px 24px',
               border: 'none',
@@ -222,7 +222,7 @@ export default function HomePage() {
             Detaylı performans raporları ve analizleri
           </p>
           <a 
-            href="./reports/"
+            href="/reports/"
             style={{
               padding: '12px 24px',
               border: 'none',
@@ -276,7 +276,7 @@ export default function HomePage() {
             Platform konfigürasyonu ve kullanıcı ayarları
           </p>
           <a 
-            href="./admin/"
+            href="/admin/"
             style={{
               padding: '12px 24px',
               border: 'none',
@@ -330,7 +330,7 @@ export default function HomePage() {
             API durumu ve sistem performans metrikleri
           </p>
           <a 
-            href="./dashboard/"
+            href="/dashboard/"
             style={{
               padding: '12px 24px',
               border: 'none',

@@ -40,7 +40,7 @@ export default function AdminPage() {
             Yapay zeka modellerinin konfigürasyonu ve optimizasyonu
           </p>
           <a 
-            href="./admin/ai-settings/"
+            href="/admin/ai-settings/"
             style={{
               padding: '12px 24px',
               border: 'none',

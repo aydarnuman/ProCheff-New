@@ -1,8 +1,8 @@
 import PWAServiceWorker from '@/components/ServiceWorkerRegistration'
 import type { Metadata } from 'next'
 import { Inter } from 'next/font/google'
+import Link from 'next/link'
 import './globals.css'
-
 const inter = Inter({ subsets: ['latin'] })
 
 export const metadata: Metadata = {
@@ -108,8 +108,8 @@ export default function RootLayout({
               </div>
 
               <nav style={{ padding: '12px 16px', flex: '1', display: 'flex', flexDirection: 'column', gap: '12px' }}>
-                <a 
-                  href="./"
+                <Link 
+                  href="/"
                   style={{
                     display: 'flex',
                     alignItems: 'center',
@@ -124,10 +124,10 @@ export default function RootLayout({
                 >
                   <span style={{ fontSize: '1.2rem' }}>🏠</span>
                   <span>Ana Sayfa</span>
-                </a>
+                </Link>
                 
-                <a 
-                  href="./ihale/"
+                <Link 
+                  href="/ihale"
                   style={{
                     display: 'flex',
                     alignItems: 'center',
@@ -142,10 +142,10 @@ export default function RootLayout({
                 >
                   <span style={{ fontSize: '1.2rem' }}>🏛️</span>
                   <span>İhale Merkezi</span>
-                </a>
+                </Link>
                 
-                <a 
-                  href="./dashboard/"
+                <Link 
+                  href="/dashboard"
                   style={{
                     display: 'flex',
                     alignItems: 'center',
@@ -160,10 +160,10 @@ export default function RootLayout({
                 >
                   <span style={{ fontSize: '1.2rem' }}>📊</span>
                   <span>Dashboard</span>
-                </a>
+                </Link>
                 
-                <a 
-                  href="./menu/"
+                <Link 
+                  href="/menu"
                   style={{
                     display: 'flex',
                     alignItems: 'center',
@@ -178,10 +178,10 @@ export default function RootLayout({
                 >
                   <span style={{ fontSize: '1.2rem' }}>🍽️</span>
                   <span>Menü Analizi</span>
-                </a>
+                </Link>
                 
-                <a 
-                  href="./offer/"
+                <Link 
+                  href="/offer"
                   style={{
                     display: 'flex',
                     alignItems: 'center',
@@ -196,10 +196,10 @@ export default function RootLayout({
                 >
                   <span style={{ fontSize: '1.2rem' }}>💰</span>
                   <span>Teklif Merkezi</span>
-                </a>
+                </Link>
                 
-                <a 
-                  href="./admin/"
+                <Link 
+                  href="/admin"
                   style={{
                     display: 'flex',
                     alignItems: 'center',
@@ -214,7 +214,7 @@ export default function RootLayout({
                 >
                   <span style={{ fontSize: '1.2rem' }}>⚙️</span>
                   <span>Admin Panel</span>
-                </a>
+                </Link>
               </nav>
             </div>
             
