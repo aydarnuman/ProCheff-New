@@ -1,0 +1,22 @@
+
+> procheff@0.1.0 dev
+> next dev
+
+  ▲ Next.js 14.2.33
+  - Local:        http://localhost:3000
+  - Environments: .env.local
+  - Experiments (use with caution):
+    · missingSuspenseWithCSRBailout
+
+ ✓ Starting...
+ ✓ Ready in 1645ms
+ ○ Compiling /_not-found ...
+ ✓ Compiled /_not-found in 3.7s (521 modules)
+ ⚠ Unsupported metadata viewport is configured in metadata export in /api/health/. Please move it to viewport export instead.
+Read more: https://nextjs.org/docs/app/api-reference/functions/generate-viewport
+ ⚠ Unsupported metadata themeColor is configured in metadata export in /api/health/. Please move it to viewport export instead.
+Read more: https://nextjs.org/docs/app/api-reference/functions/generate-viewport
+ ⚠ Unsupported metadata colorScheme is configured in metadata export in /api/health/. Please move it to viewport export instead.
+Read more: https://nextjs.org/docs/app/api-reference/functions/generate-viewport
+ GET /api/health/ 404 in 3803ms
+[?25h

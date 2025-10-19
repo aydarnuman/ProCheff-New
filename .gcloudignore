@@ -1,0 +1,11 @@
+.git/
+node_modules/
+.next/
+reports/
+test/
+bilgi-bankasi/
+docs/
+scripts/
+*.log
+*.md
+.env*
