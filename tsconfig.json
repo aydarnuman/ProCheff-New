@@ -3,9 +3,9 @@
         "lib": [
             "dom",
             "dom.iterable",
-            "es6"
+            "es2022"
         ],
-        "allowJs": true,
+        "allowJs": false,
         "skipLibCheck": true,
         "strict": true,
         "noEmit": true,
@@ -21,24 +21,25 @@
                 "name": "next"
             }
         ],
+        "baseUrl": ".",
         "paths": {
             "@/*": [
-                "./src/*"
+                "src/*"
             ],
             "@/app/*": [
-                "./src/app/*"
-            ],
-            "@/lib/*": [
-                "./src/lib/*"
+                "src/app/*"
             ],
             "@/components/*": [
-                "./src/components/*"
+                "src/components/*"
+            ],
+            "@/lib/*": [
+                "src/lib/*"
             ],
             "@/utils/*": [
-                "./src/utils/*"
+                "src/utils/*"
             ],
-            "@/scripts/*": [
-                "./src/scripts/*"
+            "@/types/*": [
+                "src/types/*"
             ]
         }
     },

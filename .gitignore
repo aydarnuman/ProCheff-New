@@ -5,6 +5,7 @@ npm-debug.log
 .github
 .vscode
 .env*
+!.env.template
 
 # VSCode ghost file fix
 /lib/
