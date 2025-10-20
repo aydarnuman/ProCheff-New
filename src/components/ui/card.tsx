@@ -3,6 +3,7 @@ import React from 'react';
 interface CardProps {
   children: React.ReactNode;
   className?: string;
+  style?: React.CSSProperties;
 }
 
 interface CardHeaderProps {
@@ -21,16 +22,17 @@ interface CardContentProps {
   className?: string;
 }
 
-export function Card({ children, className = '' }: CardProps) {
+export function Card({ children, className = '', style = {} }: CardProps) {
   return (
-    <div 
+    <div
       className={className}
       style={{
         background: 'rgba(35, 39, 47, 0.8)',
         border: '1px solid rgba(59, 130, 246, 0.2)',
         borderRadius: '12px',
         padding: '24px',
-        color: '#F1F5F9'
+        color: '#F1F5F9',
+        ...style
       }}
     >
       {children}
