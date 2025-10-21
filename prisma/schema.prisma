@@ -1,0 +1,366 @@
+// ProCheff Database Schema
+// Comprehensive data model for restaurant AI system
+
+generator client {
+  provider = "prisma-client-js"
+  output   = "../src/generated/prisma"
+}
+
+datasource db {
+  provider = "sqlite"
+  url      = env("DATABASE_URL")
+}
+
+// ================================
+// User Management
+// ================================
+
+model User {
+  id          String   @id @default(cuid())
+  email       String   @unique
+  name        String
+  password    String
+  role        UserRole @default(CLIENT)
+  isActive    Boolean  @default(true)
+  createdAt   DateTime @default(now())
+  updatedAt   DateTime @updatedAt
+
+  // Relations
+  restaurants Restaurant[]
+  offers      Offer[]
+  apiKeys     ApiKey[]
+  sessions    Session[]
+
+  @@map("users")
+}
+
+model Session {
+  id        String   @id @default(cuid())
+  userId    String
+  token     String   @unique
+  expiresAt DateTime
+  createdAt DateTime @default(now())
+
+  user User @relation(fields: [userId], references: [id], onDelete: Cascade)
+
+  @@map("sessions")
+}
+
+model ApiKey {
+  id           String   @id @default(cuid())
+  userId       String
+  name         String
+  key          String   @unique
+  permissions  String   // JSON string of permissions array
+  rateLimit    Int      @default(1000) // requests per hour
+  isActive     Boolean  @default(true)
+  lastUsedAt   DateTime?
+  createdAt    DateTime @default(now())
+
+  user User @relation(fields: [userId], references: [id], onDelete: Cascade)
+
+  @@map("api_keys")
+}
+
+// ================================
+// Restaurant & Menu Management
+// ================================
+
+model Restaurant {
+  id          String @id @default(cuid())
+  name        String
+  description String?
+  cuisine     String?
+  address     String?
+  phone       String?
+  email       String?
+  website     String?
+  
+  // Owner
+  ownerId     String
+  owner       User   @relation(fields: [ownerId], references: [id])
+  
+  // Business metrics
+  averageCheckAmount Float?
+  monthlyRevenue     Float?
+  customerCount      Int?
+  
+  createdAt   DateTime @default(now())
+  updatedAt   DateTime @updatedAt
+
+  // Relations
+  menus       Menu[]
+  offers      Offer[]
+  tenders     Tender[]
+
+  @@map("restaurants")
+}
+
+model Menu {
+  id            String      @id @default(cuid())
+  name          String
+  description   String?
+  type          MenuType    @default(MAIN)
+  isActive      Boolean     @default(true)
+  
+  // Restaurant relation
+  restaurantId  String
+  restaurant    Restaurant  @relation(fields: [restaurantId], references: [id], onDelete: Cascade)
+  
+  // Menu content
+  rawText       String?     // Original menu text
+  processedData Json?       // Parsed menu data
+  
+  // Analysis results
+  analysisResults Json?     // AI analysis output
+  nutritionScore  Float?
+  costScore       Float?
+  riskScore       Float?
+  
+  createdAt     DateTime    @default(now())
+  updatedAt     DateTime    @updatedAt
+
+  // Relations
+  items         MenuItem[]
+  analyses      MenuAnalysis[]
+
+  @@map("menus")
+}
+
+model MenuItem {
+  id          String  @id @default(cuid())
+  name        String
+  description String?
+  price       Float
+  category    String?
+  
+  // Menu relation
+  menuId      String
+  menu        Menu    @relation(fields: [menuId], references: [id], onDelete: Cascade)
+  
+  // Nutrition & costs
+  calories    Float?
+  protein     Float?
+  carbs       Float?
+  fat         Float?
+  materialCost Float?
+  laborCost   Float?
+  
+  // Metadata
+  isAvailable Boolean @default(true)
+  allergens   String? // JSON string of allergens array
+  
+  createdAt   DateTime @default(now())
+  updatedAt   DateTime @updatedAt
+
+  @@map("menu_items")
+}
+
+model MenuAnalysis {
+  id        String   @id @default(cuid())
+  menuId    String
+  menu      Menu     @relation(fields: [menuId], references: [id], onDelete: Cascade)
+  
+  // Analysis metadata
+  type      AnalysisType
+  status    AnalysisStatus @default(PENDING)
+  
+  // Input parameters
+  inputData Json
+  
+  // Results
+  results   Json?
+  insights  String?
+  recommendations String?
+  
+  // Performance metrics
+  processingTime Int? // milliseconds
+  accuracy       Float?
+  confidence     Float?
+  
+  createdAt DateTime @default(now())
+  updatedAt DateTime @updatedAt
+
+  @@map("menu_analyses")
+}
+
+// ================================
+// Offer & Tender Management
+// ================================
+
+model Offer {
+  id              String      @id @default(cuid())
+  title           String
+  description     String?
+  
+  // Client & restaurant
+  clientId        String
+  client          User        @relation(fields: [clientId], references: [id])
+  restaurantId    String?
+  restaurant      Restaurant? @relation(fields: [restaurantId], references: [id])
+  
+  // Financial details
+  totalCost       Float
+  materialCost    Float?
+  laborCost       Float?
+  overheadCost    Float?
+  profitMargin    Float       @default(0.2)
+  estimatedRevenue Float?
+  
+  // Status & timing
+  status          OfferStatus @default(DRAFT)
+  validUntil      DateTime?
+  deadline        DateTime?
+  
+  // Metadata
+  tags            String?     // JSON string of tags array
+  priority        Priority    @default(MEDIUM)
+  
+  createdAt       DateTime    @default(now())
+  updatedAt       DateTime    @updatedAt
+
+  // Relations
+  items           OfferItem[]
+  tenderBid       TenderBid?
+
+  @@map("offers")
+}
+
+model OfferItem {
+  id        String @id @default(cuid())
+  offerId   String
+  offer     Offer  @relation(fields: [offerId], references: [id], onDelete: Cascade)
+  
+  name      String
+  description String?
+  quantity  Int
+  unitCost  Float
+  totalCost Float
+  
+  category  String?
+  notes     String?
+  
+  createdAt DateTime @default(now())
+
+  @@map("offer_items")
+}
+
+model Tender {
+  id            String       @id @default(cuid())
+  title         String
+  description   String
+  
+  // Restaurant
+  restaurantId  String
+  restaurant    Restaurant   @relation(fields: [restaurantId], references: [id])
+  
+  // Tender details
+  budget        Float?
+  deadline      DateTime
+  requirements  Json         // Detailed requirements
+  
+  // Status
+  status        TenderStatus @default(OPEN)
+  publishedAt   DateTime?
+  closedAt      DateTime?
+  
+  createdAt     DateTime     @default(now())
+  updatedAt     DateTime     @updatedAt
+
+  // Relations
+  bids          TenderBid[]
+
+  @@map("tenders")
+}
+
+model TenderBid {
+  id        String    @id @default(cuid())
+  tenderId  String
+  tender    Tender    @relation(fields: [tenderId], references: [id], onDelete: Cascade)
+  offerId   String    @unique
+  offer     Offer     @relation(fields: [offerId], references: [id])
+  
+  // Bid details
+  bidAmount Float
+  proposal  String?
+  notes     String?
+  
+  // Status
+  status    BidStatus @default(SUBMITTED)
+  rank      Int?      // Evaluation ranking
+  score     Float?    // Evaluation score
+  
+  createdAt DateTime  @default(now())
+  updatedAt DateTime  @updatedAt
+
+  @@map("tender_bids")
+}
+
+// ================================
+// Enums
+// ================================
+
+enum UserRole {
+  ADMIN
+  MANAGER
+  CLIENT
+  SUPPLIER
+}
+
+enum MenuType {
+  MAIN
+  BREAKFAST
+  LUNCH
+  DINNER
+  DRINKS
+  DESSERTS
+  SPECIAL
+}
+
+enum AnalysisType {
+  NUTRITION
+  COST
+  RISK
+  OPTIMIZATION
+  COMPETITIVE
+}
+
+enum AnalysisStatus {
+  PENDING
+  PROCESSING
+  COMPLETED
+  FAILED
+}
+
+enum OfferStatus {
+  DRAFT
+  PENDING
+  IN_REVIEW
+  APPROVED
+  REJECTED
+  EXPIRED
+}
+
+enum TenderStatus {
+  DRAFT
+  OPEN
+  CLOSED
+  AWARDED
+  CANCELLED
+}
+
+enum BidStatus {
+  DRAFT
+  SUBMITTED
+  UNDER_REVIEW
+  ACCEPTED
+  REJECTED
+  WITHDRAWN
+}
+
+enum Priority {
+  LOW
+  MEDIUM
+  HIGH
+  URGENT
+}

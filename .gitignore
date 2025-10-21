@@ -8,3 +8,4 @@ npm-debug.log
 
 # VSCode ghost file fix
 /lib/
+/src/generated/prisma

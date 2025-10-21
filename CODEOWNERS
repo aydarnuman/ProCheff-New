@@ -1,0 +1,16 @@
+# Takım sahiplikleri ve gözden geçirme kuralları
+# Geçici kullanıcı adları: lütfen kendi org kullanıcılarınız ile güncelleyin.
+
+# Varsayılan sahipler
+*       @procheff-core
+
+# UI
+src/app/ihale/     @procheff-ui
+src/components/    @procheff-ui
+
+# Backend / API
+src/app/api/       @procheff-backend
+src/lib/ingest/    @procheff-backend
+
+# Ortak kütüphane
+src/lib/           @procheff-core
