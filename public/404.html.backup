@@ -1,0 +1,103 @@
+<!DOCTYPE html>
+<html lang="tr">
+<head>
+    <meta charset="utf-8">
+    <title>Yönlendiriliyor... | ProCheff</title>
+    <script>
+        // GitHub Pages SPA redirect fix for ProCheff
+        (function() {
+            const currentPath = window.location.pathname;
+            const basePath = '/ProCheff-New';
+            
+            // Remove base path to get the route
+            const route = currentPath.replace(basePath, '');
+            
+            console.log('404 Redirect - Current:', currentPath, 'Route:', route);
+            
+            // Valid routes mapping
+            const validRoutes = {
+                '/ihale/': '/ProCheff-New/ihale/',
+                '/dashboard/': '/ProCheff-New/dashboard/',
+                '/menu/': '/ProCheff-New/menu/',
+                '/admin/': '/ProCheff-New/admin/',
+                '/offer/': '/ProCheff-New/offer/',
+                '/reports/': '/ProCheff-New/reports/',
+                '/upload/': '/ProCheff-New/upload/',
+                '/ai-settings/': '/ProCheff-New/ai-settings/'
+            };
+            
+            // Check if it's a known route
+            if (route && validRoutes[route]) {
+                console.log('Redirecting to:', validRoutes[route]);
+                window.location.replace(validRoutes[route]);
+                return;
+            }
+            
+            // Extract first path segment for partial matches
+            const firstSegment = route.split('/')[1];
+            if (firstSegment) {
+                const targetRoute = '/' + firstSegment + '/';
+                if (validRoutes[targetRoute]) {
+                    console.log('Partial redirect to:', validRoutes[targetRoute]);
+                    window.location.replace(validRoutes[targetRoute]);
+                    return;
+                }
+            }
+            
+            // Default: redirect to home
+            console.log('Default redirect to home');
+            window.location.replace('/ProCheff-New/');
+        })();
+    </script>
+    <style>
+        body {
+            font-family: -apple-system, BlinkMacSystemFont, 'Segoe UI', Roboto, sans-serif;
+            background: linear-gradient(135deg, #0F172A 0%, #1E293B 100%);
+            color: #F8FAFC;
+            margin: 0;
+            padding: 40px 20px;
+            text-align: center;
+            min-height: 100vh;
+            display: flex;
+            align-items: center;
+            justify-content: center;
+        }
+        .container {
+            max-width: 500px;
+        }
+        h1 {
+            font-size: 2rem;
+            margin-bottom: 1rem;
+            background: linear-gradient(135deg, #10B981, #3B82F6);
+            -webkit-background-clip: text;
+            background-clip: text;
+            -webkit-text-fill-color: transparent;
+        }
+        p {
+            color: #94A3B8;
+            margin-bottom: 2rem;
+        }
+        .spinner {
+            margin: 20px auto;
+            width: 40px;
+            height: 40px;
+            border: 4px solid rgba(59, 130, 246, 0.3);
+            border-top: 4px solid #3B82F6;
+            border-radius: 50%;
+            animation: spin 1s linear infinite;
+        }
+        @keyframes spin {
+            0% { transform: rotate(0deg); }
+            100% { transform: rotate(360deg); }
+        }
+    </style>
+</head>
+<body>
+    <div class="container">
+        <h1>🏠 ProCheff</h1>
+        <div class="spinner"></div>
+        <p>Sayfa yönlendiriliyor...</p>
+        <p><small>Eğer yönlendirme gerçekleşmezse, <a href="/ProCheff-New/" style="color: #10B981;">ana sayfaya</a> gidin.</small></p>
+    </div>
+</body>
+</html>

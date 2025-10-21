@@ -1,61 +1,118 @@
-<!DOCTYPE html>
-<html lang="tr">
-<head>
-    <meta charset="utf-8">
-    <title>Yönlendiriliyor... | ProCheff</title>
-    <script>
-        // GitHub Pages SPA redirect fix for ProCheff
-        (function() {
-            const currentPath = window.location.pathname;
-            const basePath = '/ProCheff-New';
-            
-            // Remove base path to get the route
-            const route = currentPath.replace(basePath, '');
-            
-            console.log('404 Redirect - Current:', currentPath, 'Route:', route);
-            
-            // Valid routes mapping
-            const validRoutes = {
-                '/ihale/': '/ProCheff-New/ihale/',
-                '/dashboard/': '/ProCheff-New/dashboard/',
-                '/menu/': '/ProCheff-New/menu/',
-                '/admin/': '/ProCheff-New/admin/',
-                '/offer/': '/ProCheff-New/offer/',
-                '/reports/': '/ProCheff-New/reports/',
-                '/upload/': '/ProCheff-New/upload/',
-                '/ai-settings/': '/ProCheff-New/ai-settings/'
-            };
-            
-            // Check if it's a known route
-            if (route && validRoutes[route]) {
-                console.log('Redirecting to:', validRoutes[route]);
-                window.location.replace(validRoutes[route]);
-                return;
-            }
-            
-            // Extract first path segment for partial matches
-            const firstSegment = route.split('/')[1];
-            if (firstSegment) {
-                const targetRoute = '/' + firstSegment + '/';
-                if (validRoutes[targetRoute]) {
-                    console.log('Partial redirect to:', validRoutes[targetRoute]);
-                    window.location.replace(validRoutes[targetRoute]);
-                    return;
-                }
-            }
-            
-            // Default: redirect to home
-            console.log('Default redirect to home');
-            window.location.replace('/ProCheff-New/');
-        })();
-    </script>
-    <style>
-        body {
-            font-family: -apple-system, BlinkMacSystemFont, 'Segoe UI', Roboto, sans-serif;
-            background: linear-gradient(135deg, #0F172A 0%, #1E293B 100%);
-            color: #F8FAFC;
-            margin: 0;
-            padding: 40px 20px;
+<!DOCTYPE html><!DOCTYPE html>
+
+<html lang="tr"><html lang="tr">
+
+<head><head>
+
+    <meta charset="utf-8">    <meta charset="utf-8">
+
+    <title>ProCheff - Sayfa Bulunamadı</title>    <title>Yönlendiriliyor... | ProCheff</title>
+
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">    <script>
+
+    <style>        // GitHub Pages SPA redirect fix for ProCheff
+
+        body {        (function() {
+
+            font-family: -apple-system, BlinkMacSystemFont, 'Segoe UI', Roboto, sans-serif;            const currentPath = window.location.pathname;
+
+            background: linear-gradient(135deg, #0F172A 0%, #1E293B 100%);            const basePath = '/ProCheff-New';
+
+            color: #F8FAFC;            
+
+            margin: 0;            // Remove base path to get the route
+
+            padding: 40px 20px;            const route = currentPath.replace(basePath, '');
+
+            text-align: center;            
+
+            min-height: 100vh;            console.log('404 Redirect - Current:', currentPath, 'Route:', route);
+
+            display: flex;            
+
+            align-items: center;            // Valid routes mapping
+
+            justify-content: center;            const validRoutes = {
+
+        }                '/ihale/': '/ProCheff-New/ihale/',
+
+        .container {                '/dashboard/': '/ProCheff-New/dashboard/',
+
+            max-width: 500px;                '/menu/': '/ProCheff-New/menu/',
+
+        }                '/admin/': '/ProCheff-New/admin/',
+
+        h1 {                '/offer/': '/ProCheff-New/offer/',
+
+            font-size: 2rem;                '/reports/': '/ProCheff-New/reports/',
+
+            margin-bottom: 1rem;                '/upload/': '/ProCheff-New/upload/',
+
+            background: linear-gradient(135deg, #10B981, #3B82F6);                '/ai-settings/': '/ProCheff-New/ai-settings/'
+
+            -webkit-background-clip: text;            };
+
+            background-clip: text;            
+
+            -webkit-text-fill-color: transparent;            // Check if it's a known route
+
+        }            if (route && validRoutes[route]) {
+
+        p {                console.log('Redirecting to:', validRoutes[route]);
+
+            color: #94A3B8;                window.location.replace(validRoutes[route]);
+
+            margin-bottom: 2rem;                return;
+
+        }            }
+
+        .button {            
+
+            display: inline-block;            // Extract first path segment for partial matches
+
+            background: linear-gradient(135deg, #10B981, #3B82F6);            const firstSegment = route.split('/')[1];
+
+            color: white;            if (firstSegment) {
+
+            padding: 12px 24px;                const targetRoute = '/' + firstSegment + '/';
+
+            border-radius: 8px;                if (validRoutes[targetRoute]) {
+
+            text-decoration: none;                    console.log('Partial redirect to:', validRoutes[targetRoute]);
+
+            font-weight: 500;                    window.location.replace(validRoutes[targetRoute]);
+
+            transition: transform 0.2s;                    return;
+
+        }                }
+
+        .button:hover {            }
+
+            transform: translateY(-2px);            
+
+        }            // Default: redirect to home
+
+    </style>            console.log('Default redirect to home');
+
+</head>            window.location.replace('/ProCheff-New/');
+
+<body>        })();
+
+    <div class="container">    </script>
+
+        <h1>🍽️ ProCheff</h1>    <style>
+
+        <h2>404 - Sayfa Bulunamadı</h2>        body {
+
+        <p>Aradığınız sayfa mevcut değil.</p>            font-family: -apple-system, BlinkMacSystemFont, 'Segoe UI', Roboto, sans-serif;
+
+        <a href="/" class="button">Ana Sayfaya Dön</a>            background: linear-gradient(135deg, #0F172A 0%, #1E293B 100%);
+
+    </div>            color: #F8FAFC;
+
+</body>            margin: 0;
+
+</html>            padding: 40px 20px;
             text-align: center;
             min-height: 100vh;
             display: flex;
