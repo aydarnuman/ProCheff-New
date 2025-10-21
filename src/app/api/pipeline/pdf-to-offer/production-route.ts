@@ -1,3 +1,4 @@
+/* eslint-disable @typescript-eslint/no-explicit-any, @typescript-eslint/no-unused-vars */
 // Production-Ready PDF Analysis API with Cloud Run Compatibility
 import { NextRequest, NextResponse } from "next/server";
 import pdfParse from "pdf-parse";

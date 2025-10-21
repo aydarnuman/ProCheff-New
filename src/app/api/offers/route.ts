@@ -1,6 +1,5 @@
 import { NextRequest, NextResponse } from "next/server";
 import { z } from "zod";
-import { verifyAuth } from "@/lib/core/auth";
 import { prisma as db } from "@/lib/core/database";
 import { validateRequest, createApiResponse } from "@/lib/api/validation";
 
@@ -11,6 +10,8 @@ const CreateOfferRequestSchema = z
     description: z.string().optional(),
     // Backward compatibility: Accept clientId but map to metadata
     clientId: z.string().optional(),
+    // DB constraint: Offer requires a valid Tender foreign key
+    tenderId: z.string().min(10, "Geçerli bir tenderId gerekli"),
     restaurantId: z.string().optional(),
     menuAnalysisId: z.string().optional(),
     serviceType: z.enum([
@@ -96,7 +97,6 @@ class OfferPricingEngine {
 
   calculateOfferPricing(request: CreateOfferRequest): OfferPricingResult {
     const baseRate = this.basePricing[request.serviceType];
-    const scopeMultiplier = this.scopeMultipliers[request.requirements.scope];
     const complexityMultiplier =
       this.complexityMultipliers[request.requirements.complexity];
     const urgencyMultiplier =
@@ -188,7 +188,11 @@ class OfferPricingEngine {
       },
     };
 
-    return (baseHours as any)[serviceType]?.[scope] || 10;
+    return (
+      (baseHours as Record<string, Record<string, number>>)[serviceType]?.[
+        scope
+      ] || 10
+    );
   }
 
   private getProfitMargin(serviceType: string, urgency: string): number {
@@ -202,7 +206,10 @@ class OfferPricingEngine {
 
     const urgencyBonus =
       urgency === "CRITICAL" ? 0.1 : urgency === "URGENT" ? 0.05 : 0;
-    return ((baseMargins as any)[serviceType] || 0.25) + urgencyBonus;
+    return (
+      ((baseMargins as Record<string, number>)[serviceType] || 0.25) +
+      urgencyBonus
+    );
   }
 }
 
@@ -307,15 +314,17 @@ class OfferItemGenerator {
       TRAINING: "Personel Eğitimi ve Gelişim",
       CUSTOM: "Özel Proje Danışmanlığı",
     };
-    return (names as any)[serviceType] || "Danışmanlık Hizmeti";
+    return (
+      (names as Record<string, string>)[serviceType] || "Danışmanlık Hizmeti"
+    );
   }
 
   private getServiceDescription(
     serviceType: string,
-    requirements: any
+    requirements: Record<string, unknown>
   ): string {
-    const scope = requirements.scope;
-    const complexity = requirements.complexity;
+    const scope = requirements.scope as string;
+    const complexity = requirements.complexity as string;
 
     const descriptions = {
       MENU_ANALYSIS: `${scope} kapsamında ${complexity.toLowerCase()} seviye menü analizi, maliyet optimizasyonu ve performans raporlaması`,
@@ -326,7 +335,8 @@ class OfferItemGenerator {
     };
 
     return (
-      (descriptions as any)[serviceType] || "Profesyonel danışmanlık hizmeti"
+      (descriptions as Record<string, string>)[serviceType] ||
+      "Profesyonel danışmanlık hizmeti"
     );
   }
 
@@ -351,9 +361,6 @@ interface OfferItemData {
 // API Handlers
 export async function POST(request: NextRequest): Promise<NextResponse> {
   try {
-    // Skip auth for testing
-    const authContext = { user: { id: "cmgzc97rj000061yiupfz4mes" } };
-
     // Validate request
     const validationResult = await validateRequest(
       request,
@@ -432,6 +439,20 @@ export async function POST(request: NextRequest): Promise<NextResponse> {
       );
     }
 
+    // Validate tender exists (foreign key safety)
+    const tender = await db.tender.findUnique({ where: { id: data.tenderId } });
+    if (!tender) {
+      return NextResponse.json(
+        createApiResponse(
+          false,
+          null,
+          "Geçersiz tenderId: ilgili ihale bulunamadı",
+          "TENDER_NOT_FOUND"
+        ),
+        { status: 400 }
+      );
+    }
+
     // Generate simulationId for idempotent operations - now required (NOT NULL)
     const simulationId = `sim_${Date.now()}_${Math.random()
       .toString(36)
@@ -440,7 +461,7 @@ export async function POST(request: NextRequest): Promise<NextResponse> {
     // Create offer in database with new schema
     const offer = await db.offer.create({
       data: {
-        tenderId: "placeholder-tender-id", // This needs to be properly linked
+        tenderId: data.tenderId,
         totalAmount: pricing.finalPrice,
         simulationId: simulationId, // Required for idempotent operations
         itemsData: JSON.parse(JSON.stringify(offerItems)),
@@ -525,9 +546,6 @@ export async function POST(request: NextRequest): Promise<NextResponse> {
 
 export async function GET(request: NextRequest): Promise<NextResponse> {
   try {
-    // Skip auth for testing
-    const authContext = { user: { id: "cmgzc97rj000061yiupfz4mes" } };
-
     const { searchParams } = new URL(request.url);
     const clientId = searchParams.get("clientId");
     const status = searchParams.get("status");
@@ -535,7 +553,7 @@ export async function GET(request: NextRequest): Promise<NextResponse> {
     const limit = parseInt(searchParams.get("limit") || "10");
 
     // Build where clause - use current schema fields
-    const where: any = {};
+    const where: Record<string, unknown> = {};
     if (clientId) where.metadata = { path: ["clientId"], equals: clientId };
     // Note: status field not available in current schema - use metadata for status filtering
     if (status) where.metadata = { path: ["status"], equals: status };
@@ -585,13 +603,21 @@ export async function GET(request: NextRequest): Promise<NextResponse> {
 
     // PT Eşitlik Assertion - ZARIF (okuma yolu) - Data göster, gözlemle
     let ptMismatchCount = 0;
-    const healthInfo: any = { pt_consistent: true };
+    const healthInfo: {
+      pt_consistent: boolean;
+      inconsistent_offers?: Array<{
+        offerId: string;
+        delta: string;
+        advice: string;
+      }>;
+    } = { pt_consistent: true };
 
     for (const offer of offers) {
-      const itemsData = (offer.itemsData as any[]) || [];
+      const itemsData = (offer.itemsData as Record<string, unknown>[]) || [];
       const itemsTotal = itemsData.reduce(
-        (sum: number, item: any) =>
-          sum + (item.totalPrice || item.totalCost || 0),
+        (sum: number, item: Record<string, unknown>) =>
+          sum +
+          ((item.totalPrice as number) || (item.totalCost as number) || 0),
         0
       );
 
@@ -658,4 +684,9 @@ export async function GET(request: NextRequest): Promise<NextResponse> {
       { status: 500 }
     );
   }
+}
+
+// CORS/preflight convenience and to avoid 405 on non-supported methods
+export async function OPTIONS(): Promise<NextResponse> {
+  return NextResponse.json({}, { headers: { Allow: "GET, POST, OPTIONS" } });
 }

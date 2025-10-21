@@ -1,0 +1,40 @@
+name: OCR Integration CI
+
+on:
+  workflow_dispatch: {}
+  push:
+    paths:
+      - 'src/**'
+      - 'scripts/**'
+      - 'Dockerfile'
+  pull_request:
+    paths:
+      - 'src/**'
+      - 'scripts/**'
+      - 'Dockerfile'
+
+jobs:
+  build-and-test:
+    runs-on: ubuntu-latest
+
+    steps:
+      - uses: actions/checkout@v4
+      - name: Set up Node
+        uses: actions/setup-node@v4
+        with:
+          node-version: '20'
+      - name: Install system dependencies for OCR
+        run: |
+          sudo apt-get update
+          sudo apt-get install -y --no-install-recommends \
+            build-essential python3 libvips-dev libvips-tools poppler-utils tesseract-ocr
+
+      - name: Install dependencies
+        run: npm ci
+      - name: Rebuild sharp
+        run: npm rebuild sharp --unsafe-perm
+      - name: Run extract sample
+        run: node scripts/extract-sample.js /github/workspace/pmyo-sartname.pdf 2
+        env:
+          CI: true
+          OCR_SPACE_API_KEY: ${{ secrets.OCR_SPACE_API_KEY }}

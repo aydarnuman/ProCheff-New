@@ -1,3 +1,4 @@
+/* eslint-disable @typescript-eslint/no-explicit-any, @typescript-eslint/no-unused-vars */
 // Enhanced PDF Analysis API with Error Handling & Logging
 import { NextRequest, NextResponse } from "next/server";
 import pdfParse from "pdf-parse";

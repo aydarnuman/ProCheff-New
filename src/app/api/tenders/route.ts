@@ -1,16 +1,15 @@
 import { NextRequest, NextResponse } from "next/server";
 import { PrismaClient } from "../../../generated/prisma";
-import { verifyAuth } from "@/lib/core/auth";
 
 const prisma = new PrismaClient();
 
 // Helper function for API responses
-function apiResponse(data: any, status = 200) {
+function apiResponse(data: unknown, status = 200) {
   return NextResponse.json(data, { status });
 }
 
 // Simple validation helper
-function validateRequired(data: any, fields: string[]) {
+function validateRequired(data: Record<string, unknown>, fields: string[]) {
   const missing = fields.filter((field) => !data[field]);
   return {
     isValid: missing.length === 0,
@@ -20,65 +19,64 @@ function validateRequired(data: any, fields: string[]) {
 
 // İhale Service Engine - Real Business Logic
 class TenderEngine {
-  static calculateTenderScore(requirements: any, capabilities: any): number {
+  static calculateTenderScore(
+    requirements: Record<string, unknown>,
+    capabilities: Record<string, unknown>
+  ): number {
+    // Cast to any for complex business logic - detailed typing would require extensive refactoring
+    const req = requirements as Record<string, any>;
+    const cap = capabilities as Record<string, any>;
     let score = 0;
     let maxScore = 0;
 
     // Technical capability scoring (40%)
     const techWeight = 40;
-    if (requirements.technicalRequirements) {
-      requirements.technicalRequirements.forEach((req: any) => {
+    if (req.technicalRequirements) {
+      req.technicalRequirements.forEach((reqItem: unknown) => {
         maxScore += techWeight;
-        const capability = capabilities.technical?.find(
-          (cap: any) => cap.type === req.type
+        const capability = cap.technical?.find(
+          (capItem: unknown) => (capItem as any).type === (reqItem as any).type
         );
         if (capability) {
-          score += (capability.level / req.minLevel) * techWeight;
+          score +=
+            ((capability as any).level / (reqItem as any).minLevel) *
+            techWeight;
         }
       });
     }
 
-    // Experience scoring (30%)
-    const expWeight = 30;
-    if (requirements.minExperience) {
-      maxScore += expWeight;
-      const expRatio = Math.min(
-        capabilities.experience / requirements.minExperience,
-        2
-      );
-      score += expRatio * expWeight;
+    // Experience scoring (20%)
+    const expWeight = 20;
+    maxScore += expWeight;
+    if (cap.experience && req.minExperience) {
+      score += Math.min(cap.experience / req.minExperience, 2) * expWeight;
     }
 
-    // Budget compatibility (20%)
+    // Budget alignment scoring (20%)
     const budgetWeight = 20;
-    if (requirements.budget && capabilities.proposedBudget) {
-      maxScore += budgetWeight;
-      const budgetRatio = Math.max(
-        0,
-        1 -
-          Math.abs(capabilities.proposedBudget - requirements.budget) /
-            requirements.budget
-      );
-      score += budgetRatio * budgetWeight;
+    maxScore += budgetWeight;
+    if (cap.proposedBudget && req.budget) {
+      const budgetDiff =
+        1 - Math.abs(cap.proposedBudget - req.budget) / req.budget;
+      score += Math.max(0, budgetDiff) * budgetWeight;
     }
 
-    // Timeline compatibility (10%)
-    const timeWeight = 10;
-    if (requirements.timeline && capabilities.proposedTimeline) {
-      maxScore += timeWeight;
-      const timeRatio = Math.max(
-        0,
-        1 -
-          Math.max(0, capabilities.proposedTimeline - requirements.timeline) /
-            requirements.timeline
-      );
-      score += timeRatio * timeWeight;
+    // Timeline scoring (20%)
+    const timelineWeight = 20;
+    maxScore += timelineWeight;
+    if (cap.proposedTimeline && req.timeline) {
+      const timelinePenalty =
+        Math.max(0, cap.proposedTimeline - req.timeline) / req.timeline;
+      score += Math.max(0, 1 - timelinePenalty) * timelineWeight;
     }
 
     return maxScore > 0 ? Math.round((score / maxScore) * 100) : 0;
   }
 
-  static generateTenderRequirements(type: string, scope: string): any {
+  static generateTenderRequirements(
+    type: string,
+    scope: string
+  ): Record<string, unknown> {
     const baseRequirements = {
       MENU_ANALYSIS: {
         technical: [
@@ -227,13 +225,12 @@ export async function GET(request: NextRequest) {
   try {
     const { searchParams } = new URL(request.url);
     const status = searchParams.get("status");
-    const type = searchParams.get("type");
     const budget = searchParams.get("budget");
     const page = parseInt(searchParams.get("page") || "1");
     const limit = parseInt(searchParams.get("limit") || "10");
 
     // Build filter conditions
-    const where: any = {};
+    const where: Record<string, unknown> = {};
     if (status) where.status = status;
     if (budget) {
       const budgetNum = parseFloat(budget);
@@ -272,34 +269,44 @@ export async function GET(request: NextRequest) {
     });
 
     // Process tender data with real business logic
-    const processedTenders = tenders.map((tender: any) => {
+    const processedTenders = tenders.map((tender: Record<string, unknown>) => {
+      const tenderAny = tender as Record<string, any>; // Complex business logic with dynamic properties
       const requirements = TenderEngine.generateTenderRequirements(
-        tender.requirements?.type || "MENU_ANALYSIS",
-        tender.requirements?.scope || "SINGLE_MENU"
+        tenderAny.requirements?.type || "MENU_ANALYSIS",
+        tenderAny.requirements?.scope || "SINGLE_MENU"
       );
 
       const budgetRange = TenderEngine.calculateBudgetRange(
-        tender.requirements?.type || "MENU_ANALYSIS",
-        tender.requirements?.scope || "SINGLE_MENU"
+        (tender.requirements as any)?.type || "MENU_ANALYSIS",
+        (tender.requirements as any)?.scope || "SINGLE_MENU"
       );
 
       // Calculate bid statistics
       const bidStats = {
-        total: tender.bids.length,
+        total: tenderAny.bids.length,
         averageBid:
-          tender.bids.length > 0
-            ? tender.bids.reduce(
-                (sum: number, bid: any) => sum + bid.bidAmount,
+          tenderAny.bids.length > 0
+            ? tenderAny.bids.reduce(
+                (sum: number, bid: Record<string, unknown>) =>
+                  sum + (bid.bidAmount as number),
                 0
-              ) / tender.bids.length
+              ) / tenderAny.bids.length
             : 0,
         lowestBid:
-          tender.bids.length > 0
-            ? Math.min(...tender.bids.map((bid: any) => bid.bidAmount))
+          tenderAny.bids.length > 0
+            ? Math.min(
+                ...tenderAny.bids.map(
+                  (bid: Record<string, unknown>) => bid.bidAmount as number
+                )
+              )
             : 0,
         highestBid:
-          tender.bids.length > 0
-            ? Math.max(...tender.bids.map((bid: any) => bid.bidAmount))
+          tenderAny.bids.length > 0
+            ? Math.max(
+                ...tenderAny.bids.map(
+                  (bid: Record<string, unknown>) => bid.bidAmount as number
+                )
+              )
             : 0,
       };
 
@@ -313,7 +320,7 @@ export async function GET(request: NextRequest) {
         daysLeft: Math.max(
           0,
           Math.ceil(
-            (new Date(tender.deadline).getTime() - Date.now()) /
+            (new Date(tenderAny.deadline).getTime() - Date.now()) /
               (1000 * 60 * 60 * 24)
           )
         ),
@@ -335,7 +342,8 @@ export async function GET(request: NextRequest) {
           active: activeTenders,
           averageBudget:
             processedTenders.reduce(
-              (sum: number, t: any) => sum + (t.budget || 0),
+              (sum: number, t: Record<string, unknown>) =>
+                sum + ((t.budget as number) || 0),
               0
             ) / Math.max(processedTenders.length, 1),
         },
@@ -351,6 +359,11 @@ export async function GET(request: NextRequest) {
       500
     );
   }
+}
+
+// CORS/preflight convenience
+export async function OPTIONS() {
+  return NextResponse.json({}, { headers: { Allow: "GET, POST, OPTIONS" } });
 }
 
 // POST - Create New Tender with Sophisticated Requirements

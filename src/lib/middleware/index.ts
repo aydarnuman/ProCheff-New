@@ -8,8 +8,7 @@ import { withValidation } from "./validation";
 import { withErrorBoundary } from "./errorHandler";
 import { withMonitoring } from "./monitoring";
 import { withAuth, Permissions, type AuthContext } from "./auth";
-import { log } from "../utils/logger";
-
+import { z } from "zod";
 export interface SecurityConfig {
   auth?: {
     required?: boolean;
@@ -21,7 +20,7 @@ export interface SecurityConfig {
     maxRequests?: number;
   };
   validation?: {
-    schema?: any;
+    schema?: z.ZodSchema<unknown>;
   };
   monitoring?: {
     enabled?: boolean;
@@ -34,7 +33,11 @@ export interface SecurityConfig {
  * Tüm güvenlik katmanlarını sıralı şekilde uygular
  */
 export function withCompleteSecurity(
-  handler: (request: Request, context?: AuthContext, ...args: any[]) => Promise<Response>,
+  handler: (
+    request: Request,
+    context?: AuthContext,
+    ...args: unknown[]
+  ) => Promise<Response>,
   config: SecurityConfig = {}
 ) {
   const {
@@ -44,7 +47,7 @@ export function withCompleteSecurity(
     allowedMethods = ["GET", "POST"],
   } = config;
 
-  let wrappedHandler: any = handler;
+  let wrappedHandler: typeof handler = handler;
 
   // 1. Monitoring (en dış katman - tüm istekleri izler)
   if (monitoring.enabled) {
@@ -60,7 +63,11 @@ export function withCompleteSecurity(
   }
 
   // 4. Method Validation
-  const methodValidatedHandler = async (request: Request, ...args: any[]): Promise<Response> => {
+  const methodValidatedHandler = async (
+    request: Request,
+    context?: AuthContext,
+    ...args: unknown[]
+  ): Promise<Response> => {
     if (!allowedMethods.includes(request.method)) {
       return new Response(
         JSON.stringify({
@@ -81,8 +88,7 @@ export function withCompleteSecurity(
         }
       );
     }
-
-    return wrappedHandler(request, ...args);
+    return wrappedHandler(request, context, ...args);
   };
 
   // 5. Authentication (eğer gerekli ise)
@@ -95,7 +101,24 @@ export function withCompleteSecurity(
 
   // 6. Validation (en son - sadece geçerli istekler için)
   if (config.validation?.schema) {
-    finalHandler = withValidation(config.validation.schema, finalHandler);
+    const validationHandler = withValidation(
+      config.validation.schema,
+      async (data: unknown, request: Request, ...args: unknown[]) => {
+        // Extract context from args if it exists
+        const context = args.find(
+          (arg) => arg && typeof arg === "object" && "permissions" in arg
+        ) as AuthContext | undefined;
+        return finalHandler(request, context, ...args);
+      }
+    );
+
+    finalHandler = async (
+      request: Request,
+      context?: AuthContext,
+      ...args: unknown[]
+    ) => {
+      return validationHandler(request, context, ...args);
+    };
   }
 
   return finalHandler;
@@ -165,14 +188,27 @@ export const SecurityPresets = {
 /**
  * Quick security helpers
  */
+type HandlerFunction = (
+  request: Request,
+  context?: AuthContext,
+  ...args: unknown[]
+) => Promise<Response>;
+
 export const secureEndpoint = {
-  public: (handler: any) => withCompleteSecurity(handler, SecurityPresets.PUBLIC),
-  readOnly: (handler: any) => withCompleteSecurity(handler, SecurityPresets.READ_ONLY),
-  menuAnalysis: (handler: any) => withCompleteSecurity(handler, SecurityPresets.MENU_ANALYSIS),
-  offerCalc: (handler: any) => withCompleteSecurity(handler, SecurityPresets.OFFER_CALCULATION),
-  marketData: (handler: any) => withCompleteSecurity(handler, SecurityPresets.MARKET_DATA),
-  pipeline: (handler: any) => withCompleteSecurity(handler, SecurityPresets.PIPELINE),
-  writeOps: (handler: any) => withCompleteSecurity(handler, SecurityPresets.WRITE_OPERATIONS),
+  public: (handler: HandlerFunction) =>
+    withCompleteSecurity(handler, SecurityPresets.PUBLIC),
+  readOnly: (handler: HandlerFunction) =>
+    withCompleteSecurity(handler, SecurityPresets.READ_ONLY),
+  menuAnalysis: (handler: HandlerFunction) =>
+    withCompleteSecurity(handler, SecurityPresets.MENU_ANALYSIS),
+  offerCalc: (handler: HandlerFunction) =>
+    withCompleteSecurity(handler, SecurityPresets.OFFER_CALCULATION),
+  marketData: (handler: HandlerFunction) =>
+    withCompleteSecurity(handler, SecurityPresets.MARKET_DATA),
+  pipeline: (handler: HandlerFunction) =>
+    withCompleteSecurity(handler, SecurityPresets.PIPELINE),
+  writeOps: (handler: HandlerFunction) =>
+    withCompleteSecurity(handler, SecurityPresets.WRITE_OPERATIONS),
 };
 
 /**
