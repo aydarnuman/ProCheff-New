@@ -33,18 +33,22 @@ jobs:
         run: npm ci
       - name: Rebuild sharp
         run: npm rebuild sharp --unsafe-perm
-      - name: Run extract sample and debug workspace
+
+      - name: Ensure tesseract Turkish traineddata
         run: |
-          echo "PWD: $(pwd)"
-          echo "GITHUB_WORKSPACE: $GITHUB_WORKSPACE"
-          echo "Listing repo root:"
-          ls -la
-          echo "Listing github workspace:"
-          ls -la "$GITHUB_WORKSPACE" || true
-          echo "Try relative path first..."
-          node scripts/extract-sample.js pmyo-sartname.pdf 2 || true
-          echo "Try absolute workspace path..."
-          node scripts/extract-sample.js "$GITHUB_WORKSPACE/pmyo-sartname.pdf" 2
-        env:
-          CI: true
-          OCR_SPACE_API_KEY: ${{ secrets.OCR_SPACE_API_KEY }}
+          mkdir -p /usr/share/tessdata || true
+          if [ ! -f /usr/share/tessdata/tur.traineddata ]; then
+            echo "Downloading tur traineddata"
+            sudo apt-get install -y tesseract-ocr-tur || true
+          fi
+
+      - name: Run CI OCR helper using local tesseract CLI
+        run: |
+          chmod +x scripts/ci-local-ocr.sh
+          ./scripts/ci-local-ocr.sh "$GITHUB_WORKSPACE/pmyo-sartname.pdf" tmp/ci-ocr || true
+
+      - name: Upload OCR artifact
+        uses: actions/upload-artifact@v4
+        with:
+          name: ocr-output
+          path: tmp/ci-ocr
