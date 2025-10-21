@@ -4,7 +4,7 @@ import pdfParse from "pdf-parse";
 import fs from "fs";
 import path from "path";
 import crypto from "crypto";
-import { extractTextWithFallback } from "@/lib/ocr/fallback-service";
+import { extractTextWithFallback } from "@/lib/ocr/quick-fallback";
 
 export const runtime = "nodejs";
 const MAX_FILE_SIZE = 100 * 1024 * 1024; // 100MB
