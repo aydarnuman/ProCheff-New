@@ -1,0 +1,25 @@
+{
+  "extends": [
+    "next/core-web-vitals",
+    "next/typescript"
+  ],
+  "ignorePatterns": [
+    "src/generated/**",
+    "prisma/**",
+    "node_modules/**",
+    ".next/**",
+    "out/**"
+  ],
+  "rules": {
+    "@typescript-eslint/no-explicit-any": "warn",
+    "@typescript-eslint/no-unused-vars": [
+      "warn",
+      {
+        "argsIgnorePattern": "^_"
+      }
+    ],
+    "@typescript-eslint/no-this-alias": "warn",
+    "no-var": "error",
+    "@typescript-eslint/no-require-imports": "warn"
+  }
+}

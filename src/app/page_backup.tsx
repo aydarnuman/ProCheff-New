@@ -8,8 +8,17 @@ import { useEffect, useState } from 'react';
 
 export default function HomePage() {
   // FeatureCard komponentini HomePage içinde tanımlayalım
-  const FeatureCard = ({ children, baslik, aciklama, ikon, onClick, varyant = 'varsayilan' }: any) => {
-    const varyantStilleri: any = {
+  interface FeatureCardProps {
+    children?: React.ReactNode;
+    baslik: string;
+    aciklama: string;
+    ikon: string;
+    onClick?: () => void;
+    varyant?: 'varsayilan' | 'vurgu' | 'uyari';
+  }
+
+  const FeatureCard = ({ children, baslik, aciklama, ikon, onClick, varyant = 'varsayilan' }: FeatureCardProps) => {
+    const varyantStilleri = {
       varsayilan: { 
         background: 'linear-gradient(145deg, rgba(37, 41, 54, 0.95), rgba(30, 33, 43, 0.85))', 
         borderColor: 'rgba(71, 85, 105, 0.3)',
@@ -114,15 +123,11 @@ export default function HomePage() {
     );
   };
 
-  const [modalAcik, setModalAcik] = useState(false);
-  const [secilenOzellik, setSecilenOzellik] = useState('');
   const [aramaMetni, setAramaMetni] = useState('');
   const [aktifFiltre, setAktifFiltre] = useState('hepsi');
   
   // Gelişmiş arama özellikleri
-  const [aramaGecmisi, setAramaGecmisi] = useState<string[]>([]);
-  const [aramaTavsiyeAcik, setAramaTavsiyeAcik] = useState(false);
-  const [sonArama, setSonArama] = useState('');
+  const [, setAramaGecmisi] = useState<string[]>([]);
   
   // Modal states for each analysis type
   const [menuModalAcik, setMenuModalAcik] = useState(false);
@@ -458,7 +463,7 @@ export default function HomePage() {
               <span style={{ color: '#3B82F6', fontSize: '16px' }}>🔍</span>
               <span style={{ color: '#F1F5F9', fontSize: '14px' }}>
                 <strong>{ozellikleriFiltrele().length}</strong> sonuç bulundu
-                {aramaMetni.trim() && <span> "{aramaMetni}" için</span>}
+                {aramaMetni.trim() && <span> &quot;{aramaMetni}&quot; için</span>}
                 {aktifFiltre !== 'hepsi' && <span> ({aktifFiltre} kategorisinde)</span>}
               </span>
               {(aramaMetni.trim() || aktifFiltre !== 'hepsi') && (
@@ -559,7 +564,7 @@ export default function HomePage() {
                 maxWidth: "400px",
                 margin: "0 auto"
               }}>
-                "{aramaMetni}" araması için sonuç bulunamadı. Farklı anahtar kelimeler deneyin.
+                &quot;{aramaMetni}&quot; araması için sonuç bulunamadı. Farklı anahtar kelimeler deneyin.
               </p>
             </div>
           )}

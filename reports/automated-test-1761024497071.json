@@ -1,0 +1,94 @@
+{
+  "timestamp": "2025-10-21T05:28:15.282Z",
+  "totalTests": 5,
+  "passedTests": 2,
+  "failedTests": 3,
+  "results": [
+    {
+      "testName": "Health Check",
+      "success": true,
+      "duration": 1239,
+      "details": {
+        "status": "healthy",
+        "timestamp": "2025-10-21T05:28:16.521Z",
+        "metrics": {
+          "totalRequests": 0,
+          "successfulRequests": 0,
+          "failedRequests": 0,
+          "averageProcessingTime": 0,
+          "errorTypes": {}
+        },
+        "recommendations": [
+          "Sistem henüz test edilmedi - Test dosyası yükleyin"
+        ],
+        "uptime": 4010.384110527,
+        "memory": {
+          "rss": 1086308352,
+          "heapTotal": 388911104,
+          "heapUsed": 349190432,
+          "external": 625101386,
+          "arrayBuffers": 620889063
+        },
+        "system": {
+          "platform": "linux",
+          "nodeVersion": "v20.19.5",
+          "arch": "x64"
+        }
+      }
+    },
+    {
+      "testName": "PMYO Document Analysis",
+      "success": false,
+      "duration": 1218,
+      "error": "PDF analysis failed: 500"
+    },
+    {
+      "testName": "Invalid File Handling",
+      "success": true,
+      "duration": 1193,
+      "details": {
+        "status": 400,
+        "message": "Sadece PDF dosyaları desteklenmektedir"
+      }
+    },
+    {
+      "testName": "Large File Rejection",
+      "success": false,
+      "duration": 1687,
+      "error": "Expected 413 status, got 400"
+    },
+    {
+      "testName": "Empty File Handling",
+      "success": false,
+      "duration": 1190,
+      "error": "Expected 400 status, got 500"
+    }
+  ],
+  "systemHealth": {
+    "status": "healthy",
+    "timestamp": "2025-10-21T05:28:17.067Z",
+    "metrics": {
+      "totalRequests": 0,
+      "successfulRequests": 0,
+      "failedRequests": 0,
+      "averageProcessingTime": 0,
+      "errorTypes": {}
+    },
+    "recommendations": [
+      "Sistem henüz test edilmedi - Test dosyası yükleyin"
+    ],
+    "uptime": 4010.930496657,
+    "memory": {
+      "rss": 1148690432,
+      "heapTotal": 358461440,
+      "heapUsed": 305643368,
+      "external": 517167859,
+      "arrayBuffers": 628298461
+    },
+    "system": {
+      "platform": "linux",
+      "nodeVersion": "v20.19.5",
+      "arch": "x64"
+    }
+  }
+}

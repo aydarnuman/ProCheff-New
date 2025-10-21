@@ -1,0 +1,126 @@
+{
+  "timestamp": "2025-10-21T05:31:14.227Z",
+  "totalTests": 6,
+  "passedTests": 5,
+  "failedTests": 1,
+  "results": [
+    {
+      "testName": "API Availability Check",
+      "success": true,
+      "duration": 1136,
+      "details": {
+        "/api/monitoring/pdf-health-check": {
+          "available": true,
+          "status": 200,
+          "response": true
+        },
+        "/api/pipeline/pdf-to-offer": {
+          "available": true,
+          "status": 500,
+          "response": false
+        },
+        "/api/menu-analysis": {
+          "available": true,
+          "status": 400,
+          "response": true
+        }
+      }
+    },
+    {
+      "testName": "Health Check",
+      "success": true,
+      "duration": 48,
+      "details": {
+        "status": "critical",
+        "timestamp": "2025-10-21T05:31:14.279Z",
+        "metrics": {
+          "totalRequests": 4,
+          "successfulRequests": 0,
+          "failedRequests": 4,
+          "averageProcessingTime": 0,
+          "errorTypes": {
+            "Unknown": 4
+          }
+        },
+        "recommendations": [
+          "Başarı oranı %0.0 - İyileştirme gerekli",
+          "Sistem henüz test edilmedi - Test dosyası yükleyin"
+        ],
+        "uptime": 4188.14234182,
+        "memory": {
+          "rss": 942530560,
+          "heapTotal": 345735168,
+          "heapUsed": 307760248,
+          "external": 835405678,
+          "arrayBuffers": 831192920
+        },
+        "system": {
+          "platform": "linux",
+          "nodeVersion": "v20.19.5",
+          "arch": "x64"
+        }
+      }
+    },
+    {
+      "testName": "Smart PMYO Document Analysis",
+      "success": false,
+      "duration": 3148,
+      "error": "Text analysis failed: 400"
+    },
+    {
+      "testName": "Invalid File Handling",
+      "success": true,
+      "duration": 58,
+      "details": {
+        "status": 400,
+        "message": "Sadece PDF dosyaları desteklenir"
+      }
+    },
+    {
+      "testName": "Large File Rejection",
+      "success": true,
+      "duration": 50,
+      "details": {
+        "status": 413
+      }
+    },
+    {
+      "testName": "Empty File Handling",
+      "success": true,
+      "duration": 53,
+      "details": {
+        "status": 500
+      }
+    }
+  ],
+  "systemHealth": {
+    "status": "critical",
+    "timestamp": "2025-10-21T05:31:17.403Z",
+    "metrics": {
+      "totalRequests": 9,
+      "successfulRequests": 0,
+      "failedRequests": 10,
+      "averageProcessingTime": 0,
+      "errorTypes": {
+        "Unknown": 10
+      }
+    },
+    "recommendations": [
+      "Başarı oranı %0.0 - İyileştirme gerekli",
+      "Sistem henüz test edilmedi - Test dosyası yükleyin"
+    ],
+    "uptime": 4191.266327646,
+    "memory": {
+      "rss": 927784960,
+      "heapTotal": 344195072,
+      "heapUsed": 307031856,
+      "external": 533122752,
+      "arrayBuffers": 528910462
+    },
+    "system": {
+      "platform": "linux",
+      "nodeVersion": "v20.19.5",
+      "arch": "x64"
+    }
+  }
+}

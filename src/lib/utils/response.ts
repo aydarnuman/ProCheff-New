@@ -3,28 +3,36 @@
  * Consistent JSON response format across all endpoints
  */
 
-export interface ApiResponse<T = any> {
+export interface ResponseError {
+  message: string;
+  code: number;
+  type?: string;
+  details?: Record<string, unknown>;
+}
+
+export interface ResponseMeta {
+  timestamp?: string;
+  requestId?: string;
+  version?: string;
+  [key: string]: unknown;
+}
+
+export interface ApiResponse<T = unknown> {
   success: boolean;
   data?: T;
-  panelData?: any;
-  error?: {
-    message: string;
-    code: number;
-    type?: string;
-    details?: any;
-  };
-  meta?: {
-    timestamp?: string;
-    requestId?: string;
-    version?: string;
-    [key: string]: any;
-  };
+  panelData?: Record<string, unknown>;
+  error?: ResponseError;
+  meta?: ResponseMeta;
 }
 
 /**
  * Success response helper
  */
-export function ok<T>(data: T, panelData?: any, meta?: any): ApiResponse<T> {
+export function ok<T>(
+  data: T,
+  panelData?: Record<string, unknown>,
+  meta?: ResponseMeta
+): ApiResponse<T> {
   return {
     success: true,
     data,
@@ -46,7 +54,7 @@ export function fail(
   message: string,
   code = 500,
   type?: string,
-  details?: any
+  details?: Record<string, unknown>
 ): ApiResponse<never> {
   return {
     success: false,
@@ -66,7 +74,9 @@ export function fail(
 /**
  * Validation error helper
  */
-export function validationError(details: any): ApiResponse<never> {
+export function validationError(
+  details: Record<string, unknown>
+): ApiResponse<never> {
   return fail("Validation failed", 400, "VALIDATION_ERROR", details);
 }
 
@@ -80,14 +90,18 @@ export function notFound(resource: string = "Resource"): ApiResponse<never> {
 /**
  * Unauthorized error helper
  */
-export function unauthorized(message: string = "Authentication required"): ApiResponse<never> {
+export function unauthorized(
+  message: string = "Authentication required"
+): ApiResponse<never> {
   return fail(message, 401, "UNAUTHORIZED");
 }
 
 /**
  * Forbidden error helper
  */
-export function forbidden(message: string = "Access denied"): ApiResponse<never> {
+export function forbidden(
+  message: string = "Access denied"
+): ApiResponse<never> {
   return fail(message, 403, "FORBIDDEN");
 }
 
@@ -106,7 +120,9 @@ export function rateLimited(retryAfter?: number): ApiResponse<never> {
 /**
  * Internal server error helper
  */
-export function serverError(message: string = "Internal server error"): ApiResponse<never> {
+export function serverError(
+  message: string = "Internal server error"
+): ApiResponse<never> {
   return fail(message, 500, "INTERNAL_SERVER_ERROR");
 }
 
@@ -118,7 +134,8 @@ export function createResponse<T>(
   status?: number,
   headers?: Record<string, string>
 ): Response {
-  const finalStatus = status || (responseData.success ? 200 : responseData.error?.code || 500);
+  const finalStatus =
+    status || (responseData.success ? 200 : responseData.error?.code || 500);
 
   return new Response(JSON.stringify(responseData), {
     status: finalStatus,
@@ -133,12 +150,18 @@ export function createResponse<T>(
  * Quick response creators
  */
 export const respond = {
-  ok: <T>(data: T, panelData?: any, meta?: any) => createResponse(ok(data, panelData, meta)),
+  ok: <T>(data: T, panelData?: Record<string, unknown>, meta?: ResponseMeta) =>
+    createResponse(ok(data, panelData, meta)),
 
-  fail: (message: string, code = 500, type?: string, details?: any) =>
-    createResponse(fail(message, code, type, details)),
+  fail: (
+    message: string,
+    code = 500,
+    type?: string,
+    details?: Record<string, unknown>
+  ) => createResponse(fail(message, code, type, details)),
 
-  validation: (details: any) => createResponse(validationError(details)),
+  validation: (details: Record<string, unknown>) =>
+    createResponse(validationError(details)),
 
   notFound: (resource?: string) => createResponse(notFound(resource)),
 
@@ -159,8 +182,32 @@ export const respond = {
 /**
  * Panel data transformation helpers
  */
+interface MenuAnalysis {
+  menuType: string;
+  totalItems: number;
+  macroBalance: {
+    protein: number;
+    fat: number;
+    carb: number;
+  };
+  warnings: string[];
+}
+
+interface MarketData {
+  averagePrices?: Record<string, number>;
+  laborCost?: number;
+  overheadCost?: number;
+  totalCost?: number;
+}
+
+interface OfferCalc {
+  offerPrice: number;
+  margin: number;
+  competitorAnalysis: Record<string, unknown>;
+}
+
 export const panel = {
-  menu: (menuAnalysis: any) => ({
+  menu: (menuAnalysis: MenuAnalysis) => ({
     type: menuAnalysis.menuType,
     items: menuAnalysis.totalItems,
     nutrition: {
@@ -171,24 +218,28 @@ export const panel = {
     warnings: menuAnalysis.warnings,
   }),
 
-  costs: (marketData: any) => ({
+  costs: (marketData: MarketData) => ({
     materials: marketData.averagePrices || {},
     labor: marketData.laborCost || 0,
     overhead: marketData.overheadCost || 0,
     total: marketData.totalCost || 0,
   }),
 
-  offer: (offerCalc: any) => ({
+  offer: (offerCalc: OfferCalc) => ({
     price: offerCalc.offerPrice,
-    breakdown: offerCalc.breakdown || {},
-    margin: offerCalc.profitMargin || 0,
+    breakdown: offerCalc.competitorAnalysis || {},
+    margin: offerCalc.margin || 0,
     threshold: {
-      value: offerCalc.kikThreshold || 0.93,
-      met: offerCalc.thresholdMet || false,
+      value: 0.93,
+      met: offerCalc.margin > 0.15,
     },
   }),
 
-  risks: (warnings: string[] = [], financial: any[] = [], compliance: any[] = []) => ({
+  risks: (
+    warnings: string[] = [],
+    financial: Record<string, unknown>[] = [],
+    compliance: Record<string, unknown>[] = []
+  ) => ({
     nutritional: warnings,
     financial,
     compliance,

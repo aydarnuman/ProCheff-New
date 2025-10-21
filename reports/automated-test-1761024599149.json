@@ -1,0 +1,102 @@
+{
+  "timestamp": "2025-10-21T05:29:55.069Z",
+  "totalTests": 5,
+  "passedTests": 3,
+  "failedTests": 2,
+  "results": [
+    {
+      "testName": "Health Check",
+      "success": true,
+      "duration": 1032,
+      "details": {
+        "status": "critical",
+        "timestamp": "2025-10-21T05:29:56.102Z",
+        "metrics": {
+          "totalRequests": 4,
+          "successfulRequests": 0,
+          "failedRequests": 2,
+          "averageProcessingTime": 0,
+          "errorTypes": {
+            "Unknown": 2
+          }
+        },
+        "recommendations": [
+          "Başarı oranı %0.0 - İyileştirme gerekli",
+          "Sistem henüz test edilmedi - Test dosyası yükleyin"
+        ],
+        "uptime": 4109.96562478,
+        "memory": {
+          "rss": 1083400192,
+          "heapTotal": 383377408,
+          "heapUsed": 343814976,
+          "external": 646136697,
+          "arrayBuffers": 641924374
+        },
+        "system": {
+          "platform": "linux",
+          "nodeVersion": "v20.19.5",
+          "arch": "x64"
+        }
+      }
+    },
+    {
+      "testName": "PMYO Document Analysis",
+      "success": false,
+      "duration": 4049,
+      "error": "PDF analysis failed: 500"
+    },
+    {
+      "testName": "Invalid File Handling",
+      "success": true,
+      "duration": 1010,
+      "details": {
+        "status": 400,
+        "message": "Sadece PDF dosyaları desteklenir"
+      }
+    },
+    {
+      "testName": "Large File Rejection",
+      "success": true,
+      "duration": 1000,
+      "details": {
+        "status": 413
+      }
+    },
+    {
+      "testName": "Empty File Handling",
+      "success": false,
+      "duration": 1003,
+      "error": "Expected 400 status, got 500"
+    }
+  ],
+  "systemHealth": {
+    "status": "critical",
+    "timestamp": "2025-10-21T05:29:59.146Z",
+    "metrics": {
+      "totalRequests": 4,
+      "successfulRequests": 0,
+      "failedRequests": 4,
+      "averageProcessingTime": 0,
+      "errorTypes": {
+        "Unknown": 4
+      }
+    },
+    "recommendations": [
+      "Başarı oranı %0.0 - İyileştirme gerekli",
+      "Sistem henüz test edilmedi - Test dosyası yükleyin"
+    ],
+    "uptime": 4113.008895102,
+    "memory": {
+      "rss": 1085235200,
+      "heapTotal": 385732608,
+      "heapUsed": 354390760,
+      "external": 660955413,
+      "arrayBuffers": 656743075
+    },
+    "system": {
+      "platform": "linux",
+      "nodeVersion": "v20.19.5",
+      "arch": "x64"
+    }
+  }
+}

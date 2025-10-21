@@ -1,12 +1,18 @@
 import { NextRequest } from "next/server";
 import { z } from "zod";
 
-export interface ApiResponse<T = any> {
+export interface ValidationError {
+  message: string;
+  path?: (string | number)[];
+  code?: string;
+}
+
+export interface ApiResponse<T = unknown> {
   success: boolean;
   data: T | null;
   message: string;
   code?: string;
-  errors?: any[];
+  errors?: ValidationError[];
 }
 
 export function createApiResponse<T>(
@@ -14,7 +20,7 @@ export function createApiResponse<T>(
   data: T | null,
   message: string,
   code?: string,
-  errors?: any[]
+  errors?: ValidationError[]
 ): ApiResponse<T> {
   return {
     success,
@@ -28,7 +34,9 @@ export function createApiResponse<T>(
 export async function validateRequest<T>(
   request: NextRequest,
   schema: z.ZodSchema<T>
-): Promise<{ success: true; data: T } | { success: false; errors: any[] }> {
+): Promise<
+  { success: true; data: T } | { success: false; errors: ValidationError[] }
+> {
   try {
     const body = await request.json();
     const result = schema.safeParse(body);
@@ -38,7 +46,7 @@ export async function validateRequest<T>(
     } else {
       return { success: false, errors: result.error.issues };
     }
-  } catch (error) {
+  } catch {
     return { success: false, errors: [{ message: "Invalid JSON" }] };
   }
 }

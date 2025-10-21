@@ -6,6 +6,7 @@
 import { PrismaClient } from "../../generated/prisma";
 
 declare global {
+  // eslint-disable-next-line no-var
   var __prisma: PrismaClient | undefined;
 }
 
@@ -33,7 +34,7 @@ export type {
   MenuItem,
   MenuAnalysis,
   Offer,
-  OfferItem,
+  // OfferItem REMOVED - data in offers.itemsData JSON
   Tender,
   TenderBid,
   ApiKey,

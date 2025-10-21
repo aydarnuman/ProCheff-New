@@ -250,10 +250,11 @@ export async function GET(request: NextRequest) {
           include: {
             offer: {
               select: {
-                title: true,
-                totalCost: true,
-                estimatedRevenue: true,
-                client: { select: { name: true } },
+                id: true,
+                tenderId: true,
+                totalAmount: true,
+                metadata: true,
+                createdAt: true,
               },
             },
           },
@@ -442,6 +443,32 @@ export async function POST(request: NextRequest) {
         },
       },
     });
+
+    // Trigger automation pipeline if analysis data exists
+    try {
+      const { triggerAutomationPipeline } = await import(
+        "@/lib/workflow/automation"
+      );
+
+      // Check if there's associated analysis data to trigger pipeline
+      if (body.analysisData) {
+        // Run automation in background (don't await)
+        triggerAutomationPipeline(
+          tender.id,
+          authResult.user.id,
+          body.documentHash,
+          body.analysisData
+        ).catch((error) => {
+          console.error(
+            `Automation pipeline failed for tender ${tender.id}:`,
+            error
+          );
+        });
+      }
+    } catch (error) {
+      console.error("Failed to trigger automation pipeline:", error);
+      // Don't fail the tender creation if automation fails
+    }
 
     return apiResponse({
       success: true,

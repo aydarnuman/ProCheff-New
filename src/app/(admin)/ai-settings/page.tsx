@@ -5,7 +5,7 @@ export default function AISettings() {
   return (
     <div>
       <h1 className="text-2xl font-semibold mb-6 text-gray-100">🔧 AI Entegrasyonları</h1>
-      <p className="text-gray-400 mb-8">Yapay zeka modellerini ve harici API'leri yönetin</p>
+      <p className="text-gray-400 mb-8">Yapay zeka modellerini ve harici API&apos;leri yönetin</p>
 
       <div className="grid grid-cols-1 md:grid-cols-2 lg:grid-cols-3 gap-6">
         {/* Anthropic Claude */}

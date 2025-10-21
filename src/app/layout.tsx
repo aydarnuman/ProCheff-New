@@ -48,11 +48,12 @@ export const metadata: Metadata = {
     description: 'AI-powered catering management system for tender processes, menu optimization, and cost analysis',
     creator: '@procheff',
   },
-  viewport: {
-    width: 'device-width',
-    initialScale: 1,
-    maximumScale: 1,
-  },
+}
+
+export const viewport = {
+  width: 'device-width',
+  initialScale: 1,
+  maximumScale: 1,
   themeColor: '#0E0F13',
   colorScheme: 'dark',
 }
@@ -181,7 +182,7 @@ export default function RootLayout({
                 </Link>
                 
                 <Link 
-                  href="/offer"
+                  href="/offers"
                   style={{
                     display: 'flex',
                     alignItems: 'center',
@@ -194,8 +195,8 @@ export default function RootLayout({
                     marginBottom: '8px'
                   }}
                 >
-                  <span style={{ fontSize: '1.2rem' }}>💰</span>
-                  <span>Teklif Merkezi</span>
+                  <span style={{ fontSize: '1.2rem' }}>�</span>
+                  <span>Teklifler & Health</span>
                 </Link>
                 
                 <Link 

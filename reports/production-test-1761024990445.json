@@ -1,0 +1,66 @@
+{
+  "timestamp": "2025-10-21T05:35:53.511Z",
+  "results": [
+    {
+      "name": "Turkish Filename",
+      "success": false,
+      "error": "Turkish filename test failed: INTERNAL_ERROR - undefined"
+    },
+    {
+      "name": "Octet-Stream MIME",
+      "success": false,
+      "error": "Octet-stream test failed: INTERNAL_ERROR - undefined"
+    },
+    {
+      "name": "Large File Rejection",
+      "success": true,
+      "result": {
+        "success": true,
+        "errorCode": "FILE_TOO_LARGE"
+      }
+    },
+    {
+      "name": "Invalid PDF Rejection",
+      "success": false,
+      "error": "Invalid PDF test failed: Expected 400 + INVALID_PDF, got 500 + INTERNAL_ERROR"
+    },
+    {
+      "name": "Error Code Consistency",
+      "success": true,
+      "result": [
+        {
+          "test": "No file",
+          "expected": "NO_FILE",
+          "actual": "INTERNAL_ERROR",
+          "success": false
+        },
+        {
+          "test": "Invalid PDF",
+          "expected": "INVALID_PDF",
+          "actual": "INTERNAL_ERROR",
+          "success": false
+        }
+      ]
+    },
+    {
+      "name": "Parse Fallback Chain",
+      "success": false,
+      "error": "Parse fallback test failed: INTERNAL_ERROR - undefined"
+    },
+    {
+      "name": "Memory Efficiency",
+      "success": true,
+      "result": {
+        "success": true,
+        "memoryIncrease": 365056,
+        "initialHeap": 7165440,
+        "finalHeap": 7530496
+      }
+    }
+  ],
+  "summary": {
+    "passedTests": 3,
+    "failedTests": 4,
+    "successRate": 42.857142857142854
+  }
+}

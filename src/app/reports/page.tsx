@@ -140,7 +140,7 @@ export default function ReportsPage() {
               color: 'white'
             }}
           >
-            Dashboard'a Git →
+            Dashboard&apos;a Git →
           </a>
         </div>
 

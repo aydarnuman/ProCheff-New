@@ -5,37 +5,63 @@ import { prisma as db } from "@/lib/core/database";
 import { validateRequest, createApiResponse } from "@/lib/api/validation";
 
 // Request schemas
-const CreateOfferRequestSchema = z.object({
-  title: z.string().min(5).max(200),
-  description: z.string().optional(),
-  clientId: z.string(),
-  restaurantId: z.string().optional(),
-  menuAnalysisId: z.string().optional(),
-  serviceType: z.enum([
-    "MENU_ANALYSIS",
-    "PRICING_OPTIMIZATION",
-    "FULL_CONSULTATION",
-    "TRAINING",
-    "CUSTOM",
-  ]),
-  requirements: z.object({
-    scope: z.enum(["SINGLE_MENU", "FULL_RESTAURANT", "CHAIN_STANDARDIZATION"]),
-    urgency: z.enum(["STANDARD", "URGENT", "CRITICAL"]),
-    complexity: z.enum(["BASIC", "ADVANCED", "ENTERPRISE"]),
-    includeMaintenance: z.boolean().default(false),
-    maintenanceMonths: z.number().min(1).max(12).optional(),
-  }),
-  customItems: z
-    .array(
-      z.object({
-        name: z.string(),
-        description: z.string().optional(),
-        quantity: z.number().min(1),
-        estimatedHours: z.number().min(0.5),
+const CreateOfferRequestSchema = z
+  .object({
+    title: z.string().min(5).max(200),
+    description: z.string().optional(),
+    // Backward compatibility: Accept clientId but map to metadata
+    clientId: z.string().optional(),
+    restaurantId: z.string().optional(),
+    menuAnalysisId: z.string().optional(),
+    serviceType: z.enum([
+      "MENU_ANALYSIS",
+      "PRICING_OPTIMIZATION",
+      "FULL_CONSULTATION",
+      "TRAINING",
+      "CUSTOM",
+    ]),
+    requirements: z.object({
+      scope: z.enum([
+        "SINGLE_MENU",
+        "FULL_RESTAURANT",
+        "CHAIN_STANDARDIZATION",
+      ]),
+      urgency: z.enum(["STANDARD", "URGENT", "CRITICAL"]),
+      complexity: z.enum(["BASIC", "ADVANCED", "ENTERPRISE"]),
+      includeMaintenance: z.boolean().default(false),
+      maintenanceMonths: z.number().min(1).max(12).optional(),
+    }),
+    metadata: z
+      .object({
+        docHash: z.string().optional(),
+        clientId: z.string().optional(),
+        source: z.enum(["analysis_v1", "manual"]).optional(),
+        tags: z.array(z.string()).optional(),
       })
-    )
-    .optional(),
-});
+      .optional(),
+    customItems: z
+      .array(
+        z.object({
+          name: z.string(),
+          description: z.string().optional(),
+          quantity: z.number().min(1),
+          estimatedHours: z.number().min(0.5),
+        })
+      )
+      .optional(),
+  })
+  .transform((data) => {
+    // Transform: Map legacy clientId to metadata.clientId
+    const metadata = data.metadata || {};
+    if (data.clientId && !metadata.clientId) {
+      metadata.clientId = data.clientId;
+    }
+
+    return {
+      ...data,
+      metadata: Object.keys(metadata).length > 0 ? metadata : undefined,
+    };
+  });
 
 type CreateOfferRequest = z.infer<typeof CreateOfferRequestSchema>;
 
@@ -356,64 +382,134 @@ export async function POST(request: NextRequest): Promise<NextResponse> {
     const itemGenerator = new OfferItemGenerator();
     const offerItems = itemGenerator.generateOfferItems(data, pricing);
 
-    // Create offer in database
+    // PT Eşitlik Assertion - HARD (yazım yolu) - Sert kontrol
+    const itemsTotal = offerItems.reduce(
+      (sum, item) => sum + (item.totalCost || 0),
+      0
+    );
+    const difference = Math.abs(itemsTotal - pricing.finalPrice);
+    const tolerance = 0.01; // 1 cent tolerance
+
+    if (difference > tolerance) {
+      // SEV-1 Critical Error: PT Equality Violation in WRITE path
+      const ptError = {
+        severity: "SEV-1",
+        code: "PT_MISMATCH_WRITE",
+        message: "Offer total does not equal sum of item costs",
+        details: {
+          itemsTotal,
+          finalPrice: pricing.finalPrice,
+          difference,
+          tolerance,
+          items: offerItems.length,
+        },
+        timestamp: new Date().toISOString(),
+      };
+
+      console.error("SEV-1 PT_MISMATCH_WRITE:", ptError);
+
+      // Record metric
+      await db.sLIMetric.create({
+        data: {
+          name: "pt_mismatch_count",
+          value: 1,
+          timestamp: new Date(),
+          labels: { endpoint: "offers_post", severity: "SEV-1" },
+          details: ptError.details,
+        },
+      });
+
+      return NextResponse.json(
+        createApiResponse(
+          false,
+          null,
+          `Critical pricing error: Item total mismatch (${difference.toFixed(
+            2
+          )} TRY)`,
+          "PT_MISMATCH_ERROR"
+        ),
+        { status: 500 }
+      );
+    }
+
+    // Generate simulationId for idempotent operations - now required (NOT NULL)
+    const simulationId = `sim_${Date.now()}_${Math.random()
+      .toString(36)
+      .substr(2, 9)}`;
+
+    // Create offer in database with new schema
     const offer = await db.offer.create({
       data: {
-        title: data.title,
-        description: data.description,
-        clientId: data.clientId,
-        restaurantId: data.restaurantId,
-        totalCost: pricing.totalCost,
-        materialCost: pricing.materialCost,
-        laborCost: pricing.laborCost,
-        overheadCost: pricing.overheadCost,
-        profitMargin: pricing.profitMarginPercent,
-        estimatedRevenue: pricing.finalPrice,
-        validUntil: new Date(Date.now() + 30 * 24 * 60 * 60 * 1000), // 30 days
-        deadline:
-          data.requirements.urgency === "CRITICAL"
-            ? new Date(Date.now() + 7 * 24 * 60 * 60 * 1000)
-            : new Date(Date.now() + 14 * 24 * 60 * 60 * 1000),
-        tags: JSON.stringify([
-          data.serviceType,
-          data.requirements.scope,
-          data.requirements.complexity,
-        ]),
-        priority:
-          data.requirements.urgency === "CRITICAL"
-            ? "HIGH"
-            : data.requirements.urgency === "URGENT"
-            ? "MEDIUM"
-            : "LOW",
-        items: {
-          create: offerItems.map((item) => ({
-            name: item.name,
-            description: item.description,
-            quantity: item.quantity,
-            unitCost: item.unitCost,
-            totalCost: item.totalCost,
-            category: item.category,
-          })),
-        },
-      },
-      include: {
-        items: true,
-        client: {
-          select: { name: true, email: true },
-        },
-        restaurant: {
-          select: { name: true },
+        tenderId: "placeholder-tender-id", // This needs to be properly linked
+        totalAmount: pricing.finalPrice,
+        simulationId: simulationId, // Required for idempotent operations
+        itemsData: JSON.parse(JSON.stringify(offerItems)),
+        metadata: {
+          // Core offer data
+          title: data.title,
+          description: data.description,
+          // Client information (from transform)
+          clientId: data.metadata?.clientId,
+          restaurantId: data.restaurantId,
+          // Pricing breakdown
+          totalCost: pricing.totalCost,
+          materialCost: pricing.materialCost,
+          laborCost: pricing.laborCost,
+          overheadCost: pricing.overheadCost,
+          profitMargin: pricing.profitMarginPercent,
+          estimatedRevenue: pricing.finalPrice,
+          // Service details
+          serviceType: data.serviceType,
+          scope: data.requirements.scope,
+          complexity: data.requirements.complexity,
+          urgency: data.requirements.urgency,
+          // Metadata fields
+          docHash: data.metadata?.docHash,
+          source: data.metadata?.source || "manual",
+          tags: data.metadata?.tags || [
+            data.serviceType,
+            data.requirements.scope,
+            data.requirements.complexity,
+          ],
+          // Timeline
+          validUntil: new Date(Date.now() + 30 * 24 * 60 * 60 * 1000), // 30 days
+          deadline:
+            data.requirements.urgency === "CRITICAL"
+              ? new Date(Date.now() + 7 * 24 * 60 * 60 * 1000)
+              : new Date(Date.now() + 14 * 24 * 60 * 60 * 1000),
+          priority:
+            data.requirements.urgency === "CRITICAL"
+              ? "HIGH"
+              : data.requirements.urgency === "URGENT"
+              ? "MEDIUM"
+              : "LOW",
         },
       },
     });
 
+    // Return only new schema fields, no legacy fields
     return NextResponse.json(
       createApiResponse(
         true,
         {
-          offer,
-          pricing,
-          estimatedDelivery: offer.deadline,
+          offer: {
+            id: offer.id,
+            tenderId: offer.tenderId,
+            totalAmount: offer.totalAmount,
+            metadata: offer.metadata,
+            createdAt: offer.createdAt,
+            updatedAt: offer.updatedAt,
+          },
+          pricing: {
+            totalCost: pricing.totalCost,
+            materialCost: pricing.materialCost,
+            laborCost: pricing.laborCost,
+            overheadCost: pricing.overheadCost,
+            finalPrice: pricing.finalPrice,
+            profitMarginPercent: pricing.profitMarginPercent,
+          },
+          estimatedDelivery: (offer.metadata as Record<string, unknown>)
+            ?.deadline,
         },
         "Teklif başarıyla oluşturuldu"
       )
@@ -438,10 +534,11 @@ export async function GET(request: NextRequest): Promise<NextResponse> {
     const page = parseInt(searchParams.get("page") || "1");
     const limit = parseInt(searchParams.get("limit") || "10");
 
-    // Build where clause
+    // Build where clause - use current schema fields
     const where: any = {};
-    if (clientId) where.clientId = clientId;
-    if (status) where.status = status;
+    if (clientId) where.metadata = { path: ["clientId"], equals: clientId };
+    // Note: status field not available in current schema - use metadata for status filtering
+    if (status) where.metadata = { path: ["status"], equals: status };
 
     const [offers, total] = await Promise.all([
       db.offer.findMany({
@@ -449,69 +546,93 @@ export async function GET(request: NextRequest): Promise<NextResponse> {
         orderBy: { createdAt: "desc" },
         skip: (page - 1) * limit,
         take: limit,
-        include: {
-          items: true,
-          client: {
-            select: { name: true, email: true },
-          },
-          restaurant: {
-            select: { name: true },
+        select: {
+          // Current schema fields only
+          id: true,
+          totalAmount: true,
+          itemsData: true,
+          metadata: true,
+          simulationId: true,
+          createdAt: true,
+          updatedAt: true,
+          // itemsData JSON'u kullan - items ilişkisi kaldırıldı
+          tender: {
+            select: {
+              id: true,
+              title: true,
+              institutionName: true,
+            },
           },
         },
       }),
       db.offer.count({ where }),
     ]);
 
-    // Calculate summary statistics
-    const allOffers = await db.offer.findMany({
-      where: clientId ? { clientId } : {},
-      select: {
-        status: true,
-        estimatedRevenue: true,
-        createdAt: true,
-      },
+    // Simplified summary statistics - only essential metrics
+    const basicStats = await db.offer.aggregate({
+      _sum: { totalAmount: true },
+      _avg: { totalAmount: true },
+      _count: { id: true },
     });
-
-    const approvedOffers = allOffers.filter((o) => o.status === "APPROVED");
-    const totalRevenue = approvedOffers.reduce(
-      (sum, o) => sum + (o.estimatedRevenue || 0),
-      0
-    );
-    const averageValue =
-      allOffers.length > 0
-        ? allOffers.reduce((sum, o) => sum + (o.estimatedRevenue || 0), 0) /
-          allOffers.length
-        : 0;
-    const winRate =
-      allOffers.length > 0
-        ? (approvedOffers.length / allOffers.length) * 100
-        : 0;
-
-    // Calculate monthly growth (simplified)
-    const thisMonth = new Date();
-    thisMonth.setDate(1);
-    const lastMonth = new Date(thisMonth);
-    lastMonth.setMonth(lastMonth.getMonth() - 1);
-
-    const thisMonthOffers = allOffers.filter((o) => o.createdAt >= thisMonth);
-    const lastMonthOffers = allOffers.filter(
-      (o) => o.createdAt >= lastMonth && o.createdAt < thisMonth
-    );
-
-    const monthlyGrowth =
-      lastMonthOffers.length > 0
-        ? ((thisMonthOffers.length - lastMonthOffers.length) /
-            lastMonthOffers.length) *
-          100
-        : 0;
 
     const summary = {
       totalOffers: total,
-      winRate: Math.round(winRate * 100) / 100,
-      averageValue: Math.round(averageValue * 100) / 100,
-      totalRevenue: Math.round(totalRevenue * 100) / 100,
-      monthlyGrowth: Math.round(monthlyGrowth * 100) / 100,
+      totalRevenue: Math.round((basicStats._sum.totalAmount || 0) * 100) / 100,
+      averageValue: Math.round((basicStats._avg.totalAmount || 0) * 100) / 100,
+      // Remove complex win rate and growth calculations for now
+      schema_version: "v2.0", // Indicate new simplified schema
     };
+
+    // PT Eşitlik Assertion - ZARIF (okuma yolu) - Data göster, gözlemle
+    let ptMismatchCount = 0;
+    const healthInfo: any = { pt_consistent: true };
+
+    for (const offer of offers) {
+      const itemsData = (offer.itemsData as any[]) || [];
+      const itemsTotal = itemsData.reduce(
+        (sum: number, item: any) =>
+          sum + (item.totalPrice || item.totalCost || 0),
+        0
+      );
+
+      const difference = Math.abs(itemsTotal - offer.totalAmount);
+      const tolerance = 0.01;
+
+      if (difference > tolerance) {
+        ptMismatchCount++;
+
+        // Mark health as inconsistent but continue serving data
+        healthInfo.pt_consistent = false;
+        healthInfo.inconsistent_offers = healthInfo.inconsistent_offers || [];
+        healthInfo.inconsistent_offers.push({
+          offerId: offer.id,
+          delta: difference.toFixed(2),
+          advice: "Recalculate from itemsData",
+        });
+
+        console.warn("PT_MISMATCH_READ (graceful):", {
+          offerId: offer.id,
+          itemsTotal,
+          totalAmount: offer.totalAmount,
+          difference: difference.toFixed(2),
+          tolerance,
+          action: "serving_data_with_warning",
+        });
+      }
+    }
+
+    // Log PT mismatch metric
+    if (ptMismatchCount > 0) {
+      await db.sLIMetric.create({
+        data: {
+          name: "pt_mismatch_count",
+          value: ptMismatchCount,
+          timestamp: new Date(),
+          labels: { endpoint: "offers_get", total_offers: offers.length },
+          details: { mismatch_count: ptMismatchCount },
+        },
+      });
+    }
 
     return NextResponse.json(
       createApiResponse(
@@ -519,6 +640,7 @@ export async function GET(request: NextRequest): Promise<NextResponse> {
         {
           offers,
           summary,
+          health: healthInfo, // PT consistency health info
           pagination: {
             page,
             limit,

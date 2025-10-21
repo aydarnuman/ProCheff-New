@@ -1,0 +1,42 @@
+{
+  "name": "procheff-pdf-monitoring",
+  "version": "1.0.0",
+  "description": "ProCheff PDF Analysis System - Production Monitoring & Automated Testing",
+  "scripts": {
+    "test:pdf": "node scripts/automated-pdf-tests-clean.js",
+    "monitor:start": "node scripts/production-monitor.js",
+    "monitor:health": "curl -s http://localhost:3000/api/monitoring/pdf-health-check | jq",
+    "monitor:test": "npm run test:pdf",
+    "setup:monitoring": "node scripts/setup-monitoring.js"
+  },
+  "dependencies": {
+    "node-cron": "^3.0.3",
+    "nodemailer": "^6.9.7",
+    "form-data": "^4.0.0",
+    "node-fetch": "^2.7.0"
+  },
+  "devDependencies": {
+    "jq": "^1.7.3"
+  },
+  "monitoring": {
+    "healthCheck": {
+      "endpoint": "/api/monitoring/pdf-health-check",
+      "interval": "*/5 * * * *",
+      "timeout": 30000
+    },
+    "testing": {
+      "endpoint": "/api/pipeline/pdf-to-offer",
+      "interval": "0 */2 * * *",
+      "testFiles": ["pmyo-sample.pdf", "menu-sample.pdf"]
+    },
+    "alerts": {
+      "successRateThreshold": 80,
+      "maxConsecutiveFailures": 3,
+      "notificationChannels": ["email", "slack", "log"]
+    },
+    "autoRecovery": {
+      "enabled": true,
+      "actions": ["cleanTemp", "rotateLogs", "garbageCollection"]
+    }
+  }
+}

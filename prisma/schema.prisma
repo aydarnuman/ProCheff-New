@@ -189,61 +189,44 @@ model MenuAnalysis {
 // ================================
 
 model Offer {
-  id              String      @id @default(cuid())
-  title           String
-  description     String?
-  
-  // Client & restaurant
-  clientId        String
-  client          User        @relation(fields: [clientId], references: [id])
-  restaurantId    String?
-  restaurant      Restaurant? @relation(fields: [restaurantId], references: [id])
-  
-  // Financial details
-  totalCost       Float
-  materialCost    Float?
-  laborCost       Float?
-  overheadCost    Float?
-  profitMargin    Float       @default(0.2)
-  estimatedRevenue Float?
-  
-  // Status & timing
-  status          OfferStatus @default(DRAFT)
-  validUntil      DateTime?
-  deadline        DateTime?
-  
-  // Metadata
-  tags            String?     // JSON string of tags array
-  priority        Priority    @default(MEDIUM)
-  
-  createdAt       DateTime    @default(now())
-  updatedAt       DateTime    @updatedAt
+  id           String   @id @default(cuid())
+  tenderId     String
+  totalAmount  Float    // Changed from Decimal for SQLite compatibility
+  itemsData    Json     // Serialized offer items
+  metadata     Json?
+  simulationId String   // NOT NULL for idempotent operations - every offer must have simulation
+  createdAt    DateTime @default(now())
+  updatedAt    DateTime @updatedAt
 
-  // Relations
-  items           OfferItem[]
-  tenderBid       TenderBid?
+  // Relations - items moved to JSON field, no more OfferItem relation
+  tender       Tender       @relation(fields: [tenderId], references: [id], onDelete: Cascade)
+  bids         TenderBid[]
+  pipelineJobs PipelineJob[]
+  users        User[]
+  restaurants  Restaurant[]
 
+  // Unique constraint for idempotency - one offer per tender-simulation pair
+  @@unique([tenderId, simulationId], name: "offer_tender_simulation")
   @@map("offers")
 }
 
-model OfferItem {
-  id        String @id @default(cuid())
-  offerId   String
-  offer     Offer  @relation(fields: [offerId], references: [id], onDelete: Cascade)
-  
-  name      String
-  description String?
-  quantity  Int
-  unitCost  Float
-  totalCost Float
-  
-  category  String?
-  notes     String?
-  
+// SLI Metrics for Production Monitoring
+model SLIMetric {
+  id        String   @id @default(cuid())
+  name      String   // SLI name (e.g., 'pipeline_availability')
+  value     Float    // Metric value
+  timestamp DateTime
+  labels    Json?    // Key-value labels for filtering  
+  details   Json?    // Additional metric details
   createdAt DateTime @default(now())
 
-  @@map("offer_items")
+  // Index for efficient queries
+  @@index([name, timestamp], map: "sli_metrics_name_timestamp_idx")
+  @@index([name, timestamp(sort: Desc)], map: "sli_metrics_name_timestamp_desc_idx")
+  @@map("sli_metrics")
 }
+
+// OfferItem model REMOVED - data now stored in offers.itemsData JSON field
 
 model Tender {
   id            String       @id @default(cuid())
@@ -267,9 +250,22 @@ model Tender {
   createdAt     DateTime     @default(now())
   updatedAt     DateTime     @updatedAt
 
+  // Enhanced tracking fields
+  shartnameAnalysisId String?
+  shartnameAnalysis   ShartnameAnalysis? @relation(fields: [shartnameAnalysisId], references: [id])
+  institutionName     String?
+  estimatedValue      Float?
+  personCount        Int?
+  docHash            String?  // For idempotent operations
+  
   // Relations
-  bids          TenderBid[]
+  bids            TenderBid[]
+  costSimulations CostSimulation[]
+  checklistItems  ChecklistItem[]
+  pipelineJobs    PipelineJob[]
+  offers          Offer[]
 
+  @@unique([docHash, institutionName, deadline], name: "tender_idempotency")
   @@map("tenders")
 }
 
@@ -363,4 +359,159 @@ enum Priority {
   MEDIUM
   HIGH
   URGENT
+}
+
+// ================================
+// PDF Analysis & Structured Data (Faz 1)
+// ================================
+
+model ShartnameAnalysis {
+  id          String   @id @default(cuid())
+  docHash     String   @unique // SHA256 hash for deduplication
+  version     String   @default("v1")
+  filename    String?
+  pages       Int?
+  
+  // JSON field for structured analysis (ShartnameAnalysisV1)
+  analysisJson Json
+  
+  // Extracted key fields for quick queries
+  institutionName     String?
+  estimatedValueTry   Float?
+  deadline           DateTime?
+  personCount        Int?
+  
+  // Confidence tracking
+  overallConfidence  Float?
+  needsReview        Boolean @default(false)
+  
+  // Timestamps
+  createdAt   DateTime @default(now())
+  updatedAt   DateTime @updatedAt
+  
+  // Relations (for Faz 2)
+  tenders     Tender[]
+  
+  @@map("shartname_analyses")
+}
+
+// ================================
+// Cost Simulation & KİK System
+// ================================
+
+model CostSimulation {
+  id       String @id @default(cuid())
+  tenderId String?
+  tender   Tender? @relation(fields: [tenderId], references: [id], onDelete: Cascade)
+  
+  // Simulation data
+  inputs   Json  // { persons, meals_per_day, duration_days, portion_specs[], staffing[], etc. }
+  outputs  Json  // { material_cost, labor_cost, overhead_cost, maintenance_cost, project_total, recommended_price }
+  
+  // Metadata
+  version       String   @default("1.0")
+  confidence    Float?   // 0.0 - 1.0
+  docHash       String?  // For idempotent operations
+  
+  createdAt DateTime @default(now())
+  updatedAt DateTime @updatedAt
+  
+  // Relations
+  pipelineJobs PipelineJob[]
+  
+  @@unique([tenderId, version], map: "cost_simulation_tender_version")
+  @@map("cost_simulations")
+}
+
+model ChecklistItem {
+  id       String @id @default(cuid())
+  tenderId String
+  tender   Tender @relation(fields: [tenderId], references: [id], onDelete: Cascade)
+  
+  // Checklist details
+  type     String  // "CERTIFICATE", "EQUIPMENT", "PERSONNEL", "DOCUMENT"
+  title    String
+  status   ChecklistStatus @default(PENDING)
+  
+  // Additional info
+  description String?
+  priority    Priority @default(MEDIUM)
+  dueDate     DateTime?
+  
+  createdAt DateTime @default(now())
+  updatedAt DateTime @updatedAt
+  
+  @@map("checklist_items")
+}
+
+// ================================
+// Additional Enums
+// ================================
+
+enum ChecklistStatus {
+  PENDING
+  IN_PROGRESS
+  COMPLETED
+  BLOCKED
+  NOT_APPLICABLE
+}
+
+// ================================
+// Pipeline Job Management (Idempotent Workflow)
+// ================================
+
+model PipelineJob {
+  id            String           @id @default(cuid())
+  docHash       String          // Unique document identifier
+  pipelineId    String          @default(cuid()) // Correlation ID for entire pipeline
+  step          PipelineStep    // Current step in the pipeline
+  status        JobStatus       @default(PENDING)
+  
+  // References
+  tenderId      String?
+  tender        Tender?         @relation(fields: [tenderId], references: [id])
+  simulationId  String?
+  simulation    CostSimulation? @relation(fields: [simulationId], references: [id])
+  offerId       String?
+  offer         Offer?          @relation(fields: [offerId], references: [id])
+  
+  // Error handling
+  errorCode     String?
+  errorMessage  String?
+  retryCount    Int            @default(0)
+  maxRetries    Int            @default(3)
+  
+  // Timing
+  startedAt     DateTime?
+  completedAt   DateTime?
+  nextRetryAt   DateTime?
+  
+  // Metadata
+  metadata      Json?          // Step-specific data
+  evidence      Json?          // Audit trail
+  
+  createdAt     DateTime       @default(now())
+  updatedAt     DateTime       @updatedAt
+  
+  // Unique constraint for exactly-once semantics
+  @@unique([docHash, step], name: "pipeline_idempotency")
+  @@map("pipeline_jobs")
+}
+
+enum PipelineStep {
+  ANALYZE_COMPLETED     // PDF analysis done
+  TENDER_UPSERTED      // Tender created/updated
+  CHECKLIST_DONE       // Checklist items generated
+  SIMULATION_DONE      // Cost simulation completed
+  OFFER_DRAFTED        // Offer generated
+}
+
+enum JobStatus {
+  PENDING              // Waiting to start
+  RUNNING              // Currently executing
+  COMPLETED            // Successfully finished
+  FAILED               // Failed (non-retryable)
+  CANCELLED            // Cancelled by user/system
+  WAITING_INPUT        // Waiting for manual input/prerequisites
+  RETRYING             // In retry cycle
 }
