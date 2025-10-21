@@ -4,6 +4,7 @@ import pdfParse from "pdf-parse";
 import fs from "fs";
 import path from "path";
 import crypto from "crypto";
+import { extractTextWithFallback } from "@/lib/ocr/fallback-service";
 
 export const runtime = "nodejs";
 const MAX_FILE_SIZE = 100 * 1024 * 1024; // 100MB
@@ -316,18 +317,20 @@ async function withRetry<T>(fn: () => Promise<T>, maxRetries = 3): Promise<T> {
 function analyzeShartname(
   text: string,
   filename: string = "",
-  pageCount: number = 0
+  pageCount: number = 0,
+  extractionMethod: string = "pdf-parse"
 ): ShartnameAnalysisV1 {
   try {
     Logger.log("INFO", "Şartname analizi başlıyor", {
       textLength: text.length,
+      extractionMethod,
     });
 
     const lines = text.split("\n").filter((line) => line.trim().length > 0);
 
     // Generate document hash and metadata
     const docHash = NormalizationService.calculateDocHash(text);
-    const extractionChain = ["pdf-parse"];
+    const extractionChain = [extractionMethod];
     const generatedAt = new Date().toISOString();
 
     // Kurum tespiti
@@ -672,22 +675,37 @@ export async function POST(request: NextRequest) {
     const arrayBuffer = await withRetry(() => file.arrayBuffer());
     const buffer = Buffer.from(arrayBuffer);
 
-    Logger.log("INFO", "PDF parsing başlıyor");
+    Logger.log("INFO", "Enhanced PDF parsing with OCR fallback başlıyor");
 
-    // Parse PDF with retry
-    const data = await withRetry(() => pdfParse(buffer));
+    // Get PDF metadata for page count
+    const pdfMetadata = await withRetry(() => pdfParse(buffer));
+    const pageCount = pdfMetadata.numpages || 1;
 
-    const extractedText = data.text;
-    Logger.log("INFO", "PDF parsing tamamlandı", {
-      pages: data.numpages,
+    // Enhanced text extraction with OCR fallback
+    const extractionResult = await extractTextWithFallback(buffer);
+
+    const extractedText = extractionResult.text;
+    Logger.log("INFO", "Enhanced PDF parsing tamamlandı", {
+      method: extractionResult.method,
+      confidence: extractionResult.confidence,
       textLength: extractedText.length,
+      processingTime: extractionResult.processingTime,
+      pages: pageCount,
     });
 
+    // Update extraction chain with actual method used
+    const extractionChain = [extractionResult.method];
+
     if (!extractedText || extractedText.trim().length === 0) {
-      Logger.log("WARNING", "PDF'den metin çıkarılamadı");
+      Logger.log(
+        "WARNING",
+        `PDF'den metin çıkarılamadı (method: ${extractionResult.method})`
+      );
       return NextResponse.json(
         ErrorHandler.handle(
-          new Error("PDF'den metin çıkarılamadı. Dosya hasarlı olabilir."),
+          new Error(
+            `PDF'den metin çıkarılamadı. OCR dahil tüm yöntemler denendi. Method: ${extractionResult.method}`
+          ),
           "PDF Text Extraction",
           "PARSE_FAILED"
         ),
@@ -718,7 +736,12 @@ export async function POST(request: NextRequest) {
     if (isShartname) {
       // Generate structured analysis
       if (USE_STRUCTURED_ANALYSIS) {
-        analysisV1 = analyzeShartname(extractedText, file.name, data.numpages);
+        analysisV1 = analyzeShartname(
+          extractedText,
+          file.name,
+          pageCount,
+          extractionResult.method
+        );
 
         // Legacy format for backward compatibility
         const legacyAnalysis = {
@@ -783,7 +806,12 @@ export async function POST(request: NextRequest) {
         };
       } else {
         // Fallback to old logic if structured analysis is disabled
-        analysisV1 = analyzeShartname(extractedText, file.name, data.numpages);
+        analysisV1 = analyzeShartname(
+          extractedText,
+          file.name,
+          pageCount,
+          extractionResult.method
+        );
         panelData = {
           shartname: "Legacy mode disabled", // Simplified for now
           timestamp: new Date().toISOString(),
