@@ -37,19 +37,67 @@ export async function POST(request: NextRequest) {
     const buffer = Buffer.from(arrayBuffer);
     console.log(`✅ STEP 4: Buffer created, size: ${buffer.length} bytes`);
 
-    // SUCCESS - Return detailed info
-    return NextResponse.json({
-      success: true,
-      step: 4,
-      message: "File upload successful - PDF ready for processing",
-      fileInfo: {
-        name: file.name,
-        size: file.size,
-        type: file.type,
-        bufferSize: buffer.length,
-      },
-      timestamp: new Date().toISOString(),
-    });
+    // Test 4: Alternative PDF parse - using quick-fallback
+    console.log("📖 STEP 5: Trying alternative PDF parsing...");
+
+    try {
+      // Use our quick-fallback service that already handles pdf-parse issues
+      const { extractTextWithFallback } = await import(
+        "@/lib/ocr/quick-fallback"
+      );
+      const result = await extractTextWithFallback(buffer);
+
+      console.log(`✅ STEP 5: Alternative PDF parsing successful!`);
+      console.log(
+        `📊 Method: ${result.method}, Confidence: ${result.confidence}`
+      );
+      console.log(`📝 Text length: ${result.text.length}`);
+      console.log(`📝 First 100 chars: "${result.text.substring(0, 100)}"`);
+
+      // SUCCESS - Return detailed info with extracted text
+      return NextResponse.json({
+        success: true,
+        step: 5,
+        message:
+          "PDF processing successful - text extracted with fallback method",
+        fileInfo: {
+          name: file.name,
+          size: file.size,
+          type: file.type,
+          bufferSize: buffer.length,
+        },
+        textExtraction: {
+          method: result.method,
+          confidence: result.confidence,
+          processingTime: result.processingTime,
+          textLength: result.text.length,
+          preview: result.text.substring(0, 300),
+          isEmpty: result.text.length === 0,
+        },
+        timestamp: new Date().toISOString(),
+      });
+    } catch (parseError) {
+      console.error("❌ STEP 5: PDF parse failed:", parseError);
+      return NextResponse.json(
+        {
+          success: false,
+          step: 5,
+          error: "PDF parsing failed",
+          details:
+            parseError instanceof Error
+              ? parseError.message
+              : "Unknown parse error",
+          fileInfo: {
+            name: file.name,
+            size: file.size,
+            type: file.type,
+            bufferSize: buffer.length,
+          },
+          timestamp: new Date().toISOString(),
+        },
+        { status: 500 }
+      );
+    }
   } catch (error) {
     console.error("❌ ERROR in step:", error);
     return NextResponse.json(
