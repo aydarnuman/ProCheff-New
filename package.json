@@ -10,7 +10,6 @@
     "deploy:pages": "GITHUB_PAGES=true npm run export:full && touch out/.nojekyll",
     "start": "node .next/standalone/server.js",
   "type-check": "tsc --noEmit",
-  "postinstall": "node -e \"try{require('child_process').execSync('npm rebuild sharp --unsafe-perm',{stdio:'inherit'})}catch(e){console.warn('sharp rebuild failed', e)}\"",
     "ci": "npm ci && npm run type-check && npm run build",
     "dev:clean": "rm -rf .next && npm run dev",
     "dev:debug": "NODE_OPTIONS='--inspect' next dev",
