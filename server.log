@@ -1,17 +1,22 @@
-nohup: ignoring input
 
-> procheff@0.1.0 start
-> node .next/standalone/server.js
+> procheff@0.1.0 dev
+> next dev --port 3000 --hostname 0.0.0.0
 
- ⨯ Failed to start server
-Error: listen EADDRINUSE: address already in use 127.0.0.1:3000
-    at Server.setupListenHandle [as _listen2] (node:net:1908:16)
-    at listenInCluster (node:net:1965:12)
-    at GetAddrInfoReqWrap.doListen [as callback] (node:net:2139:7)
-    at GetAddrInfoReqWrap.onlookup [as oncomplete] (node:dns:113:8) {
-  code: 'EADDRINUSE',
-  errno: -98,
-  syscall: 'listen',
-  address: '127.0.0.1',
-  port: 3000
-}
+  ▲ Next.js 14.2.33
+  - Local:        http://localhost:3000
+  - Network:      http://0.0.0.0:3000
+  - Environments: .env
+  - Experiments (use with caution):
+    · cpus
+
+ ✓ Starting...
+ ⚠ Invalid next.config.js options detected: 
+ ⚠     Unrecognized key(s) in object: 'api'
+ ⚠ See more info here: https://nextjs.org/docs/messages/invalid-next-config
+ ✓ Ready in 2.3s
+ ○ Compiling /api/health ...
+ ✓ Compiled /api/health in 925ms (143 modules)
+ HEAD /api/health 200 in 2129ms
+ ✓ Compiled in 1641ms (346 modules)
+ ✓ Compiled in 147ms (346 modules)
+[?25h

@@ -1,0 +1,250 @@
+
+> procheff@0.1.0 build
+> next build
+
+Attention: Next.js now collects completely anonymous telemetry regarding usage.
+This information is used to shape Next.js' roadmap and prioritize features.
+You can learn more, including how to opt-out if you'd not like to participate in this anonymous program, by visiting the following URL:
+https://nextjs.org/telemetry
+
+  ▲ Next.js 14.2.33
+  - Environments: .env
+
+   Creating an optimized production build ...
+ ✓ Compiled successfully
+   Linting and checking validity of types ...
+
+./src/app/(site)/store/panelData.ts
+32:11  Warning: Unexpected any. Specify a different type.  @typescript-eslint/no-explicit-any
+57:11  Warning: 'get' is defined but never used. Allowed unused args must match /^_/u.  @typescript-eslint/no-unused-vars
+
+./src/app/api/ai/status/route.ts
+80:11  Warning: 'onlineServices' is assigned a value but never used.  @typescript-eslint/no-unused-vars
+
+./src/app/api/auth/login/route.ts
+47:23  Warning: '_' is assigned a value but never used.  @typescript-eslint/no-unused-vars
+
+./src/app/api/auth/me/route.ts
+34:23  Warning: '_' is assigned a value but never used.  @typescript-eslint/no-unused-vars
+
+./src/app/api/auth/register/route.ts
+53:23  Warning: '_' is assigned a value but never used.  @typescript-eslint/no-unused-vars
+
+./src/app/api/health/route.ts
+96:11  Warning: 'healthyCount' is assigned a value but never used.  @typescript-eslint/no-unused-vars
+
+./src/app/api/menu-analysis/route.ts
+140:26  Warning: Unexpected any. Specify a different type.  @typescript-eslint/no-explicit-any
+167:44  Warning: Unexpected any. Specify a different type.  @typescript-eslint/no-explicit-any
+187:11  Warning: 'authContext' is assigned a value but never used.  @typescript-eslint/no-unused-vars
+216:54  Warning: Unexpected any. Specify a different type.  @typescript-eslint/no-explicit-any
+
+./src/app/api/monitoring/pdf-health-check/route.ts
+70:18  Warning: 'parseError' is defined but never used.  @typescript-eslint/no-unused-vars
+142:27  Warning: 'request' is defined but never used. Allowed unused args must match /^_/u.  @typescript-eslint/no-unused-vars
+163:12  Warning: 'error' is defined but never used.  @typescript-eslint/no-unused-vars
+
+./src/app/api/offers/recalc/route.ts
+14:27  Warning: Unexpected any. Specify a different type.  @typescript-eslint/no-explicit-any
+131:38  Warning: Unexpected any. Specify a different type.  @typescript-eslint/no-explicit-any
+133:40  Warning: Unexpected any. Specify a different type.  @typescript-eslint/no-explicit-any
+
+./src/app/api/tender-bids/route.ts
+4:10  Warning: 'verifyAuth' is defined but never used.  @typescript-eslint/no-unused-vars
+18:28  Warning: Unexpected any. Specify a different type.  @typescript-eslint/no-explicit-any
+22:10  Warning: 'validateRequired' is defined but never used.  @typescript-eslint/no-unused-vars
+22:33  Warning: Unexpected any. Specify a different type.  @typescript-eslint/no-explicit-any
+116:51  Warning: 'attachments' is assigned a value but never used.  @typescript-eslint/no-unused-vars
+
+./src/app/api/tenders/route.ts
+27:48  Warning: Unexpected any. Specify a different type.  @typescript-eslint/no-explicit-any
+28:48  Warning: Unexpected any. Specify a different type.  @typescript-eslint/no-explicit-any
+38:45  Warning: Unexpected any. Specify a different type.  @typescript-eslint/no-explicit-any
+38:71  Warning: Unexpected any. Specify a different type.  @typescript-eslint/no-explicit-any
+42:29  Warning: Unexpected any. Specify a different type.  @typescript-eslint/no-explicit-any
+42:54  Warning: Unexpected any. Specify a different type.  @typescript-eslint/no-explicit-any
+273:50  Warning: Unexpected any. Specify a different type.  @typescript-eslint/no-explicit-any
+280:33  Warning: Unexpected any. Specify a different type.  @typescript-eslint/no-explicit-any
+281:33  Warning: Unexpected any. Specify a different type.  @typescript-eslint/no-explicit-any
+
+./src/app/dashboard/dashboard-client.tsx
+15:44  Warning: Unexpected any. Specify a different type.  @typescript-eslint/no-explicit-any
+
+./src/app/dashboard/page.tsx
+15:44  Warning: Unexpected any. Specify a different type.  @typescript-eslint/no-explicit-any
+
+./src/app/ihale/page.tsx
+12:56  Warning: Unexpected any. Specify a different type.  @typescript-eslint/no-explicit-any
+22:46  Warning: Unexpected any. Specify a different type.  @typescript-eslint/no-explicit-any
+30:50  Warning: Unexpected any. Specify a different type.  @typescript-eslint/no-explicit-any
+
+./src/app/upload/page.tsx
+10:52  Warning: Unexpected any. Specify a different type.  @typescript-eslint/no-explicit-any
+383:86  Warning: Unexpected any. Specify a different type.  @typescript-eslint/no-explicit-any
+416:108  Warning: Unexpected any. Specify a different type.  @typescript-eslint/no-explicit-any
+
+./src/components/analysis/MenuAnalysisModal.tsx
+10:56  Warning: Unexpected any. Specify a different type.  @typescript-eslint/no-explicit-any
+221:54  Warning: Unexpected any. Specify a different type.  @typescript-eslint/no-explicit-any
+
+./src/components/analysis/SystemHealthModal.tsx
+114:47  Warning: Unexpected any. Specify a different type.  @typescript-eslint/no-explicit-any
+126:43  Warning: Unexpected any. Specify a different type.  @typescript-eslint/no-explicit-any
+198:6  Warning: React Hook useEffect has a missing dependency: 'refreshInterval'. Either include it or remove the dependency array.  react-hooks/exhaustive-deps
+
+./src/lib/core/auth.ts
+236:10  Warning: A `require()` style import is forbidden.  @typescript-eslint/no-require-imports
+285:20  Warning: 'action' is assigned a value but never used.  @typescript-eslint/no-unused-vars
+
+./src/lib/core/index.ts
+221:11  Warning: 'metrics' is assigned a value but never used.  @typescript-eslint/no-unused-vars
+
+./src/lib/core/market-fallbacks.ts
+33:35  Warning: Unexpected any. Specify a different type.  @typescript-eslint/no-explicit-any
+42:54  Warning: Unexpected any. Specify a different type.  @typescript-eslint/no-explicit-any
+47:25  Warning: Unexpected any. Specify a different type.  @typescript-eslint/no-explicit-any
+84:51  Warning: Unexpected any. Specify a different type.  @typescript-eslint/no-explicit-any
+141:54  Warning: Unexpected any. Specify a different type.  @typescript-eslint/no-explicit-any
+146:19  Warning: Unexpected any. Specify a different type.  @typescript-eslint/no-explicit-any
+205:11  Warning: 'weightItems' is assigned a value but never used.  @typescript-eslint/no-unused-vars
+224:13  Warning: 'error' is defined but never used. Allowed unused args must match /^_/u.  @typescript-eslint/no-unused-vars
+228:54  Warning: Unexpected any. Specify a different type.  @typescript-eslint/no-explicit-any
+233:19  Warning: Unexpected any. Specify a different type.  @typescript-eslint/no-explicit-any
+
+./src/lib/core/menu-fallbacks.ts
+38:54  Warning: Unexpected any. Specify a different type.  @typescript-eslint/no-explicit-any
+145:54  Warning: Unexpected any. Specify a different type.  @typescript-eslint/no-explicit-any
+
+./src/lib/core/observability.ts
+237:62  Warning: Unexpected any. Specify a different type.  @typescript-eslint/no-explicit-any
+435:35  Warning: Unexpected any. Specify a different type.  @typescript-eslint/no-explicit-any
+436:37  Warning: Unexpected any. Specify a different type.  @typescript-eslint/no-explicit-any
+
+./src/lib/ingest/index.ts
+1:10  Warning: 'extractTextFromPDF' is defined but never used.  @typescript-eslint/no-unused-vars
+2:30  Warning: 'Section' is defined but never used.  @typescript-eslint/no-unused-vars
+
+./src/lib/ingest/pdfParser.ts
+8:17  Warning: Unexpected any. Specify a different type.  @typescript-eslint/no-explicit-any
+
+./src/lib/market/core/scraper.ts
+84:10  Warning: 'parsePrice' is defined but never used.  @typescript-eslint/no-unused-vars
+
+./src/lib/menu/analyze.ts
+52:14  Warning: 'parseError' is defined but never used.  @typescript-eslint/no-unused-vars
+58:56  Warning: Unexpected any. Specify a different type.  @typescript-eslint/no-explicit-any
+
+./src/lib/menu/core.ts
+222:38  Warning: 'options' is defined but never used. Allowed unused args must match /^_/u.  @typescript-eslint/no-unused-vars
+254:36  Warning: Unexpected any. Specify a different type.  @typescript-eslint/no-explicit-any
+275:53  Warning: Unexpected any. Specify a different type.  @typescript-eslint/no-explicit-any
+
+./src/lib/middleware/auth.ts
+134:65  Warning: Unexpected any. Specify a different type.  @typescript-eslint/no-explicit-any
+136:46  Warning: Unexpected any. Specify a different type.  @typescript-eslint/no-explicit-any
+273:33  Warning: Unexpected any. Specify a different type.  @typescript-eslint/no-explicit-any
+275:28  Warning: 'keyValue' is defined but never used. Allowed unused args must match /^_/u.  @typescript-eslint/no-unused-vars
+
+./src/lib/middleware/errorHandler.ts
+14:13  Warning: Unexpected any. Specify a different type.  @typescript-eslint/no-explicit-any
+45:13  Warning: Unexpected any. Specify a different type.  @typescript-eslint/no-explicit-any
+79:25  Warning: Unexpected any. Specify a different type.  @typescript-eslint/no-explicit-any
+116:40  Warning: Unexpected any. Specify a different type.  @typescript-eslint/no-explicit-any
+118:44  Warning: Unexpected any. Specify a different type.  @typescript-eslint/no-explicit-any
+188:40  Warning: Unexpected any. Specify a different type.  @typescript-eslint/no-explicit-any
+192:18  Warning: Unexpected any. Specify a different type.  @typescript-eslint/no-explicit-any
+208:58  Warning: Unexpected any. Specify a different type.  @typescript-eslint/no-explicit-any
+
+./src/lib/middleware/monitoring.ts
+134:69  Warning: Unexpected any. Specify a different type.  @typescript-eslint/no-explicit-any
+135:44  Warning: Unexpected any. Specify a different type.  @typescript-eslint/no-explicit-any
+173:33  Warning: Unexpected any. Specify a different type.  @typescript-eslint/no-explicit-any
+
+./src/lib/middleware/rateLimit.ts
+51:40  Warning: Unexpected any. Specify a different type.  @typescript-eslint/no-explicit-any
+56:44  Warning: Unexpected any. Specify a different type.  @typescript-eslint/no-explicit-any
+
+./src/lib/middleware/rateLimiter.ts
+52:9  Warning: 'windowStart' is assigned a value but never used.  @typescript-eslint/no-unused-vars
+122:40  Warning: Unexpected any. Specify a different type.  @typescript-eslint/no-explicit-any
+123:32  Warning: Unexpected any. Specify a different type.  @typescript-eslint/no-explicit-any
+124:44  Warning: Unexpected any. Specify a different type.  @typescript-eslint/no-explicit-any
+
+./src/lib/middleware/validation.ts
+114:49  Warning: Unexpected any. Specify a different type.  @typescript-eslint/no-explicit-any
+116:44  Warning: Unexpected any. Specify a different type.  @typescript-eslint/no-explicit-any
+118:17  Warning: Unexpected any. Specify a different type.  @typescript-eslint/no-explicit-any
+
+./src/lib/reasoning/core/engine.ts
+52:19  Warning: Unexpected any. Specify a different type.  @typescript-eslint/no-explicit-any
+
+./src/lib/store.ts
+36:16  Warning: Unexpected any. Specify a different type.  @typescript-eslint/no-explicit-any
+45:14  Warning: Unexpected any. Specify a different type.  @typescript-eslint/no-explicit-any
+46:15  Warning: Unexpected any. Specify a different type.  @typescript-eslint/no-explicit-any
+47:16  Warning: Unexpected any. Specify a different type.  @typescript-eslint/no-explicit-any
+
+./src/lib/utils/logger.ts
+26:18  Warning: Unexpected any. Specify a different type.  @typescript-eslint/no-explicit-any
+
+./src/lib/utils/types.ts
+46:34  Warning: Unexpected any. Specify a different type.  @typescript-eslint/no-explicit-any
+
+info  - Need to disable some ESLint rules? Learn more here: https://nextjs.org/docs/basic-features/eslint#disabling-rules
+   Collecting page data ...
+ ⚠ Using edge runtime on a page currently disables static generation for that page
+(node:367723) [DEP0005] DeprecationWarning: Buffer() is deprecated due to security and usability issues. Please use the Buffer.alloc(), Buffer.allocUnsafe(), or Buffer.from() methods instead.
+(Use `node --trace-deprecation ...` to show where the warning was created)
+   Generating static pages (0/30) ...
+   Generating static pages (7/30) 
+   Generating static pages (14/30) 
+   Generating static pages (22/30) 
+ ✓ Generating static pages (30/30)
+(node:367731) [DEP0005] DeprecationWarning: Buffer() is deprecated due to security and usability issues. Please use the Buffer.alloc(), Buffer.allocUnsafe(), or Buffer.from() methods instead.
+(Use `node --trace-deprecation ...` to show where the warning was created)
+   Finalizing page optimization ...
+   Collecting build traces ...
+
+Route (app)                              Size     First Load JS
+┌ ○ /                                    164 B          87.8 kB
+├ ○ /_not-found                          876 B          88.5 kB
+├ ○ /admin                               164 B          87.8 kB
+├ ○ /ai-settings                         164 B          87.8 kB
+├ ƒ /api/ai/status                       0 B                0 B
+├ ƒ /api/auth/login                      0 B                0 B
+├ ƒ /api/auth/me                         0 B                0 B
+├ ƒ /api/auth/register                   0 B                0 B
+├ ƒ /api/auth/test                       0 B                0 B
+├ ƒ /api/health                          0 B                0 B
+├ ƒ /api/insights                        0 B                0 B
+├ ƒ /api/menu-analysis                   0 B                0 B
+├ ○ /api/monitoring/pdf-health-check     0 B                0 B
+├ ƒ /api/nutrition                       0 B                0 B
+├ ƒ /api/offers                          0 B                0 B
+├ ƒ /api/offers/auto                     0 B                0 B
+├ ○ /api/offers/recalc                   0 B                0 B
+├ ƒ /api/pipeline/pdf-to-offer           0 B                0 B
+├ ƒ /api/simulations/run                 0 B                0 B
+├ ƒ /api/system/metrics                  0 B                0 B
+├ ƒ /api/tender-bids                     0 B                0 B
+├ ƒ /api/tenders                         0 B                0 B
+├ ○ /dashboard                           103 kB          196 kB
+├ ○ /ihale                               3.28 kB        90.9 kB
+├ ○ /menu                                164 B          87.8 kB
+├ ○ /menu/adaptor                        164 B          87.8 kB
+├ ○ /menu/fiyat-takip                    164 B          87.8 kB
+├ ○ /menu/simulasyon                     164 B          87.8 kB
+├ ○ /menu/trend                          164 B          87.8 kB
+├ ○ /offer                               4.38 kB        97.3 kB
+├ ○ /offers                              133 kB          220 kB
+├ ○ /reports                             164 B          87.8 kB
+└ ○ /upload                              5.98 kB        93.6 kB
++ First Load JS shared by all            87.6 kB
+  ├ chunks/117-741ee11689653392.js       31.9 kB
+  ├ chunks/fd9d1056-188df4eb4f4176ca.js  53.6 kB
+  └ other shared chunks (total)          2.09 kB
+
+
+○  (Static)   prerendered as static content
+ƒ  (Dynamic)  server-rendered on demand
+

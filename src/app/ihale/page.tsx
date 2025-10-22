@@ -9,7 +9,17 @@ export default function IhaleMerkezi() {
   
   // Şartname Analizi State
   const [uploadedFile, setUploadedFile] = useState<File | null>(null);
-  const [analysisResult, setAnalysisResult] = useState<any>(null);
+  const [analysisResult, setAnalysisResult] = useState<{
+    institution: string;
+    tenderType: string;
+    estimatedValue: string;
+    deadline: string;
+    requirements: string[];
+    strategy: string;
+    confidence?: number;
+    rawAnalysis?: unknown;
+    error?: boolean;
+  } | null>(null);
   const [isAnalyzing, setIsAnalyzing] = useState(false);
 
   // KİK Analizi State
@@ -19,7 +29,12 @@ export default function IhaleMerkezi() {
     overheadRate: '15',
     profitRate: '10'
   });
-  const [kikResult, setKikResult] = useState<any>(null);
+  const [kikResult, setKikResult] = useState<{
+    baseTotal: number;
+    overheadAmount: number;
+    profitAmount: number;
+    finalTotal: number;
+  } | null>(null);
 
   // Teklif State
   const [offerData, setOfferData] = useState({
@@ -27,7 +42,13 @@ export default function IhaleMerkezi() {
     discountRate: '',
     validityDays: '30'
   });
-  const [offerResult, setOfferResult] = useState<any>(null);
+  const [offerResult, setOfferResult] = useState<{
+    basePrice: number;
+    discountAmount: number;
+    finalPrice: number;
+    validityDays: string;
+    createdAt: string;
+  } | null>(null);
 
   const tabs = [
     { id: 'analiz' as TabType, label: 'Şartname Analizi', icon: '📄' },
@@ -50,22 +71,69 @@ export default function IhaleMerkezi() {
     
     setIsAnalyzing(true);
     
-    setTimeout(() => {
-      setAnalysisResult({
-        institution: "Ankara Büyükşehir Belediyesi",
-        tenderType: "Açık İhale",
-        estimatedValue: "₺2.450.000",
-        deadline: "2024-04-15",
-        requirements: [
-          "Hijyen sertifikası zorunlu",
-          "ISO 22000 belgelendirmesi",
-          "5 yıl tecrübe şartı",
-          "Referans projeler gerekli"
-        ],
-        strategy: "Kalite odaklı teklif hazırlayın. Bu kurum detaylı teknik şartname bekler."
+    try {
+      const formData = new FormData();
+      formData.append('file', uploadedFile);
+      
+      const response = await fetch('/api/pipeline/pdf-to-offer', {
+        method: 'POST',
+        body: formData
       });
+      
+      if (!response.ok) {
+        throw new Error(`HTTP ${response.status}: ${response.statusText}`);
+      }
+      
+      const result = await response.json();
+      
+      if (!result.success) {
+        throw new Error(result.error || 'Analysis failed');
+      }
+      
+      // API sonucunu UI formatına dönüştür
+      const analysisData = result.data?.analysisV1;
+      if (analysisData) {
+        setAnalysisResult({
+          institution: analysisData.institution?.name || "Tespit Edilemedi",
+          tenderType: analysisData.procurement?.method || "Açık İhale",
+          estimatedValue: analysisData.procurement?.estimated_value_try 
+            ? `₺${analysisData.procurement.estimated_value_try.toLocaleString('tr-TR')}`
+            : "Belirtilmemiş",
+          deadline: analysisData.procurement?.deadline || "Belirtilmemiş",
+          requirements: analysisData.requirements?.certificates || [],
+          strategy: `${analysisData.institution?.name || 'Bu kurum'} için ${analysisData.service_profile?.persons || 0} kişilik catering hizmeti.`,
+          confidence: result.data?.overallConfidence || 0,
+          rawAnalysis: analysisData
+        });
+      } else {
+        // Fallback to legacy format if V1 not available
+        setAnalysisResult({
+          institution: result.data?.institutionName || "Tespit Edilemedi",
+          tenderType: "Açık İhale",
+          estimatedValue: result.data?.estimatedValueTry 
+            ? `₺${result.data.estimatedValueTry.toLocaleString('tr-TR')}`
+            : "Belirtilmemiş",
+          deadline: result.data?.deadline || "Belirtilmemiş",
+          requirements: result.data?.requirements || [],
+          strategy: "Analiz tamamlandı",
+          confidence: result.data?.overallConfidence || 0
+        });
+      }
+    } catch (error) {
+      console.error('Analysis failed:', error);
+      setAnalysisResult({
+        institution: "HATA: Analiz başarısız",
+        tenderType: "Hata",
+        estimatedValue: "₺0",
+        deadline: "Bilinmiyor",
+        requirements: [(error as Error).message],
+        strategy: "Lütfen tekrar deneyin veya farklı bir dosya yükleyin.",
+        confidence: 0,
+        error: true
+      });
+    } finally {
       setIsAnalyzing(false);
-    }, 2000);
+    }
   };
 
   const calculateKik = () => {

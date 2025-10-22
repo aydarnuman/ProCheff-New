@@ -1,0 +1,18 @@
+Test Menü - Restoran ABC
+
+ANA YEMEKLER
+Izgara Tavuk Göğsü - 45 TL
+Bonfile Steak - 85 TL  
+Kuru Fasulye - 35 TL
+
+BAŞLANGIÇLAR
+Mercimek Çorbası - 18 TL
+Yeşil Salata - 22 TL
+
+TATLILAR  
+Baklava - 28 TL
+Sütlaç - 20 TL
+
+İÇECEKLER
+Çay - 8 TL
+Türk Kahvesi - 12 TL

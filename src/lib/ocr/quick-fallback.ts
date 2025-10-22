@@ -1,71 +1,93 @@
-// QUICK FIX: OCR-Free PDF Processing to avoid timeout issues
-import pdfParse from "pdf-parse";
+import pdf from "pdf-parse";
 
-interface ExtractionResult {
-  text: string;
-  method: "pdf-parse" | "fallback";
-  confidence: number;
-  processingTime: number;
-}
-
-// Simple text density checker
-export function checkTextDensity(text: string): {
-  density: number;
-  wordCount: number;
-  isLowDensity: boolean;
-} {
-  const words = text
-    .trim()
-    .split(/\s+/)
-    .filter((word) => word.length > 0);
-  const density = text.length;
-  const wordCount = words.length;
-
-  // Consider low density if less than 500 chars or less than 50 words
-  const isLowDensity = density < 500 || wordCount < 50;
-
-  return { density, wordCount, isLowDensity };
-}
-
-// Quick PDF text extraction WITHOUT OCR to avoid timeout
+// Hızlı PDF-parse fallback - OCR.space yedek
 export async function extractTextWithFallback(
-  fileBuffer: Buffer
-): Promise<ExtractionResult> {
-  const startTime = Date.now();
+  buffer: Buffer,
+  filename: string
+): Promise<{
+  text: string;
+  method: "pdf-parse" | "ocr" | "hybrid" | "empty";
+  confidence: number;
+  meta: {
+    filename: string;
+    textLength?: number;
+    processingTime?: string;
+    extractionChain?: string[];
+    pages?: number;
+    pagesProcessed?: number;
+    avgConfidence?: number;
+    qualityHint?: "low" | "ok";
+    error?: string;
+  };
+}> {
+  const t0 = Date.now();
 
   try {
-    console.log("📄 PDF text extraction başlıyor...");
-    const pdfData = await pdfParse(fileBuffer);
-    const pdfText = pdfData.text || "";
+    console.log("📄 Quick fallback: PDF-parse attempting...");
 
-    const densityCheck = checkTextDensity(pdfText);
-    console.log(
-      `📊 PDF text density: ${densityCheck.density} chars, ${densityCheck.wordCount} words`
-    );
+    const parsed = await pdf(buffer);
+    const text = (parsed.text || "").trim();
+    const pages = parsed.numpages || 1;
+    const processingTime = Date.now() - t0;
 
-    if (pdfText.length > 0) {
+    if (text.length > 100) {
+      console.log(
+        `✅ PDF-parse SUCCESS: ${text.length} chars, ${pages} pages in ${processingTime}ms`
+      );
+
       return {
-        text: pdfText,
+        text,
         method: "pdf-parse",
-        confidence: densityCheck.isLowDensity ? 0.4 : 0.9,
-        processingTime: Date.now() - startTime,
+        confidence: 0.8,
+        meta: {
+          filename,
+          textLength: text.length,
+          processingTime: `${processingTime}ms`,
+          extractionChain: ["pdf-parse"],
+          pages,
+          pagesProcessed: pages,
+          avgConfidence: 0.8,
+          qualityHint: "ok",
+        },
       };
     } else {
-      // Empty PDF - provide helpful message
+      console.log(`⚠️ PDF-parse low quality: ${text.length} chars`);
+
       return {
-        text: "Bu PDF dosyasından metin çıkarılamadı. Taranmış (scanned) PDF olabilir. Lütfen metin tabanlı PDF kullanın veya OCR destekli sürümü bekleyin.",
-        method: "fallback",
+        text: "",
+        method: "empty",
         confidence: 0.1,
-        processingTime: Date.now() - startTime,
+        meta: {
+          filename,
+          textLength: 0,
+          processingTime: `${processingTime}ms`,
+          extractionChain: ["pdf-parse"],
+          pages,
+          pagesProcessed: pages,
+          avgConfidence: 0.1,
+          qualityHint: "low",
+          error: "Insufficient text extracted from PDF-parse",
+        },
       };
     }
   } catch (error) {
-    console.error("❌ PDF text extraction failed:", error);
+    const processingTime = Date.now() - t0;
+    console.error(`❌ PDF-parse failed:`, (error as Error).message);
+
     return {
-      text: "PDF işleme hatası oluştu. Lütfen dosyanın geçerli bir PDF olduğundan emin olun.",
-      method: "fallback",
+      text: "",
+      method: "empty",
       confidence: 0,
-      processingTime: Date.now() - startTime,
+      meta: {
+        filename,
+        error: (error as Error).message,
+        processingTime: `${processingTime}ms`,
+        extractionChain: ["pdf-parse"],
+        pages: 1,
+        pagesProcessed: 0,
+        avgConfidence: 0,
+        qualityHint: "low",
+      },
     };
   }
 }

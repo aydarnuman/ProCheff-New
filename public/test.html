@@ -1,0 +1,151 @@
+<!DOCTYPE html>
+<html lang="tr">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>ProCheff PDF Test Sayfası</title>
+    <style>
+        body { font-family: Arial, sans-serif; max-width: 800px; margin: 0 auto; padding: 20px; }
+        .test-area { border: 2px dashed #ccc; padding: 20px; margin: 20px 0; text-align: center; }
+        .status { padding: 10px; margin: 10px 0; border-radius: 5px; }
+        .success { background: #d4edda; color: #155724; border: 1px solid #c3e6cb; }
+        .error { background: #f8d7da; color: #721c24; border: 1px solid #f5c6cb; }
+        .info { background: #d1ecf1; color: #0c5460; border: 1px solid #bee5eb; }
+        button { background: #007bff; color: white; border: none; padding: 10px 20px; border-radius: 5px; cursor: pointer; }
+        button:hover { background: #0056b3; }
+        #progress { display: none; width: 100%; height: 20px; background: #f0f0f0; border-radius: 10px; overflow: hidden; }
+        #progress-bar { height: 100%; background: #007bff; width: 0%; transition: width 0.3s; }
+    </style>
+</head>
+<body>
+    <h1>🚀 ProCheff PDF Test Sayfası</h1>
+    
+    <div class="status info">
+        ✅ Server çalışıyor: <span id="server-status">Kontrol ediliyor...</span>
+    </div>
+
+    <div class="test-area">
+        <h3>📄 PDF Upload Test</h3>
+        <input type="file" id="pdf-file" accept=".pdf" />
+        <br><br>
+        <button onclick="testUpload()">PDF'yi Test Et</button>
+        <div id="progress"><div id="progress-bar"></div></div>
+    </div>
+
+    <div id="result" style="display: none;">
+        <h3>📊 Test Sonuçları:</h3>
+        <div id="result-content"></div>
+    </div>
+
+    <div class="test-area">
+        <h3>⚡ Hızlı API Test</h3>
+        <button onclick="testAPI()">API Health Check</button>
+        <div id="api-result"></div>
+    </div>
+
+    <script>
+        // Server status kontrol
+        fetch('/api/health')
+            .then(r => r.ok ? 'Aktif' : 'Problem')
+            .catch(() => 'Offline')
+            .then(status => document.getElementById('server-status').textContent = status);
+
+        async function testAPI() {
+            const resultDiv = document.getElementById('api-result');
+            resultDiv.innerHTML = '<div class="status info">API test ediliyor...</div>';
+            
+            try {
+                const start = Date.now();
+                const response = await fetch('/api/health');
+                const duration = Date.now() - start;
+                
+                if (response.ok) {
+                    resultDiv.innerHTML = `<div class="status success">✅ API çalışıyor! (${duration}ms)</div>`;
+                } else {
+                    resultDiv.innerHTML = `<div class="status error">❌ API problemi: ${response.status}</div>`;
+                }
+            } catch (error) {
+                resultDiv.innerHTML = `<div class="status error">❌ Bağlantı hatası: ${error.message}</div>`;
+            }
+        }
+
+        async function testUpload() {
+            const fileInput = document.getElementById('pdf-file');
+            const resultDiv = document.getElementById('result');
+            const resultContent = document.getElementById('result-content');
+            const progress = document.getElementById('progress');
+            const progressBar = document.getElementById('progress-bar');
+
+            if (!fileInput.files[0]) {
+                alert('Lütfen bir PDF dosyası seçin!');
+                return;
+            }
+
+            const file = fileInput.files[0];
+            const formData = new FormData();
+            formData.append('file', file);
+
+            // Progress göster
+            progress.style.display = 'block';
+            progressBar.style.width = '0%';
+            resultDiv.style.display = 'block';
+            resultContent.innerHTML = '<div class="status info">📄 PDF işleniyor... Lütfen bekleyin.</div>';
+
+            try {
+                const start = Date.now();
+                
+                // Progress animation
+                let progressValue = 0;
+                const progressInterval = setInterval(() => {
+                    if (progressValue < 90) {
+                        progressValue += Math.random() * 10;
+                        progressBar.style.width = progressValue + '%';
+                    }
+                }, 500);
+
+                const response = await fetch('/api/pro-ocr', {
+                    method: 'POST',
+                    body: formData,
+                    // FormData için Content-Type header'ı otomatik set edilsin
+                    headers: {}
+                });
+
+                clearInterval(progressInterval);
+                progressBar.style.width = '100%';
+                
+                const duration = Date.now() - start;
+                const result = await response.json();
+
+                if (response.ok) {
+                    const textLength = result.extractedText?.length || 0;
+                    const method = result.method || 'unknown';
+                    
+                    resultContent.innerHTML = `
+                        <div class="status success">
+                            ✅ <strong>PDF İşleme Başarılı!</strong><br>
+                            📊 İşlem süresi: <strong>${(duration/1000).toFixed(1)} saniye</strong><br>
+                            📄 Çıkarılan metin: <strong>${textLength.toLocaleString()} karakter</strong><br>
+                            🔧 Kullanılan yöntem: <strong>${method}</strong><br>
+                            📁 Dosya boyutu: <strong>${(file.size/1024/1024).toFixed(1)} MB</strong>
+                        </div>
+                        <details style="margin-top: 10px;">
+                            <summary>📝 Çıkarılan Metnin İlk 500 Karakteri</summary>
+                            <pre style="background: #f8f9fa; padding: 10px; border-radius: 5px; white-space: pre-wrap;">${(result.extractedText || '').substring(0, 500)}...</pre>
+                        </details>
+                    `;
+                } else {
+                    resultContent.innerHTML = `<div class="status error">❌ Hata: ${result.message || 'Bilinmeyen hata'}</div>`;
+                }
+            } catch (error) {
+                clearInterval(progressInterval);
+                resultContent.innerHTML = `<div class="status error">❌ Bağlantı hatası: ${error.message}</div>`;
+            } finally {
+                setTimeout(() => {
+                    progress.style.display = 'none';
+                    progressBar.style.width = '0%';
+                }, 1000);
+            }
+        }
+    </script>
+</body>
+</html>

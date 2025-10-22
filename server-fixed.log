@@ -1,0 +1,145 @@
+
+> procheff@0.1.0 dev
+> next dev --port 3000
+
+  ▲ Next.js 14.2.33
+  - Local:        http://localhost:3000
+  - Environments: .env
+  - Experiments (use with caution):
+    · cpus
+    · esmExternals
+
+ ✓ Starting...
+ ⚠ Invalid next.config.js options detected: 
+ ⚠     Unrecognized key(s) in object: 'serverComponentsExternalPackages'
+ ⚠ See more info here: https://nextjs.org/docs/messages/invalid-next-config
+ ✓ Ready in 2.3s
+ ○ Compiling /api/pro-ocr ...
+ ✓ Compiled /api/pro-ocr in 1035ms (117 modules)
+🎯 PRO PLAN: OCR.space-only PDF processing started
+📄 File: test.pdf, Size: 0.0MB
+Pro OCR error: Error: OCR.space request failed: 500
+    at POST (webpack-internal:///(rsc)/./src/app/api/pro-ocr/route.ts:67:19)
+    at process.processTicksAndRejections (node:internal/process/task_queues:95:5)
+    at async /home/codespace/ProCheff-New/node_modules/next/dist/compiled/next-server/app-route.runtime.dev.js:6:57228
+    at async eT.execute (/home/codespace/ProCheff-New/node_modules/next/dist/compiled/next-server/app-route.runtime.dev.js:6:46851)
+    at async eT.handle (/home/codespace/ProCheff-New/node_modules/next/dist/compiled/next-server/app-route.runtime.dev.js:6:58760)
+    at async doRender (/home/codespace/ProCheff-New/node_modules/next/dist/server/base-server.js:1366:42)
+    at async cacheEntry.responseCache.get.routeKind (/home/codespace/ProCheff-New/node_modules/next/dist/server/base-server.js:1588:28)
+    at async DevServer.renderToResponseWithComponentsImpl (/home/codespace/ProCheff-New/node_modules/next/dist/server/base-server.js:1496:28)
+    at async DevServer.renderPageComponent (/home/codespace/ProCheff-New/node_modules/next/dist/server/base-server.js:1924:24)
+    at async DevServer.renderToResponseImpl (/home/codespace/ProCheff-New/node_modules/next/dist/server/base-server.js:1962:32)
+    at async DevServer.pipeImpl (/home/codespace/ProCheff-New/node_modules/next/dist/server/base-server.js:922:25)
+    at async NextNodeServer.handleCatchallRenderRequest (/home/codespace/ProCheff-New/node_modules/next/dist/server/next-server.js:272:17)
+    at async DevServer.handleRequestImpl (/home/codespace/ProCheff-New/node_modules/next/dist/server/base-server.js:818:17)
+    at async /home/codespace/ProCheff-New/node_modules/next/dist/server/dev/next-dev-server.js:339:20
+    at async Span.traceAsyncFn (/home/codespace/ProCheff-New/node_modules/next/dist/trace/trace.js:154:20)
+    at async DevServer.handleRequest (/home/codespace/ProCheff-New/node_modules/next/dist/server/dev/next-dev-server.js:336:24)
+    at async invokeRender (/home/codespace/ProCheff-New/node_modules/next/dist/server/lib/router-server.js:179:21)
+    at async handleRequest (/home/codespace/ProCheff-New/node_modules/next/dist/server/lib/router-server.js:359:24)
+    at async requestHandlerImpl (/home/codespace/ProCheff-New/node_modules/next/dist/server/lib/router-server.js:383:13)
+    at async Server.requestListener (/home/codespace/ProCheff-New/node_modules/next/dist/server/lib/start-server.js:141:13)
+ POST /api/pro-ocr 500 in 1225ms
+ ✓ Compiled /api/status in 129ms (119 modules)
+ GET /api/status 200 in 207ms
+ ○ Compiling /api/health ...
+ ✓ Compiled /api/health in 901ms (143 modules)
+ GET /api/health 200 in 1022ms
+🎯 PRO PLAN: OCR.space-only PDF processing started
+ GET /api/health 200 in 12ms
+🎯 PRO PLAN: OCR.space-only PDF processing started
+📄 File: test.pdf, Size: 0.0MB
+Pro OCR error: Error: OCR.space request failed: 500
+    at POST (webpack-internal:///(rsc)/./src/app/api/pro-ocr/route.ts:67:19)
+    at process.processTicksAndRejections (node:internal/process/task_queues:95:5)
+    at async /home/codespace/ProCheff-New/node_modules/next/dist/compiled/next-server/app-route.runtime.dev.js:6:57228
+    at async eT.execute (/home/codespace/ProCheff-New/node_modules/next/dist/compiled/next-server/app-route.runtime.dev.js:6:46851)
+    at async eT.handle (/home/codespace/ProCheff-New/node_modules/next/dist/compiled/next-server/app-route.runtime.dev.js:6:58760)
+    at async doRender (/home/codespace/ProCheff-New/node_modules/next/dist/server/base-server.js:1366:42)
+    at async cacheEntry.responseCache.get.routeKind (/home/codespace/ProCheff-New/node_modules/next/dist/server/base-server.js:1588:28)
+    at async DevServer.renderToResponseWithComponentsImpl (/home/codespace/ProCheff-New/node_modules/next/dist/server/base-server.js:1496:28)
+    at async DevServer.renderPageComponent (/home/codespace/ProCheff-New/node_modules/next/dist/server/base-server.js:1924:24)
+    at async DevServer.renderToResponseImpl (/home/codespace/ProCheff-New/node_modules/next/dist/server/base-server.js:1962:32)
+    at async DevServer.pipeImpl (/home/codespace/ProCheff-New/node_modules/next/dist/server/base-server.js:922:25)
+    at async NextNodeServer.handleCatchallRenderRequest (/home/codespace/ProCheff-New/node_modules/next/dist/server/next-server.js:272:17)
+    at async DevServer.handleRequestImpl (/home/codespace/ProCheff-New/node_modules/next/dist/server/base-server.js:818:17)
+    at async /home/codespace/ProCheff-New/node_modules/next/dist/server/dev/next-dev-server.js:339:20
+    at async Span.traceAsyncFn (/home/codespace/ProCheff-New/node_modules/next/dist/trace/trace.js:154:20)
+    at async DevServer.handleRequest (/home/codespace/ProCheff-New/node_modules/next/dist/server/dev/next-dev-server.js:336:24)
+    at async invokeRender (/home/codespace/ProCheff-New/node_modules/next/dist/server/lib/router-server.js:179:21)
+    at async handleRequest (/home/codespace/ProCheff-New/node_modules/next/dist/server/lib/router-server.js:359:24)
+    at async requestHandlerImpl (/home/codespace/ProCheff-New/node_modules/next/dist/server/lib/router-server.js:383:13)
+    at async Server.requestListener (/home/codespace/ProCheff-New/node_modules/next/dist/server/lib/start-server.js:141:13)
+ POST /api/pro-ocr 500 in 100ms
+📄 File: PMYO-YEMEK_TEKNİK_ŞARTNAME.pdf, Size: 19.5MB
+Pro OCR error: Error: OCR.space request failed: 500
+    at POST (webpack-internal:///(rsc)/./src/app/api/pro-ocr/route.ts:67:19)
+    at process.processTicksAndRejections (node:internal/process/task_queues:95:5)
+    at async /home/codespace/ProCheff-New/node_modules/next/dist/compiled/next-server/app-route.runtime.dev.js:6:57228
+    at async eT.execute (/home/codespace/ProCheff-New/node_modules/next/dist/compiled/next-server/app-route.runtime.dev.js:6:46851)
+    at async eT.handle (/home/codespace/ProCheff-New/node_modules/next/dist/compiled/next-server/app-route.runtime.dev.js:6:58760)
+    at async doRender (/home/codespace/ProCheff-New/node_modules/next/dist/server/base-server.js:1366:42)
+    at async cacheEntry.responseCache.get.routeKind (/home/codespace/ProCheff-New/node_modules/next/dist/server/base-server.js:1588:28)
+    at async DevServer.renderToResponseWithComponentsImpl (/home/codespace/ProCheff-New/node_modules/next/dist/server/base-server.js:1496:28)
+    at async DevServer.renderPageComponent (/home/codespace/ProCheff-New/node_modules/next/dist/server/base-server.js:1924:24)
+    at async DevServer.renderToResponseImpl (/home/codespace/ProCheff-New/node_modules/next/dist/server/base-server.js:1962:32)
+    at async DevServer.pipeImpl (/home/codespace/ProCheff-New/node_modules/next/dist/server/base-server.js:922:25)
+    at async NextNodeServer.handleCatchallRenderRequest (/home/codespace/ProCheff-New/node_modules/next/dist/server/next-server.js:272:17)
+    at async DevServer.handleRequestImpl (/home/codespace/ProCheff-New/node_modules/next/dist/server/base-server.js:818:17)
+    at async /home/codespace/ProCheff-New/node_modules/next/dist/server/dev/next-dev-server.js:339:20
+    at async Span.traceAsyncFn (/home/codespace/ProCheff-New/node_modules/next/dist/trace/trace.js:154:20)
+    at async DevServer.handleRequest (/home/codespace/ProCheff-New/node_modules/next/dist/server/dev/next-dev-server.js:336:24)
+    at async invokeRender (/home/codespace/ProCheff-New/node_modules/next/dist/server/lib/router-server.js:179:21)
+    at async handleRequest (/home/codespace/ProCheff-New/node_modules/next/dist/server/lib/router-server.js:359:24)
+    at async requestHandlerImpl (/home/codespace/ProCheff-New/node_modules/next/dist/server/lib/router-server.js:383:13)
+    at async Server.requestListener (/home/codespace/ProCheff-New/node_modules/next/dist/server/lib/start-server.js:141:13)
+ POST /api/pro-ocr 500 in 13579ms
+🎯 PRO PLAN: OCR.space-only PDF processing started
+📄 File: test.pdf, Size: 0.0MB
+Pro OCR error: Error: OCR.space request failed: 500
+    at POST (webpack-internal:///(rsc)/./src/app/api/pro-ocr/route.ts:67:19)
+    at process.processTicksAndRejections (node:internal/process/task_queues:95:5)
+    at async /home/codespace/ProCheff-New/node_modules/next/dist/compiled/next-server/app-route.runtime.dev.js:6:57228
+    at async eT.execute (/home/codespace/ProCheff-New/node_modules/next/dist/compiled/next-server/app-route.runtime.dev.js:6:46851)
+    at async eT.handle (/home/codespace/ProCheff-New/node_modules/next/dist/compiled/next-server/app-route.runtime.dev.js:6:58760)
+    at async doRender (/home/codespace/ProCheff-New/node_modules/next/dist/server/base-server.js:1366:42)
+    at async cacheEntry.responseCache.get.routeKind (/home/codespace/ProCheff-New/node_modules/next/dist/server/base-server.js:1588:28)
+    at async DevServer.renderToResponseWithComponentsImpl (/home/codespace/ProCheff-New/node_modules/next/dist/server/base-server.js:1496:28)
+    at async DevServer.renderPageComponent (/home/codespace/ProCheff-New/node_modules/next/dist/server/base-server.js:1924:24)
+    at async DevServer.renderToResponseImpl (/home/codespace/ProCheff-New/node_modules/next/dist/server/base-server.js:1962:32)
+    at async DevServer.pipeImpl (/home/codespace/ProCheff-New/node_modules/next/dist/server/base-server.js:922:25)
+    at async NextNodeServer.handleCatchallRenderRequest (/home/codespace/ProCheff-New/node_modules/next/dist/server/next-server.js:272:17)
+    at async DevServer.handleRequestImpl (/home/codespace/ProCheff-New/node_modules/next/dist/server/base-server.js:818:17)
+    at async /home/codespace/ProCheff-New/node_modules/next/dist/server/dev/next-dev-server.js:339:20
+    at async Span.traceAsyncFn (/home/codespace/ProCheff-New/node_modules/next/dist/trace/trace.js:154:20)
+    at async DevServer.handleRequest (/home/codespace/ProCheff-New/node_modules/next/dist/server/dev/next-dev-server.js:336:24)
+    at async invokeRender (/home/codespace/ProCheff-New/node_modules/next/dist/server/lib/router-server.js:179:21)
+    at async handleRequest (/home/codespace/ProCheff-New/node_modules/next/dist/server/lib/router-server.js:359:24)
+    at async requestHandlerImpl (/home/codespace/ProCheff-New/node_modules/next/dist/server/lib/router-server.js:383:13)
+    at async Server.requestListener (/home/codespace/ProCheff-New/node_modules/next/dist/server/lib/start-server.js:141:13)
+ POST /api/pro-ocr 500 in 28ms
+🎯 PRO PLAN: OCR.space-only PDF processing started
+📄 File: test.pdf, Size: 0.0MB
+Pro OCR error: Error: OCR.space request failed: 500
+    at POST (webpack-internal:///(rsc)/./src/app/api/pro-ocr/route.ts:67:19)
+    at process.processTicksAndRejections (node:internal/process/task_queues:95:5)
+    at async /home/codespace/ProCheff-New/node_modules/next/dist/compiled/next-server/app-route.runtime.dev.js:6:57228
+    at async eT.execute (/home/codespace/ProCheff-New/node_modules/next/dist/compiled/next-server/app-route.runtime.dev.js:6:46851)
+    at async eT.handle (/home/codespace/ProCheff-New/node_modules/next/dist/compiled/next-server/app-route.runtime.dev.js:6:58760)
+    at async doRender (/home/codespace/ProCheff-New/node_modules/next/dist/server/base-server.js:1366:42)
+    at async cacheEntry.responseCache.get.routeKind (/home/codespace/ProCheff-New/node_modules/next/dist/server/base-server.js:1588:28)
+    at async DevServer.renderToResponseWithComponentsImpl (/home/codespace/ProCheff-New/node_modules/next/dist/server/base-server.js:1496:28)
+    at async DevServer.renderPageComponent (/home/codespace/ProCheff-New/node_modules/next/dist/server/base-server.js:1924:24)
+    at async DevServer.renderToResponseImpl (/home/codespace/ProCheff-New/node_modules/next/dist/server/base-server.js:1962:32)
+    at async DevServer.pipeImpl (/home/codespace/ProCheff-New/node_modules/next/dist/server/base-server.js:922:25)
+    at async NextNodeServer.handleCatchallRenderRequest (/home/codespace/ProCheff-New/node_modules/next/dist/server/next-server.js:272:17)
+    at async DevServer.handleRequestImpl (/home/codespace/ProCheff-New/node_modules/next/dist/server/base-server.js:818:17)
+    at async /home/codespace/ProCheff-New/node_modules/next/dist/server/dev/next-dev-server.js:339:20
+    at async Span.traceAsyncFn (/home/codespace/ProCheff-New/node_modules/next/dist/trace/trace.js:154:20)
+    at async DevServer.handleRequest (/home/codespace/ProCheff-New/node_modules/next/dist/server/dev/next-dev-server.js:336:24)
+    at async invokeRender (/home/codespace/ProCheff-New/node_modules/next/dist/server/lib/router-server.js:179:21)
+    at async handleRequest (/home/codespace/ProCheff-New/node_modules/next/dist/server/lib/router-server.js:359:24)
+    at async requestHandlerImpl (/home/codespace/ProCheff-New/node_modules/next/dist/server/lib/router-server.js:383:13)
+    at async Server.requestListener (/home/codespace/ProCheff-New/node_modules/next/dist/server/lib/start-server.js:141:13)
+ POST /api/pro-ocr 500 in 58ms
+ ✓ Compiled in 1973ms (463 modules)

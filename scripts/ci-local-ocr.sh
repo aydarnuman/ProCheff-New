@@ -20,7 +20,7 @@ pdftoppm -png -r 300 "$PDF_PATH" "$OUT_PREFIX"
 
 echo "Running tesseract on each produced PNG"
 COMBINED="$OUT_DIR/combined.txt"
->:"$COMBINED"
+: > "$COMBINED"
 
 shopt -s nullglob
 for f in "$OUT_DIR"/page-*.png; do
