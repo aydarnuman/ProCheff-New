@@ -1,10 +1,26 @@
 #!/bin/bash
 
-# Test file for PDF upload API
-echo "Testing PDF upload API with multipart/form-data..."
+set -euo pipefail
 
-# Create a simple test PDF file
-echo "%PDF-1.4
+API_URL_DEFAULT="http://localhost:${PORT:-3000}/api/pipeline/pdf-to-offer"
+API_URL="${1:-}"  # optional first arg as full URL or file path
+FILE_ARG=""
+
+# If first arg is a file, treat it as PDF to upload; otherwise it's URL
+if [[ -n "${API_URL}" && -f "${API_URL}" ]]; then
+  FILE_ARG="${API_URL}"
+  API_URL="${API_URL_DEFAULT}"
+elif [[ -z "${API_URL}" ]]; then
+  API_URL="${API_URL_DEFAULT}"
+fi
+
+echo "Testing PDF upload API -> ${API_URL}"
+
+# If no file provided, create a tiny test.pdf
+if [[ -z "${FILE_ARG}" ]]; then
+  echo "Creating small test.pdf..."
+  cat > test.pdf <<'PDF'
+%PDF-1.4
 1 0 obj
 <<
 /Type /Catalog
@@ -56,17 +72,18 @@ trailer
 >>
 startxref
 398
-%%EOF" > test.pdf
+%%EOF
+PDF
+  FILE_ARG="test.pdf"
+fi
 
-echo "Created test.pdf file"
+echo "Uploading ${FILE_ARG} ..."
+set +e
+HTTP_CODE=$(curl -s -w "\nHTTP:%{http_code}\n" -F "file=@${FILE_ARG};type=application/pdf" "${API_URL}" | tee /dev/stderr | tail -n1 | sed 's/HTTP://')
+set -e
 
-# Test the API
-curl -v -X POST \
-  -H "Content-Type: multipart/form-data" \
-  -F "file=@test.pdf" \
-  https://pro-cheff-new.vercel.app/api/pipeline/pdf-to-offer
+echo "HTTP status: ${HTTP_CODE}"
 
-echo -e "\n\nTest completed!"
-
-# Clean up
-rm -f test.pdf
+if [[ "${FILE_ARG}" == "test.pdf" ]]; then
+  rm -f test.pdf
+fi

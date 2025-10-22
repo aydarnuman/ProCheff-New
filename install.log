@@ -1,0 +1,17 @@
+
+> procheff@0.1.0 postinstall
+> node -e "try{require('child_process').execSync('npm rebuild sharp --unsafe-perm',{stdio:'inherit'})}catch(e){console.warn('sharp rebuild failed', e)}"
+
+rebuilt dependencies successfully
+
+added 2 packages, and audited 636 packages in 2s
+
+176 packages are looking for funding
+  run `npm fund` for details
+
+1 moderate severity vulnerability
+
+To address all issues, run:
+  npm audit fix
+
+Run `npm audit` for details.

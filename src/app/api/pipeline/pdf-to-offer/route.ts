@@ -4,7 +4,7 @@ import pdfParse from "pdf-parse";
 import fs from "fs";
 import path from "path";
 import crypto from "crypto";
-import { extractTextWithAdvancedOCR } from "@/lib/ocr/auto-text-converter";
+import { extractTextWithAdvancedOCR, extractTextWithFallback } from "@/lib/ocr";
 import { prisma as db } from "@/lib/core/database";
 import { recordOcrMetrics } from "@/lib/core/observability";
 
@@ -282,7 +282,8 @@ class ErrorHandler {
   static handle(
     error: unknown,
     context: string,
-    code?: ErrorCode
+    code: ErrorCode = "INTERNAL_ERROR",
+    status = 500
   ): NextResponse {
     const err = error as Error;
     const errorInfo = {
@@ -297,12 +298,12 @@ class ErrorHandler {
     return NextResponse.json(
       {
         success: false,
-        code: code || "INTERNAL_ERROR",
+        code,
         message: `${context} hatası`,
         details: err?.message || "Bilinmeyen hata",
         timestamp: new Date().toISOString(),
       },
-      { status: 500 }
+      { status }
     );
   }
 }
@@ -630,15 +631,13 @@ export async function POST(request: NextRequest) {
     const contentLength = request.headers.get("content-length");
     if (contentLength && parseInt(contentLength) > MAX_FILE_SIZE) {
       Logger.log("WARNING", "Dosya boyutu çok büyük", { size: contentLength });
-      return NextResponse.json(
-        ErrorHandler.handle(
-          new Error(
-            `Dosya boyutu çok büyük. Maksimum ${MAX_FILE_SIZE / 1024 / 1024}MB`
-          ),
-          "File Size Check",
-          "FILE_TOO_LARGE"
+      return ErrorHandler.handle(
+        new Error(
+          `Dosya boyutu çok büyük. Maksimum ${MAX_FILE_SIZE / 1024 / 1024}MB`
         ),
-        { status: 413 }
+        "File Size Check",
+        "FILE_TOO_LARGE",
+        413
       );
     }
 
@@ -650,13 +649,11 @@ export async function POST(request: NextRequest) {
 
     if (!file) {
       Logger.log("WARNING", "Dosya bulunamadı");
-      return NextResponse.json(
-        ErrorHandler.handle(
-          new Error("PDF dosyası bulunamadı"),
-          "File Validation",
-          "INVALID_REQUEST"
-        ),
-        { status: 400 }
+      return ErrorHandler.handle(
+        new Error("PDF dosyası bulunamadı"),
+        "File Validation",
+        "INVALID_REQUEST",
+        400
       );
     }
 
@@ -669,13 +666,11 @@ export async function POST(request: NextRequest) {
     // File type check
     if (file.type !== "application/pdf") {
       Logger.log("WARNING", "Geçersiz dosya türü", { type: file.type });
-      return NextResponse.json(
-        ErrorHandler.handle(
-          new Error("Sadece PDF dosyaları desteklenir"),
-          "File Type Validation",
-          "UNSUPPORTED_TYPE"
-        ),
-        { status: 400 }
+      return ErrorHandler.handle(
+        new Error("Sadece PDF dosyaları desteklenir"),
+        "File Type Validation",
+        "UNSUPPORTED_TYPE",
+        400
       );
     }
 
@@ -689,11 +684,13 @@ export async function POST(request: NextRequest) {
     const pdfMetadata = await withRetry(() => pdfParse(buffer));
     const pageCount = pdfMetadata.numpages || 1;
 
-    // Enhanced text extraction with AUTO OCR INTELLIGENCE
-    const extractionResult = await extractTextWithAdvancedOCR(
-      buffer,
-      file.name
-    );
+    // Enhanced text extraction - OCR zincir mantığı
+    let extractionResult = await extractTextWithFallback(buffer, file.name);
+
+    if (!extractionResult.text || extractionResult.text.length < 1000) {
+      console.log("⚠️ Fallback OCR yetersiz, Pro OCR devreye giriyor...");
+      extractionResult = await extractTextWithAdvancedOCR(buffer, file.name);
+    }
 
     const extractedText = extractionResult.text;
     Logger.log("INFO", "AUTO OCR Intelligence tamamlandı", {
@@ -709,15 +706,13 @@ export async function POST(request: NextRequest) {
         "WARNING",
         `PDF'den metin çıkarılamadı (method: ${extractionResult.method})`
       );
-      return NextResponse.json(
-        ErrorHandler.handle(
-          new Error(
-            `PDF'den metin çıkarılamadı. OCR dahil tüm yöntemler denendi. Method: ${extractionResult.method}`
-          ),
-          "PDF Text Extraction",
-          "PARSE_FAILED"
+      return ErrorHandler.handle(
+        new Error(
+          `PDF'den metin çıkarılamadı. OCR dahil tüm yöntemler denendi. Method: ${extractionResult.method}`
         ),
-        { status: 400 }
+        "PDF Text Extraction",
+        "PARSE_FAILED",
+        400
       );
     }
 
@@ -989,24 +984,13 @@ export async function POST(request: NextRequest) {
     return NextResponse.json(response);
   } catch (error) {
     const processingTime = Date.now() - startTime;
-    const errorResponse = ErrorHandler.handle(
-      error,
-      "PDF Processing",
-      "INTERNAL_ERROR"
-    );
-
     Logger.log("ERROR", "PDF analizi başarısız", {
       processingTime: `${processingTime}ms`,
       error: (error as Error)?.message || "Bilinmeyen hata",
     });
 
-    return NextResponse.json(
-      {
-        ...errorResponse,
-        processingTime: `${processingTime}ms`,
-      },
-      { status: 500 }
-    );
+    // Do not wrap a NextResponse inside another NextResponse
+    return ErrorHandler.handle(error, "PDF Processing", "INTERNAL_ERROR", 500);
   }
 }
 
