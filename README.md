@@ -125,6 +125,25 @@ npm run build
 npm start
 ```
 
+## 🤖 AI Yardım Sistemi
+
+ProCheff, GitHub Issues üzerinden AI yardım sistemi desteğine sahiptir:
+
+- **AI Assistance Request**: Özel issue template ile yapılandırılmış AI talepleri
+- **Otomatik İşleme**: GitHub Actions ile otomatik AI yanıtları
+- **Çoklu Modeller**: OpenAI ve Anthropic Claude desteği
+- **Türkçe Destek**: Tamamen Türkçe AI etkileşimleri
+
+### AI Yardım Talep Etme
+
+1. [Yeni Issue Aç](../../issues/new/choose)
+2. "🤖 AI Assistance Request" template'ini seç
+3. Talep tipini belirle (Code generation, Review, Documentation, vb.)
+4. Detaylı açıklama yaz
+5. Issue'yu oluştur
+
+Detaylı bilgi için: [AI Integration Guide](docs/AI-INTEGRATION.md)
+
 ## 🤝 Katkıda Bulunma
 
 1. Fork edin
