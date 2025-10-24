@@ -60,7 +60,9 @@
     "upgrade:preview": "node scripts/upgrade-preview.js",
     "upgrade:next": "node scripts/upgrade-preview.js next",
     "upgrade:tailwind": "node scripts/upgrade-preview.js tailwindcss",
-    "setup": "npm install && npm run type-check"
+    "setup": "npm install && npm run type-check",
+    "ai:test": "node scripts/test-ai-integration.js",
+    "ai:handler": "node scripts/ai-assistance-handler.js"
   },
   "dependencies": {
     "@prisma/client": "^6.17.1",

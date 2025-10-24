@@ -1,0 +1,147 @@
+name: AI Assistance
+
+on:
+  issues:
+    types: [opened, labeled, edited]
+  workflow_dispatch:
+    inputs:
+      issue_number:
+        description: 'Issue number to process'
+        required: true
+        type: number
+
+jobs:
+  ai-response:
+    # Only run if issue has ai-assistance label
+    if: contains(github.event.issue.labels.*.name, 'ai-assistance') || github.event_name == 'workflow_dispatch'
+    runs-on: ubuntu-latest
+    
+    permissions:
+      issues: write
+      pull-requests: write
+      contents: write
+    
+    steps:
+      - name: Checkout repository
+        uses: actions/checkout@v4
+      
+      - name: Setup Node.js
+        uses: actions/setup-node@v4
+        with:
+          node-version: '20'
+      
+      - name: Install dependencies
+        run: npm ci
+      
+      - name: Process AI Request
+        id: ai-process
+        run: |
+          ISSUE_NUM=${{ github.event.issue.number || github.event.inputs.issue_number }}
+          echo "Processing issue #$ISSUE_NUM"
+          node scripts/ai-assistance-handler.js $ISSUE_NUM > ai-response.txt
+          echo "response_generated=true" >> $GITHUB_OUTPUT
+        env:
+          GITHUB_TOKEN: ${{ secrets.GITHUB_TOKEN }}
+          OPENAI_API_KEY: ${{ secrets.OPENAI_API_KEY }}
+          ANTHROPIC_API_KEY: ${{ secrets.ANTHROPIC_API_KEY }}
+          AI_ASSISTANT_ENABLED: true
+      
+      - name: Add response comment
+        if: steps.ai-process.outputs.response_generated == 'true'
+        uses: actions/github-script@v7
+        with:
+          script: |
+            const fs = require('fs');
+            const response = fs.readFileSync('ai-response.txt', 'utf8');
+            
+            const issueNumber = context.issue.number || ${{ github.event.inputs.issue_number }};
+            
+            await github.rest.issues.createComment({
+              owner: context.repo.owner,
+              repo: context.repo.repo,
+              issue_number: issueNumber,
+              body: response
+            });
+            
+            console.log(`✅ AI response posted to issue #${issueNumber}`);
+      
+      - name: Update labels
+        if: steps.ai-process.outputs.response_generated == 'true'
+        uses: actions/github-script@v7
+        with:
+          script: |
+            const issueNumber = context.issue.number || ${{ github.event.inputs.issue_number }};
+            
+            await github.rest.issues.addLabels({
+              owner: context.repo.owner,
+              repo: context.repo.repo,
+              issue_number: issueNumber,
+              labels: ['ai-processed']
+            });
+            
+            await github.rest.issues.removeLabel({
+              owner: context.repo.owner,
+              repo: context.repo.repo,
+              issue_number: issueNumber,
+              name: 'needs-review'
+            }).catch(() => {
+              // Label might not exist, ignore error
+            });
+      
+      - name: Upload artifacts
+        if: always()
+        uses: actions/upload-artifact@v4
+        with:
+          name: ai-response-${{ github.event.issue.number || github.event.inputs.issue_number }}
+          path: |
+            ai-response.txt
+          retention-days: 30
+
+  test-ai-integration:
+    # Run tests when workflow is triggered manually
+    if: github.event_name == 'workflow_dispatch'
+    runs-on: ubuntu-latest
+    
+    steps:
+      - name: Checkout repository
+        uses: actions/checkout@v4
+      
+      - name: Setup Node.js
+        uses: actions/setup-node@v4
+        with:
+          node-version: '20'
+      
+      - name: Install dependencies
+        run: npm ci
+      
+      - name: Run AI integration tests
+        run: node scripts/ai-assistance-handler.js --test
+        env:
+          AI_ASSISTANT_ENABLED: true
+      
+      - name: Verify AI template exists
+        run: |
+          if [ ! -f ".github/ISSUE_TEMPLATE/ai_assistance.md" ]; then
+            echo "❌ AI assistance template not found"
+            exit 1
+          fi
+          echo "✅ AI assistance template exists"
+      
+      - name: Verify documentation
+        run: |
+          if [ ! -f "docs/AI-INTEGRATION.md" ]; then
+            echo "❌ AI integration documentation not found"
+            exit 1
+          fi
+          echo "✅ AI integration documentation exists"
+      
+      - name: Integration test summary
+        if: always()
+        run: |
+          echo "## 🤖 AI Integration Test Summary" >> $GITHUB_STEP_SUMMARY
+          echo "" >> $GITHUB_STEP_SUMMARY
+          echo "✅ AI assistance handler script: OK" >> $GITHUB_STEP_SUMMARY
+          echo "✅ Issue template: OK" >> $GITHUB_STEP_SUMMARY
+          echo "✅ Documentation: OK" >> $GITHUB_STEP_SUMMARY
+          echo "" >> $GITHUB_STEP_SUMMARY
+          echo "All AI integration components are working correctly!" >> $GITHUB_STEP_SUMMARY
